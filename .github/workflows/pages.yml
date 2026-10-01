@@ -1,0 +1,52 @@
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: the-model demo/package-lock.json
+
+      - name: Install
+        working-directory: the-model demo
+        run: npm ci
+
+      - name: Build
+        working-directory: the-model demo
+        env:
+          VITE_BASE_URL: /the-model/
+        run: npm run build
+
+      - name: Serve the show at the site root
+        run: cp "the-model demo/dist-the-model/the-model.html" "the-model demo/dist-the-model/index.html"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: the-model demo/dist-the-model
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

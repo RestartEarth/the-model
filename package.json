@@ -1,0 +1,22 @@
+{
+  "name": "the-model",
+  "private": true,
+  "version": "0.1.0",
+  "description": "THE MODEL — a performed keynote. The network is the computer.",
+  "workspaces": [
+    "apps/keynote",
+    "apps/desktop"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w keynote",
+    "dev:desktop": "npm run dev -w desktop",
+    "build": "npm run build -w keynote",
+    "preview": "npm run preview -w keynote",
+    "type-check": "npm run type-check -w keynote",
+    "pack:web": "npm run pack:web -w keynote",
+    "pack:mac": "node ./scripts/pack-mac.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

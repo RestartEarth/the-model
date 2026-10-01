@@ -1,0 +1,30 @@
+{
+  "name": "the-model-demo",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "THE MODEL — standalone harness for the keynote module that lives inside uni-demo.",
+  "scripts": {
+    "dev": "vite --config vite.the-model.config.ts",
+    "build": "tsc --noEmit && vite build --config vite.the-model.config.ts",
+    "preview": "vite preview --config vite.the-model.config.ts",
+    "type-check": "tsc --noEmit",
+    "runtime": "node scripts/runtime.mjs"
+  },
+  "dependencies": {
+    "next-themes": "^0.4.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.11"
+  }
+}

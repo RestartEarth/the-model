@@ -1,0 +1,366 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: #191d26;
+  color: #f1f5fe;
+  font-family: Inter, "IBM Plex Sans", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+button {
+  font-family: inherit;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #191d26;
+  cursor: default;
+  user-select: none;
+}
+
+.stage-starfield {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.stage-starfield canvas {
+  display: block;
+}
+
+/* Portrait beats: keep a faint field at the rim, never on the face. */
+.stage-starfield.is-clear-face,
+.stage-dots.is-clear-face {
+  -webkit-mask-image: radial-gradient(ellipse 42% 56% at 58% 26%, transparent 68%, #000 100%);
+  mask-image: radial-gradient(ellipse 42% 56% at 58% 26%, transparent 68%, #000 100%);
+}
+
+.stage-dots {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: radial-gradient(rgba(241, 245, 254, 0.22) 0.7px, transparent 0.8px);
+  background-size: 52px 52px;
+  background-position: 0 0, 26px 26px;
+}
+
+.stage-graph {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stage-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 48%, rgba(18, 21, 28, 0.55) 100%);
+}
+
+.gage-still {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gage-still.is-in {
+  opacity: 1;
+}
+
+.gage-still-photo {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  object-fit: cover;
+  object-position: 62% 18%;
+  filter: saturate(0.28) contrast(1.12) brightness(0.72);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gage-still-grade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 58% 26%, transparent 16%, rgba(18, 21, 28, 0.55) 72%),
+    linear-gradient(180deg, rgba(25, 29, 38, 0.28) 0%, transparent 32%, rgba(25, 29, 38, 0.72) 100%);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gage-still-nerves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  transition: opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  mix-blend-mode: screen;
+}
+
+.gage-still-nerves.is-settled {
+  opacity: 0.14;
+}
+
+.gage-still-period {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.gage-still.is-receding .gage-still-photo,
+.gage-still.is-receding .gage-still-grade,
+.gage-still.is-receding .gage-still-nerves {
+  opacity: 0;
+}
+
+.gage-still.is-title .gage-still-photo,
+.gage-still.is-title .gage-still-grade,
+.gage-still.is-title .gage-still-nerves,
+.gage-still.is-title .gage-still-period {
+  opacity: 0;
+}
+
+.audience {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 7vh 8vw 11vh;
+}
+
+/* Quiet zone under the bottom-left voice — filaments must not slice the sentence.
+   Must stay behind glyphs: a positioned ::before paints after in-flow type. */
+.audience:not(.center)::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: min(58vw, 820px);
+  height: min(44vh, 380px);
+  background: radial-gradient(
+    90% 80% at 8% 92%,
+    rgba(25, 29, 38, 0.94) 0%,
+    rgba(25, 29, 38, 0.76) 28%,
+    rgba(25, 29, 38, 0.38) 52%,
+    rgba(25, 29, 38, 0) 74%
+  );
+  pointer-events: none;
+}
+
+.audience:not(.center) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.audience.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.audience-kicker {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8b97a8;
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.audience-quote,
+.audience-title,
+.audience-line {
+  margin: 0;
+  color: #f1f5fe;
+  opacity: 1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.audience-quote {
+  font-size: clamp(28px, 4.4vw, 56px);
+  max-width: 16ch;
+}
+
+.audience-title {
+  font-size: clamp(42px, 8.5vw, 112px);
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+.audience-line {
+  font-size: clamp(22px, 2.6vw, 34px);
+  max-width: 22ch;
+}
+
+.audience-signature {
+  margin: 0;
+  color: #f1f5fe;
+  opacity: 1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-size: clamp(22px, 2.7vw, 36px);
+  max-width: 28ch;
+}
+
+.audience-strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #e24b5a;
+  color: #8b97a8;
+}
+
+.edge-flow {
+  stroke-dasharray: 7 11;
+  animation: edge-flow 1.05s linear infinite;
+}
+
+.lightning {
+  animation: lightning 1.15s ease-in-out infinite;
+}
+
+.mcp-flow {
+  stroke-dasharray: 5 8;
+  animation: edge-flow 1.4s linear infinite;
+}
+
+.a2a-flow {
+  stroke-dasharray: 1 10;
+  animation: edge-flow 0.9s linear infinite;
+}
+
+.agent-blind {
+  animation: agent-jitter 0.55s steps(2, end) infinite;
+}
+
+.commitment-in {
+  animation: commitment-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes edge-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+@keyframes agent-jitter {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(1.2px, -0.8px);
+  }
+}
+
+@keyframes commitment-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightning {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  38% {
+    opacity: 0.95;
+  }
+  52% {
+    opacity: 0.2;
+  }
+  68% {
+    opacity: 0.75;
+  }
+}
+
+.audience-attr,
+.audience-sub {
+  margin: 18px 0 0;
+  color: #8b97a8;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.inscriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 22ch;
+}
+
+.inscriptions p {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 32px);
+  letter-spacing: -0.03em;
+  color: #f1f5fe;
+  opacity: 1;
+  line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-graph * {
+    transition: none !important;
+  }
+
+  .edge-flow,
+  .lightning,
+  .mcp-flow,
+  .a2a-flow,
+  .agent-blind,
+  .commitment-in {
+    animation: none !important;
+  }
+
+  .gage-still {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1;
+  }
+
+  .gage-still-nerves {
+    transition: none !important;
+    opacity: 0.14;
+  }
+
+  .gage-still.is-receding .gage-still-photo,
+  .gage-still.is-receding .gage-still-grade,
+  .gage-still.is-title .gage-still-photo {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,671 @@
+/* Ported from the-model (apps/keynote/src/index.css), scoped under .the-model-stage
+   so it cannot leak into uni-demo's Tailwind/shadcn styling. Only imported by
+   the-model-page.tsx. */
+
+.the-model-stage,
+.the-model-stage * {
+  box-sizing: border-box;
+}
+
+/*
+ * Every beat is authored against a fixed 1600x900 (16:9) viewBox. The stage
+ * used to just stretch to 100%/100% of the viewport, so on any window whose
+ * aspect ratio isn't exactly 16:9 (a wide external monitor, a browser tab
+ * with less vertical room than a true 16:9 box), each SVG's "xMidYMid slice"
+ * scaling crops the overflowing axis — reading as every beat being zoomed in
+ * too far, not just the ones with a tight camera frame. Pin the frame itself
+ * to 16:9 and letterbox/pillarbox the rest instead of relying on the SVGs to
+ * crop cleanly.
+ */
+.the-model-stage-frame {
+  position: absolute;
+  inset: 0;
+  background: #191d26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.the-model-stage {
+  position: relative;
+  width: min(100%, 177.7778vh);
+  height: min(100%, 56.25vw);
+  background: #191d26;
+  color: #f1f5fe;
+  font-family: Inter, "IBM Plex Sans", system-ui, sans-serif;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.the-model-stage button {
+  font-family: inherit;
+}
+
+.the-model-stage .stage-starfield {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.the-model-stage .stage-starfield canvas {
+  display: block;
+}
+
+/* Portrait beats: keep a faint field at the rim, never on the face. */
+.the-model-stage .stage-starfield.is-clear-face,
+.the-model-stage .stage-dots.is-clear-face {
+  -webkit-mask-image: radial-gradient(ellipse 42% 56% at 58% 26%, transparent 68%, #000 100%);
+  mask-image: radial-gradient(ellipse 42% 56% at 58% 26%, transparent 68%, #000 100%);
+}
+
+.the-model-stage .stage-dots {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: radial-gradient(rgba(241, 245, 254, 0.22) 0.7px, transparent 0.8px);
+  background-size: 52px 52px;
+  background-position: 0 0, 26px 26px;
+}
+
+.the-model-stage .stage-graph {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.the-model-stage .stage-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 48%, rgba(18, 21, 28, 0.55) 100%);
+}
+
+.the-model-stage .gage-still {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.the-model-stage .gage-still.is-in {
+  opacity: 1;
+}
+
+.the-model-stage .gage-still-photo {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  object-fit: cover;
+  object-position: 62% 18%;
+  filter: saturate(0.28) contrast(1.12) brightness(0.72);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.the-model-stage .gage-still-grade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 58% 26%, transparent 16%, rgba(18, 21, 28, 0.55) 72%),
+    linear-gradient(180deg, rgba(25, 29, 38, 0.28) 0%, transparent 32%, rgba(25, 29, 38, 0.72) 100%);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.the-model-stage .gage-still-nerves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  transition: opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  mix-blend-mode: screen;
+}
+
+.the-model-stage .gage-still-nerves.is-settled {
+  opacity: 0.14;
+}
+
+.the-model-stage .gage-still-period {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.the-model-stage .gage-still.is-receding .gage-still-photo,
+.the-model-stage .gage-still.is-receding .gage-still-grade,
+.the-model-stage .gage-still.is-receding .gage-still-nerves {
+  opacity: 0;
+}
+
+.the-model-stage .gage-still.is-title .gage-still-photo,
+.the-model-stage .gage-still.is-title .gage-still-grade,
+.the-model-stage .gage-still.is-title .gage-still-nerves,
+.the-model-stage .gage-still.is-title .gage-still-period {
+  opacity: 0;
+}
+
+.the-model-stage .audience {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 7vh 8vw 11vh;
+}
+
+/* Quiet zone under the bottom-left voice — filaments must not slice the sentence.
+   Must stay behind glyphs: a positioned ::before paints after in-flow type. */
+.the-model-stage .audience:not(.center)::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: min(58vw, 820px);
+  height: min(44vh, 380px);
+  background: radial-gradient(
+    90% 80% at 8% 92%,
+    rgba(25, 29, 38, 0.94) 0%,
+    rgba(25, 29, 38, 0.76) 28%,
+    rgba(25, 29, 38, 0.38) 52%,
+    rgba(25, 29, 38, 0) 74%
+  );
+  pointer-events: none;
+}
+
+.the-model-stage .audience:not(.center) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.the-model-stage .audience.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.the-model-stage .audience-kicker {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8b97a8;
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.the-model-stage .audience-quote,
+.the-model-stage .audience-title,
+.the-model-stage .audience-line {
+  margin: 0;
+  color: #f1f5fe;
+  opacity: 1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.the-model-stage .audience-quote {
+  font-size: clamp(28px, 4.4vw, 56px);
+  max-width: 16ch;
+}
+
+.the-model-stage .audience-title {
+  font-size: clamp(42px, 8.5vw, 112px);
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+/*
+ * The show's intentional pauses are sentences, not titles. `.audience-title`
+ * is sized and letter-spaced for the two words THE MODEL; at 8.5vw a
+ * fourteen-word sentence fills the frame and buries the visual that is
+ * supposed to be making the argument. This is the same centred treatment at
+ * a readable size, wrapped at a line length the room can take in at a glance.
+ */
+.the-model-stage .audience-statement {
+  margin: 0;
+  color: #f1f5fe;
+  font-weight: 400;
+  font-size: clamp(26px, 3.4vw, 50px);
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.the-model-stage .audience-line {
+  font-size: clamp(22px, 2.6vw, 34px);
+  max-width: 22ch;
+}
+
+.the-model-stage .audience-signature {
+  margin: 0;
+  color: #f1f5fe;
+  opacity: 1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-size: clamp(22px, 2.7vw, 36px);
+  max-width: 28ch;
+}
+
+.the-model-stage .audience-strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #e24b5a;
+  color: #8b97a8;
+}
+
+.the-model-stage .edge-flow {
+  stroke-dasharray: 7 11;
+  animation: tm-edge-flow 1.05s linear infinite;
+}
+
+.the-model-stage .lightning {
+  animation: tm-lightning 1.15s ease-in-out infinite;
+}
+
+.the-model-stage .mcp-flow {
+  stroke-dasharray: 5 8;
+  animation: tm-edge-flow 1.4s linear infinite;
+}
+
+.the-model-stage .a2a-flow {
+  stroke-dasharray: 1 10;
+  animation: tm-edge-flow 0.9s linear infinite;
+}
+
+.the-model-stage .agent-blind {
+  animation: tm-agent-jitter 0.55s steps(2, end) infinite;
+}
+
+.the-model-stage .commitment-in {
+  animation: tm-commitment-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tm-edge-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+@keyframes tm-agent-jitter {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(1.2px, -0.8px);
+  }
+}
+
+@keyframes tm-commitment-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tm-lightning {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  38% {
+    opacity: 0.95;
+  }
+  52% {
+    opacity: 0.2;
+  }
+  68% {
+    opacity: 0.75;
+  }
+}
+
+.the-model-stage .audience-attr,
+.the-model-stage .audience-sub {
+  margin: 18px 0 0;
+  color: #8b97a8;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.the-model-stage .inscriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 22ch;
+}
+
+.the-model-stage .inscriptions p {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 32px);
+  letter-spacing: -0.03em;
+  color: #f1f5fe;
+  opacity: 1;
+  line-height: 1.2;
+}
+
+/* Brief "THE MODEL" title emphasis over facts-spine/bookend — distinct from the
+   sustained Gage quote-card treatment: tighter letterform pulse, self-resolving. */
+.the-model-stage .title-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.the-model-stage .audience-title-flash {
+  margin: 0;
+  font-size: clamp(46px, 9vw, 120px);
+  font-weight: 500;
+  color: #f1f5fe;
+  opacity: 0;
+  animation: tm-title-flash 3.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tm-title-flash {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.34em;
+    transform: scale(0.94);
+  }
+  22% {
+    opacity: 1;
+    letter-spacing: 0.14em;
+    transform: scale(1);
+  }
+  62% {
+    opacity: 1;
+    letter-spacing: 0.14em;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    letter-spacing: 0.2em;
+    transform: scale(1.04);
+  }
+}
+
+/* final-onug: hold the verified fabric, then let the whole stage fall to black. */
+.the-model-stage .stage-blackout {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+  animation: tm-stage-blackout-fall 32s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes tm-stage-blackout-fall {
+  0%,
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* soma-cosmos → soma-bytes: the cosmic web resolves into a true Indra's-Net lattice — a
+   woven {24/5}+{24/7} star polygon of chords, a jewel at every node, and a smaller jewel
+   at every place those chords actually cross — and holds, shimmering, for as long as
+   `somaIndra` is on. Nothing here fades back to the plain ring anymore; it only leaves
+   when the beat moves on to soma-warmth (the atmosphere). */
+.the-model-stage .indra-net-chord {
+  opacity: 0;
+  animation: tm-indra-net-chord-in 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes tm-indra-net-chord-in {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.34;
+  }
+  100% {
+    opacity: 0.22;
+  }
+}
+
+.the-model-stage .indra-net-flare {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation:
+    tm-indra-net-flare-in 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    tm-indra-net-flare-pulse 5.2s ease-in-out infinite;
+}
+
+@keyframes tm-indra-net-flare-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  35% {
+    opacity: 0.85;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0.36;
+    transform: scale(1);
+  }
+}
+
+@keyframes tm-indra-net-flare-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.44;
+    transform: scale(1.06);
+  }
+}
+
+/* Reflected light arriving a beat behind each node's own flare — twinkles twice, smaller
+   and quicker, then settles into its own slow shimmer so the reflection keeps happening
+   for as long as the lattice is on screen, not just once. */
+.the-model-stage .indra-net-glint {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation:
+    tm-indra-net-glint-in 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    tm-indra-net-glint-pulse 4.4s ease-in-out infinite;
+}
+
+@keyframes tm-indra-net-glint-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  12% {
+    opacity: 0.9;
+    transform: scale(1.3);
+  }
+  22% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+  34% {
+    opacity: 0.75;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.16;
+    transform: scale(1);
+  }
+}
+
+@keyframes tm-indra-net-glint-pulse {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.26;
+    transform: scale(1.1);
+  }
+}
+
+/* The smaller jewels — every place the two chord families actually cross, not just the
+   24 points on the ring. Same idiom as the big jewels (a shimmer, then a glint of light
+   caught from a neighbor), scaled down and always looping — there are enough of them
+   that they read as a scattered, continuous twinkle rather than a synchronized flash. */
+.the-model-stage .indra-net-node-shimmer {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation:
+    tm-indra-net-node-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    tm-indra-net-node-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes tm-indra-net-node-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 0.52;
+    transform: scale(1);
+  }
+}
+
+@keyframes tm-indra-net-node-pulse {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.68;
+    transform: scale(1.2);
+  }
+}
+
+.the-model-stage .indra-net-node-glint {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tm-indra-net-node-glint-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes tm-indra-net-node-glint-pulse {
+  0%,
+  60%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  80% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+/* A jewel's light literally arriving at its nearest neighbor: a short dash travels the
+   connecting line once per loop, fading in as it leaves and out as it lands. This is the
+   visual answer to "these shimmering nodes reflect to each other" — not just each small
+   jewel twinkling in isolation. `pathLength={1}` on the `<line>` normalizes the dash math
+   so it works the same regardless of how long any given link actually is. */
+.the-model-stage .indra-net-reflect-link {
+  fill: none;
+  stroke-dasharray: 0.22 1;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  animation: tm-indra-net-reflect-link 3.4s linear infinite;
+}
+
+@keyframes tm-indra-net-reflect-link {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.62;
+  }
+  44% {
+    stroke-dashoffset: -1;
+    opacity: 0.62;
+  }
+  54%,
+  100% {
+    stroke-dashoffset: -1;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .the-model-stage .stage-graph * {
+    transition: none !important;
+  }
+
+  .the-model-stage .edge-flow,
+  .the-model-stage .lightning,
+  .the-model-stage .mcp-flow,
+  .the-model-stage .a2a-flow,
+  .the-model-stage .agent-blind,
+  .the-model-stage .commitment-in {
+    animation: none !important;
+  }
+
+  .the-model-stage .gage-still {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1;
+  }
+
+  .the-model-stage .gage-still-nerves {
+    transition: none !important;
+    opacity: 0.14;
+  }
+
+  .the-model-stage .gage-still.is-receding .gage-still-photo,
+  .the-model-stage .gage-still.is-receding .gage-still-grade,
+  .the-model-stage .gage-still.is-title .gage-still-photo {
+    transition: none !important;
+  }
+
+  .the-model-stage .stage-blackout {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  .the-model-stage .indra-net-chord,
+  .the-model-stage .indra-net-flare,
+  .the-model-stage .indra-net-glint,
+  .the-model-stage .indra-net-node-shimmer,
+  .the-model-stage .indra-net-node-glint,
+  .the-model-stage .indra-net-reflect-link {
+    animation: none !important;
+    opacity: 0;
+  }
+}

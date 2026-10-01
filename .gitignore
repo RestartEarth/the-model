@@ -1,0 +1,22 @@
+node_modules
+dist
+dist-pack
+dist-the-model
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+.vite
+coverage
+logs
+*.log
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Tauri / Rust
+apps/desktop/src-tauri/target
+apps/desktop/src-tauri/gen
+*.app
+*.dmg

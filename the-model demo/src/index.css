@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/*
+ * Local stand-in for uni-demo's src/index.css.
+ *
+ * The host app's stylesheet is work-owned and cannot live in this repo, so
+ * this file supplies only the two things the keynote actually depends on:
+ * Tailwind itself, and the `background` / `foreground` theme tokens that
+ * the-model-main.tsx's wrapper and the host chrome reference. Everything
+ * the show draws is styled by src/the-model/stage.css, which is ours.
+ *
+ * Dropping this module back into uni-demo means deleting this file — the
+ * host's own index.css already defines these and far more.
+ */
+
+@theme {
+  --color-background: #0b0e14;
+  --color-foreground: #f1f5fe;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+}

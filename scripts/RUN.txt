@@ -1,0 +1,60 @@
+THE MODEL — house-laptop pack
+=============================
+
+You do not need Node, npm, or a network.
+
+1. Unzip THE-MODEL-keynote.zip
+2. Open audience.html in Chrome (double-click, or drag onto Chrome)
+3. Fullscreen: Chrome → View → Enter Full Screen (or F)
+4. Advance: spacebar, click, or a clicker
+5. Cinema backup: press C (auto-runs ~32 minutes from the start, including
+   the body prelude). P pauses. Press 0 to skip the body/nature and start
+   at the 1984 cold start. Press 1 for the scaffold.
+
+Files
+-----
+audience.html    Projector. Cinema only.  ← open this on the house PC
+presenter.html   Same cinema (no speaker notes)
+index.html       Same as audience.html
+
+If Chrome blocks a local file
+-----------------------------
+The HTML is a single file (JS, CSS, Inter font inlined). It should open
+from disk. If a corporate policy blocks file:// :
+
+  • Try Edge or Firefox
+  • Or, if Python is installed:
+
+      cd THE-MODEL-keynote
+      python3 -m http.server 4173
+
+    then open http://localhost:4173/audience.html
+
+  • Do not use Safari’s strict local-file mode if Chrome is available.
+
+Keys
+----
+space / click / → / ]     next beat
+← / [ / Backspace         previous
+Home / R / Escape         restart — first beat (soma-presence / prelude)
+-                         prelude (body as a network)
+0                         1984 cold start (skip body/nature)
+1                         scaffold / Act I
+2 3 4 5                   jump to act
+6                         appendix / library
+C                         cinema (timed ~32:30 from Home)
+P                         pause cinema
+
+Cinema is the backup recording path. Conductor (space) is the live show.
+
+Reduced motion
+--------------
+If the OS has “Reduce motion” on, the fabric still works — no starfield
+drift, no lightning flicker, traveler jumps to the end of its path.
+The prelude body stays static (no spike drift).
+
+Do not
+------
+Need Wi-Fi. Need npm. Need a UNI or Metaism login.
+Need to export an MP4 — that path is still deferred; Cinema + screen
+record (OBS or Chrome tab capture) is the backup video.
