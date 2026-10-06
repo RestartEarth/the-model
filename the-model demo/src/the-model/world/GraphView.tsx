@@ -3,6 +3,7 @@ import { color, graph, motion, type } from "../design/tokens"
 import {
   ENT_AGENT_IDS,
   ENT_AUTONOMOUS_IDS,
+  DISPATCH_FOCUS,
   ENT_DEPENDENCY_KEYS,
   ENT_DEPENDENCY_SET,
   ENT_DISRUPT_KEYS,
@@ -185,17 +186,19 @@ export function GraphView({ world }: { world: WorldState }) {
             strokeDasharray={graph.ringDash}
             opacity={0.72}
           />
-          <text
-            x={c.cx}
-            y={c.cy - c.ry - 10}
-            textAnchor="middle"
-            fill={color.typeMuted}
-            fontFamily={type.family}
-            fontSize={11}
-            letterSpacing="0.08em"
-          >
-            {c.label}
-          </text>
+          {world.dispatch < 3 && (
+            <text
+              x={c.cx}
+              y={c.cy - c.ry - 10}
+              textAnchor="middle"
+              fill={color.typeMuted}
+              fontFamily={type.family}
+              fontSize={11}
+              letterSpacing="0.08em"
+            >
+              {c.label}
+            </text>
+          )}
         </g>
       ))}
 
@@ -210,7 +213,13 @@ export function GraphView({ world }: { world: WorldState }) {
         const onDependency = world.entRelations && ENT_DEPENDENCY_KEYS.has(key)
         const onRoute = world.entPackage && ENT_PACKAGE_KEYS.has(key)
         const tag = world.entTags ? ENT_EDGE_TAG.get(key) : undefined
-        const dim = world.entRelations && !onDependency ? 0.2 : 1
+        const dim =
+          (world.entRelations && !onDependency ? 0.2 : 1) *
+          (world.dispatch > 0 &&
+          !disrupted &&
+          !((world.dispatch === 2 || world.dispatch === 5) && rerouted)
+            ? 0.2
+            : 1)
         const stroke = world.verified
           ? color.healthy
           : disrupted
@@ -280,7 +289,8 @@ export function GraphView({ world }: { world: WorldState }) {
         // to recede, or "understanding lives in the relationships" is just a
         // sentence over an unchanged picture.
         const dim =
-          world.entRelations && !ENT_DEPENDENCY_SET.has(n.id) ? 0.22 : 1
+          (world.entRelations && !ENT_DEPENDENCY_SET.has(n.id) ? 0.22 : 1) *
+          (world.dispatch > 0 && !DISPATCH_FOCUS.has(n.id) ? 0.16 : 1)
         return (
           <g
             key={n.id}

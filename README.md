@@ -1,6 +1,6 @@
 # THE MODEL
 
-A 28:11 performed keynote. One argument, told once:
+A 29:33 performed keynote. One argument, told once:
 
 > Networks connect specialised parts. The relationships create capabilities no
 > part has. At enough density the result is intelligence. Humans work this way,
@@ -113,10 +113,10 @@ worth talking over.
 | 2 | Networks make intelligence | 17 | 5:21 |
 | 3 | Intelligence networks with intelligence | 9 | 2:45 |
 | 4 | 1984 | 9 | 2:44 |
-| 5 | The enterprise | 12 | 4:37 |
-| 6 | What autonomy requires | 13 | 5:36 |
+| 5 | The enterprise | 14 | 5:09 |
+| 6 | What autonomy requires | 16 | 6:26 |
 | 7 | The autonomous enterprise | 14 | 4:52 |
-| | | **82** | **28:11** |
+| | | **87** | **29:33** |
 
 Every beat runs. There is no appendix act — beats the recast removed live in
 `archive/`, outside the build, rather than sitting unused inside the show.
@@ -148,15 +148,21 @@ unbranded logistics operator moving physical things. Aircraft, vehicles, hubs,
 robots, people, systems. *This is not an org chart, it is an organism.* One
 package, Tokyo to Boston, with a promise attached to it. Then weather closes a
 major hub — nothing breaks, everything is affected — and the question becomes
-what depends on what changed.
+what depends on what changed. The dispatcher has a hub that still looks fine
+and a promise already at risk. The aircraft call does not return, so she waits.
+When the path answers, the promise holds.
 
 **6 · What autonomy requires.** The only argumentative movement. Perception
 (not a dashboard somebody opens). A model of the relationships, carrying
 meaning: what is committed, what is allowed, what has room left. Federation,
 because no single system holds all of it. Then reasoning, which becomes network
-traffic the moment it needs to leave the model. The ability to act. Verification
-from the system rather than from its own expectation. *Autonomy does not remove
-humans. It moves humans up the stack.*
+traffic the moment it needs to leave the model. The ability to act. The same
+storm, now with no one in the chair: it knows how storms get rerouted, the hub
+still looks fine, and the call that would say which aircraft can take the
+freight dies on the way in. It acts on the gateway anyway. When that path
+answers, every package moves. Verification from the system rather than from
+its own expectation. *Autonomy does not remove humans. It moves humans up the
+stack.*
 
 **7 · The autonomous enterprise.** Observe → Understand → Decide → Act → Verify,
 running continuously on the whole network — the same loop the body ran to make

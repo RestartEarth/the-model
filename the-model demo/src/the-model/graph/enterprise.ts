@@ -1081,6 +1081,42 @@ export const ENT_DEPENDENCY_CHAIN = [
 
 export const ENT_DEPENDENCY_SET = new Set<string>(ENT_DEPENDENCY_CHAIN)
 
+/**
+ * The storm, as a decision. Same five facts for the dispatcher and for the
+ * system. `late` is the call that leaves the aircraft and does not arrive:
+ * she can see that and wait. The system still has the hub, which looks fine,
+ * and the weather, which it already knows how to answer.
+ */
+export const DISPATCH_STREAMS: Array<{
+  id: string
+  label: string
+  nodeId: string
+  /** Label offset from the node, clear of the node's own name. */
+  lx: number
+  ly: number
+  late?: boolean
+}> = [
+  { id: "weather", label: "WEATHER", nodeId: "ent-gateway", lx: -70, ly: -6 },
+  { id: "aircraft", label: "AIRCRAFT", nodeId: "ent-flight-long", lx: 0, ly: -40, late: true },
+  { id: "capacity", label: "CAPACITY", nodeId: "ent-hub-sort", lx: 0, ly: -36 },
+  { id: "routes", label: "ROUTES", nodeId: "ent-planning", lx: 0, ly: -40 },
+  { id: "commitment", label: "COMMITMENT", nodeId: "ent-commitments", lx: 0, ly: -40 },
+]
+
+/** Nodes that stay lit while the decision is on screen. */
+export const DISPATCH_FOCUS = new Set([
+  ...DISPATCH_STREAMS.map((s) => s.nodeId),
+  "ent-ops",
+  "ent-agent-plan",
+  "ent-origin-ramp",
+  "ent-hub-ramp",
+  "ent-origin-sort",
+  "ent-dest-ramp",
+])
+
+/** Where the human decision sits, between the storm and the person holding it. */
+export const DISPATCH_MIND = { x: 540, y: 500 }
+
 export const ENT_DEPENDENCY_KEYS = new Set(
   ENT_DEPENDENCY_CHAIN.slice(0, -1).map((id, i) =>
     key(id, ENT_DEPENDENCY_CHAIN[i + 1])

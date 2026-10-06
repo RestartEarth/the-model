@@ -6,6 +6,7 @@ import {
 } from "../graph/enterprise"
 import type { WorldState } from "../stage/types"
 import { ControlLoop } from "./ControlLoop"
+import { DispatchMind } from "./DispatchMind"
 import { Federation } from "./Federation"
 
 function mid(a: { x: number; y: number }, b: { x: number; y: number }) {
@@ -40,6 +41,9 @@ export function ActOverlays({
   return (
     <g className="act-overlays">
       {world.entSignals && <EntSignals reduced={reduced} />}
+      {world.dispatch > 0 && (
+        <DispatchMind stage={world.dispatch} reduced={reduced} />
+      )}
       {world.entRelations && <EntRelationLabels />}
       {world.entModel && <EntModelMarks />}
       {world.federation && (

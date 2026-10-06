@@ -73,8 +73,7 @@ export const B_INTELLIGENCE =
   "That loop, running without pause, is most of what we mean by being alive to the world."
 
 export const C_REVEAL = "Watch one person do one ordinary thing."
-export const C_PERCEIVE =
-  "Before anything moves, the body builds a model of the situation: the basket, the defender, the floor, its own balance."
+export const C_PERCEIVE = "All of it is already in."
 export const C_MOTOR =
   "Then a few hundred muscles agree on a sequence, in order, in about half a second."
 export const C_LOOP =
@@ -153,6 +152,8 @@ export const E_DEPEND =
   "The useful question is not what changed. It is what depends on what changed."
 export const E_REROUTE =
   "A different route, a different aircraft, a different sort window — and the promise still holds."
+export const E_DISPATCH = "The aircraft call doesn't return. She waits."
+export const E_DISPATCH_ACT = "Then the path answers."
 
 // ── Movement 6 · What autonomy requires ───────────────────────────────
 
@@ -174,6 +175,9 @@ export const A_TRAFFIC =
 export const A_TAGS =
   "Every call it makes is a relationship: a tool, a task, a retrieval, a measurement."
 export const A_ACT = "It has to be able to act. Reading is not operating."
+export const A_STORM_PATH = "It knows how storms work. Not this network, now."
+export const A_STORM_ACT = "So it acts on the gateway."
+export const A_STORM_LIVE = "The path answers. Then every package moves."
 export const A_VERIFY =
   "And it has to find out whether the action worked, from the system itself rather than from its own expectation."
 export const A_NETWORK_CENTRIC =

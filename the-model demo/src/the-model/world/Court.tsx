@@ -11,6 +11,8 @@ import {
   COURT_LOOP_STATIONS,
   COURT_MOTOR_CHAIN,
   COURT_PERCEPTION,
+  SHOT_ACTION,
+  SHOT_SYSTEMS,
   COURT_POLE,
   COURT_RIM_RX,
   COURT_SHOT_ARC,
@@ -165,36 +167,87 @@ function Basket({
   )
 }
 
+function along(pts: { x: number; y: number }[], t: number) {
+  if (pts.length === 0) return { x: 0, y: 0 }
+  if (pts.length === 1 || t <= 0) return pts[0]!
+  const lens: number[] = []
+  let total = 0
+  for (let i = 0; i < pts.length - 1; i++) {
+    const d = Math.hypot(pts[i + 1]!.x - pts[i]!.x, pts[i + 1]!.y - pts[i]!.y)
+    lens.push(d)
+    total += d
+  }
+  let remain = Math.min(1, t) * total
+  for (let i = 0; i < lens.length; i++) {
+    const len = lens[i]!
+    if (remain <= len || i === lens.length - 1) {
+      const f = len === 0 ? 0 : Math.min(1, remain / len)
+      const a = pts[i]!
+      const b = pts[i + 1]!
+      return { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f }
+    }
+    remain -= len
+  }
+  return pts[pts.length - 1]!
+}
+
 /**
- * Stage 1. Six streams converge on the brain, each labelled with what it
- * carries rather than which organ sensed it — the point is distributed input,
- * not a list of five senses. Dots travel inward so the direction of the claim
- * ("perception becomes a model") is legible without narration.
+ * The pause before the shot. Same picture as the inbound: what is arriving
+ * at the brain, the systems already resident, and the network that will
+ * take the action. The ball stays in the hand.
  */
 function Perception({ t, reduced }: { t: number; reduced: boolean }) {
-  const ink = color.somaSpark
+  const brain = somaNode("cortex-r") ?? { x: 818, y: 429 }
+  const ink = color.somaNerve
+  const phase = reduced ? 0.62 : (t * 0.32) % 1
+  const arm = SHOT_ACTION.map((id) => somaNode(id)).filter(
+    (n): n is NonNullable<ReturnType<typeof somaNode>> => Boolean(n)
+  )
+  const hand = arm[arm.length - 1]
+  const spark = along(arm, phase)
+
   return (
     <g>
-      {COURT_PERCEPTION.map((p, i) => {
-        const end = p.via ? somaNode(p.via) : null
-        const to = end ?? { x: 800, y: 440 }
-        const cx = (p.x + to.x) / 2
-        const cy = Math.min(p.y, to.y) - 52
-        const phase = reduced ? 0.55 : (t * 0.5 + i * 0.17) % 1
-        const dot = quad(p, { x: cx, y: cy }, to, phase)
+      <ellipse
+        cx={brain.x - 10}
+        cy={brain.y}
+        rx={14}
+        ry={10}
+        fill="none"
+        stroke={ink}
+        strokeWidth={0.8}
+        opacity={0.7}
+      />
+      <ellipse
+        cx={brain.x + 10}
+        cy={brain.y}
+        rx={14}
+        ry={10}
+        fill="none"
+        stroke={ink}
+        strokeWidth={0.8}
+        opacity={0.7}
+      />
+
+      {COURT_PERCEPTION.map((p) => {
+        const c = {
+          x: (p.x + brain.x) / 2,
+          y: Math.min(p.y, brain.y) - 36,
+        }
+        const dot = quad(p, c, brain, phase)
         return (
           <g key={p.id}>
             <path
-              d={`M ${p.x} ${p.y} Q ${cx} ${cy} ${to.x} ${to.y}`}
+              d={`M ${p.x} ${p.y} Q ${c.x} ${c.y} ${brain.x} ${brain.y}`}
               fill="none"
-              stroke={ink}
+              stroke={color.somaSpark}
               strokeWidth={0.9}
-              opacity={0.34}
+              opacity={0.55}
             />
-            <circle cx={p.x} cy={p.y} r={2.6} fill={ink} opacity={0.72} />
+            <circle cx={p.x} cy={p.y} r={2.6} fill={color.somaSpark} opacity={0.8} />
             <text
               x={p.x}
-              y={p.y - 12}
+              y={p.y - 11}
               textAnchor="middle"
               fill={color.typeMuted}
               fontFamily={type.family}
@@ -203,10 +256,53 @@ function Perception({ t, reduced }: { t: number; reduced: boolean }) {
             >
               {p.label}
             </text>
-            <circle cx={dot.x} cy={dot.y} r={2.2} fill={ink} opacity={0.95} />
+            <circle cx={dot.x} cy={dot.y} r={2.2} fill={color.somaSpark} opacity={0.95} />
           </g>
         )
       })}
+
+      {SHOT_SYSTEMS.map((s) => (
+        <g key={s.id}>
+          <path
+            d={`M ${s.x} ${s.y} L ${brain.x} ${brain.y}`}
+            fill="none"
+            stroke={ink}
+            strokeWidth={0.8}
+            opacity={0.55}
+          />
+          <circle cx={s.x} cy={s.y} r={2.6} fill={color.somaSpark} opacity={0.9} />
+          <text
+            x={s.x - 8}
+            y={s.y + 3}
+            textAnchor="end"
+            fill={color.type}
+            fontFamily={type.family}
+            fontSize={10}
+            letterSpacing="0.14em"
+          >
+            {s.label}
+          </text>
+        </g>
+      ))}
+
+      {arm.slice(0, -1).map((p, i) => {
+        const n = arm[i + 1]!
+        return (
+          <path
+            key={`${p.x}-${p.y}`}
+            d={`M ${p.x} ${p.y} L ${n.x} ${n.y}`}
+            fill="none"
+            stroke={color.somaSpark}
+            strokeWidth={1.6}
+            strokeLinecap="round"
+            opacity={0.8}
+          />
+        )
+      })}
+      <circle cx={spark.x} cy={spark.y} r={3.2} fill={color.somaSpark} />
+      {hand && (
+        <circle cx={hand.x} cy={hand.y} r={7} fill={color.somaOrgan} opacity={0.94} />
+      )}
     </g>
   )
 }
@@ -887,7 +983,7 @@ export function Court({
           opacity={0.62}
         />
       )}
-      {world.court === 1 && <Perception t={t} reduced={reduced} />}
+      {world.courtMind && <Perception t={t} reduced={reduced} />}
       {world.court === 2 && <Motor t={t} reduced={reduced} />}
       {world.court === 3 && (
         <>

@@ -118,7 +118,7 @@ const CHAPTERS: PresentationSegment[] = [
     title: "One package",
     from: "ent-package",
     to: "ent-reroute",
-    note: "Tight sync. One promise, weather closes a hub, the route changes, the promise holds. Stop and explain what just happened.",
+    note: "One promise, weather closes a hub, the aircraft call dies on the path and she waits, then the path answers and the route changes. Hold on the promise.",
   },
   {
     slug: "10-understand",
@@ -132,7 +132,7 @@ const CHAPTERS: PresentationSegment[] = [
     title: "Agents",
     from: "auto-reasoning",
     to: "humans",
-    note: "Reasoning has to cross the network, then act, then check. Hold on the humans line: autonomy moves people up the stack.",
+    note: "Reasoning has to cross the network. The same storm: it knows how storms work, the hub still looks fine, the aircraft call does not return, and it acts on the gateway. Then the path answers and every package moves. Hold on the humans line.",
   },
   {
     slug: "12-loop",

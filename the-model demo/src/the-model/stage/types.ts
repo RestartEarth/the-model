@@ -103,10 +103,13 @@ export interface WorldState {
   // ── Movements 2–3: the shot and the team ─────────────────────────────
   /**
    * The basketball shot, drawn over the soma figure (`shot: "soma"`).
-   * 0 off · 1 perception streams into the brain · 2 motor chain and release ·
+   * 0 off · 1 the court is in the world · 2 motor chain and release ·
    * 3 the perceive→model→predict→act→sense loop. See graph/court.ts.
+   * `courtMind` is the pause before the shot: inputs meet in the brain and
+   * the arm network is already the act.
    */
   court: CourtStage
+  courtMind: boolean
   /**
    * The basketball team. Replaces the single figure with five asterisms.
    * 0 off · 1 shared model (relationships only, no ball) · 2 live
@@ -140,6 +143,14 @@ export interface WorldState {
    * red — nothing failed, and the beat is about the response.
    */
   entDisrupt: "none" | "onset" | "reroute"
+  /**
+   * The storm, told like the shot. 0 off · 1 the aircraft call does not
+   * return and the dispatcher waits · 2 the path answers and she reroutes ·
+   * 3 the same call dies on the way to the system, while the hub still looks
+   * fine · 4 the system acts on the gateway anyway · 5 the path answers and
+   * the packages move.
+   */
+  dispatch: 0 | 1 | 2 | 3 | 4 | 5
   /** Live operational signals beside the nodes — the enterprise's senses. */
   entSignals: boolean
   /** Facts snap into the dependency chain that actually explains them. */

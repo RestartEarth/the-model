@@ -11,6 +11,9 @@ import {
   A_OPEN,
   A_PERCEIVE,
   A_SEMANTICS,
+  A_STORM_ACT,
+  A_STORM_LIVE,
+  A_STORM_PATH,
   A_TAGS,
   A_TRAFFIC,
   A_VERIFY,
@@ -32,6 +35,8 @@ import {
   E_AIR,
   E_COMMITMENT,
   E_DEPEND,
+  E_DISPATCH,
+  E_DISPATCH_ACT,
   E_DISRUPT,
   E_GROUND,
   E_HUBS,
@@ -149,6 +154,7 @@ function world(partial: Partial<WorldState>): WorldState {
     somaGage: false,
 
     court: 0,
+    courtMind: false,
     team: 0,
     teamMind: 0,
 
@@ -160,6 +166,7 @@ function world(partial: Partial<WorldState>): WorldState {
     entAutonomy: false,
     entHumans: false,
     entDisrupt: "none",
+    dispatch: 0,
     entSignals: false,
     entRelations: false,
     entTags: false,
@@ -281,6 +288,10 @@ const CAM_ENT_IT = frameBox(866, 750, 1466, 900, 0.14)
 const CAM_ENT_AGENTS = frameBox(278, 40, 1518, 260, 0.14)
 /** The Pacific gateway and what sits either side of it. */
 const CAM_ENT_GATEWAY = frameBox(380, 180, 1060, 700, 0.12)
+/** The dispatcher, the storm, and the five facts she is waiting on. */
+const CAM_DISPATCH = frameBox(280, 180, 880, 900, 0.05)
+/** The same storm, now meeting in the planning agent. */
+const CAM_STORM = frameBox(280, 40, 1100, 880, 0.04)
 
 export const BEATS: Beat[] = [
   // ════════════════════════════════════════════════════════════════════
@@ -714,6 +725,7 @@ export const BEATS: Beat[] = [
       somaSpikes: true,
       somaSense: true,
       court: 1,
+      courtMind: true,
       ...CAM_COURT,
     })
   ),
@@ -1218,7 +1230,7 @@ export const BEATS: Beat[] = [
     5,
     M5,
     E_DEPEND,
-    E_REROUTE,
+    E_DISPATCH,
     28000,
     world({
       ent: 7,
@@ -1227,6 +1239,38 @@ export const BEATS: Beat[] = [
       entDisrupt: "onset",
       entRelations: true,
       ...FULL,
+    })
+  ),
+
+  beat(
+    "ent-dispatch",
+    5,
+    M5,
+    E_DISPATCH,
+    E_DISPATCH_ACT,
+    16000,
+    world({
+      ent: 7,
+      entPackage: true,
+      entDisrupt: "onset",
+      dispatch: 1,
+      ...CAM_DISPATCH,
+    })
+  ),
+
+  beat(
+    "ent-dispatch-act",
+    5,
+    M5,
+    E_DISPATCH_ACT,
+    E_REROUTE,
+    16000,
+    world({
+      ent: 7,
+      entPackage: true,
+      entDisrupt: "reroute",
+      dispatch: 2,
+      ...CAM_DISPATCH,
     })
   ),
 
@@ -1381,7 +1425,7 @@ export const BEATS: Beat[] = [
     6,
     M6,
     A_ACT,
-    A_VERIFY,
+    A_STORM_PATH,
     24000,
     world({
       ent: 9,
@@ -1389,6 +1433,57 @@ export const BEATS: Beat[] = [
       entTags: true,
       entAutonomy: true,
       ...FULL,
+    })
+  ),
+
+  beat(
+    "auto-storm-path",
+    6,
+    M6,
+    A_STORM_PATH,
+    A_STORM_ACT,
+    16000,
+    world({
+      ent: 9,
+      entPackage: true,
+      entAutonomy: true,
+      entDisrupt: "onset",
+      dispatch: 3,
+      ...CAM_STORM,
+    })
+  ),
+
+  beat(
+    "auto-storm-act",
+    6,
+    M6,
+    A_STORM_ACT,
+    A_STORM_LIVE,
+    16000,
+    world({
+      ent: 9,
+      entPackage: true,
+      entAutonomy: true,
+      entDisrupt: "onset",
+      dispatch: 4,
+      ...CAM_STORM,
+    })
+  ),
+
+  beat(
+    "auto-storm-live",
+    6,
+    M6,
+    A_STORM_LIVE,
+    A_VERIFY,
+    18000,
+    world({
+      ent: 9,
+      entPackage: true,
+      entAutonomy: true,
+      entDisrupt: "reroute",
+      dispatch: 5,
+      ...CAM_STORM,
     })
   ),
 

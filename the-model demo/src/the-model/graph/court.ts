@@ -60,12 +60,8 @@ export const COURT_DEFENDER = {
 }
 
 /**
- * What the player is actually integrating. Each stream runs from a point in
- * the scene to the brain, and the beat's claim is that none of them alone is
- * the shot — the model of the moment is their composition. Labels are
- * functional, not the names of sense organs: the rhyme we want is with
- * `ENT_SIGNALS` in graph/enterprise.ts, which does the same thing for an
- * enterprise.
+ * What has to reach the brain before the shot. Every stream ends at the
+ * cortex. The labels name the information, and the picture is the claim.
  */
 export const COURT_PERCEPTION: Array<{
   id: string
@@ -73,16 +69,27 @@ export const COURT_PERCEPTION: Array<{
   /** Where in the scene this signal originates. */
   x: number
   y: number
-  /** Body node the stream terminates at, or null for the brain itself. */
-  via: string | null
 }> = [
-  { id: "basket", label: "BASKET", x: 1248, y: 250, via: "eye" },
-  { id: "defender", label: "DEFENDER", x: 1036, y: 540, via: "eye" },
-  { id: "ball", label: "BALL", x: 952, y: 690, via: "hand-r" },
-  { id: "balance", label: "BALANCE", x: 724, y: 430, via: "ear-l" },
-  { id: "stance", label: "STANCE", x: 712, y: 790, via: "ankle-l" },
-  { id: "contact", label: "CONTACT", x: 898, y: 612, via: "skin" },
+  { id: "basket", label: "BASKET", x: 1248, y: 250 },
+  { id: "defender", label: "DEFENDER", x: 1036, y: 540 },
+  { id: "ball", label: "BALL", x: 968, y: 704 },
+  { id: "balance", label: "BALANCE", x: 640, y: 400 },
+  { id: "stance", label: "STANCE", x: 690, y: 790 },
+  { id: "contact", label: "CONTACT", x: 700, y: 610 },
 ]
+
+/**
+ * Already resident, the same verbs as the inbound pause. They sit in the
+ * open air left of the skull so the arm can be the thing that leaves.
+ */
+export const SHOT_SYSTEMS: Array<{ id: string; label: string; x: number; y: number }> = [
+  { id: "perceive", label: "PERCEIVE", x: 560, y: 330 },
+  { id: "model", label: "MODEL", x: 530, y: 410 },
+  { id: "act", label: "ACT", x: 575, y: 490 },
+]
+
+/** Brain → the shooting arm. The network that takes the action. */
+export const SHOT_ACTION = ["cortex-r", "stem", "shoulder-r", "elbow-r", "wrist-r", "hand-r"] as const
 
 /**
  * Brain → spinal cord → periphery, in firing order. The beat's line is "the
