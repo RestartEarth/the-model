@@ -1,4 +1,4 @@
-import type { CourtStage, TeamStage } from "../graph/court"
+import type { CourtStage, TeamMind, TeamStage } from "../graph/court"
 import type { SomaCompanion, SomaEarth, SomaEra } from "../graph/soma"
 
 /**
@@ -113,6 +113,11 @@ export interface WorldState {
    * communication and a pass · 3 emergence (the system, not the players).
    */
   team: TeamStage
+  /**
+   * Pause on the inbound, zoomed into one skull. 0 off · 1 senses arriving ·
+   * 2 the trained branches · 3 they resolve, and the crash is the sequence.
+   */
+  teamMind: TeamMind
 
   // ── Movement 4: the hinge ───────────────────────────────────────────
   /** Life of the Packet callback. 0 = off. */

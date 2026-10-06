@@ -204,15 +204,28 @@ export function TheModelPage() {
   const reducedMotion = usePrefersReducedMotion()
 
   const { beat } = snap
+  const recording = Boolean(snap.segment)
 
   return (
     <div className="the-model-stage-frame">
-      <main className="the-model-stage">
+      <main
+        className="the-model-stage"
+        data-segment={snap.segment ?? undefined}
+        data-segment-phase={recording ? (snap.segmentHold ? "hold" : "playing") : undefined}
+      >
         <Fabric world={beat.world} />
 
-        <div className="pointer-events-none absolute inset-0 z-40">
-          <TheModelTitleBar beatIndex={snap.index} />
-        </div>
+        {!recording && (
+          <div className="pointer-events-none absolute inset-0 z-40">
+            <TheModelTitleBar beatIndex={snap.index} />
+          </div>
+        )}
+
+        {snap.segmentError && (
+          <p className="pointer-events-none absolute bottom-4 left-4 z-40 text-sm text-[#E8A04A]">
+            {snap.segmentError}
+          </p>
+        )}
 
         {beat.world.showQuote ? (
           <div className="pointer-events-none absolute inset-0 z-30">

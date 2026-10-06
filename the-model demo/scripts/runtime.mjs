@@ -7,6 +7,7 @@
  *
  *   node scripts/runtime.mjs
  *   node scripts/runtime.mjs --beats
+ *   node scripts/runtime.mjs --segments
  */
 
 import { readFileSync } from "node:fs"
@@ -48,6 +49,61 @@ const MOVEMENTS = {
 // `archive/` at the repo root, outside the build.
 const show = beats
 const total = show.reduce((n, b) => n + b.ms, 0)
+
+if (process.argv.includes("--segments")) {
+  const segSrc = readFileSync(
+    new URL("../src/the-model/beats/segments.ts", import.meta.url),
+    "utf8"
+  )
+  const chapters = [
+    ...segSrc.matchAll(
+      /slug: "([^"]+)",\s*\n\s*title: "([^"]+)",\s*\n\s*from: "([^"]+)",\s*\n\s*to: "([^"]+)",/g
+    ),
+  ].map((m) => ({ slug: m[1], title: m[2], from: m[3], to: m[4] }))
+
+  if (!chapters.length) {
+    console.error("runtime: parsed 0 presentation segments")
+    process.exit(1)
+  }
+
+  const indexOf = (id) => beats.findIndex((b) => b.id === id)
+  console.log("  presentation chapters (cinema rehearsal is still one timeline)\n")
+  let cursor = 0
+  for (const chapter of chapters) {
+    const start = indexOf(chapter.from)
+    const end = indexOf(chapter.to)
+    if (start < 0 || end < start) {
+      console.error(`  ${chapter.slug}  bad range ${chapter.from} → ${chapter.to}`)
+      process.exit(1)
+    }
+    if (start !== cursor) {
+      console.error(
+        `  ${chapter.slug}  leaves out ${beats[cursor]?.id ?? "a gap"} (chapters must cover the show in order)`
+      )
+      process.exit(1)
+    }
+    const slice = beats.slice(start, end + 1)
+    const ms = slice.reduce((n, b) => n + b.ms, 0)
+    cursor = end + 1
+    console.log(
+      `  ${chapter.slug.padEnd(16)} ${chapter.title.padEnd(14)} ${String(slice.length).padStart(2)} beats  ${clock(ms).padStart(6)}   hold ${chapter.to}`
+    )
+  }
+  const tail = beats.slice(cursor).map((b) => b.id)
+  if (tail.length !== 1 || tail[0] !== "end") {
+    console.error(
+      `  chapters must leave only the cinema-only "end" fade. Left over: ${tail.join(", ") || "(nothing)"}`
+    )
+    process.exit(1)
+  }
+  const covered = cursor
+  console.log()
+  console.log(
+    `  ${chapters.length} films · ${covered} beats in chapters · cinema-only: ${tail.join(", ") || "(none)"}`
+  )
+  console.log("  a clip ends once its hold frame has settled; the pause after that is the presenter's")
+  console.log()
+}
 
 if (process.argv.includes("--beats")) {
   let at = 0

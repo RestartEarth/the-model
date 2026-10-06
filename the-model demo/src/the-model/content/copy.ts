@@ -90,12 +90,20 @@ export const T_SIGNALS =
 export const T_MODEL =
   "No one calls every move. Each player carries a model of the same game, and acts on it."
 
+/** Pause on the inbound — inside one skull before the pass. */
+export const T_MIND =
+  "Hold the inbound. The clock, the score, Brunson, the help, the rim, his own balance. All of it is already in."
+export const T_MIND_MODEL =
+  "And the model was written before this inbound. If Brunson shoots, he crashes. If Brunson passes, he shoots."
+export const T_MIND_DECIDE =
+  "Senses, model, and the body that has to move — one moment. This time Brunson shoots, and the crash is already the act."
+
 /** §42 pause — team emergence. */
 export const T_EMERGE =
   "The team is not five players. It is what happens between them."
 
 export const T_SCALE =
-  "Five is a team. Five thousand is a company. The architecture does not change — only the distance."
+  "Five is a team. A family, a community, a crew — the same architecture, at the scale of people."
 
 // ── Movement 4 · 1984 ─────────────────────────────────────────────────
 
@@ -104,7 +112,7 @@ export const H_PEOPLE =
 export const H_LANGUAGE =
   "Language is the protocol. It is how one mind puts a model into another."
 export const H_ECONOMY =
-  "A market is a network for deciding what gets made, with no one in charge of it."
+  "Families, communities, teams — networks people form with each other. A market is that network, one level up, deciding what gets made with no one in charge of it."
 export const H_INTERNET = "And then we built one on purpose."
 export const H_PULLBACK =
   "The same shape, at every scale we can see — and one of them we made ourselves."

@@ -74,6 +74,9 @@ import {
   P_PATH,
   T_EMERGE,
   T_LINKS,
+  T_MIND,
+  T_MIND_DECIDE,
+  T_MIND_MODEL,
   T_MODEL,
   T_REVEAL,
   T_SCALE,
@@ -107,6 +110,12 @@ import {
  * Every beat is a complete `WorldState` snapshot, not a diff, so jumping to
  * any beat produces exactly the frame the presenter expects. `world()` fills
  * the defaults; a beat names only what it turns on.
+ *
+ * Cinema plays this list straight through. The PowerPoint films are not a
+ * second script — they are contiguous ranges of these beats, each one ending
+ * on a frame that can sit on screen while you talk. That map is
+ * `beats/segments.ts`, and it checks the partition on import, so a new or
+ * reordered beat has to be placed in a chapter before the show will build.
  */
 
 const FULL = { zoom: 1, focusX: 800, focusY: 450 }
@@ -141,6 +150,7 @@ function world(partial: Partial<WorldState>): WorldState {
 
     court: 0,
     team: 0,
+    teamMind: 0,
 
     packetLife: 0,
 
@@ -244,8 +254,10 @@ const CAM_WORLD = frameCircle(800, 450, 1100, 0.2)
  * scene — see §34 and graph/court.ts.
  */
 const CAM_COURT = frameBox(380, 160, 1330, 830, 0.08)
-/** Five players plus the space between them. Heads reach y≈272, feet y≈672. */
-const CAM_TEAM = frameBox(360, 180, 1300, 800, 0.18)
+/** Scoreboard above the inbound, the shot in the bottom half, rim upper right. */
+const CAM_TEAM = frameBox(400, 10, 1240, 800, 0.05)
+/** Inside the inbounder's skull while the ball is still in his hands. */
+const CAM_OG_MIND = frameBox(280, 60, 820, 390, 0.08)
 
 /**
  * Once the earth is open it stays open under everything that follows —
@@ -426,9 +438,9 @@ export const BEATS: Beat[] = [
   // ════════════════════════════════════════════════════════════════════
   // MOVEMENT 2 · Networks make intelligence
   //
-  // One body, disclosed layer by layer, ending at the cortex. Then the same
-  // body does something — a basketball shot — so that "intelligence" is
-  // demonstrated as behaviour rather than asserted as a property.
+  // One body, disclosed layer by layer, ending at the cortex. Then the
+  // networks people already form — language, families, communities — and only
+  // then the same body doing something, so intelligence is behaviour.
   // ════════════════════════════════════════════════════════════════════
 
   beat(
@@ -612,7 +624,7 @@ export const BEATS: Beat[] = [
     2,
     M2,
     B_INTELLIGENCE,
-    C_REVEAL,
+    H_PEOPLE,
     18000,
     world({
       shot: "soma",
@@ -623,6 +635,46 @@ export const BEATS: Beat[] = [
       somaLoop: true,
       ...EARTH,
       ...CAM_LOOP,
+    })
+  ),
+
+  beat(
+    "people",
+    2,
+    M2,
+    H_PEOPLE,
+    H_LANGUAGE,
+    18000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      somaEra: 9,
+      somaSpikes: true,
+      somaSense: true,
+      somaCompanion: 6,
+      somaEarth: "mycelium",
+      somaRhyme: true,
+      ...CAM_PEOPLE,
+    })
+  ),
+
+  beat(
+    "language",
+    2,
+    M2,
+    H_LANGUAGE,
+    C_REVEAL,
+    22000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      somaEra: 9,
+      somaSpikes: true,
+      somaSense: true,
+      somaCompanion: 6,
+      somaEarth: "mycelium",
+      somaMind: true,
+      ...CAM_LANGUAGE,
     })
   ),
 
@@ -706,14 +758,20 @@ export const BEATS: Beat[] = [
   // ════════════════════════════════════════════════════════════════════
   // MOVEMENT 3 · Intelligence networks with intelligence
   //
-  // Five of the same body. The point is not teamwork; it is that connecting
-  // intelligences produces a new intelligence that none of them contains,
-  // which is the exact claim the enterprise half will rest on.
+  // Five reduced copies of the same body. The point is not teamwork; it is
+  // that connecting intelligences produces a new intelligence that none of
+  // them contains, which is the exact claim the enterprise half will rest on.
+  // The possession they play is the Game 4 tip, once. Before the pass leaves
+  // his hands, the camera goes into his skull: the senses, the model he
+  // already holds, and the branch that will become the crash. Then the play
+  // runs, holds on the make, and the five come together, hands stacked.
+  // The scoreboard stays up through all of that. Knicks go 105 → 107 as the
+  // tip goes through, and the clock runs from 5.7 down to 0.0 as the hands
+  // stack. At 0.0 the board reads "Knicks in Five!". The emergence sentence
+  // lands on that celebration, and the board comes down so the line can.
   //
-  // `somaEra` drops to 0 here: the anatomical body hands off to five
-  // simplified figures of the same height and grammar, one of them standing
-  // exactly where the shooter stood. Keeping both would put an asterism on
-  // top of the body at x=800, and the shrink is what sells the pullback.
+  // `somaEra` drops to 0 here: the anatomical body hands off to the five
+  // smaller copies. Keeping both would draw a second body on top of the first.
   // ════════════════════════════════════════════════════════════════════
 
   beat(
@@ -736,7 +794,7 @@ export const BEATS: Beat[] = [
     3,
     M3,
     T_LINKS,
-    T_SIGNALS,
+    T_MIND,
     22000,
     world({
       shot: "soma",
@@ -747,12 +805,60 @@ export const BEATS: Beat[] = [
   ),
 
   beat(
+    "team-mind",
+    3,
+    M3,
+    T_MIND,
+    T_MIND_MODEL,
+    18000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      team: 1,
+      teamMind: 1,
+      ...CAM_OG_MIND,
+    })
+  ),
+
+  beat(
+    "team-mind-model",
+    3,
+    M3,
+    T_MIND_MODEL,
+    T_MIND_DECIDE,
+    22000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      team: 1,
+      teamMind: 2,
+      ...CAM_OG_MIND,
+    })
+  ),
+
+  beat(
+    "team-mind-decide",
+    3,
+    M3,
+    T_MIND_DECIDE,
+    T_SIGNALS,
+    20000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      team: 1,
+      teamMind: 3,
+      ...CAM_OG_MIND,
+    })
+  ),
+
+  beat(
     "team-signals",
     3,
     M3,
     T_SIGNALS,
     T_MODEL,
-    28000,
+    15000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -767,7 +873,7 @@ export const BEATS: Beat[] = [
     M3,
     T_MODEL,
     T_EMERGE,
-    24000,
+    8000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -777,8 +883,8 @@ export const BEATS: Beat[] = [
   ),
 
   /**
-   * §42 pause. The five figures drop to 0.3 and the edges between them come
-   * up — the picture makes the argument before the sentence does.
+   * The five are already together, hands stacked. The sentence sits on that
+   * celebration, and the edges between them come up with it.
    */
   beat(
     "team-emergence",
@@ -801,7 +907,7 @@ export const BEATS: Beat[] = [
     3,
     M3,
     T_SCALE,
-    H_PEOPLE,
+    H_ECONOMY,
     20000,
     world({
       shot: "soma",
@@ -814,51 +920,12 @@ export const BEATS: Beat[] = [
   // ════════════════════════════════════════════════════════════════════
   // MOVEMENT 4 · 1984
   //
-  // The hinge. Human networks, then the one we built deliberately, then the
-  // sentence that named it. Life of the Packet survives here as a wordless
-  // fifty-second callback — proof we really did build it this way — and not
-  // as a lesson in packet switching.
+  // The uplevel. Families, communities, and the team were networks people
+  // form with each other. A market is that shape with no one in charge, the
+  // internet is the one we built, and Gage is the sentence that named it.
+  // Life of the Packet survives here as a wordless callback — proof we really
+  // did build it this way — and not as a lesson in packet switching.
   // ════════════════════════════════════════════════════════════════════
-
-  beat(
-    "people",
-    4,
-    M4,
-    H_PEOPLE,
-    H_LANGUAGE,
-    18000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      somaEra: 9,
-      somaSpikes: true,
-      somaSense: true,
-      somaCompanion: 6,
-      somaEarth: "mycelium",
-      somaRhyme: true,
-      ...CAM_PEOPLE,
-    })
-  ),
-
-  beat(
-    "language",
-    4,
-    M4,
-    H_LANGUAGE,
-    H_ECONOMY,
-    22000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      somaEra: 9,
-      somaSpikes: true,
-      somaSense: true,
-      somaCompanion: 6,
-      somaEarth: "mycelium",
-      somaMind: true,
-      ...CAM_LANGUAGE,
-    })
-  ),
 
   beat(
     "markets",

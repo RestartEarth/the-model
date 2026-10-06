@@ -2,6 +2,7 @@ import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
+import { chaptersIndexPlugin } from "./scripts/chapter-index.mjs"
 
 // Separate build entry for the-model presentation, deployed independently
 // of uni-demo. Deliberately does NOT include the tanstackRouter plugin —
@@ -11,7 +12,7 @@ import { defineConfig } from "vite"
 // See vite.config.ts for the full uni-demo app build.
 export default defineConfig({
   base: process.env.VITE_BASE_URL ?? "/",
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), chaptersIndexPlugin(__dirname)],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

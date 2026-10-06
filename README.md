@@ -1,6 +1,6 @@
 # THE MODEL
 
-A 27:40 performed keynote. One argument, told once:
+A 28:11 performed keynote. One argument, told once:
 
 > Networks connect specialised parts. The relationships create capabilities no
 > part has. At enough density the result is intelligence. Humans work this way,
@@ -67,7 +67,7 @@ npm run dev          # http://localhost:8090/the-model.html
 | `npm run dev` | Dev server on 8090 |
 | `npm run build` | Typecheck, then build to `dist-the-model/` |
 | `npm run type-check` | `tsc --noEmit` |
-| `npm run runtime` | Runtime report; `-- --beats` for the per-beat clock |
+| `npm run runtime` | Runtime report; `-- --beats` for the clock, `-- --segments` for the PowerPoint chapters |
 
 ## Driving the show
 
@@ -83,18 +83,40 @@ beats are ignored. `C` switches to **cinema**, which auto-advances.
 | `Home` · `R` · `Esc` | restart |
 | `1`–`7` | jump to a movement |
 
+## PowerPoint
+
+The performed deck is not a second show. Cinema remains the full rehearsal.
+PowerPoint is the conductor: one slide per chapter, the clip starts when the
+slide opens, and the slide does not advance on its own. Each clip ends on a
+finished frame. The time you spend talking over that frame is not in the file.
+
+Open a chapter with `?segment=` — for example
+`http://localhost:8090/the-model.html?segment=04-shot`. Cinema plays that
+range and stops on the hold. The host title bar stays off, so a capture is
+full-bleed. When the hold frame has settled, the stage sets
+`data-segment-phase="hold"`. That is the cut. The picture stays up.
+
+`Home` restarts the chapter. `1`–`7` do nothing while a chapter is open.
+Clicking does not skip ahead.
+
+The chapters live in `the-model demo/src/the-model/beats/segments.ts`. They
+have to cover every beat in order except `end`, which fades to black and
+stays in the cinema rehearsal only. `npm run runtime -- --segments` prints
+the map. The rule for any new beat: entry, then motion, then a hold frame
+worth talking over.
+
 ## The show
 
 | | Movement | Beats | Clock |
 |---|---|---|---|
 | 1 | An architecture that repeats | 8 | 2:16 |
-| 2 | Networks make intelligence | 15 | 4:41 |
-| 3 | Intelligence networks with intelligence | 6 | 2:14 |
-| 4 | 1984 | 11 | 3:24 |
+| 2 | Networks make intelligence | 17 | 5:21 |
+| 3 | Intelligence networks with intelligence | 9 | 2:45 |
+| 4 | 1984 | 9 | 2:44 |
 | 5 | The enterprise | 12 | 4:37 |
 | 6 | What autonomy requires | 13 | 5:36 |
 | 7 | The autonomous enterprise | 14 | 4:52 |
-| | | **79** | **27:40** |
+| | | **82** | **28:11** |
 
 Every beat runs. There is no appendix act — beats the recast removed live in
 `archive/`, outside the build, rather than sitting unused inside the show.

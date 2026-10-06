@@ -14,15 +14,30 @@ import {
   COURT_POLE,
   COURT_RIM_RX,
   COURT_SHOT_ARC,
-  TEAM_DEFENDERS,
+  MINI_ARMS_UP,
+  OG_BRANCHES,
+  OG_MIND,
+  OG_SENSES,
+  OG_SYSTEMS,
+  TEAM_FLOOR_Y,
+  TEAM_HOOP,
   TEAM_LINKS,
-  TEAM_PASS_ROUTE,
-  TEAM_PLAYERS,
-  TEAM_SIGNALS,
-  teamPlayer,
+  TEAM_POLE,
+  TEAM_RIM_RX,
+  TEAM_BACKBOARD,
+  TIP_CYCLE,
+  TIP_GATHER,
+  TIP_HOLD,
+  possessionClock,
+  possessionSpan,
+  layoutMiniSoma,
+  miniEdges,
+  miniNode,
+  tipPlay,
 } from "../graph/court"
 import { somaNode } from "../graph/soma"
 import { useClock } from "../stage/hooks"
+import type { TeamMind } from "../graph/court"
 import type { WorldState } from "../stage/types"
 
 /**
@@ -54,104 +69,79 @@ function quad(
 }
 
 /**
- * A person as an asterism — same vocabulary as the society figures in the
- * prelude (`PersonAsterism` in Soma.tsx), rebuilt here for court-scale heights
- * and with an `armsUp` variant for defenders.
+ * The soma, reduced to its structural joints. Same proportions as the body
+ * in the prelude — crown, ribs, shoulders, the two arms, the two legs — at
+ * whatever height the court needs. `floorY` is where the feet plant.
  */
-function Figure({
-  x,
-  y,
-  h,
+function SomaMini({
+  nodes,
   ink,
-  opacity = 0.8,
-  armsUp = false,
+  opacity = 0.86,
 }: {
-  x: number
-  y: number
-  h: number
+  nodes: ReturnType<typeof layoutMiniSoma>
   ink: string
   opacity?: number
-  armsUp?: boolean
 }) {
-  const u = h / 24
-  const pts = [
-    { id: "head", x, y: y - 16 * u, r: 1.9 },
-    { id: "neck", x, y: y - 8 * u, r: 1.2 },
-    { id: "shoulder-l", x: x - 7 * u, y: y - 5 * u, r: 1.2 },
-    { id: "shoulder-r", x: x + 7 * u, y: y - 5 * u, r: 1.2 },
-    {
-      id: "hand-l",
-      x: x - (armsUp ? 10 : 12) * u,
-      y: y - (armsUp ? 17 : 2) * u,
-      r: 1.2,
-    },
-    {
-      id: "hand-r",
-      x: x + (armsUp ? 10 : 12) * u,
-      y: y - (armsUp ? 17 : 2) * u,
-      r: 1.2,
-    },
-    { id: "hip-l", x: x - 4.5 * u, y: y + 6 * u, r: 1.2 },
-    { id: "hip-r", x: x + 4.5 * u, y: y + 6 * u, r: 1.2 },
-    { id: "foot-l", x: x - 6 * u, y: y + 8 * u, r: 1.1 },
-    { id: "foot-r", x: x + 6 * u, y: y + 8 * u, r: 1.1 },
-  ]
-  const links: Array<[number, number]> = [
-    [0, 1],
-    [1, 2],
-    [1, 3],
-    [2, 4],
-    [3, 5],
-    [2, 6],
-    [3, 7],
-    [6, 7],
-    [6, 8],
-    [7, 9],
-  ]
+  const edges = miniEdges()
   return (
     <g opacity={opacity}>
-      {links.map(([a, b], i) => {
-        const from = pts[a]!
-        const to = pts[b]!
+      {edges.map(([a, b], i) => {
+        const from = miniNode(nodes, a)
+        const to = miniNode(nodes, b)
+        if (!from || !to) return null
         return (
           <path
             key={i}
             d={`M ${from.x} ${from.y} L ${to.x} ${to.y}`}
             fill="none"
             stroke={ink}
-            strokeWidth={0.9}
-            opacity={0.56}
+            strokeWidth={1.15}
+            opacity={0.62}
           />
         )
       })}
-      {pts.map((p) => (
-        <circle key={p.id} cx={p.x} cy={p.y} r={p.r} fill={ink} opacity={0.86} />
+      {nodes.map((p) => (
+        <circle key={p.id} cx={p.x} cy={p.y} r={p.r} fill={ink} opacity={0.88} />
       ))}
     </g>
   )
 }
 
-function Basket({ ink, lit }: { ink: string; lit: number }) {
+function Basket({
+  ink,
+  lit,
+  hoop,
+  rimRx,
+  backboard,
+  pole,
+}: {
+  ink: string
+  lit: number
+  hoop: { x: number; y: number }
+  rimRx: number
+  backboard: { x: number; y: number; w: number; h: number }
+  pole: { x: number; y: number; y2: number }
+}) {
   return (
     <g opacity={lit}>
       <path
-        d={`M ${COURT_POLE.x} ${COURT_POLE.y} L ${COURT_POLE.x} ${COURT_POLE.y2}`}
+        d={`M ${pole.x} ${pole.y} L ${pole.x} ${pole.y2}`}
         stroke={ink}
         strokeWidth={1.1}
         opacity={0.4}
       />
       <rect
-        x={COURT_BACKBOARD.x}
-        y={COURT_BACKBOARD.y}
-        width={COURT_BACKBOARD.w}
-        height={COURT_BACKBOARD.h}
+        x={backboard.x}
+        y={backboard.y}
+        width={backboard.w}
+        height={backboard.h}
         fill={ink}
         opacity={0.3}
       />
       <ellipse
-        cx={COURT_HOOP.x}
-        cy={COURT_HOOP.y}
-        rx={COURT_RIM_RX}
+        cx={hoop.x}
+        cy={hoop.y}
+        rx={rimRx}
         ry={7}
         fill="none"
         stroke={ink}
@@ -162,11 +152,9 @@ function Basket({ ink, lit }: { ink: string; lit: number }) {
       {[-0.7, -0.24, 0.24, 0.7].map((k, i) => (
         <path
           key={i}
-          d={`M ${COURT_HOOP.x + k * COURT_RIM_RX} ${COURT_HOOP.y + 4} Q ${
-            COURT_HOOP.x + k * COURT_RIM_RX * 0.5
-          } ${COURT_HOOP.y + 24} ${COURT_HOOP.x + k * COURT_RIM_RX * 0.3} ${
-            COURT_HOOP.y + 34
-          }`}
+          d={`M ${hoop.x + k * rimRx} ${hoop.y + 4} Q ${
+            hoop.x + k * rimRx * 0.5
+          } ${hoop.y + 24} ${hoop.x + k * rimRx * 0.3} ${hoop.y + 34}`}
           fill="none"
           stroke={ink}
           strokeWidth={0.8}
@@ -368,114 +356,477 @@ function BodyLoop({ t, reduced }: { t: number; reduced: boolean }) {
 }
 
 /**
- * The team. Stage 1 shows only relationships — the structure practice built,
- * before any ball moves. Stage 2 adds the live signals and one pass. Stage 3
- * drops the figures' weight and lifts the edges, so what is left on screen is
- * the system rather than the five people in it: the visual form of "the
- * intelligence lives in the system."
+ * Game 4 board, above the inbounder. Spurs on the left, Knicks on the right,
+ * the game clock between them. It stays up through the make and the huddle.
+ * At 0.0 the columns give way to one line. The emergence beat takes the
+ * board down so the sentence can sit on the five.
+ */
+function Scoreboard({
+  spurs,
+  knicks,
+  clock,
+  banner,
+}: {
+  spurs: number
+  knicks: number
+  clock: number
+  banner: boolean
+}) {
+  const x = 560
+  const y = 48
+  const w = 520
+  const h = 72
+  const mid = x + w / 2
+  const left = x + 108
+  const right = x + w - 108
+  const ink = color.somaNerve
+  return (
+    <g
+      aria-label={
+        banner ? "Knicks in Five!" : `Spurs ${spurs}, Knicks ${knicks}, ${clock.toFixed(1)} seconds`
+      }
+    >
+      <rect
+        x={x}
+        y={y}
+        width={w}
+        height={h}
+        rx={3}
+        fill={color.fieldDeep}
+        stroke={ink}
+        strokeWidth={1}
+        opacity={0.94}
+      />
+      {banner ? (
+        <text
+          x={mid}
+          y={y + 46}
+          textAnchor="middle"
+          fill={ink}
+          fontFamily={type.family}
+          fontSize={28}
+          fontWeight={500}
+          letterSpacing="-0.02em"
+        >
+          Knicks in Five!
+        </text>
+      ) : (
+        <>
+          <path
+            d={`M ${mid - 54} ${y + 14} L ${mid - 54} ${y + h - 14} M ${mid + 54} ${y + 14} L ${mid + 54} ${y + h - 14}`}
+            stroke={ink}
+            strokeWidth={0.8}
+            opacity={0.35}
+          />
+          <text
+            x={left}
+            y={y + 26}
+            textAnchor="middle"
+            fill={color.typeMuted}
+            fontFamily={type.family}
+            fontSize={12}
+            letterSpacing="0.22em"
+          >
+            SPURS
+          </text>
+          <text
+            x={left}
+            y={y + 54}
+            textAnchor="middle"
+            fill={color.type}
+            fontFamily={type.family}
+            fontSize={26}
+            fontWeight={500}
+          >
+            {spurs}
+          </text>
+          <text
+            x={mid}
+            y={y + 24}
+            textAnchor="middle"
+            fill={color.typeDim}
+            fontFamily={type.family}
+            fontSize={11}
+            letterSpacing="0.2em"
+          >
+            4TH
+          </text>
+          <text
+            x={mid}
+            y={y + 54}
+            textAnchor="middle"
+            fill={ink}
+            fontFamily={type.family}
+            fontSize={26}
+            fontWeight={500}
+          >
+            {clock.toFixed(1)}
+          </text>
+          <text
+            x={right}
+            y={y + 26}
+            textAnchor="middle"
+            fill={color.typeMuted}
+            fontFamily={type.family}
+            fontSize={12}
+            letterSpacing="0.22em"
+          >
+            KNICKS
+          </text>
+          <text
+            x={right}
+            y={y + 54}
+            textAnchor="middle"
+            fill={color.type}
+            fontFamily={type.family}
+            fontSize={26}
+            fontWeight={500}
+          >
+            {knicks}
+          </text>
+        </>
+      )}
+    </g>
+  )
+}
+
+/**
+ * The inbound, held. Sensory streams into the skull, then the two branches
+ * the model already contains, then the moment they resolve and the crash
+ * is the sequence this possession will run.
+ */
+function OgMind({
+  stage,
+  t,
+  reduced,
+}: {
+  stage: TeamMind
+  t: number
+  reduced: boolean
+}) {
+  const ink = color.somaNerve
+  const skull = OG_MIND
+  const showModel = stage >= 2
+  const decided = stage >= 3
+  if (stage === 0) return null
+  const ball = tipPlay(0).ball
+
+  return (
+    <g>
+      <ellipse
+        cx={skull.x - 9}
+        cy={skull.y + 2}
+        rx={16}
+        ry={12}
+        fill="none"
+        stroke={ink}
+        strokeWidth={0.8}
+        opacity={decided ? 0.85 : 0.5}
+      />
+      <ellipse
+        cx={skull.x + 9}
+        cy={skull.y + 2}
+        rx={16}
+        ry={12}
+        fill="none"
+        stroke={ink}
+        strokeWidth={0.8}
+        opacity={decided ? 0.85 : 0.5}
+      />
+
+      {OG_SENSES.map((s, i) => {
+        const from = s
+        const c = {
+          x: (from.x + skull.x) / 2,
+          y: Math.min(from.y, skull.y) - 18,
+        }
+        const phase = decided
+          ? reduced
+            ? 0.7
+            : (t * 0.42) % 1
+          : reduced
+            ? 0.55
+            : (t * 0.45 + i * 0.14) % 1
+        const dot = quad(from, c, skull, phase)
+        return (
+          <g key={s.id}>
+            <path
+              d={`M ${from.x} ${from.y} Q ${c.x} ${c.y} ${skull.x} ${skull.y}`}
+              fill="none"
+              stroke={decided ? color.somaSpark : ink}
+              strokeWidth={0.9}
+              opacity={decided ? 0.7 : 0.4}
+            />
+            <circle cx={from.x} cy={from.y} r={2.4} fill={ink} opacity={0.8} />
+            <text
+              x={s.x}
+              y={s.y - 9}
+              textAnchor="middle"
+              fill={color.typeMuted}
+              fontFamily={type.family}
+              fontSize={8}
+              letterSpacing="0.16em"
+            >
+              {s.label}
+            </text>
+            <circle cx={dot.x} cy={dot.y} r={2.1} fill={color.somaSpark} opacity={0.95} />
+          </g>
+        )
+      })}
+
+      {ball && (
+        <g>
+          {(() => {
+            const from = ball
+            const c = { x: (from.x + skull.x) / 2 - 28, y: (from.y + skull.y) / 2 }
+            const phase = decided
+              ? reduced
+                ? 0.7
+                : (t * 0.42) % 1
+              : reduced
+                ? 0.4
+                : (t * 0.45 + 0.5) % 1
+            const dot = quad(from, c, skull, phase)
+            return (
+              <>
+                <path
+                  d={`M ${from.x} ${from.y} Q ${c.x} ${c.y} ${skull.x} ${skull.y}`}
+                  fill="none"
+                  stroke={decided ? color.somaSpark : ink}
+                  strokeWidth={0.9}
+                  opacity={0.45}
+                />
+                <text
+                  x={from.x - 22}
+                  y={from.y + 4}
+                  textAnchor="end"
+                  fill={color.typeMuted}
+                  fontFamily={type.family}
+                  fontSize={8}
+                  letterSpacing="0.16em"
+                >
+                  BALL
+                </text>
+                <circle cx={dot.x} cy={dot.y} r={2.1} fill={color.somaSpark} opacity={0.95} />
+              </>
+            )
+          })()}
+        </g>
+      )}
+
+      {showModel &&
+        OG_SYSTEMS.map((s) => (
+          <g key={s.id}>
+            <path
+              d={`M ${s.x} ${s.y} L ${skull.x} ${skull.y}`}
+              fill="none"
+              stroke={ink}
+              strokeWidth={0.8}
+              opacity={decided ? 0.75 : 0.4}
+            />
+            <circle
+              cx={s.x}
+              cy={s.y}
+              r={2.6}
+              fill={decided ? color.somaSpark : ink}
+              opacity={0.9}
+            />
+            <text
+              x={s.x}
+              y={s.y - 8}
+              textAnchor="middle"
+              fill={decided ? color.type : color.typeMuted}
+              fontFamily={type.family}
+              fontSize={7.5}
+              letterSpacing="0.14em"
+            >
+              {s.label}
+            </text>
+          </g>
+        ))}
+
+      {showModel &&
+        OG_BRANCHES.map((b) => {
+          const lit = decided && b.chosen
+          const quiet = decided && !b.chosen
+          const stroke = lit ? color.somaSpark : ink
+          const opacity = quiet ? 0.28 : lit ? 0.95 : 0.62
+          const phase = reduced ? 0.65 : (t * 0.5) % 1
+          const spark = {
+            x: b.gate.x + (b.act.x - b.gate.x) * phase,
+            y: b.gate.y + (b.act.y - b.gate.y) * phase,
+          }
+          return (
+            <g key={b.id} opacity={opacity}>
+              <path
+                d={`M ${skull.x} ${skull.y} L ${b.gate.x} ${b.gate.y} L ${b.act.x} ${b.act.y}`}
+                fill="none"
+                stroke={stroke}
+                strokeWidth={lit ? 1.4 : 0.9}
+              />
+              <circle cx={b.gate.x} cy={b.gate.y} r={2.5} fill={stroke} />
+              <circle cx={b.act.x} cy={b.act.y} r={lit ? 3.4 : 2.5} fill={stroke} />
+              <text
+                x={b.gate.x + 8}
+                y={b.gate.y - 6}
+                textAnchor="start"
+                fill={color.typeMuted}
+                fontFamily={type.family}
+                fontSize={7.5}
+                letterSpacing="0.12em"
+              >
+                {b.ifLabel}
+              </text>
+              <text
+                x={b.act.x + 8}
+                y={b.act.y + 3}
+                textAnchor="start"
+                fill={lit ? color.somaSpark : color.type}
+                fontFamily={type.family}
+                fontSize={9}
+                letterSpacing="0.14em"
+              >
+                {b.thenLabel}
+              </text>
+              {lit && <circle cx={spark.x} cy={spark.y} r={2.4} fill={color.somaSpark} />}
+            </g>
+          )
+        })}
+    </g>
+  )
+}
+
+/**
+ * Five reduced copies of the soma, plus the two defenders the play needs.
+ * Stage 1 holds the inbound. Stage 2 plays the possession once, holds the
+ * make, then brings the five together with their hands stacked. Stage 3
+ * leaves that celebration up and draws the relationships over it.
  */
 function Team({
   stage,
   t,
   reduced,
+  mind,
 }: {
   stage: 1 | 2 | 3
   t: number
   reduced: boolean
+  mind: TeamMind
 }) {
   const ink = color.somaNerve
-  const figureOpacity = stage === 3 ? 0.3 : 0.82
-  const edgeOpacity = stage === 3 ? 0.9 : 0.42
-  const passSeg = TEAM_PASS_ROUTE.length - 1
-  const passLocal = reduced ? 0.6 : (t * 0.42) % 1
-  const passIdx = Math.min(passSeg - 1, Math.floor(passLocal * passSeg))
-  const passF = passLocal * passSeg - passIdx
-  const from = teamPlayer(TEAM_PASS_ROUTE[passIdx])
-  const to = teamPlayer(TEAM_PASS_ROUTE[passIdx + 1])
-  const ball =
-    from && to
-      ? {
-          x: from.x + (to.x - from.x) * passF,
-          y: from.y - 40 + (to.y - 40 - (from.y - 40)) * passF,
-        }
-      : null
+  const origin = useRef<number | null>(null)
+  if (stage < 2) origin.current = null
+  else if (origin.current === null) origin.current = t
+  const elapsed = origin.current === null ? 0 : Math.max(0, t - origin.current)
+  const settled = reduced || stage === 3
+  const played = stage === 1 ? 0 : settled ? 1 : Math.min(1, elapsed / TIP_CYCLE)
+  const after = stage < 2 || settled ? 0 : Math.max(0, elapsed - TIP_CYCLE)
+  const gather =
+    stage === 1 ? 0 : settled ? 1 : after <= TIP_HOLD ? 0 : Math.min(1, (after - TIP_HOLD) / TIP_GATHER)
+  const frame = tipPlay(played, gather)
+  // The play clock and the huddle are one countdown. Stage 1 holds 5.7.
+  // Reduced motion snaps to the horn. Stage 3 is the sentence, so the board
+  // is already gone by then.
+  const clockElapsed = stage < 2 ? 0 : reduced ? possessionSpan() : elapsed
+  const clock = possessionClock(clockElapsed)
+  const banner = stage >= 2 && clock <= 0
+  const figureOpacity = stage === 3 ? 0.72 : 0.9
+  const edgeOpacity = stage === 3 ? 0.9 : 0.4
+  const defenseOpacity = stage === 3 ? 0.1 : 0.45 * (1 - Math.min(1, gather * 1.35))
+  const chest = (id: string) => {
+    const actor = frame.actors.find((a) => a.id === id)
+    return actor ? miniNode(actor.nodes, "thorax") : undefined
+  }
 
   return (
     <g>
+      {mind === 0 && stage < 3 && (
+        <Scoreboard
+          spurs={frame.board.spurs}
+          knicks={frame.board.knicks}
+          clock={clock}
+          banner={banner}
+        />
+      )}
       <path
-        d={`M ${COURT_FLOOR_LEFT} ${COURT_FLOOR_Y} L ${COURT_FLOOR_RIGHT} ${COURT_FLOOR_Y}`}
+        d={`M 420 ${TEAM_FLOOR_Y} L 1280 ${TEAM_FLOOR_Y}`}
         stroke={ink}
         strokeWidth={0.9}
         opacity={0.22}
       />
 
       {TEAM_LINKS.filter((l) => l.stage <= (stage === 1 ? 1 : 2)).map((l, i) => {
-        const a = teamPlayer(l.source)
-        const b = teamPlayer(l.target)
+        const a = chest(l.source)
+        const b = chest(l.target)
         if (!a || !b) return null
         const live = stage >= 2 && l.stage === 2
         return (
           <path
             key={`${l.source}-${l.target}`}
-            d={`M ${a.x} ${a.y - 40} L ${b.x} ${b.y - 40}`}
+            d={`M ${a.x} ${a.y} L ${b.x} ${b.y}`}
             fill="none"
             stroke={stage === 3 ? color.somaSpark : ink}
             strokeWidth={stage === 3 ? 1.5 : 1}
             strokeDasharray={live && !reduced ? "4 8" : undefined}
-            opacity={edgeOpacity}
+            opacity={mind > 0 ? 0.08 : edgeOpacity}
             className={live && !reduced ? "edge-flow" : undefined}
             style={{ animationDelay: `${i * 0.18}s` }}
           />
         )
       })}
 
-      {stage >= 2 &&
-        TEAM_SIGNALS.map((sig) => {
-          const a = teamPlayer(sig.source)
-          const b = teamPlayer(sig.target)
-          if (!a || !b) return null
-          return (
-            <text
-              key={sig.id}
-              x={(a.x + b.x) / 2}
-              y={(a.y + b.y) / 2 - 48}
-              textAnchor="middle"
-              fill={color.typeMuted}
-              fontFamily={type.family}
-              fontSize={9.5}
-              letterSpacing="0.18em"
-              opacity={0.85}
-            >
-              {sig.label}
-            </text>
-          )
-        })}
-
-      {TEAM_DEFENDERS.map((d, i) => (
-        <Figure
-          key={i}
-          x={d.x}
-          y={d.y}
-          h={d.h}
-          ink={color.typeDim}
-          opacity={stage === 3 ? 0.16 : 0.42}
-          armsUp
+      {frame.actors.map((a) => (
+        <SomaMini
+          key={a.id}
+          nodes={a.nodes}
+          ink={a.side === "team" ? ink : color.typeMuted}
+          opacity={
+            mind > 0
+              ? a.id === "team-og"
+                ? 0.95
+                : 0.12
+              : a.side === "team"
+                ? figureOpacity
+                : defenseOpacity
+          }
         />
       ))}
 
-      {TEAM_PLAYERS.map((p) => (
-        <Figure
-          key={p.id}
-          x={p.x}
-          y={p.y}
-          h={p.h}
-          ink={ink}
-          opacity={figureOpacity}
+      {frame.trail && (
+        <path
+          d={`M ${frame.trail.from.x} ${frame.trail.from.y} Q ${frame.trail.apex.x} ${frame.trail.apex.y} ${frame.trail.to.x} ${frame.trail.to.y}`}
+          fill="none"
+          stroke={color.somaOrgan}
+          strokeWidth={0.9}
+          strokeDasharray="3 7"
+          opacity={0.4}
         />
-      ))}
+      )}
 
-      {stage === 2 && ball && (
-        <circle cx={ball.x} cy={ball.y} r={6.5} fill={color.somaOrgan} opacity={0.92} />
+      {frame.ball && (
+        <circle
+          cx={frame.ball.x}
+          cy={frame.ball.y}
+          r={7}
+          fill={color.somaOrgan}
+          opacity={0.94}
+        />
+      )}
+
+      {mind > 0 && <OgMind stage={mind} t={t} reduced={reduced} />}
+
+      {stage >= 2 && frame.call && (
+        <text
+          x={frame.call.x}
+          y={frame.call.y}
+          textAnchor="middle"
+          fill={color.typeMuted}
+          fontFamily={type.family}
+          fontSize={10}
+          letterSpacing="0.18em"
+        >
+          CALL
+        </text>
       )}
     </g>
   )
@@ -492,10 +843,7 @@ export function Court({
   const t = useClock(active, reduced)
   if (!active) return null
 
-  // The basket only belongs to the shot sequence; the team beats are about
-  // relationships between actors, and a rim on screen pulls the eye to a
-  // target the beat is not about.
-  const showBasket = world.court > 0
+  const teamCourt = world.team > 0 && world.court === 0
 
   return (
     <g className="court">
@@ -507,15 +855,36 @@ export function Court({
           opacity={0.24}
         />
       )}
-      {showBasket && <Basket ink={color.somaNerve} lit={0.8} />}
       {world.court > 0 && (
-        <Figure
-          x={COURT_DEFENDER.x}
-          y={COURT_DEFENDER.y}
-          h={COURT_DEFENDER.h}
+        <Basket
+          ink={color.somaNerve}
+          lit={0.8}
+          hoop={COURT_HOOP}
+          rimRx={COURT_RIM_RX}
+          backboard={COURT_BACKBOARD}
+          pole={COURT_POLE}
+        />
+      )}
+      {teamCourt && (
+        <Basket
+          ink={color.somaNerve}
+          lit={0.8}
+          hoop={TEAM_HOOP}
+          rimRx={TEAM_RIM_RX}
+          backboard={TEAM_BACKBOARD}
+          pole={TEAM_POLE}
+        />
+      )}
+      {world.court > 0 && (
+        <SomaMini
+          nodes={layoutMiniSoma(
+            MINI_ARMS_UP,
+            COURT_DEFENDER.h,
+            COURT_DEFENDER.x,
+            COURT_FLOOR_Y
+          )}
           ink={color.typeMuted}
           opacity={0.62}
-          armsUp
         />
       )}
       {world.court === 1 && <Perception t={t} reduced={reduced} />}
@@ -527,7 +896,12 @@ export function Court({
         </>
       )}
       {world.team > 0 && (
-        <Team stage={world.team as 1 | 2 | 3} t={t} reduced={reduced} />
+        <Team
+          stage={world.team as 1 | 2 | 3}
+          t={t}
+          reduced={reduced}
+          mind={world.teamMind}
+        />
       )}
     </g>
   )

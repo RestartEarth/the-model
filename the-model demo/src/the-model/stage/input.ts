@@ -66,6 +66,9 @@ export function useStageInput() {
     }
 
     const onClick = () => {
+      // A chapter recording auto-advances on its own clock. A click would
+      // skip a beat and land in the file.
+      if (stage.get().segment) return
       stage.next()
     }
 
