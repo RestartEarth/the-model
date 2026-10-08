@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "com.themodel.keynote",
   "build": {
-    "beforeDevCommand": "npm run dev --prefix \"../../the-model demo\"",
+    "beforeDevCommand": "npm run dev:show",
     "devUrl": "http://localhost:8090",
-    "beforeBuildCommand": "npm run build --prefix \"../../the-model demo\"",
+    "beforeBuildCommand": "npm run build:show",
     "frontendDist": "../../../the-model demo/dist-the-model"
   },
   "app": {
