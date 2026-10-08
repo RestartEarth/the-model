@@ -2,7 +2,7 @@
   "name": "desktop",
   "private": true,
   "version": "0.1.0",
-  "description": "THE MODEL — native Mac shell (Tauri) around the keynote SPA.",
+  "description": "THE MODEL — native shell (Tauri) around the current keynote. Dev and release both load the-model demo, not apps/keynote.",
   "type": "module",
   "scripts": {
     "dev": "tauri dev",
