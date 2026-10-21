@@ -112,14 +112,15 @@ export const T_SCALE =
 // ── Movement 4 · 1984 ─────────────────────────────────────────────────
 
 export const H_PEOPLE =
-  "People have always done this. Families, crews, institutions."
+  "People have always done this. Families, crews, institutions — minds combining to make what none can alone."
 export const H_LANGUAGE =
   "Language is the protocol. It is how one mind puts a model into another."
 export const H_ECONOMY =
   "Families, communities, teams — networks people form with each other. A market is that network, one level up, deciding what gets made with no one in charge of it."
 export const H_SPACE =
   "Then we left the ground. Satellites, then ships between worlds."
-export const H_INTERNET = "And then we built one on purpose."
+export const H_INTERNET =
+  "Seeking other minds forced the channel. Then we built one on purpose."
 export const H_PULLBACK =
   "The same shape, at every scale we can see — and this led to one man's realization."
 
@@ -130,7 +131,7 @@ export const P_OPEN =
   "We built it the way everything else here is built: small pieces, each finding their own way."
 export const P_PATH = "Nobody plans the route. The route is chosen in flight."
 export const P_LAYERS =
-  "A thought goes down through the layers and leaves as a pulse on a wire."
+  "A thought goes down through the layers and leaves as a pulse on a wire. Software is how we put our minds into systems."
 export const P_CREDIT = "After Robert M. Kettles — Life of the Packet, 2022."
 
 // ── Movement 5 · The enterprise ───────────────────────────────────────

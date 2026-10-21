@@ -1,19 +1,14 @@
 THE MODEL
 Presentation script
-Updated 19 October 2026
+Updated 20 October 2026
 
-87 beats. Cinema rehearsal runs 27:30. Conductor mode ignores the clocks; you advance each beat.
+101 beats. Cinema rehearsal runs 31:16. Conductor mode ignores the clocks; you advance each beat.
 
 WHAT CHANGED SINCE THE LAST EXPORT
-Each beat now has a voiceover. It does not repeat the sentence on the screen. Cinema clocks are speech time, about 135 words a minute, plus a few seconds for the room to read the line.
-The nature walk is cosmos, water, and the food web. Atmosphere, mycelium, and photosynthesis are out.
-The body is back in full: energy, structure, blood, organs, lymph, nerves, then the brain, then the cortex.
-Language, people, markets, satellites, and the internet are back, after the senses and before the shot. The living-loop captions stay out. The shot already runs that loop.
-The Knicks inbound and the tip are back: the hold inside one skull, the branch, the possession, the make, then the celebration. The climb from that celebration up to Gage stays out.
-The route chapter is no longer the zoomed failure tour. It is one aircraft, no one in the seat, then the wide fabric.
-The agent does not replay the closed hub. People already kept that promise.
-Observe, understand, decide, act, and verify are not their own chapter. The shot already ran the loop.
-There is no booth and no questions. The show ends on three held frames, then the last line.
+Atmosphere, mycelium, and photosynthesis are back in the nature walk — cosmos, atmosphere, water, mycelium, photosynthesis, food web, pullback.
+Language, people, markets, satellites, and the internet sit after the cortex and before perception. Senses opens the shot chapter; the living loop is named on shot-loop (Perceive. Model. Predict. Act.).
+auto-open and air-dark are retired. After air-operate comes the traffic/transaction chapter (ai-file through ai-fabric), then perceive / model / meaning still on that diagram, then federation on the enterprise map.
+Packet layers now carry the software sentence. The Knicks inbound and tip stay. There is no booth and no questions. The show ends on three held frames, then the last line.
 
 HOW TO SEND THIS BACK
 Keep every line that starts with BEAT exactly as written, including the id.
@@ -34,11 +29,11 @@ NARRATION is the voiceover. It should not repeat the sentence on the screen. The
 MOVEMENT 1  An architecture that repeats
 ========================================================================
 
-Cosmos, then water running a circuit, then a food web. No argument yet. The room is shown the same shape until the word network has weight before it is used about a company.
+Cosmos, the atmosphere as transport, water on that circuit, mycelium, photosynthesis, the food web, then the pullback. No argument yet. The room is shown the same shape until the word network has weight before it is used about a company.
 
 ------------------------------------------------------------------------
 CHAPTER 01-nature  Nature
-Once the hold frame is up: Cosmos, water, the food web, then the pullback. Talk over the architecture line. The body is the next film.
+Once the hold frame is up: Cosmos, the atmosphere as a transport network, then water on that circuit. Mycelium, photosynthesis, the food web, then the pullback. Talk over the architecture line. The body is the next film.
 ------------------------------------------------------------------------
 
 BEAT 01  open
@@ -67,7 +62,20 @@ NARRATION
 Forget the name for a second. What you're looking at is not a collection of things. It's the way things settled. We'll see that settlement again, smaller, every time I click.
 
 
-BEAT 03  water
+BEAT 03  atmosphere
+Cinema clock: 0:14
+
+ON SCREEN
+The atmosphere is a planetary transport network of thermal energy, creating conditions for life on earth
+
+BEAT
+The sky band takes focus — a planetary transport layer of thermal energy — before the water circuit opens underneath it.
+
+NARRATION
+Before water runs, the sky itself is doing work. Heat moves. The band that makes a surface livable is a transport network, not a painted backdrop. Hold that. The next circuit rides on this one.
+
+
+BEAT 04  water
 Cinema clock: 0:23
 
 ON SCREEN
@@ -80,7 +88,33 @@ NARRATION
 Nothing is in charge of this. Warm water rises, crosses, falls, and comes back, and the range that makes a life possible is a side effect of the circuit. Hold onto that. Nobody is coordinating the whole thing from one place.
 
 
-BEAT 04  foodweb
+BEAT 05  mycelium
+Cinema clock: 0:18
+
+ON SCREEN
+Under a forest floor, fungal threads link trees that cannot move. Sugar goes one way, minerals the other.
+
+BEAT
+Soil cross-section. Fungal threads under the forest floor; sugar one way, minerals the other.
+
+NARRATION
+Under the trees you can see, there is a graph you can't. Threads that don't move still move sugar and minerals between trees that never meet. Same architecture. Different parts. The dependence is underground.
+
+
+BEAT 06  photosynthesis
+Cinema clock: 0:17
+
+ON SCREEN
+Light, air and soil are three unrelated systems. Connected, they make food.
+
+BEAT
+Pull back to the canopy. Light, air, and soil meet — three systems that make food when connected.
+
+NARRATION
+Light falls. Air is there. Soil is there. None of those three was built for the others. Connect them and food appears. The point is not the chemistry lesson. The point is what connection does that the parts cannot do alone.
+
+
+BEAT 07  foodweb
 Cinema clock: 0:20
 
 ON SCREEN
@@ -93,7 +127,7 @@ NARRATION
 Pull one strand and a stranger feels it. The map is not the animals. The map is who fails when someone else fails. That is the only idea this movement needs to leave in the room.
 
 
-BEAT 05  architecture-repeats
+BEAT 08  architecture-repeats
 Cinema clock: 0:20
 
 ON SCREEN
@@ -110,14 +144,14 @@ I am not going to tell you a company is a forest. For the rest of the time we st
 MOVEMENT 2  Networks make intelligence
 ========================================================================
 
-One body, layer by layer. Energy, structure, blood, organs, lymph, nerves, the brain, then the cortex. Perception, then thought, people, markets, off the ground, and the network we built. Then one ordinary shot.
+One body, layer by layer: energy, structure, blood, organs, lymph, nerves, the brain, then the cortex. Language, people, markets, satellites, the internet we built — then perception, then one ordinary shot and the living loop named on it.
 
 ------------------------------------------------------------------------
 CHAPTER 02-body  Body
 Once the hold frame is up: One body, layer by layer: energy, structure, blood, organs, lymph, nerves, the brain, then the cortex. Long hold on the relationships sentence.
 ------------------------------------------------------------------------
 
-BEAT 06  body
+BEAT 09  body
 Cinema clock: 0:12
 
 ON SCREEN
@@ -130,7 +164,7 @@ NARRATION
 Same picture, close enough to be personal. You didn't install this. You arrived as one.
 
 
-BEAT 07  body-energy
+BEAT 10  body-energy
 Cinema clock: 0:18
 
 ON SCREEN
@@ -143,7 +177,7 @@ NARRATION
 Before bone, there is a pulse. A body spends its life moving energy through itself, or it stops. Structure comes next, and it only matters because something is already moving.
 
 
-BEAT 08  body-structure
+BEAT 11  body-structure
 Cinema clock: 0:17
 
 ON SCREEN
@@ -156,7 +190,7 @@ NARRATION
 A bone is a specialist. A muscle is a specialist. Neither of them is a walk. The walk shows up between them, or it doesn't show up at all.
 
 
-BEAT 09  body-circulation
+BEAT 12  body-circulation
 Cinema clock: 0:22
 
 ON SCREEN
@@ -169,7 +203,7 @@ NARRATION
 Supplies, not signals. Every cell is fed by a circuit it did not ask for. Nothing in this body goes and gets its own oxygen. The dependence you just saw in the food web is now inside one person.
 
 
-BEAT 10  body-viscera
+BEAT 13  body-viscera
 Cinema clock: 0:18
 
 ON SCREEN
@@ -182,7 +216,7 @@ NARRATION
 A heart does not digest. A lung does not think. Each one is excellent at one job and silent about the others. Useful is what happens when they are tied together.
 
 
-BEAT 11  body-lymph
+BEAT 14  body-lymph
 Cinema clock: 0:18
 
 ON SCREEN
@@ -195,7 +229,7 @@ NARRATION
 Slower, and it is not delivering fuel. Lymph and the hormones carry the body's own report of itself. State, not cargo. The fast version of that report is the next layer.
 
 
-BEAT 12  body-nerves
+BEAT 15  body-nerves
 Cinema clock: 0:20
 
 ON SCREEN
@@ -208,7 +242,7 @@ NARRATION
 This is the layer fast enough to matter. A signal goes out, the world answers, and the answer is back before the moment has closed. Every hard problem later is a version of that round trip.
 
 
-BEAT 13  body-brain
+BEAT 16  body-brain
 Cinema clock: 0:18
 
 ON SCREEN
@@ -221,7 +255,7 @@ NARRATION
 Everything you just saw reports here. Blood, lymph, the organs, the nerves. It is tempting to stop and call this the intelligence. Don't. A hub is not the thing it connects.
 
 
-BEAT 14  neural
+BEAT 17  neural
 Cinema clock: 0:20
 
 ON SCREEN
@@ -235,29 +269,11 @@ Name every part in this picture and you still haven't named the thing that think
 
 
 ------------------------------------------------------------------------
-CHAPTER 03-minds  Minds
-Once the hold frame is up: Perception. Hold on the senses. Thought packets are the next click.
-------------------------------------------------------------------------
-
-BEAT 15  senses
-Cinema clock: 0:20
-
-ON SCREEN
-A network that cannot perceive cannot act.
-
-BEAT
-The head, and the senses open. A network that cannot perceive cannot act.
-
-NARRATION
-Before any of this can act, it has to be in contact with what is actually happening. Not a summary someone opens. Contact. Lose that and the rest is a story about the world.
-
-
-------------------------------------------------------------------------
 CHAPTER 03b-minds  Minds together
-Once the hold frame is up: Language, people, markets, then off the ground, then the network we built. The shot is the next click.
+Once the hold frame is up: Language, people, markets, then off the ground, then the network we built. Perception is the next click, then the shot.
 ------------------------------------------------------------------------
 
-BEAT 16  language
+BEAT 18  language
 Cinema clock: 0:16
 
 ON SCREEN
@@ -270,20 +286,20 @@ NARRATION
 This is the packet. Not a wire yet. A model, small enough to leave one mind and arrive in another, intact enough to act on.
 
 
-BEAT 17  people
+BEAT 19  people
 Cinema clock: 0:18
 
 ON SCREEN
-People have always done this. Families, crews, institutions.
+People have always done this. Families, crews, institutions — minds combining to make what none can alone.
 
 BEAT
-The social network. Families, crews, institutions. Specialists, tied together.
+The social network. Families, crews, institutions — minds combining.
 
 NARRATION
-Not a company yet. A family, a crew, an institution. Specialists, tied together, none of them holding the whole thing. The same shape as the body, now made of people.
+Not a company yet. A family, a crew, an institution — minds combining to make what none of them holds alone. Specialists, tied together. The same shape as the body, now made of people.
 
 
-BEAT 18  markets
+BEAT 20  markets
 Cinema clock: 0:18
 
 ON SCREEN
@@ -296,7 +312,7 @@ NARRATION
 Watch what is absent. There is no dispatcher. The network decides what gets made, and no single node has the plan.
 
 
-BEAT 19  satellites
+BEAT 21  satellites
 Cinema clock: 0:20
 
 ON SCREEN
@@ -309,25 +325,38 @@ NARRATION
 The relationships leave the surface. A relay overhead, a ship that will not come back for years. Still no one holding the whole map. The network is no longer the size of a city.
 
 
-BEAT 20  internet
+BEAT 22  internet
 Cinema clock: 0:18
 
 ON SCREEN
-And then we built one on purpose.
+Seeking other minds forced the channel. Then we built one on purpose.
 
 BEAT
-The network we made. The build of humanity is complete. The shot is the next click.
+The network we made on purpose. Seeking other minds forced the channel; then we built it.
 
 NARRATION
-Every network so far happened. This one was built. Then one person, one ordinary act, so the loop is visible before we put five of them on a court.
+We did not invent the need. Seeking other minds forced a channel, and then we built one on purpose. Every network so far happened. This one was deliberate. Next: perception — because a network that cannot perceive cannot act — then one ordinary shot.
 
 
 ------------------------------------------------------------------------
 CHAPTER 04-shot  The shot
-Once the hold frame is up: Tight sync. One figure, one shot, correction still running after the ball leaves the hand. Hold on that loop.
+Once the hold frame is up: Perception opens the chapter. Tight sync: one figure, one shot, then hold on Perceive. Model. Predict. Act.
 ------------------------------------------------------------------------
 
-BEAT 21  shot-reveal
+BEAT 23  senses
+Cinema clock: 0:20
+
+ON SCREEN
+A network that cannot perceive cannot act.
+
+BEAT
+Back to the head. The senses open. Perception opens the shot chapter.
+
+NARRATION
+Before the shot, before the loop has a name, this has to be true: contact with what is actually happening. Not a summary someone opens later. Contact. Lose that and the rest is a story about the world. The ordinary act is the next click.
+
+
+BEAT 24  shot-reveal
 Cinema clock: 0:15
 
 ON SCREEN
@@ -340,7 +369,7 @@ NARRATION
 One person. One ordinary action. Stay with it. You have seen this a thousand times. You have never watched the network do it.
 
 
-BEAT 22  shot-perceive
+BEAT 25  shot-perceive
 Cinema clock: 0:20
 
 ON SCREEN
@@ -353,7 +382,7 @@ NARRATION
 The rim, the defender, the floor, where his own hand is. None of that was requested for the shot. It was already live. Perception here is not a step. It's the condition the step stands on.
 
 
-BEAT 23  shot-motor
+BEAT 26  shot-motor
 Cinema clock: 0:19
 
 ON SCREEN
@@ -366,17 +395,17 @@ NARRATION
 There is no moment where he decides and then, afterward, moves. A few hundred specialists agree on an order, inside the time the ball will still allow. That agreement is the action.
 
 
-BEAT 24  shot-loop
+BEAT 27  shot-loop
 Cinema clock: 0:22
 
 ON SCREEN
-And it is still correcting after the ball has left the hand. One body. One loop.
+Perceive. Model. Predict. Act. Sense the result — and go again.
 
 BEAT
-The ball has left the hand. The correction is still running. One body. One loop.
+The living loop, named on the shot: Perceive. Model. Predict. Act. Sense the result — and go again.
 
 NARRATION
-The hand is empty. Watch the correction continue. He finds out whether it worked from the ball, not from the intention. We are not going to turn that into a chapter later. You just saw the only loop there is.
+Name the loop once, on the body that just ran it. Perceive. Model. Predict. Act. Sense whether it worked — and go again. We are not going to turn that into a separate chapter later. You just saw the only loop there is.
 
 
 ========================================================================
@@ -390,7 +419,7 @@ CHAPTER 05-team  Team
 Once the hold frame is up: Five players, the links, the inbound inside one skull, the tip, then the celebration. Hold on the emergence sentence. The pullback is the next film.
 ------------------------------------------------------------------------
 
-BEAT 25  team
+BEAT 28  team
 Cinema clock: 0:13
 
 ON SCREEN
@@ -403,7 +432,7 @@ NARRATION
 Up one level. The parts are people now, and the possession is the thing none of them can finish alone.
 
 
-BEAT 26  team-links
+BEAT 29  team-links
 Cinema clock: 0:20
 
 ON SCREEN
@@ -416,7 +445,7 @@ NARRATION
 A great shooter with no edge to the inbounder is a person standing in a good spot. The capability lives on the line between them. Cut the line and the talent is still in the building.
 
 
-BEAT 27  team-mind
+BEAT 30  team-mind
 Cinema clock: 0:19
 
 ON SCREEN
@@ -429,7 +458,7 @@ NARRATION
 The ball has not left his hands. This is the same condition as the shot: everything the play depends on is already live. He is not fetching it. He is standing inside it.
 
 
-BEAT 28  team-mind-model
+BEAT 31  team-mind-model
 Cinema clock: 0:23
 
 ON SCREEN
@@ -442,7 +471,7 @@ NARRATION
 He is not composing this in the air. Before the pass leaves his hands he is already holding the other four. Who crashes. Who shoots. Who is the wrong question. A model, in this talk, is a map of who to ask.
 
 
-BEAT 29  team-mind-decide
+BEAT 32  team-mind-decide
 Cinema clock: 0:19
 
 ON SCREEN
@@ -455,7 +484,7 @@ NARRATION
 Both branches were written before the whistle. Only one of them is this possession. Brunson shoots, so the crash is not a reaction he invents on the way. It was already the act.
 
 
-BEAT 30  team-signals
+BEAT 33  team-signals
 Cinema clock: 0:21
 
 ON SCREEN
@@ -468,7 +497,7 @@ NARRATION
 Watch the possession, not a diagram of it. The ball moves, and so does everything that is not the ball. A screen, a glance, a call. The state of the play is being passed the whole time.
 
 
-BEAT 31  team-model
+BEAT 34  team-model
 Cinema clock: 0:17
 
 ON SCREEN
@@ -481,7 +510,7 @@ NARRATION
 The make is already in. Watch who is under the rim. He did not discover the crash after the shot. He arrived there because the model said he would.
 
 
-BEAT 32  team-emergence
+BEAT 35  team-emergence
 Cinema clock: 0:19
 
 ON SCREEN
@@ -498,14 +527,14 @@ Don't count the bodies. Count what they can do now that none of them could do al
 MOVEMENT 4  1984
 ========================================================================
 
-Pull back across every scale the room has seen, including the one we made. The quote lands bare. Then the photograph, the name, and the year. Thought goes down through the layers and leaves as a pulse. The packet is a hinge, not a lesson: small pieces, and a route chosen in flight.
+Pull back across every scale the room has seen, including the one we made. The quote lands bare. Then the photograph, the name, and the year. Thought goes down through the layers and leaves as a pulse. Software is how we put minds into systems. The packet is a hinge, not a lesson: small pieces, and a route chosen in flight.
 
 ------------------------------------------------------------------------
 CHAPTER 06-gage  Gage
 Once the hold frame is up: The pullback, the bare quote, then the photograph. End motionless. This silence is the presenter's, not the file's. Click for the descent to the wire.
 ------------------------------------------------------------------------
 
-BEAT 33  all-of-it
+BEAT 36  all-of-it
 Cinema clock: 0:18
 
 ON SCREEN
@@ -515,10 +544,10 @@ BEAT
 Pull back across every scale the room has been shown, including the one we built.
 
 NARRATION
-A web, a circuit of water, a body, a shot, five players. One of these scales we actually built. The shape was older than us. The newest copy is ours.
+A web, an atmosphere, a circuit of water, a forest floor, a body, a shot, five players. One of these scales we actually built. The shape was older than us. The newest copy is ours.
 
 
-BEAT 34  gage-quote
+BEAT 37  gage-quote
 Cinema clock: 0:20
 
 ON SCREEN
@@ -531,7 +560,7 @@ NARRATION
 I'm leaving the name off on purpose. Read the line as if it might already be true, and as if we might have meant something smaller by it than we should.
 
 
-BEAT 35  gage
+BEAT 38  gage
 Cinema clock: 0:20
 
 ON SCREEN
@@ -549,20 +578,20 @@ CHAPTER 07-packet  Packet
 Once the hold frame is up: Thought goes down through the layers and leaves as a pulse. Then the parcel, then a path chosen in flight. Hold on that path. The enterprise is the next click.
 ------------------------------------------------------------------------
 
-BEAT 36  packet-layers
+BEAT 39  packet-layers
 Cinema clock: 0:22
 
 ON SCREEN
-A thought goes down through the layers and leaves as a pulse on a wire.
+A thought goes down through the layers and leaves as a pulse on a wire. Software is how we put our minds into systems.
 
 BEAT
-Thought goes down through the layers and leaves as a pulse on a wire. One minute, not a history of networking.
+Thought goes down through the layers and leaves as a pulse on a wire. Software is how we put minds into systems.
 
 NARRATION
-A thought does not cross a room as a thought. It comes apart, goes down, and leaves as a pulse. Give this a minute. You already know networking. This is only the hinge between a mind and a wire.
+A thought does not cross a room as a thought. It comes apart, goes down through the layers, and leaves as a pulse on a wire. That is also how we put a mind into a system: software. Give this a minute. You already know networking. This is the hinge between a mind and a wire.
 
 
-BEAT 37  packet-open
+BEAT 40  packet-open
 Cinema clock: 0:19
 
 ON SCREEN
@@ -575,7 +604,7 @@ NARRATION
 We did not invent a new shape when we built this. Small pieces, each able to move without holding the whole message. You have been looking at that since the first click.
 
 
-BEAT 38  packet-path
+BEAT 41  packet-path
 Cinema clock: 0:20
 
 ON SCREEN
@@ -592,14 +621,14 @@ The route is not booked before the first hop. Each piece chooses the next from w
 MOVEMENT 5  The enterprise
 ========================================================================
 
-The same team, stretched across a planet, moving physical things. One package, Tokyo to Boston, with a promise on it. Weather closes a hub. The hub still looks fine, and the promise is already at risk. A person waits, the path answers, and the route changes. Then the same promises on one aircraft with no one in the seat. The forecast says smooth. The aircraft ahead says severe. The path changes once. The picture pulls back to the wide fabric: an agent that cannot perceive, traverse, and verify across that network can talk about the enterprise. It cannot operate it. The link goes dark. It can still fly. It can no longer avoid what it cannot see.
+The same team, stretched across a planet, moving physical things. One package, Tokyo to Boston, with a promise on it. Weather closes a hub. The hub still looks fine, and the promise is already at risk. A person waits, the path answers, and the route changes. Then the same promises on one aircraft with no one in the seat. Forecast says smooth; the aircraft ahead says severe; the path changes once. The picture pulls back to traffic: an agent filing under a disrupted jet stream, the fan-out, the herd, the commit rule — then perceive, model, and meaning still on that diagram.
 
 ------------------------------------------------------------------------
 CHAPTER 08-organism  Organism
 Once the hold frame is up: The scale line is the entrance. Aircraft, vehicles, hubs, people, systems, then the pullback. Hold on the organism sentence.
 ------------------------------------------------------------------------
 
-BEAT 39  ent-open
+BEAT 42  ent-open
 Cinema clock: 0:21
 
 ON SCREEN
@@ -612,7 +641,7 @@ NARRATION
 Stretch the five players until the court is a planet. What they move now is physical, and someone has already been told when it will arrive. That promise is the force on everything you're about to see.
 
 
-BEAT 40  ent-air
+BEAT 43  ent-air
 Cinema clock: 0:14
 
 ON SCREEN
@@ -625,7 +654,7 @@ NARRATION
 Continents, on a schedule. The schedule is not a hope. It's a commitment the rest of the organism has already planned against.
 
 
-BEAT 41  ent-ground
+BEAT 44  ent-ground
 Cinema clock: 0:13
 
 ON SCREEN
@@ -638,7 +667,7 @@ NARRATION
 Different vehicles, same job, the last miles. The aircraft can be perfect and the promise still fails at a door.
 
 
-BEAT 42  ent-hub
+BEAT 45  ent-hub
 Cinema clock: 0:16
 
 ON SCREEN
@@ -651,7 +680,7 @@ NARRATION
 Most of the interesting trouble is not in the air. It's where the package changes hands. A belt, a scanner, a door that is now shut.
 
 
-BEAT 43  ent-people
+BEAT 46  ent-people
 Cinema clock: 0:18
 
 ON SCREEN
@@ -664,7 +693,7 @@ NARRATION
 Dispatchers and planners are not a backup we bolt on when the picture gets hard. They are already how this organism perceives. Keep them in your eye. They do not leave.
 
 
-BEAT 44  ent-systems
+BEAT 47  ent-systems
 Cinema clock: 0:18
 
 ON SCREEN
@@ -677,7 +706,7 @@ NARRATION
 Under the floor, systems that each know their own piece extremely well. Ask any one of them where the promise stands and you get a confident answer about the wrong object.
 
 
-BEAT 45  ent-organism
+BEAT 48  ent-organism
 Cinema clock: 0:21
 
 ON SCREEN
@@ -692,10 +721,10 @@ Step back. If this looks like the body from the first half, that is the point. T
 
 ------------------------------------------------------------------------
 CHAPTER 09-package  One package
-Once the hold frame is up: One promise, weather closes a hub, the aircraft call dies on the path and she waits, then the path answers and the route changes. Hold on the promise. The agent files the harder route on the next click.
+Once the hold frame is up: One promise, weather closes a hub, the aircraft call dies on the path and she waits, then the path answers and the route changes. Hold on the promise. The autonomous aircraft is the next click.
 ------------------------------------------------------------------------
 
-BEAT 46  ent-package
+BEAT 49  ent-package
 Cinema clock: 0:22
 
 ON SCREEN
@@ -708,7 +737,7 @@ NARRATION
 Don't follow the fleet. Follow one. It left Tokyo. It has to be in Boston. It has a name and a priority, and a person was told a time. That sentence is what every node on this picture is for.
 
 
-BEAT 47  ent-commitment
+BEAT 50  ent-commitment
 Cinema clock: 0:21
 
 ON SCREEN
@@ -721,7 +750,7 @@ NARRATION
 Multiply it by a few million a day. Aircraft, belts, sort windows — none of them have a purpose apart from keeping it. The enterprise is not the equipment. It is the promises the equipment is inside of.
 
 
-BEAT 48  ent-weather
+BEAT 51  ent-weather
 Cinema clock: 0:16
 
 ON SCREEN
@@ -734,7 +763,7 @@ NARRATION
 A storm closes the Pacific gateway. Nothing failed. Nothing is red. And every promise that believed that gateway is now living in a different world.
 
 
-BEAT 49  ent-depends
+BEAT 52  ent-depends
 Cinema clock: 0:21
 
 ON SCREEN
@@ -747,7 +776,7 @@ NARRATION
 What changed is the boring question. A gateway closed. What depends on it is the package, the feeder, the sort, the door in Boston. The relationships are the blast radius. The node is only where it started.
 
 
-BEAT 50  ent-fine
+BEAT 53  ent-fine
 Cinema clock: 0:20
 
 ON SCREEN
@@ -760,7 +789,7 @@ NARRATION
 Look at the hub. Still green. If you manage the hub, you are having a fine day. The package has already gone amber, because the decision window is ahead of the report you trust.
 
 
-BEAT 51  ent-dispatch
+BEAT 54  ent-dispatch
 Cinema clock: 0:17
 
 ON SCREEN
@@ -773,7 +802,7 @@ NARRATION
 She asks the aircraft whether the connection is real. The call doesn't come back. So she does the intelligent thing, which is nothing, until the evidence is alive again.
 
 
-BEAT 52  ent-dispatch-act
+BEAT 55  ent-dispatch-act
 Cinema clock: 0:12
 
 ON SCREEN
@@ -786,7 +815,7 @@ NARRATION
 There. Not a prediction from the model. A fact from the path, inside the time she still has.
 
 
-BEAT 53  ent-reroute
+BEAT 56  ent-reroute
 Cinema clock: 0:20
 
 ON SCREEN
@@ -800,11 +829,11 @@ Different aircraft, different sort, and the time still holds. A person did that.
 
 
 ------------------------------------------------------------------------
-CHAPTER 09b-route  The route
-Once the hold frame is up: The aircraft has no one in the seat. Forecast, witness, herd, one path, then the wide fabric. Hold on the dark link. Autonomy is the next click.
+CHAPTER 09b-aircraft  The aircraft
+Once the hold frame is up: Use case. One aircraft, no one in the seat, sensitive cargo, turbulence, the herd, one path. Hold on perceive–traverse–verify. The network view is the next click.
 ------------------------------------------------------------------------
 
-BEAT 54  air-seat
+BEAT 57  air-seat
 Cinema clock: 0:18
 
 ON SCREEN
@@ -817,8 +846,8 @@ NARRATION
 Same promise, one airplane, nobody up front. The wing can take the turbulence. The cargo cannot. So the limit is not the airframe. The limit is the commitment riding in it.
 
 
-BEAT 55  air-smooth
-Cinema clock: 0:21
+BEAT 58  air-smooth
+Cinema clock: 0:18
 
 ON SCREEN
 Clear air. The forecast says smooth. The radar sees nothing.
@@ -830,8 +859,8 @@ NARRATION
 On the long clock, the forecast says the ride is fine, and the aircraft's own radar agrees. If it acted on what it can see from here, it would do nothing. That is not yet a decision.
 
 
-BEAT 56  air-witness
-Cinema clock: 0:21
+BEAT 59  air-witness
+Cinema clock: 0:18
 
 ON SCREEN
 The aircraft ahead reports the acceleration.
@@ -843,8 +872,8 @@ NARRATION
 Shorter clock. Someone has already flown the air this one is about to enter, and they felt it. That report is a witness, and it stays a witness only while the link that carries it is alive.
 
 
-BEAT 57  air-split
-Cinema clock: 0:20
+BEAT 60  air-split
+Cinema clock: 0:18
 
 ON SCREEN
 The forecast still says smooth. The report says severe.
@@ -856,7 +885,7 @@ NARRATION
 Leave both up. Do not average them. The older, smoother story has not caught up. The nearer story says the cargo doesn't survive. The aircraft has to know which clock it is allowed to trust.
 
 
-BEAT 58  air-herd
+BEAT 61  air-herd
 Cinema clock: 0:18
 
 ON SCREEN
@@ -869,7 +898,7 @@ NARRATION
 The safe altitude is now the popular altitude. Every other flight is being handed the same answer. Take it, and the critical path joins a crowd that one forecast created.
 
 
-BEAT 59  air-boundary
+BEAT 62  air-boundary
 Cinema clock: 0:18
 
 ON SCREEN
@@ -882,8 +911,8 @@ NARRATION
 It can turn. The turn is not its decision alone. The new path crosses air someone else owns, and the answer has to come back from there before the cutoff.
 
 
-BEAT 60  air-once
-Cinema clock: 0:20
+BEAT 63  air-once
+Cinema clock: 0:18
 
 ON SCREEN
 The path changes once. When the disturbance fades, it does not change again.
@@ -895,21 +924,8 @@ NARRATION
 One change. When the bump fades, asking again files a second plan on top of a first one the world has already started to believe. The path changes once, and then it is done.
 
 
-BEAT 61  air-rule
-Cinema clock: 0:26
-
-ON SCREEN
-The agent may commit only on evidence that is still live, only once, inside the cutoff, with the critical call isolated from the herd, and with the path measured out to the system it does not own.
-
-BEAT
-The rule, in the corner: live evidence, once, inside the cutoff, isolated from the herd, measured out to the system it does not own.
-
-NARRATION
-I'm not going to build a framework out of the sentence in the corner. Live, once, in time, off the herd, and measured out to the hand it doesn't own. Miss any of those and it does not get to improvise. It waits, or it does not depart.
-
-
-BEAT 62  air-named
-Cinema clock: 0:22
+BEAT 64  air-named
+Cinema clock: 0:20
 
 ON SCREEN
 It perceived the air ahead. It traversed to the report. It verified the force on the cargo.
@@ -921,8 +937,8 @@ NARRATION
 Perceive is the witness ahead, not the radar under its own nose. Traverse is the ask, across a network it doesn't own. Verify is the force on the cargo, not the model's confidence that it did the right thing.
 
 
-BEAT 63  air-operate
-Cinema clock: 0:23
+BEAT 65  air-operate
+Cinema clock: 0:22
 
 ON SCREEN
 An agent that cannot do those three things across the live network can talk about the enterprise. It cannot operate it.
@@ -934,83 +950,244 @@ NARRATION
 Pull all the way back. Those moving calls are the requirement. Talk is cheap. Operating means the three verbs still work when the evidence is somewhere else on this fabric, and it has to return in time.
 
 
-BEAT 64  air-dark
-Cinema clock: 0:20
-
-ON SCREEN
-The link is gone. It can still fly. It can no longer avoid what it cannot see.
-
-BEAT
-Back on the aircraft. The link to the witness is dark. It can still fly. It can no longer avoid what it cannot see. Delay, divert, and don't-depart stay with people.
-
-NARRATION
-The link drops. The airplane does not. It also can no longer avoid what it can no longer see. Delay, divert, don't leave. Those remain with people. So does any turbulence no witness has reported.
-
-
-========================================================================
-MOVEMENT 6  What autonomy requires
-========================================================================
-
-What that requires when nobody is staying up for it. Perception, a model of what affects what, meaning (committed, allowed, room left), and a model that has to ask the parts that know. Reasoning becomes network traffic the moment it has to leave the model. It has to act, and it has to learn whether the action worked from the system itself. People are not removed. They move up the stack.
-
 ------------------------------------------------------------------------
-CHAPTER 10-understand  Understanding
-Once the hold frame is up: Perception, relationships, meaning, federation. The longest hold in the deck — the system can ask the parts that actually know. Reasoning is the next click.
+CHAPTER 09c-network  The network
+Once the hold frame is up: Traffic patterns, then the commit rule, then perceive, model, and meaning still on that diagram. Do not replay the flight. The enterprise map is the next click.
 ------------------------------------------------------------------------
 
-BEAT 65  auto-open
-Cinema clock: 0:22
+BEAT 66  ai-file
+Cinema clock: 0:18
 
 ON SCREEN
-Suppose you want that to happen without anyone staying up for it. What does that actually require?
+People got this shipment this far, and an agent now files the route, because a disrupted jet stream is harder than a closed hub, and that one decision becomes many transactions that all have to return inside the decision window.
 
 BEAT
-The question the rest of the movement answers. What does that require when nobody is staying up for it?
+Same filing, now as network and transaction. The agent files the route; one decision fans into many calls that must return inside the window.
 
 NARRATION
-One aircraft, one promise. Now suppose the organism has to keep doing this without a person awake for every decision. Don't start with the agent. Start with what has to be true before an agent is anything but a voice.
+People already kept the closed-hub promise. Now the harder call: a disrupted jet stream, an agent filing the route. Watch what that one decision becomes — many transactions, all of which have to return inside the same decision window.
 
 
-BEAT 66  auto-perceive
+BEAT 67  ai-fanout
+Cinema clock: 0:18
+
+ON SCREEN
+The forecast is a fan-out, so the route finishes at the slowest model.
+
+BEAT
+The forecast is a fan-out. The route finishes at the slowest model.
+
+NARRATION
+The forecast is not one ask. It fans out. The route is only done when the slowest model comes back. Speed here is a property of the network, not of the agent.
+
+
+BEAT 68  ai-stream
+Cinema clock: 0:18
+
+ON SCREEN
+If the forecast session breaks, the agent is routing on yesterday's jet stream.
+
+BEAT
+If the forecast session breaks, the agent is routing on yesterday's jet stream.
+
+NARRATION
+If that session breaks, nothing looks red on a link diagram — and the agent is still routing on yesterday's jet stream. Stale is not the same as down.
+
+
+BEAT 69  ai-stall
+Cinema clock: 0:18
+
+ON SCREEN
+Nothing is down. The route is late, so the shipment misses the cutoff on a track the forecast no longer supports.
+
+BEAT
+Nothing is down. The route is late. The shipment misses the cutoff on a track the forecast no longer supports.
+
+NARRATION
+Nothing failed. The route is late. The shipment misses the cutoff on a track the forecast no longer supports. Latency is the outage.
+
+
+BEAT 70  ai-retry
+Cinema clock: 0:18
+
+ON SCREEN
+The agent asks again and files a second plan, moving the shipment onto a second aircraft.
+
+BEAT
+The agent asks again and files a second plan — a second aircraft.
+
+NARRATION
+So it asks again, and files a second plan. That is not recovery. That is a second aircraft, a second set of commitments, stacked on a first one the world may already have started to believe.
+
+
+BEAT 71  ai-crowd
+Cinema clock: 0:18
+
+ON SCREEN
+Every other flight asks at once. The shared turbulence service is where this shipment loses the window, while the links still look fine.
+
+BEAT
+Every other flight asks at once. The shared turbulence service is where this shipment loses the window.
+
+NARRATION
+Every other flight asks at the same time. The shared turbulence service is where this shipment loses the window — while the links still look fine. The herd is the failure mode.
+
+
+BEAT 72  ai-trace
+Cinema clock: 0:18
+
+ON SCREEN
+The operation blames the routing model. The trace stops at the weather provider, and the retry takes that same feed.
+
+BEAT
+The operation blames the routing model. The trace stops at the weather provider; the retry takes that same feed.
+
+NARRATION
+The operation wants to blame the routing model. The trace stops at the weather provider. And the retry takes that same feed. If you cannot see the boundary, you will keep asking the same late answer.
+
+
+BEAT 73  ai-fresh
+Cinema clock: 0:18
+
+ON SCREEN
+The route is filed only when a fresh turbulence field has returned inside the decision window.
+
+BEAT
+The route is filed only when a fresh turbulence field has returned inside the decision window.
+
+NARRATION
+So the rule gets sharper. File only when a fresh turbulence field has returned inside the decision window. Live evidence, or wait.
+
+
+BEAT 74  ai-complete
+Cinema clock: 0:18
+
+ON SCREEN
+A partial field does not clear the flight. The tool runs only on a complete answer.
+
+BEAT
+A partial field does not clear the flight. The tool runs only on a complete answer.
+
+NARRATION
+A partial field does not clear the flight. Completeness is not a nicety. The tool runs only when the answer is whole.
+
+
+BEAT 75  ai-once
+Cinema clock: 0:18
+
+ON SCREEN
+Asking again files the same plan once.
+
+BEAT
+Asking again files the same plan once.
+
+NARRATION
+Asking again files the same plan once. Retry is not a second opinion. It is idempotence with a promise attached.
+
+
+BEAT 76  ai-isolate
+Cinema clock: 0:18
+
+ON SCREEN
+This shipment has its own path to the forecast, so the fleet's questions do not bury it.
+
+BEAT
+This shipment has its own path to the forecast, so the fleet's questions do not bury it.
+
+NARRATION
+This shipment needs its own path to the forecast. Otherwise the fleet's questions bury the critical call in the same queue that created the herd.
+
+
+BEAT 77  ai-measure
+Cinema clock: 0:18
+
+ON SCREEN
+The carrier measures up to the weather boundary and keeps a second product: delay, a different altitude, a different route.
+
+BEAT
+The carrier measures up to the weather boundary and keeps a second product: delay, altitude, or route.
+
+NARRATION
+Measure out to the weather boundary — the system you do not own — and keep a second product ready: delay, a different altitude, a different route. The path is only as good as what you can still do when the answer is late.
+
+
+BEAT 78  ai-enroute
+Cinema clock: 0:18
+
+ON SCREEN
+En route, aircraft sensors and ride reports come back, and the next sector can change.
+
+BEAT
+En route, aircraft sensors and ride reports come back, and the next sector can change.
+
+NARRATION
+Once airborne, the loop does not stop. Sensors and ride reports come back. The next sector can still change. Perception has to stay live after the file.
+
+
+BEAT 79  ai-fabric
+Cinema clock: 0:24
+
+ON SCREEN
+The agent may commit only on evidence that is still live, only once, inside the cutoff, with the critical call isolated from the herd, and with the path measured out to the system it does not own.
+
+BEAT
+The commit rule, still on the traffic diagram: live evidence, once, inside the cutoff, isolated from the herd, measured out to the system it does not own.
+
+NARRATION
+I'm not going to build a framework out of the sentence. Live evidence, once, inside the cutoff, off the herd, measured out to the hand it doesn't own. Miss any of those and it does not get to improvise. It waits, or it does not depart. The next three captions stay on this diagram: perceive, model, meaning.
+
+
+BEAT 80  auto-perceive
 Cinema clock: 0:17
 
 ON SCREEN
 It has to perceive. Not a dashboard somebody opens — perception, the way the body has perception.
 
 BEAT
-Perception, the way the body has perception. Not a dashboard somebody opens.
+Still on the traffic diagram after the commit rule. Perception, the way the body has perception — not a dashboard somebody opens.
 
 NARRATION
 It has to be in contact the way the body was in contact. Continuous, already there. A dashboard someone opens after the cutoff is a memorial, not perception.
 
 
-BEAT 67  auto-model
+BEAT 81  auto-model
 Cinema clock: 0:18
 
 ON SCREEN
 It has to hold a model of the relationships. Not a list of assets. What affects what.
 
 BEAT
-A model of the relationships. What affects what. Not a list of assets.
+Still on that diagram. A model of the relationships — what affects what — not a list of assets.
 
 NARRATION
 Not a list of aircraft and belts. A map of what ruins what. The storm matters because a promise sits downstream of a gateway, not because weather is an interesting topic.
 
 
-BEAT 68  auto-semantics
+BEAT 82  auto-semantics
 Cinema clock: 0:19
 
 ON SCREEN
 The model has to carry meaning: what is committed, what is allowed, what has room left.
 
 BEAT
-The model carries meaning: what is committed, what is allowed, what has room left.
+Still on that diagram. Meaning: committed, allowed, room left. The enterprise map returns on the next click.
 
 NARRATION
 And the map has to carry the difference between a fact and a promise. What was committed. What is allowed. Where there is still room. Fluency without that is a confident description.
 
 
-BEAT 69  auto-federate
+========================================================================
+MOVEMENT 6  What autonomy requires
+========================================================================
+
+Return to the enterprise map. The model is federated; it asks the parts that know. Reasoning becomes network traffic the moment it has to leave the model. It has to act, and it has to learn whether the action worked from the system itself. People are not removed. They move up the stack.
+
+------------------------------------------------------------------------
+CHAPTER 10-understand  Understanding
+Once the hold frame is up: Return to the same enterprise, the landing, once the nouns are air, hub, and belt. Hold on the parts that actually know. Reasoning is the next click.
+------------------------------------------------------------------------
+
+BEAT 83  auto-federate
 Cinema clock: 0:21
 
 ON SCREEN
@@ -1023,7 +1200,7 @@ NARRATION
 Air knows aircraft. The hub knows the belt. No one should hold a globe of all of it in one place. A globe assembled in a room is the air behind the aircraft, already out of date.
 
 
-BEAT 70  auto-federate-hold
+BEAT 84  auto-federate-hold
 Cinema clock: 0:20
 
 ON SCREEN
@@ -1041,7 +1218,7 @@ CHAPTER 11-agents  Agents
 Once the hold frame is up: Reasoning has to cross the network. Traffic, relationships, the act, then the path answers. Hold on the humans line. The enterprise running is the next film.
 ------------------------------------------------------------------------
 
-BEAT 71  auto-reasoning
+BEAT 85  auto-reasoning
 Cinema clock: 0:16
 
 ON SCREEN
@@ -1054,7 +1231,7 @@ NARRATION
 Now, and only now, put something on it that can reason. It is a specialist. A shooter. Excellent, and useless if the edges are dead.
 
 
-BEAT 72  auto-traffic
+BEAT 86  auto-traffic
 Cinema clock: 0:21
 
 ON SCREEN
@@ -1067,7 +1244,7 @@ NARRATION
 The instant it needs a fact it doesn't hold, the thought stops being a thought. It becomes traffic. A call, a hop, a route chosen while it is already in flight. The network is inside the reasoning.
 
 
-BEAT 73  auto-relationships
+BEAT 87  auto-relationships
 Cinema clock: 0:20
 
 ON SCREEN
@@ -1080,7 +1257,7 @@ NARRATION
 Don't file these under APIs. Each one is a relationship. A tool, a task, a retrieval, a measurement. Any of them can be late, stale, or shared with every other flight that asked the same question.
 
 
-BEAT 74  auto-act
+BEAT 88  auto-act
 Cinema clock: 0:16
 
 ON SCREEN
@@ -1093,7 +1270,7 @@ NARRATION
 If nothing in the world changes, it didn't operate. A route, a hold, a departure that does not happen. Reading the enterprise beautifully is still just reading.
 
 
-BEAT 75  auto-verify
+BEAT 89  auto-verify
 Cinema clock: 0:24
 
 ON SCREEN
@@ -1106,7 +1283,7 @@ NARRATION
 Then it has to be told, by the cargo, by the belt, by the system it doesn't own, whether the action happened. Not by its own expectation. Still true, and back inside the window. That is half the loop. It is not the enterprise.
 
 
-BEAT 76  network-centric
+BEAT 90  network-centric
 Cinema clock: 0:22
 
 ON SCREEN
@@ -1119,7 +1296,7 @@ NARRATION
 One correction, once. The network is not the whole thing. It is the place the relationships can be seen. If you can't see them, you can't tell a live commitment from a story about one.
 
 
-BEAT 77  humans
+BEAT 91  humans
 Cinema clock: 0:20
 
 ON SCREEN
@@ -1143,7 +1320,7 @@ CHAPTER 13-model  The model
 Once the hold frame is up: The enterprise running while people sleep, the six scales, then the title's second meaning. Hold there.
 ------------------------------------------------------------------------
 
-BEAT 78  autonomous-enterprise
+BEAT 92  autonomous-enterprise
 Cinema clock: 0:18
 
 ON SCREEN
@@ -1156,7 +1333,7 @@ NARRATION
 Same organism, same promises, at the hour the floor is empty. Not a new architecture. The loop you watched in the shot, closed often enough that a person can sleep.
 
 
-BEAT 79  scales
+BEAT 93  scales
 Cinema clock: 0:18
 
 ON SCREEN
@@ -1169,7 +1346,7 @@ NARRATION
 Count them back if you want. A neuron. A brain. A body. A player. A team. This enterprise. I have not swapped the claim once since the web came up.
 
 
-BEAT 80  the-model
+BEAT 94  the-model
 Cinema clock: 0:21
 
 ON SCREEN
@@ -1187,7 +1364,7 @@ CHAPTER 14-return  Return
 Once the hold frame is up: People are still in the picture. Then the same photograph and the same sentence, now an operating requirement. Silence, then click.
 ------------------------------------------------------------------------
 
-BEAT 81  humans-remain
+BEAT 95  humans-remain
 Cinema clock: 0:22
 
 ON SCREEN
@@ -1200,7 +1377,7 @@ NARRATION
 When the risk crosses the limit, a person delays, diverts, or keeps it on the ground. When the air has never been flown, a person owns it. Take those away and you don't have autonomy. You have a bet.
 
 
-BEAT 82  gage-returns
+BEAT 96  gage-returns
 Cinema clock: 0:21
 
 ON SCREEN
@@ -1218,7 +1395,7 @@ CHAPTER 14b-recap  Recap
 Once the hold frame is up: Three held frames. The organism, the wide fabric under perceive-traverse-verify, the wide fabric under the model. The close is the next click.
 ------------------------------------------------------------------------
 
-BEAT 83  recap-architecture
+BEAT 97  recap-architecture
 Cinema clock: 0:20
 
 ON SCREEN
@@ -1231,7 +1408,7 @@ NARRATION
 Three, and I'm done. First. You don't install the architecture. Reasoning has to go inside the organism that is already there. A chart beside it will not carry a promise.
 
 
-BEAT 84  recap-operate
+BEAT 98  recap-operate
 Cinema clock: 0:18
 
 ON SCREEN
@@ -1244,7 +1421,7 @@ NARRATION
 Second. Perceive, traverse, verify, across the live network. Or it can give a very good talk about the enterprise, and still not be allowed to touch it.
 
 
-BEAT 85  recap-model
+BEAT 99  recap-model
 Cinema clock: 0:23
 
 ON SCREEN
@@ -1262,7 +1439,7 @@ CHAPTER 15-close  Close
 Once the hold frame is up: The last line, and nothing else. Thank-you and the fade to black stay in cinema; they are not this clip.
 ------------------------------------------------------------------------
 
-BEAT 86  close
+BEAT 100  close
 Cinema clock: 0:16
 
 ON SCREEN
@@ -1275,7 +1452,7 @@ NARRATION
 I'll leave it on the line.
 
 
-BEAT 87  end
+BEAT 101  end
 Cinema clock: 0:12
 
 ON SCREEN
@@ -1286,5 +1463,3 @@ Thank you, then the stage falls to black. Cinema only. Not a slide.
 
 NARRATION
 Thank you.
-
-

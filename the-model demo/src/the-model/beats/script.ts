@@ -26,6 +26,7 @@ import {
   B_BRAIN,
   B_NEURAL,
   B_SENSES,
+  B_LOOP,
   H_LANGUAGE,
   H_PEOPLE,
   H_ECONOMY,
@@ -34,7 +35,6 @@ import {
   C_REVEAL,
   C_PERCEIVE,
   C_MOTOR,
-  C_LOOP,
   T_REVEAL,
   T_LINKS,
   T_MIND,
@@ -631,7 +631,7 @@ export const BEATS: Beat[] = [
     2,
     M2,
     B_NEURAL,
-    B_SENSES,
+    H_LANGUAGE,
     20000,
     world({
       shot: "soma",
@@ -642,24 +642,6 @@ export const BEATS: Beat[] = [
       somaWeighted: true,
       ...EARTH,
       ...CAM_NEURAL,
-    })
-  ),
-
-  beat(
-    "senses",
-    2,
-    M2,
-    B_SENSES,
-    H_LANGUAGE,
-    20000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      somaEra: 8,
-      somaSpikes: true,
-      somaSense: true,
-      ...EARTH,
-      ...CAM_HEAD,
     })
   ),
 
@@ -748,7 +730,7 @@ export const BEATS: Beat[] = [
     2,
     M2,
     H_INTERNET,
-    C_REVEAL,
+    B_SENSES,
     18000,
     world({
       shot: "soma",
@@ -760,6 +742,24 @@ export const BEATS: Beat[] = [
       somaEarth: "mycelium",
       somaMind: true,
       ...CAM_NET,
+    })
+  ),
+
+  beat(
+    "senses",
+    2,
+    M2,
+    B_SENSES,
+    C_REVEAL,
+    20000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      somaEra: 8,
+      somaSpikes: true,
+      somaSense: true,
+      ...EARTH,
+      ...CAM_HEAD,
     })
   ),
 
@@ -805,7 +805,7 @@ export const BEATS: Beat[] = [
     2,
     M2,
     C_MOTOR,
-    C_LOOP,
+    B_LOOP,
     19000,
     world({
       shot: "soma",
@@ -822,7 +822,7 @@ export const BEATS: Beat[] = [
     "shot-loop",
     2,
     M2,
-    C_LOOP,
+    B_LOOP,
     T_REVEAL,
     22000,
     world({

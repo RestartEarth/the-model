@@ -22,7 +22,7 @@ import { BEATS } from "./script"
  * The earlier ten-film sketch is the shape of this list. The current script
  * splits a few of those films where a silence was added:
  *
- * - The cortex sentence (`neural`) is its own hold, then senses, then the shot.
+ * - The cortex sentence (`neural`) is its own hold. Perception opens the shot.
  * - Team emergence is the hold. The pullback opens Gage.
  * - The Gage photograph is a silence. Thought descending to the wire is the
  *   next click, and the packet follows that, not a tail on the photograph.
@@ -72,25 +72,18 @@ const CHAPTERS: PresentationSegment[] = [
     note: "One body, layer by layer: energy, structure, blood, organs, lymph, nerves, the brain, then the cortex. Long hold on the relationships sentence.",
   },
   {
-    slug: "03-minds",
-    title: "Minds",
-    from: "senses",
-    to: "senses",
-    note: "Perception. Hold on the senses. Thought packets are the next click.",
-  },
-  {
     slug: "03b-minds",
     title: "Minds together",
     from: "language",
     to: "internet",
-    note: "Language, people, markets, then off the ground, then the network we built. The shot is the next click.",
+    note: "Language, people, markets, then off the ground, then the network we built. Perception is the next click, then the shot.",
   },
   {
     slug: "04-shot",
     title: "The shot",
-    from: "shot-reveal",
+    from: "senses",
     to: "shot-loop",
-    note: "Tight sync. One figure, one shot, correction still running after the ball leaves the hand. Hold on that loop.",
+    note: "Perception opens the chapter. Tight sync: one figure, one shot, then hold on Perceive. Model. Predict. Act.",
   },
   {
     slug: "05-team",
