@@ -671,6 +671,8 @@ function EarthPlantMark({
 }) {
   const h = plant.h * Math.min(1, growth)
   if (h < 2) return null
+  // On the food web those plants are the producer nodes, drawn as sprouts.
+  if (food && plant.food) return null
   if (plant.kind === "shrub") {
     const arms = [-0.62, -0.04, 0.58]
     return (
@@ -883,130 +885,121 @@ function nutrientPaths(food: boolean): EarthHypha[] {
   return [...hyphae, ...roots]
 }
 
-function lifeGlyph(kind: EarthLifeKind, ox: number, oy: number, s: number) {
-  const p = (x: number, y: number, r = 1.25) => ({
-    x: ox + x * s,
-    y: oy + y * s,
-    r: r * Math.sqrt(s),
-  })
-  if (kind === "hare") {
-    return {
-      pts: [
-        p(-3.2, -15.5, 1.15),
-        p(2.8, -15.2, 1.15),
-        p(0, -8.2, 1.55),
-        p(-7.5, -1.5, 1.35),
-        p(6.5, 1.5, 1.45),
-        p(13.5, -1, 1.2),
-        p(-5.5, 11, 1.15),
-        p(5, 12.5, 1.15),
-      ],
-      links: [
-        [0, 2],
-        [1, 2],
-        [2, 3],
-        [3, 4],
-        [4, 5],
-        [3, 6],
-        [4, 7],
-      ] as Array<[number, number]>,
-    }
+/** Compact silhouettes sitting on a food-web node. Big enough to name,
+ * small enough that the edges stay the picture. */
+function FoodSilhouette({
+  kind,
+  x,
+  y,
+  ink,
+  t,
+}: {
+  kind: EarthLifeKind | "person" | "plant"
+  x: number
+  y: number
+  ink: string
+  t: number
+}) {
+  const sw = 1.85
+  const line = {
+    fill: "none" as const,
+    stroke: ink,
+    strokeWidth: sw,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
   }
-  if (kind === "fish") {
-    return {
-      pts: [
-        p(-15, 0, 1.35),
-        p(-5, -2, 1.4),
-        p(1, -8, 1.2),
-        p(2, 7.5, 1.15),
-        p(6, 0, 1.5),
-        p(13, 0, 1.25),
-        p(19, -7, 1.15),
-        p(19, 7, 1.15),
-      ],
-      links: [
-        [0, 1],
-        [1, 2],
-        [1, 3],
-        [1, 4],
-        [2, 4],
-        [3, 4],
-        [4, 5],
-        [5, 6],
-        [5, 7],
-        [6, 7],
-      ] as Array<[number, number]>,
-    }
-  }
-  if (kind === "insect") {
-    return {
-      pts: [
-        p(0, -6.5, 1.2),
-        p(0, 0, 1.35),
-        p(0, 6.8, 1.25),
-        p(-7.5, -2.5, 1.0),
-        p(7.5, -2.5, 1.0),
-        p(-6, 5, 0.95),
-        p(6, 5, 0.95),
-      ],
-      links: [
-        [0, 1],
-        [1, 2],
-        [1, 3],
-        [1, 4],
-        [1, 5],
-        [1, 6],
-      ] as Array<[number, number]>,
-    }
-  }
-  if (kind === "bird") {
-    return {
-      pts: [
-        p(-13, -1, 1.15),
-        p(-7, -4, 1.5),
-        p(0, 1, 1.7),
-        p(-6, -12, 1.2),
-        p(-2, -20, 1.15),
-        p(8, -11, 1.2),
-        p(14, -18, 1.15),
-        p(11, 8, 1.15),
-      ],
-      links: [
-        [0, 1],
-        [1, 2],
-        [2, 3],
-        [3, 4],
-        [2, 5],
-        [5, 6],
-        [2, 7],
-      ] as Array<[number, number]>,
-    }
-  }
-  return {
-    pts: [
-      p(-16, 3, 1.2),
-      p(-9, -9, 1.1),
-      p(-3, -9, 1.1),
-      p(-7, -1, 1.5),
-      p(0, 1, 1.55),
-      p(12, 3, 1.5),
-      p(20, 0, 1.35),
-      p(26, -7, 1.4),
-      p(-3, 13, 1.15),
-      p(10, 14, 1.15),
-    ],
-    links: [
-      [0, 3],
-      [1, 3],
-      [2, 3],
-      [3, 4],
-      [4, 5],
-      [5, 6],
-      [6, 7],
-      [4, 8],
-      [5, 9],
-    ] as Array<[number, number]>,
-  }
+  return (
+    <g transform={`translate(${x} ${y}) scale(1.45)`} opacity={0.45 + 0.55 * t}>
+      {kind === "person" && (
+        <g>
+          <circle cx={0} cy={-22} r={4.4} fill={ink} />
+          <path {...line} d="M 0 -17.4 V -8" />
+          <path {...line} d="M -10 -14.5 L 0 -10.5 L 10 -14.5" />
+          <path {...line} d="M -6.2 1 L -2.4 -8 L 2.4 -8 L 6.2 1" />
+        </g>
+      )}
+      {kind === "hare" && (
+        <g>
+          <path {...line} d="M -3 -4 L -5.5 -18 M 2 -5 L 1.2 -19" />
+          <ellipse cx={3} cy={0} rx={10} ry={5.4} fill={ink} />
+          <circle cx={10} cy={-1.2} r={1.15} fill="#191D26" />
+          <path {...line} d="M -6 2 Q -13 6 -11 10" />
+        </g>
+      )}
+      {kind === "fox" && (
+        <g>
+          <path
+            d="M 8 0 C 2 -5 -8 -3 -12 1 C -18 3 -16 9 -8 7 C 0 10 8 6 12 2 L 16 -2 L 11 -1 Z"
+            fill={ink}
+          />
+          <path d="M 12 -1 L 16 -9 L 14 0 L 18 -7 Z" fill={ink} />
+          <path d="M -12 1 Q -20 -6 -16 -10 Q -10 -2 -8 2 Z" fill={ink} />
+          <circle cx={6} cy={0.2} r={1.05} fill="#191D26" />
+        </g>
+      )}
+      {kind === "bird" && (
+        <g>
+          <path
+            d="M -2 0 C -10 -1 -16 2 -18 5 C -8 3 -4 2 -2 1 C 2 4 8 3 14 0 C 8 -1 2 -1 -2 0 Z"
+            fill={ink}
+          />
+          <path
+            d="M -2 -1 C -8 -8 -14 -6 -16 -2 C -10 -4 -6 -3 -2 0 Z"
+            fill={ink}
+          />
+          <path
+            d="M -1 -1 C 6 -10 14 -8 16 -3 C 10 -5 4 -3 -1 0 Z"
+            fill={ink}
+          />
+          <circle cx={12.5} cy={-0.2} r={0.9} fill="#191D26" />
+        </g>
+      )}
+      {kind === "fish" && (
+        <g>
+          <path
+            d="M -8 0 C -2 -7 8 -5 12 0 C 8 5 -2 7 -8 0 Z"
+            fill={ink}
+          />
+          <path d="M -8 -1 L -16 -7 L -13 0 L -16 7 L -8 1 Z" fill={ink} />
+          <circle cx={7} cy={-0.6} r={1} fill="#191D26" />
+        </g>
+      )}
+      {kind === "insect" && (
+        <g>
+          <ellipse cx={0} cy={1} rx={3.4} ry={5.2} fill={ink} />
+          <circle cx={0} cy={-6.2} r={2.6} fill={ink} />
+          <path {...line} d="M -1 -8 L -4 -13 M 1 -8 L 4 -13" />
+          <ellipse
+            cx={-7}
+            cy={-1}
+            rx={6.5}
+            ry={3.2}
+            transform="rotate(-28 -7 -1)"
+            fill={ink}
+            opacity={0.85}
+          />
+          <ellipse
+            cx={7}
+            cy={-1}
+            rx={6.5}
+            ry={3.2}
+            transform="rotate(28 7 -1)"
+            fill={ink}
+            opacity={0.85}
+          />
+          <path {...line} d="M -1.5 4 L -7 9 M 1.5 4 L 7 9 M 0 5 L 0 10" />
+        </g>
+      )}
+      {kind === "plant" && (
+        <g>
+          <path {...line} d="M 0 4 V -6" />
+          <path d="M 0 -4 C -8 -6 -10 -14 -2 -12 C -4 -8 0 -6 0 -4 Z" fill={ink} />
+          <path d="M 0 -4 C 8 -6 10 -14 2 -12 C 4 -8 0 -6 0 -4 Z" fill={ink} />
+          <path d="M 0 -6 C -2 -14 2 -16 0 -18 C 2 -14 0 -10 0 -6 Z" fill={ink} />
+        </g>
+      )}
+    </g>
+  )
 }
 
 function LifeAsterism({
@@ -1018,32 +1011,11 @@ function LifeAsterism({
   ink: string
   t: number
 }) {
-  const { pts, links } = lifeGlyph(life.kind, life.x, life.y, life.scale ?? 1)
-  return (
-    <g opacity={0.32 + 0.68 * t}>
-      {links.map(([a, b], i) => {
-        const from = pts[a]
-        const to = pts[b]
-        if (!from || !to) return null
-        return (
-          <path
-            key={i}
-            d={`M ${from.x} ${from.y} L ${to.x} ${to.y}`}
-            fill="none"
-            stroke={ink}
-            strokeWidth={life.tier === "predator" ? 0.85 : 0.7}
-            opacity={0.5}
-          />
-        )
-      })}
-      {pts.map((s, i) => (
-        <circle key={i} cx={s.x} cy={s.y} r={s.r} fill={ink} opacity={0.82} />
-      ))}
-    </g>
-  )
+  return <FoodSilhouette kind={life.kind} x={life.x} y={life.y} ink={ink} t={t} />
 }
 
-function FoodSink({
+/** Person standing on a food-web node. Same size family as the animals. */
+function FoodPerson({
   x,
   y,
   ink,
@@ -1054,35 +1026,7 @@ function FoodSink({
   ink: string
   t: number
 }) {
-  const ring = [
-    { x, y, r: 2.15 },
-    { x: x - 5.2, y: y + 2.4, r: 1.2 },
-    { x: x + 5.4, y: y + 1.6, r: 1.2 },
-  ]
-  return (
-    <g opacity={0.28 + 0.42 * t}>
-      {ring.slice(1).map((s, i) => (
-        <path
-          key={i}
-          d={`M ${x} ${y} L ${s.x} ${s.y}`}
-          fill="none"
-          stroke={ink}
-          strokeWidth={0.7}
-          opacity={0.45}
-        />
-      ))}
-      {ring.map((s, i) => (
-        <circle
-          key={i}
-          cx={s.x}
-          cy={s.y}
-          r={s.r}
-          fill={ink}
-          opacity={i === 0 ? 0.72 : 0.55}
-        />
-      ))}
-    </g>
-  )
+  return <FoodSilhouette kind="person" x={x} y={y} ink={ink} t={t} />
 }
 
 function EarthSection({
@@ -1288,13 +1232,30 @@ function EarthSection({
               t={foodT}
             />
           ))}
-          <FoodSink
+          {[
+            [456, 774],
+            [488, 798],
+            [397, 680],
+            [428, 800],
+            [748, 780],
+            [1159, 736],
+          ].map(([x, y], i) => (
+            <FoodSilhouette
+              key={`producer-${i}`}
+              kind="plant"
+              x={x}
+              y={y}
+              ink={leaf}
+              t={foodT}
+            />
+          ))}
+          <FoodPerson
             x={EARTH_MOUTH.x}
             y={EARTH_MOUTH.y}
             ink={hunter}
             t={foodT}
           />
-          <FoodSink x={EARTH_GUT.x} y={EARTH_GUT.y} ink={leaf} t={foodT} />
+          <FoodPerson x={EARTH_GUT.x} y={EARTH_GUT.y} ink={leaf} t={foodT} />
           {EARTH_FOOD_LINKS.map((l, i) => {
             if (reduced) {
               if (!l.toBody) return null

@@ -136,6 +136,129 @@ const PATH_ALT = [
 ]
 const PATH_DOWN = LAYERS.map((L) => ({ x: 800, y: L.y }))
 
+/**
+ * Phase 4. The thought falls the stack, then leaves to the right as a short
+ * train of packets on the wire. Times are wall-clock seconds, on their own
+ * clock, so the drop and the pulse stay crisp when the beat repeats.
+ */
+const DROP_S = 1.7
+const TRAVEL_S = 1.15
+const PACKET_COUNT = 6
+const STAGGER_S = 0.12
+const PULSE_S = TRAVEL_S + STAGGER_S * (PACKET_COUNT - 1)
+const GAP_S = 0.28
+const CYCLE_S = DROP_S + PULSE_S + GAP_S
+const LAUNCH_X = 800
+const PULSE_END_X = 1348
+
+function clamp01(n: number) {
+  return Math.max(0, Math.min(1, n))
+}
+
+function useSeconds(run: boolean) {
+  const [t, setT] = useState(0)
+  useEffect(() => {
+    if (!run) return
+    let raf = 0
+    let last = performance.now()
+    const step = (now: number) => {
+      const dt = (now - last) / 1000
+      last = now
+      setT((v) => v + dt)
+      raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
+  }, [run])
+  return t
+}
+
+function WirePulse({ reduced }: { reduced: boolean }) {
+  const wireY = LAYERS[LAYERS.length - 1]!.y
+  const elapsed = useSeconds(!reduced)
+  const seconds = reduced ? DROP_S + TRAVEL_S * 0.42 : elapsed
+  const cycle = reduced ? seconds : seconds % CYCLE_S
+  const dropping = cycle < DROP_S
+  const pulsing = cycle >= DROP_S && cycle < DROP_S + PULSE_S
+  const pulseAge = pulsing ? cycle - DROP_S : 0
+
+  const dropU = clamp01(cycle / DROP_S)
+  const thought = dropping
+    ? {
+        ...along(PATH_DOWN, Math.min(0.9999, dropU)),
+        opacity: dropU < 0.08 ? dropU / 0.08 : 1,
+      }
+    : null
+
+  const packets: { x: number; opacity: number; r: number }[] = []
+  if (pulsing) {
+    for (let i = 0; i < PACKET_COUNT; i++) {
+      const local = (pulseAge - i * STAGGER_S) / TRAVEL_S
+      if (local <= 0 || local > 1) continue
+      const fadeIn = i === 0 ? 1 : clamp01(local / 0.05)
+      const fadeOut = local > 0.88 ? clamp01((1 - local) / 0.12) : 1
+      const opacity = fadeIn * fadeOut
+      if (opacity < 0.03) continue
+      packets.push({
+        x: lerp(LAUNCH_X, PULSE_END_X, local),
+        opacity,
+        r: i === 0 ? 6.4 : 5.2,
+      })
+    }
+  }
+
+  const head = packets[0]
+  const tail = packets[packets.length - 1]
+  const burst = pulsing ? clamp01(1 - pulseAge / 0.28) : 0
+
+  return (
+    <g>
+      {burst > 0 && (
+        <circle
+          cx={LAUNCH_X}
+          cy={wireY}
+          r={lerp(8, 26, 1 - burst)}
+          fill="none"
+          stroke={color.somaHormone}
+          strokeWidth={1.15}
+          opacity={0.4 * burst}
+        />
+      )}
+      {head && tail && head.x - tail.x > 8 && (
+        <line
+          x1={tail.x}
+          y1={wireY}
+          x2={head.x}
+          y2={wireY}
+          stroke={color.somaHormone}
+          strokeWidth={7}
+          strokeLinecap="round"
+          opacity={0.16 * Math.max(head.opacity, tail.opacity)}
+        />
+      )}
+      {packets.map((p, i) => (
+        <Star
+          key={i}
+          x={p.x}
+          y={wireY}
+          r={p.r}
+          ink={color.somaHormone}
+          opacity={p.opacity}
+        />
+      ))}
+      {thought && (
+        <Star
+          x={thought.x}
+          y={thought.y}
+          r={7}
+          ink={color.somaHormone}
+          opacity={thought.opacity}
+        />
+      )}
+    </g>
+  )
+}
+
 export function PacketLife({ world }: { world: WorldState }) {
   const phase = world.packetLife
   const reduced =
@@ -229,7 +352,11 @@ export function PacketLife({ world }: { world: WorldState }) {
         </>
       )}
 
-      <Star x={parcel.x} y={parcel.y} r={7} ink={color.somaHormone} />
+      {showLayers ? (
+        <WirePulse reduced={reduced} />
+      ) : (
+        <Star x={parcel.x} y={parcel.y} r={7} ink={color.somaHormone} />
+      )}
       {phase === 1 && (
         <Label x={parcel.x} y={parcel.y - 28} size={16} gold>
           PARCEL

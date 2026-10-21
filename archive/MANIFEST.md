@@ -115,6 +115,25 @@ rather than the old acts. Nothing was lost in those cases.
 | `appendix-library` | archived | `beats/appendix.ts` |
 | `soma-foodweb` | in the show | renamed `foodweb` |
 | `appendix-hold` | archived | `beats/appendix.ts` |
+## ONUG cut, 19 October 2026
+
+Taken out of the running keynote. The show that remains is cosmos, water, the
+food web, one body through the cortex, the shot, a shorter team, Gage, the
+packet hinge, the logistics organism, the aircraft decision, the requirements
+ladder, and three recap frames. These files use the current `WorldState`.
+
+| Beat | Where |
+|---|---|
+| `cosmos-relations`, `atmosphere`, `mycelium`, `photosynthesis` | `beats/onug-nature-extras.ts` |
+| `body-energy`, `body-structure`, `body-circulation`, `body-viscera`, `body-lymph`, `body-nerves`, `body-brain` | restored to the show, in that order, before the cortex |
+| `language`, `people`, `markets`, `satellites`, `internet` | restored to the show, after the senses and before the shot |
+| `body-loop`, `body-intelligence` | `beats/onug-world-tour.ts` |
+| `team-mind`, `team-mind-decide`, `team-signals`, `team-model` | restored to the show, between the links and the celebration |
+| `team-scale`, `gage-setup` | `beats/onug-team-climb.ts` |
+| `auto-storm-path`, `auto-storm-act`, `auto-storm-live` | `beats/onug-storm-replay.ts` |
+| `loop`, `loop-observe`, `loop-understand`, `loop-decide`, `loop-act`, `loop-verify`, `loop-runs` | `beats/onug-loop-chapter.ts` |
+| `ai-file` through `ai-fabric` | `beats/onug-route-catalogue.ts` |
+
 ## Not in this table
 
 Eight `txn-*` beats and six AI-era beats existed only in the intermediate

@@ -79,7 +79,7 @@ export interface WorldState {
   somaSense: boolean
   somaLoop: boolean
   somaDissolve: boolean
-  /** Max revealed world layer. 0 none · 1 cosmos · 2 water · 3 mycelium · 4 foodweb · 5 language/art/music/invention · 6 people · 7 economy · 8 internet · 9 satellites + ships. Once shown, a layer stays. */
+  /** Max revealed world layer. 0 none · 1 cosmos · 2 water · 3 mycelium · 4 foodweb · 5 language/art/music/invention · 6 people · 7 economy · 8 satellites + ships · 9 internet. Once shown, a layer stays. */
   somaCompanion: SomaCompanion
   /** One-shot Indra's-Net lattice flare over the cosmic web — extra chords + node flares, fades back to the plain ring. */
   somaIndra: boolean
@@ -169,6 +169,19 @@ export interface WorldState {
   verified: boolean
   /** Final pullback: neuron → brain → body → player → team → enterprise. */
   scaleTour: boolean
+  /**
+   * The aircraft decision, on the logistics graph.
+   * 0 off · 1 empty seat, cargo limit · 2 forecast says smooth ·
+   * 3 the aircraft ahead reports · 4 forecast and report disagree ·
+   * 5 the herd takes one altitude · 6 the divert stops at the boundary ·
+   * 7 one path, once · 8 the commit rule on that path ·
+   * 9 perceive, traverse, verify · 10 the link is dark, the aircraft still flies.
+   */
+  air: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  /** The hub the dispatcher can see stays healthy. The promise is already amber. */
+  promiseRisk: boolean
+  /** The wide AI fabric: traffic across the field. Brands stay off this frame. */
+  networkWide: boolean
 }
 
 export interface Beat {

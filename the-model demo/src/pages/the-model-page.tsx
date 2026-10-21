@@ -1,19 +1,36 @@
 import "@/the-model/stage.css"
 
+import { useEffect, useRef } from "react"
 import { UniLogo } from "@/components/uni-logo"
 import { cn } from "@/lib/utils"
-import { BEATS } from "@/the-model/beats/script"
+import {
+  aiChapterAltitude,
+  airChapterStage,
+  BEATS,
+} from "@/the-model/beats/script"
 import {
   GAGE_ATTR,
   GAGE_RETURN_ATTR,
   GAGE_RETURN_KICKER,
   TITLE,
 } from "@/the-model/content/copy"
+import {
+  FLOW_COLOR,
+  FLOW_LABEL,
+  FLOW_ORDER,
+} from "@/the-model/graph/aiNetwork"
 import { stage } from "@/the-model/stage/engine"
 import { usePrefersReducedMotion } from "@/the-model/stage/hooks"
-import { useStage, useStageInput } from "@/the-model/stage/input"
+import {
+  presentationLocked,
+  useStage,
+  useStageInput,
+} from "@/the-model/stage/input"
 import type { WorldState } from "@/the-model/stage/types"
+import { AiNetwork } from "@/the-model/world/AiNetwork"
 import { Fabric } from "@/the-model/world/Fabric"
+import { RouteSky } from "@/the-model/world/RouteSky"
+import { Starfield } from "@/the-model/world/Starfield"
 
 /**
  * The three top-nav destinations, each a jump to the beat that opens that arc
@@ -58,7 +75,17 @@ const THE_MODEL_SURFACE =
 // backdrop (see the `THE_MODEL_SURFACE` comment above for why blur is out).
 const FLOATING_TEXT_SHADOW = "drop-shadow-[0_1px_10px_rgba(10,12,18,0.85)]"
 
-function TheModelTitleBar({ beatIndex }: { beatIndex: number }) {
+function TheModelTitleBar({
+  beatIndex,
+  ai,
+  onAi,
+  onSection,
+}: {
+  beatIndex: number
+  ai: boolean
+  onAi: () => void
+  onSection: (index: number) => void
+}) {
   // Last section whose start index is at or before the current beat.
   let activeSection = 0
   for (let i = 0; i < SECTION_START_INDEX.length; i++) {
@@ -89,13 +116,21 @@ function TheModelTitleBar({ beatIndex }: { beatIndex: number }) {
           <button
             key={section.label}
             type="button"
-            onClick={() => stage.go(SECTION_START_INDEX[i])}
+            onClick={() => onSection(i)}
             aria-current={activeSection === i ? "page" : undefined}
             className="rounded-full px-4 py-1.5 text-sm font-medium text-white/70 transition-colors hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white"
           >
             {section.label}
           </button>
         ))}
+        <button
+          type="button"
+          onClick={onAi}
+          aria-current={ai ? "page" : undefined}
+          className="rounded-full px-4 py-1.5 text-sm font-medium text-white/70 transition-colors hover:text-white aria-[current=page]:bg-white/15 aria-[current=page]:text-white"
+        >
+          AI network
+        </button>
       </nav>
     </>
   )
@@ -198,26 +233,138 @@ function TitleFlash() {
  * chrome (matching `/intelligence`'s title-bar and detail-panel patterns)
  * instead of the bare debug overlay this started as.
  */
+function fabricRequested() {
+  if (typeof window === "undefined") return false
+  return new URLSearchParams(window.location.search).get("fabric") === "ai"
+}
+
+const AI_START = BEATS.findIndex((b) => b.id === "ai-file")
+const REROUTE = BEATS.findIndex((b) => b.id === "ent-reroute")
+
+/**
+ * Key 8 / AI network / `?fabric=ai` jumps into the technical chapter.
+ * Left from ai-file then returns to the logistics beat that was interrupted.
+ * The audience door is the run order: aircraft, then the traffic diagram
+ * through perceive, model, and meaning, then the enterprise map at federation.
+ */
+
+/**
+ * Readings of ai-fabric's picture. Frame 14, labels on, their own bottom
+ * caption. Later `networkWide` beats stay the quiet wide shot.
+ */
+const FABRIC_READ = new Set(["auto-perceive", "auto-model", "auto-semantics"])
+let techReturn: number | null = null
+
+function inTechChapter(id: string) {
+  return aiChapterAltitude(id) > 0
+}
+
+function enterTechChapter() {
+  const index = stage.get().index
+  const id = BEATS[index]?.id ?? ""
+  if (!inTechChapter(id) && airChapterStage(id) === 0) techReturn = index
+  stage.go(AI_START)
+}
+
+function leaveTechShortcut() {
+  const back = techReturn ?? REROUTE
+  techReturn = null
+  stage.go(back)
+}
+
 export function TheModelPage() {
   const snap = useStage()
   useStageInput()
   const reducedMotion = usePrefersReducedMotion()
-
   const { beat } = snap
   const recording = Boolean(snap.segment)
+  const airStage = airChapterStage(beat.id)
+  const aiAltitude = aiChapterAltitude(beat.id)
+  const fabricRead = FABRIC_READ.has(beat.id)
+  const showWide = beat.world.networkWide
+  const showChapter = airStage > 0 || aiAltitude > 0 || fabricRead || showWide
+  const wasTech = useRef(false)
+
+  useEffect(() => {
+    if (wasTech.current && aiAltitude === 0) techReturn = null
+    wasTech.current = aiAltitude > 0
+  }, [aiAltitude])
+
+  useEffect(() => {
+    if (!fabricRequested()) return
+    if (!inTechChapter(stage.get().beat.id)) enterTechChapter()
+  }, [])
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      if (e.key === "8" && !presentationLocked()) {
+        e.preventDefault()
+        e.stopPropagation()
+        if (inTechChapter(stage.get().beat.id)) leaveTechShortcut()
+        else enterTechChapter()
+        return
+      }
+      const prev =
+        e.key === "ArrowLeft" ||
+        e.key === "PageUp" ||
+        e.key === "Backspace" ||
+        e.key === "[" ||
+        e.key === "ArrowUp"
+      if (!prev || techReturn == null) return
+      if (stage.get().beat.id !== "ai-file") return
+      e.preventDefault()
+      e.stopPropagation()
+      leaveTechShortcut()
+    }
+    window.addEventListener("keydown", onKey, true)
+    return () => window.removeEventListener("keydown", onKey, true)
+  }, [])
 
   return (
     <div className="the-model-stage-frame">
       <main
         className="the-model-stage"
+        data-beat={beat.id}
         data-segment={snap.segment ?? undefined}
         data-segment-phase={recording ? (snap.segmentHold ? "hold" : "playing") : undefined}
       >
-        <Fabric world={beat.world} />
+        {airStage > 0 ? (
+          <>
+            <Starfield />
+            <RouteSky stage={airStage} reduced={reducedMotion} />
+            <div className="stage-vignette" />
+          </>
+        ) : aiAltitude > 0 || fabricRead ? (
+          <>
+            <Starfield />
+            <AiNetwork
+              reduced={reducedMotion}
+              beat={fabricRead ? 14 : aiAltitude}
+            />
+            <div className="stage-vignette" />
+          </>
+        ) : showWide ? (
+          <>
+            <Starfield />
+            <AiNetwork reduced={reducedMotion} beat={14} quietBrands />
+            <div className="stage-vignette" />
+          </>
+        ) : (
+          <Fabric world={beat.world} />
+        )}
 
         {!recording && (
           <div className="pointer-events-none absolute inset-0 z-40">
-            <TheModelTitleBar beatIndex={snap.index} />
+            <TheModelTitleBar
+              beatIndex={snap.index}
+              ai={showChapter}
+              onAi={enterTechChapter}
+              onSection={(i) => {
+                techReturn = null
+                stage.go(SECTION_START_INDEX[i])
+              }}
+            />
           </div>
         )}
 
@@ -227,7 +374,32 @@ export function TheModelPage() {
           </p>
         )}
 
-        {beat.world.showQuote ? (
+        {airStage > 0 || aiAltitude > 0 || fabricRead ? (
+          <div className="pointer-events-none absolute right-4 bottom-3 left-4 z-30 flex flex-col gap-1.5">
+            <p className="max-w-4xl text-[18px] leading-snug text-[#F1F5FE]">
+              {beat.line}
+            </p>
+            {beat.id === "ai-fabric" && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                {FLOW_ORDER.map((kind) => (
+                  <span
+                    key={kind}
+                    className="flex items-center gap-1.5 text-[11px] tracking-[0.08em] text-[#8B97A8] uppercase"
+                  >
+                    <span
+                      className="inline-block size-1.5 rounded-full"
+                      style={{
+                        background: FLOW_COLOR[kind],
+                        boxShadow: `0 0 8px ${FLOW_COLOR[kind]}`,
+                      }}
+                    />
+                    {FLOW_LABEL[kind]}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : beat.world.showQuote ? (
           <div className="pointer-events-none absolute inset-0 z-30">
             <TheModelCenterQuote line={beat.line} world={beat.world} />
           </div>

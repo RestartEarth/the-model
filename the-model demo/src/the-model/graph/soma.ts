@@ -7024,18 +7024,18 @@ export const EARTH_LIFE: EarthLife[] = [
     y: 724,
     scale: 0.72,
   },
-  { id: "hare", kind: "hare", tier: "primary", x: 520, y: 688, scale: 1.05 },
+  { id: "hare", kind: "hare", tier: "primary", x: 520, y: 688, scale: 0.68 },
   {
     id: "insect-c",
     kind: "insect",
     tier: "primary",
     x: 736,
     y: 776,
-    scale: 0.62,
+    scale: 0.64,
   },
-  { id: "fish", kind: "fish", tier: "primary", x: 1224, y: 786, scale: 1.08 },
-  { id: "fox", kind: "fox", tier: "predator", x: 500, y: 575, scale: 1.28 },
-  { id: "bird", kind: "bird", tier: "predator", x: 1008, y: 498, scale: 1.22 },
+  { id: "fish", kind: "fish", tier: "primary", x: 1224, y: 786, scale: 0.74 },
+  { id: "fox", kind: "fox", tier: "predator", x: 500, y: 575, scale: 0.62 },
+  { id: "bird", kind: "bird", tier: "predator", x: 1008, y: 498, scale: 0.66 },
 ]
 
 export interface EarthFoodLink {

@@ -23,6 +23,16 @@ export function presentationLocked(): boolean {
 const LOCKED_NEXT = ["ArrowRight", "PageDown", "ArrowDown", " ", "Enter"]
 const LOCKED_PREV = ["ArrowLeft", "PageUp", "ArrowUp"]
 
+/**
+ * Reserved for a view that must own the keys without moving the beat index.
+ * The route chapter is in the run order, so it does not use this.
+ */
+let stageNavBlocked = false
+
+export function setStageNavBlocked(blocked: boolean) {
+  stageNavBlocked = blocked
+}
+
 export function useStageInput() {
   const snapping = useRef(false)
 
@@ -36,6 +46,8 @@ export function useStageInput() {
         (target.tagName === "INPUT" || target.tagName === "TEXTAREA")
       )
         return
+
+      if (stageNavBlocked) return
 
       if (presentationLocked()) {
         if (LOCKED_NEXT.includes(e.key)) {
@@ -123,7 +135,10 @@ export function useStageInput() {
       e.stopPropagation()
     }
 
-    const onClick = () => {
+    const onClick = (e: MouseEvent) => {
+      if (stageNavBlocked) return
+      const target = e.target as HTMLElement | null
+      if (target?.closest("button, a, nav")) return
       if (presentationLocked()) return
       // A chapter recording auto-advances on its own clock. A click would
       // skip a beat and land in the file.

@@ -61,6 +61,13 @@ export const color = {
    * Prelude soma — same navy field, different framework.
    * Warm gold nerves vs UNI teal fabric. The computer still lives in the edges.
    */
+  /**
+   * Knicks, lifted enough to read on the navy field. Blue is the jersey,
+   * orange is the number and the trim. Neither replaces the gold anatomy.
+   */
+  knicksBlue: "#2F6FED",
+  knicksBlueFill: "rgba(47, 111, 237, 0.22)",
+  knicksOrange: "#F58426",
   somaNerve: "#E8B86A",
   somaNerveFill: "rgba(232, 184, 106, 0.16)",
   /** Nerve sparks — electric cyan-white, thin, not gold. */

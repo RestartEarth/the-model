@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react"
 import { color, type } from "../design/tokens"
 import {
   COURT_BACKBOARD,
-  COURT_DEFENDER,
   COURT_FLOOR_LEFT,
   COURT_FLOOR_RIGHT,
   COURT_FLOOR_Y,
@@ -15,14 +14,13 @@ import {
   SHOT_SYSTEMS,
   COURT_POLE,
   COURT_RIM_RX,
-  COURT_SHOT_ARC,
-  MINI_ARMS_UP,
   OG_BRANCHES,
+  OG_PASS,
   OG_MIND,
   OG_SENSES,
   OG_SYSTEMS,
-  TEAM_FLOOR_Y,
   TEAM_HOOP,
+  courtLines,
   TEAM_LINKS,
   TEAM_POLE,
   TEAM_RIM_RX,
@@ -30,13 +28,16 @@ import {
   TIP_CYCLE,
   TIP_GATHER,
   TIP_HOLD,
+  SOLO_CHAIN,
   possessionClock,
   possessionSpan,
-  layoutMiniSoma,
   miniEdges,
   miniNode,
+  soloShotClock,
+  soloShotFrame,
   tipPlay,
 } from "../graph/court"
+import type { MiniNode } from "../graph/court"
 import { somaNode } from "../graph/soma"
 import { useClock } from "../stage/hooks"
 import type { TeamMind } from "../graph/court"
@@ -53,8 +54,8 @@ import type { WorldState } from "../stage/types"
  * around).
  *
  * Everything is dots and hairlines in `somaNerve` gold. No court markings, no
- * jerseys, no crowd — the visual claim is "this is the same network you have
- * been watching for four minutes," and any illustrative detail would break it.
+ * crowd. The Knicks wear a blue wash and an orange number over that same
+ * skeleton — the anatomy stays in front of the cloth.
  */
 
 function quad(
@@ -71,6 +72,127 @@ function quad(
 }
 
 /**
+ * Chest glyphs. Local +y points up the torso. Each digit is a stroke, not a
+ * fill, so the ribs and the sternum still show through it.
+ */
+const JERSEY_GLYPH: Record<string, Array<Array<[number, number]>>> = {
+  "0": [[[-0.62, 1.15], [0.62, 1.15], [0.62, -1.15], [-0.62, -1.15], [-0.62, 1.15]]],
+  "1": [[[-0.38, 0.72], [0.08, 1.15], [0.08, -1.15]], [[-0.42, -1.15], [0.48, -1.15]]],
+  "2": [[[-0.62, 0.62], [-0.28, 1.15], [0.5, 1.15], [0.68, 0.55], [-0.62, -1.15], [0.72, -1.15]]],
+  "3": [[[-0.55, 1.05], [0.48, 1.15], [0.68, 0.55], [0.1, 0.12], [0.68, -0.28], [0.48, -1.15], [-0.58, -1.02]]],
+  "5": [[[0.62, 1.15], [-0.58, 1.15], [-0.62, 0.12], [0.42, 0.22], [0.68, -0.42], [0.35, -1.15], [-0.62, -1.02]]],
+  "8": [
+    [[-0.5, 0.08], [-0.62, 0.62], [0, 1.15], [0.62, 0.62], [0.5, 0.08], [-0.5, 0.08]],
+    [[-0.55, -0.02], [-0.68, -0.62], [0, -1.15], [0.68, -0.62], [0.55, -0.02]],
+  ],
+}
+
+const SHIRT = ["shoulder-l", "neck", "shoulder-r", "rib-r", "rib-r2", "hip-r", "pelvis", "hip-l", "rib-l2", "rib-l"]
+
+function shirtPoint(nodes: MiniNode[], id: string) {
+  return miniNode(nodes, id)
+}
+
+/**
+ * Knicks cloth over the torso only. The wash sits behind the skeleton; the
+ * orange number and the neck/hem trim sit on the chest and leave the arms,
+ * head, and legs alone.
+ */
+function KnicksJersey({
+  nodes,
+  number,
+  layer,
+}: {
+  nodes: MiniNode[]
+  number: string
+  /** Cloth behind the skeleton, marks in front of the lines and under the joints. */
+  layer: "cloth" | "marks"
+}) {
+  const poly = SHIRT.map((id) => shirtPoint(nodes, id)).filter((p): p is MiniNode => Boolean(p))
+  if (poly.length < 6) return null
+  const shirt = poly.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ") + " Z"
+  if (layer === "cloth") return <path d={shirt} fill={color.knicksBlueFill} />
+
+  const chain = (ids: string[]) => {
+    const pts = ids.map((id) => shirtPoint(nodes, id)).filter((p): p is MiniNode => Boolean(p))
+    if (pts.length < 2) return null
+    return pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ")
+  }
+  const neck = chain(["shoulder-l", "neck", "shoulder-r"])
+  const hem = chain(["hip-l", "pelvis", "hip-r"])
+  const thorax = shirtPoint(nodes, "thorax")
+  const pelvis = shirtPoint(nodes, "pelvis")
+  const shoulderL = shirtPoint(nodes, "shoulder-l")
+  const shoulderR = shirtPoint(nodes, "shoulder-r")
+  const marks = (
+    <>
+      {neck && (
+        <path d={neck} fill="none" stroke={color.knicksOrange} strokeWidth={1.35} strokeLinecap="round" opacity={0.9} />
+      )}
+      {hem && (
+        <path d={hem} fill="none" stroke={color.knicksOrange} strokeWidth={1.15} strokeLinecap="round" opacity={0.75} />
+      )}
+    </>
+  )
+  if (!thorax || !pelvis || !shoulderL || !shoulderR) return <g>{marks}</g>
+
+  const ux = thorax.x - pelvis.x
+  const uy = thorax.y - pelvis.y
+  const ulen = Math.hypot(ux, uy) || 1
+  const upx = ux / ulen
+  const upy = uy / ulen
+  let rx = -upy
+  let ry = upx
+  const towardRight = (shoulderR.x - shoulderL.x) * rx + (shoulderR.y - shoulderL.y) * ry
+  if (towardRight < 0) {
+    rx = -rx
+    ry = -ry
+  }
+  const shoulderW = Math.hypot(shoulderR.x - shoulderL.x, shoulderR.y - shoulderL.y)
+  const numH = shoulderW * 0.36
+  const scale = numH / 2.5
+  const gap = 0.42
+  const digitW = 1.5
+  const total = number.length * digitW + (number.length - 1) * gap
+  const origin = {
+    x: thorax.x - upx * numH * 0.08,
+    y: thorax.y - upy * numH * 0.08,
+  }
+  const stroke = Math.max(1.15, numH * 0.075)
+  return (
+    <g>
+      {marks}
+      {number.split("").map((ch, index) => {
+        const glyph = JERSEY_GLYPH[ch]
+        if (!glyph) return null
+        const shift = index * (digitW + gap) + digitW / 2 - total / 2
+        return glyph.map((strokePts, s) => {
+          const d = strokePts
+            .map(([x, y], i) => {
+              const px = origin.x + rx * (x + shift) * scale + upx * y * scale
+              const py = origin.y + ry * (x + shift) * scale + upy * y * scale
+              return `${i === 0 ? "M" : "L"} ${px.toFixed(1)} ${py.toFixed(1)}`
+            })
+            .join(" ")
+          return (
+            <path
+              key={`${ch}-${index}-${s}`}
+              d={d}
+              fill="none"
+              stroke={color.knicksOrange}
+              strokeWidth={stroke}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity={0.92}
+            />
+          )
+        })
+      })}
+    </g>
+  )
+}
+
+/**
  * The soma, reduced to its structural joints. Same proportions as the body
  * in the prelude — crown, ribs, shoulders, the two arms, the two legs — at
  * whatever height the court needs. `floorY` is where the feet plant.
@@ -79,32 +201,80 @@ function SomaMini({
   nodes,
   ink,
   opacity = 0.86,
+  number,
+  accent,
+  lead,
 }: {
-  nodes: ReturnType<typeof layoutMiniSoma>
+  nodes: MiniNode[]
   ink: string
   opacity?: number
+  /** Knicks jersey number. */
+  number?: string
+  /** The hand that tips. Drawn brighter, with orange fingertips, on top of the body. */
+  accent?: "r" | "l"
+  /** The player the eye should follow when bodies cross. */
+  lead?: boolean
 }) {
   const edges = miniEdges()
+  const onAccent = (id: string) =>
+    Boolean(
+      accent &&
+        (id === `shoulder-${accent}` ||
+          id === `humerus-${accent}` ||
+          id === `elbow-${accent}` ||
+          id === `radius-${accent}` ||
+          id === `wrist-${accent}` ||
+          id === `hand-${accent}` ||
+          id.startsWith(`hand-${accent}-`))
+    )
+  const arm = "#F6E3B8"
+  const body = lead ? "#F6E3B8" : ink
   return (
     <g opacity={opacity}>
+      {number && <KnicksJersey nodes={nodes} number={number} layer="cloth" />}
       {edges.map(([a, b], i) => {
         const from = miniNode(nodes, a)
         const to = miniNode(nodes, b)
         if (!from || !to) return null
+        const hot = onAccent(a) && onAccent(b)
         return (
           <path
             key={i}
             d={`M ${from.x} ${from.y} L ${to.x} ${to.y}`}
             fill="none"
-            stroke={ink}
-            strokeWidth={1.15}
-            opacity={0.62}
+            stroke={hot ? arm : body}
+            strokeWidth={hot ? 2.15 : lead ? 1.7 : 1.05}
+            opacity={hot ? 1 : lead ? 0.95 : 0.62}
           />
         )
       })}
-      {nodes.map((p) => (
-        <circle key={p.id} cx={p.x} cy={p.y} r={p.r} fill={ink} opacity={0.88} />
-      ))}
+      {number && <KnicksJersey nodes={nodes} number={number} layer="marks" />}
+      {nodes.map((p) => {
+        const tip = Boolean(accent && p.id.startsWith(`hand-${accent}-`) && p.id.endsWith("-tip"))
+        const hot = onAccent(p.id)
+        return (
+          <circle
+            key={p.id}
+            cx={p.x}
+            cy={p.y}
+            r={tip ? p.r * 1.85 : lead ? p.r * 1.2 : p.r}
+            fill={tip ? color.knicksOrange : hot || lead ? arm : ink}
+            opacity={hot || lead ? 1 : 0.88}
+          />
+        )
+      })}
+    </g>
+  )
+}
+
+function CourtMarks({ ink, opacity }: { ink: string; opacity: number }) {
+  const lines = courtLines()
+  return (
+    <g fill="none" stroke={ink} strokeWidth={0.85} strokeLinejoin="round" opacity={opacity}>
+      <path d={lines.boundary} />
+      <path d={lines.lane} />
+      <path d={lines.foul} />
+      <path d={lines.three} />
     </g>
   )
 }
@@ -203,8 +373,8 @@ function Perception({ t, reduced }: { t: number; reduced: boolean }) {
   const arm = SHOT_ACTION.map((id) => somaNode(id)).filter(
     (n): n is NonNullable<ReturnType<typeof somaNode>> => Boolean(n)
   )
-  const hand = arm[arm.length - 1]
   const spark = along(arm, phase)
+  const held = soloShotFrame(0).ball
 
   return (
     <g>
@@ -230,24 +400,25 @@ function Perception({ t, reduced }: { t: number; reduced: boolean }) {
       />
 
       {COURT_PERCEPTION.map((p) => {
+        const from = p.id === "ball" ? held : p
         const c = {
-          x: (p.x + brain.x) / 2,
-          y: Math.min(p.y, brain.y) - 36,
+          x: (from.x + brain.x) / 2,
+          y: Math.min(from.y, brain.y) - 36,
         }
-        const dot = quad(p, c, brain, phase)
+        const dot = quad(from, c, brain, phase)
         return (
           <g key={p.id}>
             <path
-              d={`M ${p.x} ${p.y} Q ${c.x} ${c.y} ${brain.x} ${brain.y}`}
+              d={`M ${from.x} ${from.y} Q ${c.x} ${c.y} ${brain.x} ${brain.y}`}
               fill="none"
               stroke={color.somaSpark}
               strokeWidth={0.9}
               opacity={0.55}
             />
-            <circle cx={p.x} cy={p.y} r={2.6} fill={color.somaSpark} opacity={0.8} />
+            <circle cx={from.x} cy={from.y} r={2.6} fill={color.somaSpark} opacity={0.8} />
             <text
-              x={p.x}
-              y={p.y - 11}
+              x={from.x}
+              y={from.y - 11}
               textAnchor="middle"
               fill={color.typeMuted}
               fontFamily={type.family}
@@ -300,9 +471,6 @@ function Perception({ t, reduced }: { t: number; reduced: boolean }) {
         )
       })}
       <circle cx={spark.x} cy={spark.y} r={3.2} fill={color.somaSpark} />
-      {hand && (
-        <circle cx={hand.x} cy={hand.y} r={7} fill={color.somaOrgan} opacity={0.94} />
-      )}
     </g>
   )
 }
@@ -319,21 +487,15 @@ function Motor({ t, reduced }: { t: number; reduced: boolean }) {
   )
   if (pts.length < 2) return null
 
-  // 2.4s to travel the chain, then the ball flies for 1.1s, then a 0.9s rest.
-  const cycle = 4.4
-  const local = reduced ? 1.6 : t % cycle
-  const chainT = Math.min(1, local / 2.4)
-  const flightT = local > 2.4 ? Math.min(1, (local - 2.4) / 1.1) : 0
+  // 2.4s to travel the chain. The ball leaves the shooter's fingers on the same clock.
+  const local = soloShotClock(t, reduced)
+  const chainT = Math.min(1, local / SOLO_CHAIN)
   const seg = chainT * (pts.length - 1)
   const i = Math.max(0, Math.min(pts.length - 2, Math.floor(seg)))
   const f = seg - i
   const a = pts[i]!
   const b = pts[i + 1]!
   const head = { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f }
-  const ball =
-    flightT > 0
-      ? quad(COURT_SHOT_ARC.from, COURT_SHOT_ARC.apex, COURT_SHOT_ARC.to, flightT)
-      : COURT_SHOT_ARC.from
 
   return (
     <g>
@@ -360,18 +522,6 @@ function Motor({ t, reduced }: { t: number; reduced: boolean }) {
         opacity={0.16}
       />
       <circle cx={head.x} cy={head.y} r={3.2} fill={color.somaSpark} />
-
-      {flightT > 0 && (
-        <path
-          d={`M ${COURT_SHOT_ARC.from.x} ${COURT_SHOT_ARC.from.y} Q ${COURT_SHOT_ARC.apex.x} ${COURT_SHOT_ARC.apex.y} ${COURT_SHOT_ARC.to.x} ${COURT_SHOT_ARC.to.y}`}
-          fill="none"
-          stroke={color.somaOrgan}
-          strokeWidth={0.9}
-          strokeDasharray="3 7"
-          opacity={0.4}
-        />
-      )}
-      <circle cx={ball.x} cy={ball.y} r={7} fill={color.somaOrgan} opacity={0.9} />
     </g>
   )
 }
@@ -601,7 +751,14 @@ function OgMind({
   reduced: boolean
 }) {
   const ink = color.somaNerve
-  const skull = OG_MIND
+  const live = miniNode(
+    tipPlay(0).actors.find((a) => a.id === "team-og")?.nodes ?? [],
+    "skull"
+  )
+  const dx = (live?.x ?? OG_MIND.x) - OG_MIND.x
+  const dy = (live?.y ?? OG_MIND.y) - OG_MIND.y
+  const skull = { x: OG_MIND.x + dx, y: OG_MIND.y + dy }
+  const place = (p: { x: number; y: number }) => ({ x: p.x + dx, y: p.y + dy })
   const showModel = stage >= 2
   const decided = stage >= 3
   if (stage === 0) return null
@@ -630,8 +787,8 @@ function OgMind({
         opacity={decided ? 0.85 : 0.5}
       />
 
-      {OG_SENSES.map((s, i) => {
-        const from = s
+      {OG_SENSES.map((sense, i) => {
+        const from = place(sense)
         const c = {
           x: (from.x + skull.x) / 2,
           y: Math.min(from.y, skull.y) - 18,
@@ -645,7 +802,7 @@ function OgMind({
             : (t * 0.45 + i * 0.14) % 1
         const dot = quad(from, c, skull, phase)
         return (
-          <g key={s.id}>
+          <g key={sense.id}>
             <path
               d={`M ${from.x} ${from.y} Q ${c.x} ${c.y} ${skull.x} ${skull.y}`}
               fill="none"
@@ -655,15 +812,15 @@ function OgMind({
             />
             <circle cx={from.x} cy={from.y} r={2.4} fill={ink} opacity={0.8} />
             <text
-              x={s.x}
-              y={s.y - 9}
+              x={from.x}
+              y={from.y - 9}
               textAnchor="middle"
               fill={color.typeMuted}
               fontFamily={type.family}
               fontSize={8}
               letterSpacing="0.16em"
             >
-              {s.label}
+              {sense.label}
             </text>
             <circle cx={dot.x} cy={dot.y} r={2.1} fill={color.somaSpark} opacity={0.95} />
           </g>
@@ -711,92 +868,138 @@ function OgMind({
       )}
 
       {showModel &&
-        OG_SYSTEMS.map((s) => (
-          <g key={s.id}>
-            <path
-              d={`M ${s.x} ${s.y} L ${skull.x} ${skull.y}`}
-              fill="none"
-              stroke={ink}
-              strokeWidth={0.8}
-              opacity={decided ? 0.75 : 0.4}
-            />
-            <circle
-              cx={s.x}
-              cy={s.y}
-              r={2.6}
-              fill={decided ? color.somaSpark : ink}
-              opacity={0.9}
-            />
-            <text
-              x={s.x}
-              y={s.y - 8}
-              textAnchor="middle"
-              fill={decided ? color.type : color.typeMuted}
-              fontFamily={type.family}
-              fontSize={7.5}
-              letterSpacing="0.14em"
-            >
-              {s.label}
-            </text>
-          </g>
-        ))}
+        OG_SYSTEMS.map((system) => {
+          const s = place(system)
+          return (
+            <g key={system.id}>
+              <path
+                d={`M ${s.x} ${s.y} L ${skull.x} ${skull.y}`}
+                fill="none"
+                stroke={ink}
+                strokeWidth={0.8}
+                opacity={decided ? 0.75 : 0.4}
+              />
+              <circle
+                cx={s.x}
+                cy={s.y}
+                r={2.6}
+                fill={decided ? color.somaSpark : ink}
+                opacity={0.9}
+              />
+              <text
+                x={s.x}
+                y={s.y - 8}
+                textAnchor="middle"
+                fill={decided ? color.type : color.typeMuted}
+                fontFamily={type.family}
+                fontSize={7.5}
+                letterSpacing="0.14em"
+              >
+                {system.label}
+              </text>
+            </g>
+          )
+        })}
 
       {showModel &&
-        OG_BRANCHES.map((b) => {
-          const lit = decided && b.chosen
-          const quiet = decided && !b.chosen
-          const stroke = lit ? color.somaSpark : ink
-          const opacity = quiet ? 0.28 : lit ? 0.95 : 0.62
-          const phase = reduced ? 0.65 : (t * 0.5) % 1
-          const spark = {
-            x: b.gate.x + (b.act.x - b.gate.x) * phase,
-            y: b.gate.y + (b.act.y - b.gate.y) * phase,
-          }
+        (() => {
+          const pass = place(OG_PASS)
+          const trunkLit = decided
           return (
-            <g key={b.id} opacity={opacity}>
+            <g>
               <path
-                d={`M ${skull.x} ${skull.y} L ${b.gate.x} ${b.gate.y} L ${b.act.x} ${b.act.y}`}
+                d={`M ${skull.x} ${skull.y} L ${pass.x} ${pass.y}`}
                 fill="none"
-                stroke={stroke}
-                strokeWidth={lit ? 1.4 : 0.9}
+                stroke={trunkLit ? color.somaSpark : ink}
+                strokeWidth={trunkLit ? 1.4 : 0.9}
+                opacity={trunkLit ? 0.95 : 0.62}
               />
-              <circle cx={b.gate.x} cy={b.gate.y} r={2.5} fill={stroke} />
-              <circle cx={b.act.x} cy={b.act.y} r={lit ? 3.4 : 2.5} fill={stroke} />
+              <circle
+                cx={pass.x}
+                cy={pass.y}
+                r={2.6}
+                fill={trunkLit ? color.somaSpark : ink}
+                opacity={0.95}
+              />
               <text
-                x={b.gate.x + 8}
-                y={b.gate.y - 6}
-                textAnchor="start"
-                fill={color.typeMuted}
+                x={pass.x}
+                y={pass.y - 10}
+                textAnchor="middle"
+                fill={trunkLit ? color.type : color.typeMuted}
                 fontFamily={type.family}
                 fontSize={7.5}
                 letterSpacing="0.12em"
               >
-                {b.ifLabel}
+                {OG_PASS.label}
               </text>
-              <text
-                x={b.act.x + 8}
-                y={b.act.y + 3}
-                textAnchor="start"
-                fill={lit ? color.somaSpark : color.type}
-                fontFamily={type.family}
-                fontSize={9}
-                letterSpacing="0.14em"
-              >
-                {b.thenLabel}
-              </text>
-              {lit && <circle cx={spark.x} cy={spark.y} r={2.4} fill={color.somaSpark} />}
+              {OG_BRANCHES.map((b) => {
+                const gate = place(b.gate)
+                const act = place(b.act)
+                const lit = decided && b.chosen
+                const quiet = decided && !b.chosen
+                const stroke = lit ? color.somaSpark : ink
+                const opacity = quiet ? 0.28 : lit ? 0.95 : 0.62
+                const phase = reduced ? 0.65 : (t * 0.5) % 1
+                const spark = {
+                  x: gate.x + (act.x - gate.x) * phase,
+                  y: gate.y + (act.y - gate.y) * phase,
+                }
+                const above = gate.y < pass.y
+                const midX = (pass.x + gate.x) / 2
+                const midY = (pass.y + gate.y) / 2
+                const half = b.ifLabel.length * 2.7
+                const run = gate.x - pass.x
+                const extra = Math.abs(run) > 1 ? Math.abs((gate.y - pass.y) / run) * half : 0
+                return (
+                  <g key={b.id}>
+                    <g opacity={opacity}>
+                    <path
+                      d={`M ${pass.x} ${pass.y} L ${gate.x} ${gate.y} L ${act.x} ${act.y}`}
+                      fill="none"
+                      stroke={stroke}
+                      strokeWidth={lit ? 1.4 : 0.9}
+                    />
+                    <circle cx={gate.x} cy={gate.y} r={2.5} fill={stroke} />
+                    <circle cx={act.x} cy={act.y} r={lit ? 3.4 : 2.5} fill={stroke} />
+                    <text
+                      x={act.x + 8}
+                      y={act.y + 3}
+                      textAnchor="start"
+                      fill={lit ? color.somaSpark : color.type}
+                      fontFamily={type.family}
+                      fontSize={9}
+                      letterSpacing="0.14em"
+                    >
+                      {b.thenLabel}
+                    </text>
+                    {lit && <circle cx={spark.x} cy={spark.y} r={2.4} fill={color.somaSpark} />}
+                    </g>
+                    <text
+                      x={midX}
+                      y={above ? midY - extra - 11 : midY + extra + 14}
+                      textAnchor="middle"
+                      fill={trunkLit ? color.type : color.typeMuted}
+                      fontFamily={type.family}
+                      fontSize={7.5}
+                      letterSpacing="0.12em"
+                    >
+                      {b.ifLabel}
+                    </text>
+                  </g>
+                )
+              })}
             </g>
           )
-        })}
+        })()}
     </g>
   )
 }
 
 /**
- * Five reduced copies of the soma, plus the two defenders the play needs.
- * Stage 1 holds the inbound. Stage 2 plays the possession once, holds the
- * make, then brings the five together with their hands stacked. Stage 3
- * leaves that celebration up and draws the relationships over it.
+ * Five reduced copies of the soma — the Knicks only. Stage 1 holds the
+ * inbound. Stage 2 plays the possession once, holds the make, then brings
+ * the five together with their hands stacked. Stage 3 leaves that
+ * celebration up and draws the relationships over it.
  */
 function Team({
   stage,
@@ -827,8 +1030,8 @@ function Team({
   const clock = possessionClock(clockElapsed)
   const banner = stage >= 2 && clock <= 0
   const figureOpacity = stage === 3 ? 0.72 : 0.9
-  const edgeOpacity = stage === 3 ? 0.9 : 0.4
-  const defenseOpacity = stage === 3 ? 0.1 : 0.45 * (1 - Math.min(1, gather * 1.35))
+  const crashing = stage === 2 && gather < 0.35
+  const edgeOpacity = stage === 3 ? 0.9 : stage === 2 ? 0.08 : 0.4
   const chest = (id: string) => {
     const actor = frame.actors.find((a) => a.id === id)
     return actor ? miniNode(actor.nodes, "thorax") : undefined
@@ -844,13 +1047,6 @@ function Team({
           banner={banner}
         />
       )}
-      <path
-        d={`M 420 ${TEAM_FLOOR_Y} L 1280 ${TEAM_FLOOR_Y}`}
-        stroke={ink}
-        strokeWidth={0.9}
-        opacity={0.22}
-      />
-
       {TEAM_LINKS.filter((l) => l.stage <= (stage === 1 ? 1 : 2)).map((l, i) => {
         const a = chest(l.source)
         const b = chest(l.target)
@@ -875,15 +1071,20 @@ function Team({
         <SomaMini
           key={a.id}
           nodes={a.nodes}
-          ink={a.side === "team" ? ink : color.typeMuted}
+          ink={ink}
+          number={a.number}
+          lead={crashing && a.id === "team-og"}
+          accent={crashing && played > 0.5 && played < 0.9 && a.id === "team-og" ? "r" : undefined}
           opacity={
             mind > 0
               ? a.id === "team-og"
                 ? 0.95
                 : 0.12
-              : a.side === "team"
-                ? figureOpacity
-                : defenseOpacity
+              : crashing
+                ? a.id === "team-og"
+                  ? 1
+                  : 0.7
+                : figureOpacity
           }
         />
       ))}
@@ -940,6 +1141,10 @@ export function Court({
   if (!active) return null
 
   const teamCourt = world.team > 0 && world.court === 0
+  const shot =
+    world.court > 0
+      ? soloShotFrame(world.court >= 2 ? soloShotClock(t, reduced) : 0)
+      : null
 
   return (
     <g className="court">
@@ -962,6 +1167,9 @@ export function Court({
         />
       )}
       {teamCourt && (
+        <CourtMarks ink={color.somaNerve} opacity={world.teamMind > 0 ? 0.07 : 0.22} />
+      )}
+      {teamCourt && (
         <Basket
           ink={color.somaNerve}
           lit={0.8}
@@ -971,17 +1179,21 @@ export function Court({
           pole={TEAM_POLE}
         />
       )}
-      {world.court > 0 && (
-        <SomaMini
-          nodes={layoutMiniSoma(
-            MINI_ARMS_UP,
-            COURT_DEFENDER.h,
-            COURT_DEFENDER.x,
-            COURT_FLOOR_Y
+      {shot && (
+        <g>
+          <SomaMini nodes={shot.nodes} ink={color.typeMuted} opacity={0.86} />
+          {shot.trail && (
+            <path
+              d={`M ${shot.trail.from.x} ${shot.trail.from.y} Q ${shot.trail.apex.x} ${shot.trail.apex.y} ${shot.trail.to.x} ${shot.trail.to.y}`}
+              fill="none"
+              stroke={color.somaOrgan}
+              strokeWidth={0.9}
+              strokeDasharray="3 7"
+              opacity={0.4}
+            />
           )}
-          ink={color.typeMuted}
-          opacity={0.62}
-        />
+          <circle cx={shot.ball.x} cy={shot.ball.y} r={7} fill={color.somaOrgan} opacity={0.94} />
+        </g>
       )}
       {world.courtMind && <Perception t={t} reduced={reduced} />}
       {world.court === 2 && <Motor t={t} reduced={reduced} />}

@@ -248,6 +248,11 @@
   line-height: 1.22;
   max-width: 24ch;
   text-wrap: balance;
+  /* The neural pause sits on the white crown. Bare type disappears into it. */
+  padding: 0.45em 0.65em;
+  border-radius: 12px;
+  background: rgba(25, 29, 38, 0.88);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
 }
 
 .the-model-stage .audience-line {

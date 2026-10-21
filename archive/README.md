@@ -26,6 +26,12 @@ presentation and counted against it. That is what this directory replaces.
 | `beats/period-1984.ts` | 2 | Sun-era workstations and Ethernet beside the Gage portrait |
 | `beats/appendix.ts` | 2 | The in-show appendix itself |
 | `beats/body-energy.ts` | 1 | The chakra beat — cut on credibility grounds, not for time |
+| `beats/onug-nature-extras.ts` | 4 | ONUG cut: relations line, atmosphere, mycelium, photosynthesis |
+| `beats/onug-world-tour.ts` | 2 | ONUG cut: living-loop captions. The shot already runs the loop |
+| `beats/onug-team-climb.ts` | 2 | ONUG cut: the climb from the celebration up to Gage. The inbound and the tip are back in the show |
+| `beats/onug-storm-replay.ts` | 3 | ONUG cut: the agent replaying the closed hub |
+| `beats/onug-loop-chapter.ts` | 7 | ONUG cut: observe, understand, decide, act, verify as their own chapter |
+| `beats/onug-route-catalogue.ts` | 14 | ONUG cut: the zoomed AI-network failure tour the aircraft chapter replaced |
 
 `MANIFEST.md` lists all 105 pre-recast beats and what became of each.
 
@@ -37,7 +43,15 @@ files in `archive/beats/` are extracted from it verbatim, so if you need more
 context than a beat block gives you, read the original there. It is not built
 or maintained, and its README-era story is the old one.
 
-## Restoring a beat
+## The ONUG cut (19 October 2026)
+
+`beats/onug-*.ts` are beats taken out of the keynote, not the pre-recast show.
+They use the current `WorldState`, the current cameras, and the current copy
+constants (the route catalogue's lines are written out in that file, because
+those constants were removed from `content/copy.ts`). Lifting one back is a
+paste into `beats/script.ts` plus a chapter in `beats/segments.ts`.
+
+## Restoring a pre-recast beat
 
 A beat is a full `WorldState` snapshot, so lifting one back means supplying
 whatever that snapshot named. Four things to check, in order:

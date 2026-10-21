@@ -71,6 +71,7 @@ function nodeFill(n: GraphNode, world: WorldState) {
   }
 
   if (world.verified) return ok
+  if (world.promiseRisk && ENT_DISRUPT_NODES.has(n.id)) return ok
   if (world.entDisrupt !== "none" && ENT_DISRUPT_NODES.has(n.id)) {
     // Once alternates are up the gateway is still shut, but the aircraft
     // around it have been re-tasked — so only the hub itself stays amber.
@@ -325,7 +326,7 @@ export function GraphView({ world }: { world: WorldState }) {
         )
       })}
 
-      {world.entDisrupt !== "none" && disruptNode && !world.verified && (
+      {world.entDisrupt !== "none" && disruptNode && !world.verified && !world.promiseRisk && (
         <g transform={`translate(${disruptNode.x + 24} ${disruptNode.y - 56})`}>
           <rect
             width="158"
@@ -365,7 +366,7 @@ export function GraphView({ world }: { world: WorldState }) {
             cx={packageAt.x}
             cy={packageAt.y}
             r={16}
-            fill={color.focus}
+            fill={world.promiseRisk ? color.warn : color.focus}
             opacity={0.14}
           />
           <rect
@@ -374,7 +375,7 @@ export function GraphView({ world }: { world: WorldState }) {
             width={11}
             height={11}
             rx={1.4}
-            fill={color.focus}
+            fill={world.promiseRisk ? color.warn : color.focus}
           />
         </g>
       )}

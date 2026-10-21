@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Build a native Mac app via Tauri.
- * Output: dist/THE-MODEL.app (+ .dmg when bundling succeeds)
- * Does not change pack:web / the HTML zip.
+ * Build a native Mac app via Tauri around the current show
+ * (`the-model demo` production build, conductor mode).
+ * Output: dist/THE MODEL.app (+ .dmg when bundling succeeds)
  */
 import { spawnSync } from "node:child_process";
 import {
@@ -71,4 +71,4 @@ const mb = (statSync(appDst).isDirectory()
 console.log(`pack:mac — ${appDst} (~${mb} MB)`);
 if (dmgCopied) console.log(`pack:mac — ${dmgCopied}`);
 console.log("Open dist/THE MODEL.app (ad-hoc / unsigned; Gatekeeper may prompt).");
-console.log("House laptops: keep using npm run pack:web (HTML zip).");
+console.log("Windows, later: npm run build -w desktop → src-tauri/target/release/the-model.exe and bundle/nsis.");

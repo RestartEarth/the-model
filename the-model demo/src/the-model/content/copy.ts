@@ -33,9 +33,11 @@ export const M7 = "Seven · The autonomous enterprise"
 // ── Movement 1 · An architecture that repeats ─────────────────────────
 
 export const N_COSMOS =
-  "The largest structure anyone has ever mapped is a network."
+  "The largest structure anyone has ever mapped is a network. This was once called Indra’s Net."
 export const N_INDRA =
   "Matter did not settle into a pile. It settled into relationships."
+export const N_ATMOS =
+  "The atmosphere is a planetary transport network of thermal energy, creating conditions for life on earth"
 export const N_WATER =
   "Water runs a circuit — ocean, air, mountain, river, ocean — and the planet stays habitable because it does."
 export const N_MYCELIUM =
@@ -50,6 +52,8 @@ export const N_REPEATS =
 // ── Movement 2 · Networks make intelligence ───────────────────────────
 
 export const B_PRESENCE = "You are one of them."
+export const B_ENERGY =
+  "We are a network of energy, integrated with the energy of the universe that binds reality together and animates life."
 export const B_STRUCTURE =
   "Bone and muscle: a mechanical network. Nothing moves alone."
 export const B_CIRCULATION =
@@ -60,11 +64,12 @@ export const B_LYMPH =
   "Lymph and hormones: a slower network, carrying state rather than supplies."
 export const B_NERVES =
   "Nerves: a signalling network, fast enough to change what happens next."
-export const B_BRAIN = "And at the top, the densest network in the body."
+export const B_BRAIN =
+  "The brain is the hub of all of these networks, which when combined create human intelligence."
 
 /** §42 pause — the neural reveal. Centred, read in silence. */
 export const B_NEURAL =
-  "Intelligence is not in the parts. It is in the relationships between them."
+  "The parts are not the Intelligence. Intelligence is the relationship between them."
 
 export const B_SENSES = "A network that cannot perceive cannot act."
 export const B_LOOP =
@@ -112,9 +117,11 @@ export const H_LANGUAGE =
   "Language is the protocol. It is how one mind puts a model into another."
 export const H_ECONOMY =
   "Families, communities, teams — networks people form with each other. A market is that network, one level up, deciding what gets made with no one in charge of it."
+export const H_SPACE =
+  "Then we left the ground. Satellites, then ships between worlds."
 export const H_INTERNET = "And then we built one on purpose."
 export const H_PULLBACK =
-  "The same shape, at every scale we can see — and one of them we made ourselves."
+  "The same shape, at every scale we can see — and this led to one man's realization."
 
 export const H_GAGE =
   "In 1984 someone said out loud what the architecture had been saying all along."
@@ -152,19 +159,23 @@ export const E_DEPEND =
   "The useful question is not what changed. It is what depends on what changed."
 export const E_REROUTE =
   "A different route, a different aircraft, a different sort window — and the promise still holds."
+export const E_FINE =
+  "The hub still looks fine. The promise is already at risk."
 export const E_DISPATCH = "The aircraft call doesn't return. She waits."
 export const E_DISPATCH_ACT = "Then the path answers."
 
-// ── Movement 6 · What autonomy requires ───────────────────────────────
+// ── Fabric readings · perceive, model, meaning ───────────────────────
+// These three play on the traffic diagram, after the commit rule.
 
-export const A_OPEN =
-  "Suppose you want that to happen without anyone staying up for it. What does that actually require?"
 export const A_PERCEIVE =
   "It has to perceive. Not a dashboard somebody opens — perception, the way the body has perception."
 export const A_MODEL =
   "It has to hold a model of the relationships. Not a list of assets. What affects what."
 export const A_SEMANTICS =
   "The model has to carry meaning: what is committed, what is allowed, what has room left."
+
+// ── Movement 6 · What autonomy requires ───────────────────────────────
+
 export const A_FEDERATE =
   "No single system holds all of it. Air knows aircraft. The hub knows the belt. The model is federated by necessity."
 export const A_FEDERATE_HOLD =
@@ -211,6 +222,29 @@ export const Z_HUMANS =
   "People are still here. Setting the commitments, setting the limits, handling the things that have never happened before."
 
 /** §30 — the one line the show ends on. */
+export const AIR_SEAT =
+  "The same promises, on one aircraft. No one in the seat. The cargo cannot take the shock."
+export const AIR_SMOOTH =
+  "Clear air. The forecast says smooth. The radar sees nothing."
+export const AIR_WITNESS = "The aircraft ahead reports the acceleration."
+export const AIR_SPLIT =
+  "The forecast still says smooth. The report says severe."
+export const AIR_HERD = "Every other flight is offered that same altitude."
+export const AIR_BOUNDARY =
+  "The divert has to clear airspace this aircraft does not own."
+export const AIR_ONCE =
+  "The path changes once. When the disturbance fades, it does not change again."
+export const AIR_NAMED =
+  "It perceived the air ahead. It traversed to the report. It verified the force on the cargo."
+export const AIR_OPERATE =
+  "An agent that cannot do those three things across the live network can talk about the enterprise. It cannot operate it."
+export const AIR_DARK =
+  "The link is gone. It can still fly. It can no longer avoid what it cannot see."
+
+export const RECAP_ARCHITECTURE = "The enterprise is already the architecture."
+export const RECAP_OPERATE = "Perceive. Traverse. Verify. Or it cannot operate."
+export const RECAP_MODEL = "The model is what it thinks about."
+
 export const Z_CLOSE = "THE NETWORK BECOMES PART OF THE INTELLIGENCE."
 
 export const Z_ONUG = "Thank you."

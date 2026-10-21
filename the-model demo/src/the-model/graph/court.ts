@@ -20,9 +20,9 @@
  * Body height is therefore 381 units. A regulation rim is 1.6 body-heights
  * above the floor, which puts it at y≈190; it sits at 250 instead, because
  * the extra 60 units of headroom cost nothing legible and keep the rim off
- * the top edge at this camera. The figure's arms hang at its sides and
- * cannot be posed, so the ball releases from `hand-r` — a push shot, which
- * is honest about the art rather than faking a jump shot.
+ * the top edge at this camera. The anatomical figure stays put — its nerves
+ * are the motor chain — and the shot itself is a reduced copy of the same
+ * skeleton the team uses. The ball leaves the shooting hand's fingertips.
  *
  * The team sequence then replaces the single figure with five reduced copies
  * of this same skeleton — structural joints only, at the same proportions —
@@ -42,19 +42,11 @@ export const COURT_FLOOR_LEFT = 360
 export const COURT_FLOOR_RIGHT = 1380
 
 /**
- * Between shooter and basket, arms up. Drawn as the same star-and-line
- * asterism as the society figures (`PersonAsterism`) but in the muted
- * secondary ink, so the defender reads as another intelligent actor rather
- * than an obstacle.
+ * The solo shooter, between the anatomical figure and the rim. Same reduced
+ * skeleton as the team. `layoutMiniSoma` plants the feet on `COURT_FLOOR_Y`.
  */
 export const COURT_DEFENDER = {
   x: 992,
-  /**
-   * `Figure` anchors on the hips, not the feet: head sits at y − 2h/3 and
-   * feet at y + h/3. 683 + 352/3 puts this one's feet on `COURT_FLOOR_Y`,
-   * and 683 − 2(352)/3 puts its head level with the shooter's eye (y 448),
-   * so the two read as the same size.
-   */
   y: 683,
   h: 352,
 }
@@ -111,17 +103,6 @@ export const COURT_MOTOR_CHAIN = [
   "hand-r",
 ] as const
 
-/**
- * Release → apex → rim. A plain quadratic through a high apex; the ball is a
- * single filled dot, not a textured sphere, so it stays inside the show's
- * flat-glyph vocabulary.
- */
-export const COURT_SHOT_ARC = {
-  from: { x: 925, y: 667 },
-  apex: { x: 1090, y: 120 },
-  to: COURT_HOOP,
-}
-
 /** Observe → model → predict → act → sense. Five stations, small orbit beside
  *  the figure — the seed the final enterprise loop grows from. */
 export const COURT_LOOP_STATIONS = [
@@ -145,6 +126,19 @@ export type CourtStage = 0 | 1 | 2 | 3
 // y is up from the feet. Arms and legs are the same segment lengths as the
 // original; a pose only changes their angles.
 
+/**
+ * Shoulder angle: 0 hangs down, positive swings toward +x, π is straight up.
+ * Elbow is added to the shoulder. Wrist is added after the elbow — positive
+ * cocks the hand back, negative snaps it toward the basket. Grip is 0 when
+ * the fingers are extended and 1 when they curl around the ball.
+ */
+export interface ArmJoint {
+  shoulder: number
+  elbow: number
+  wrist?: number
+  grip?: number
+}
+
 export interface MiniPose {
   /** Radians. Positive leans the head toward the basket. */
   lean: number
@@ -152,13 +146,12 @@ export interface MiniPose {
   jump: number
   /** Screen pixels the pelvis drops. Knees have to bend with it. */
   crouch: number
-  armL: { shoulder: number; elbow: number }
-  armR: { shoulder: number; elbow: number }
+  armL: ArmJoint
+  armR: ArmJoint
   legL: { hip: number; knee: number }
   legR: { hip: number; knee: number }
 }
 
-/** Shoulder/hip angle: 0 hangs down, positive swings toward +x, π is straight up. */
 const STAND: MiniPose = {
   lean: 0,
   jump: 0,
@@ -167,12 +160,6 @@ const STAND: MiniPose = {
   armR: { shoulder: 0.22, elbow: -0.42 },
   legL: { hip: 0.05, knee: 0.12 },
   legR: { hip: -0.04, knee: 0.12 },
-}
-
-export const MINI_ARMS_UP: MiniPose = {
-  ...STAND,
-  armL: { shoulder: -2.55, elbow: 0.18 },
-  armR: { shoulder: 2.55, elbow: -0.18 },
 }
 
 /** Upright, both hands at the chest. He is facing the camera. */
@@ -198,19 +185,21 @@ const CALL: MiniPose = {
 /** On the floor, body pitched toward the rim, legs in a stride. */
 const SPRINT: MiniPose = {
   ...STAND,
-  lean: 0.82,
-  armL: { shoulder: 1.2, elbow: 0.95 },
-  armR: { shoulder: -0.45, elbow: -0.9 },
-  legL: { hip: 1.05, knee: 0.9 },
-  legR: { hip: -0.95, knee: 0.75 },
+  lean: 0.46,
+  armL: { shoulder: 0.85, elbow: 0.7, wrist: 0, grip: 0 },
+  armR: { shoulder: 1.55, elbow: 0.35, wrist: 0, grip: 0 },
+  legL: { hip: 0.72, knee: 0.62 },
+  legR: { hip: -0.48, knee: 0.45 },
 }
 
-const SPRINT2: MiniPose = {
+/** The stride settles as he leaves the floor. Joints only move one way into the tip. */
+const GATHER: MiniPose = {
   ...SPRINT,
-  armL: { shoulder: -0.45, elbow: 0.9 },
-  armR: { shoulder: 1.2, elbow: -0.95 },
-  legL: { hip: -0.95, knee: 0.75 },
-  legR: { hip: 1.05, knee: 0.9 },
+  lean: 0.4,
+  armL: { shoulder: 0.2, elbow: 0.4, wrist: 0, grip: 0 },
+  armR: { shoulder: 1.85, elbow: 0.12, wrist: 0, grip: 0 },
+  legL: { hip: 0.32, knee: 0.38 },
+  legR: { hip: -0.22, knee: 0.28 },
 }
 
 const READY: MiniPose = {
@@ -224,29 +213,21 @@ const READY: MiniPose = {
 
 const CATCH: MiniPose = {
   ...STAND,
-  armL: { shoulder: 1.15, elbow: 0.48 },
-  armR: { shoulder: 1.42, elbow: 0.28 },
-  legL: { hip: 0.16, knee: 0.22 },
-  legR: { hip: -0.06, knee: 0.16 },
+  armL: { shoulder: 0.95, elbow: 1.05, wrist: 0.08, grip: 0.35 },
+  armR: { shoulder: 1.2, elbow: 1.12, wrist: 0.16, grip: 0.45 },
+  legL: { hip: 0.14, knee: 0.22 },
+  legR: { hip: -0.05, knee: 0.16 },
 }
 
-const GATHER: MiniPose = {
+/** Right hand up and out, securing a pass that is getting away from him. */
+const REACH: MiniPose = {
   ...STAND,
-  crouch: 10,
-  armL: { shoulder: 0.82, elbow: 1.12 },
-  armR: { shoulder: 0.98, elbow: 1.2 },
-  legL: { hip: 0.42, knee: 0.9 },
-  legR: { hip: -0.12, knee: 0.72 },
-}
-
-const RELEASE: MiniPose = {
-  ...STAND,
-  lean: -0.05,
-  jump: 44,
-  armL: { shoulder: 2.05, elbow: 0.48 },
-  armR: { shoulder: 2.48, elbow: 0.32 },
-  legL: { hip: 0.08, knee: 0.16 },
-  legR: { hip: -0.1, knee: 0.12 },
+  lean: -0.08,
+  crouch: 4,
+  armL: { shoulder: 0.4, elbow: 0.55, wrist: 0, grip: 0 },
+  armR: { shoulder: 1.85, elbow: 0.28, wrist: 0.06, grip: 0.1 },
+  legL: { hip: 0.16, knee: 0.28 },
+  legR: { hip: -0.22, knee: 0.2 },
 }
 
 const WATCH: MiniPose = {
@@ -278,39 +259,25 @@ const GLIDE: MiniPose = {
   legR: { hip: -0.45, knee: 0.48 },
 }
 
+/** Right arm straight up, fingers open. The tip is a fingertip, not a grab. */
 const TIP: MiniPose = {
   ...GLIDE,
-  lean: 0.36,
+  lean: 0.28,
   jump: 154,
-  armR: { shoulder: 2.92, elbow: 0.04 },
+  armL: { shoulder: -0.45, elbow: 0.35, wrist: 0, grip: 0 },
+  armR: { shoulder: 2.88, elbow: 0.05, wrist: -0.28, grip: 0 },
   legL: { hip: -0.62, knee: 0.55 },
   legR: { hip: -0.22, knee: 0.32 },
 }
 
 const LAND: MiniPose = {
   ...STAND,
-  lean: 0.06,
-  crouch: 8,
-  armL: { shoulder: 0.7, elbow: 0.4 },
-  armR: { shoulder: 1.1, elbow: 0.35 },
-  legL: { hip: 0.2, knee: 0.45 },
-  legR: { hip: -0.1, knee: 0.35 },
-}
-
-const CONTEST: MiniPose = {
-  ...STAND,
-  lean: -0.14,
-  armL: { shoulder: -2.4, elbow: 0.22 },
-  armR: { shoulder: 0.45, elbow: 0.28 },
-}
-
-const LATE: MiniPose = {
-  ...STAND,
-  jump: 36,
-  armL: { shoulder: -2.85, elbow: 0.12 },
-  armR: { shoulder: 2.9, elbow: -0.1 },
-  legL: { hip: 0.1, knee: 0.3 },
-  legR: { hip: -0.16, knee: 0.35 },
+  lean: 0.1,
+  crouch: 16,
+  armL: { shoulder: 0.45, elbow: 0.55, grip: 0 },
+  armR: { shoulder: 0.85, elbow: 0.5, grip: 0 },
+  legL: { hip: 0.28, knee: 0.7 },
+  legR: { hip: -0.12, knee: 0.55 },
 }
 
 const HANDS_UP: MiniPose = {
@@ -349,6 +316,15 @@ const TORSO: Array<{ id: string; x: number; y: number; r: number }> = [
   { id: "hip-l", x: -0.092, y: 0.436, r: 1.55 },
   { id: "hip-r", x: 0.092, y: 0.436, r: 1.55 },
 ]
+
+/** Side-view hand. `fan` opens across the palm; `reach` is relative to the middle finger. */
+const DIGITS = [
+  { id: "thumb", fan: -0.5, reach: 0.68 },
+  { id: "index", fan: -0.18, reach: 0.92 },
+  { id: "middle", fan: 0.02, reach: 1 },
+  { id: "ring", fan: 0.2, reach: 0.88 },
+  { id: "pinky", fan: 0.4, reach: 0.68 },
+] as const
 
 const MINI_EDGES: Array<[string, string]> = [
   ["crown", "temple-l"],
@@ -402,6 +378,13 @@ const MINI_EDGES: Array<[string, string]> = [
   ["ankle-r", "foot-r"],
 ]
 
+for (const side of ["l", "r"] as const) {
+  for (const digit of DIGITS) {
+    MINI_EDGES.push([`hand-${side}`, `hand-${side}-${digit.id}`])
+    MINI_EDGES.push([`hand-${side}-${digit.id}`, `hand-${side}-${digit.id}-tip`])
+  }
+}
+
 export interface MiniNode {
   id: string
   x: number
@@ -436,8 +419,7 @@ export function layoutMiniSoma(
   const limb = (
     side: "l" | "r",
     jointId: string,
-    theta: number,
-    bend: number,
+    arm: ArmJoint,
     upper: number,
     fore: number,
     hand: number
@@ -448,12 +430,15 @@ export function layoutMiniSoma(
       x: from.x + Math.sin(ang) * len,
       y: from.y + Math.cos(ang) * len,
     })
+    const theta = arm.shoulder
+    const grip = arm.grip ?? 0
     const humerus = step(theta, upper * 0.42, joint)
     const elbow = step(theta, upper, joint)
-    const foreAngle = theta + bend
+    const foreAngle = theta + arm.elbow
     const radius = step(foreAngle, fore * 0.45, elbow)
     const wrist = step(foreAngle, fore, elbow)
-    const palm = step(foreAngle, hand, wrist)
+    const handAngle = foreAngle + (arm.wrist ?? 0)
+    const palm = step(handAngle, hand, wrist)
     const put = (id: string, p: { x: number; y: number }, r: number) =>
       nodes.set(id, { id, x: p.x, y: p.y, r: r * k })
     put(`humerus-${side}`, humerus, 1.3)
@@ -461,11 +446,23 @@ export function layoutMiniSoma(
     put(`radius-${side}`, radius, 1.25)
     put(`wrist-${side}`, wrist, 1.4)
     put(`hand-${side}`, palm, 1.65)
+    // Curl swings the tips back under the ball. An open hand is a wider fan.
+    const fingerLen = 0.072 * h
+    const curl = grip * 1.15
+    const fan = 0.42 + 0.58 * (1 - grip)
+    for (const digit of DIGITS) {
+      const base = handAngle + digit.fan * fan
+      const tipAngle = base - curl * (digit.id === "thumb" ? 0.55 : 1)
+      const knuckle = step(base, fingerLen * 0.4 * digit.reach, palm)
+      const tip = step(tipAngle, fingerLen * 0.64 * digit.reach, knuckle)
+      put(`hand-${side}-${digit.id}`, knuckle, 0.95)
+      put(`hand-${side}-${digit.id}-tip`, tip, 0.8)
+    }
   }
 
   // Segment lengths are the original body's, as fractions of height.
-  limb("l", "shoulder-l", pose.armL.shoulder, pose.armL.elbow, 0.241 * h, 0.194 * h, 0.048 * h)
-  limb("r", "shoulder-r", pose.armR.shoulder, pose.armR.elbow, 0.241 * h, 0.194 * h, 0.048 * h)
+  limb("l", "shoulder-l", pose.armL, 0.241 * h, 0.194 * h, 0.048 * h)
+  limb("r", "shoulder-r", pose.armR, 0.241 * h, 0.194 * h, 0.048 * h)
 
   const leg = (
     side: "l" | "r",
@@ -510,6 +507,22 @@ export function miniNode(nodes: MiniNode[], id: string) {
   return nodes.find((n) => n.id === id)
 }
 
+/**
+ * Where the ball sits on a hand: past the palm, along the wrist, on the
+ * finger pads. Independent of curl, so a cocked hand holds the ball and the
+ * snap carries it off the fingertips.
+ */
+export function shotPoint(nodes: MiniNode[], side: "l" | "r" = "r") {
+  const wrist = miniNode(nodes, `wrist-${side}`)
+  const palm = miniNode(nodes, `hand-${side}`)
+  if (!wrist || !palm) return { x: palm?.x ?? 0, y: palm?.y ?? 0 }
+  const dx = palm.x - wrist.x
+  const dy = palm.y - wrist.y
+  const len = Math.hypot(dx, dy) || 1
+  const extra = len * 1.35
+  return { x: palm.x + (dx / len) * extra, y: palm.y + (dy / len) * extra }
+}
+
 // ── The tip ─────────────────────────────────────────────────────────────
 //
 // Game 4, Knicks–Spurs, from the replay angle: the inbounder is at the top
@@ -530,12 +543,88 @@ export const TEAM_BACKBOARD = { x: 1132, y: 236, w: 12, h: 116 }
 export const TEAM_POLE = { x: 1138, y: 352, y2: 780 }
 export const TEAM_FLOOR_Y = 760
 
+/**
+ * Half court in the same view as the rim: baseline on the right, far sideline
+ * up the frame, near sideline along the floor. Feet, not pixels — the key,
+ * the foul line, and the three-point arc are the real markings, projected.
+ */
+const COURT_FAR_BASE = { x: 1044, y: 372 }
+const COURT_FAR_HALF = { x: 508, y: 396 }
+const COURT_NEAR_BASE = { x: 1128, y: 760 }
+const COURT_NEAR_HALF = { x: 408, y: 760 }
+
+function courtPt(u: number, v: number) {
+  const fu = u / 47
+  const fv = v / 50
+  const far = {
+    x: COURT_FAR_BASE.x + (COURT_FAR_HALF.x - COURT_FAR_BASE.x) * fu,
+    y: COURT_FAR_BASE.y + (COURT_FAR_HALF.y - COURT_FAR_BASE.y) * fu,
+  }
+  const near = {
+    x: COURT_NEAR_BASE.x + (COURT_NEAR_HALF.x - COURT_NEAR_BASE.x) * fu,
+    y: COURT_NEAR_BASE.y + (COURT_NEAR_HALF.y - COURT_NEAR_BASE.y) * fu,
+  }
+  return {
+    x: far.x + (near.x - far.x) * fv,
+    y: far.y + (near.y - far.y) * fv,
+  }
+}
+
+function courtPath(pts: Array<{ x: number; y: number }>) {
+  return pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ")
+}
+
+/** Sidelines, baseline, half-court edge, lane, foul line, and the three-point line. */
+export function courtLines() {
+  const boundary = [courtPt(0, 0), courtPt(47, 0), courtPt(47, 50), courtPt(0, 50), courtPt(0, 0)]
+  const lane = [courtPt(0, 17), courtPt(19, 17), courtPt(19, 33), courtPt(0, 33)]
+  const circle: Array<{ x: number; y: number }> = []
+  for (let i = 0; i <= 18; i++) {
+    const a = -Math.PI / 2 + (Math.PI * i) / 18
+    circle.push(courtPt(19 + Math.cos(a) * 6, 25 + Math.sin(a) * 6))
+  }
+  const arcR = 23.75
+  const basketU = 5.25
+  const basketV = 25
+  const cornerV = 3
+  const du = Math.sqrt(arcR * arcR - (basketV - cornerV) ** 2)
+  const breakU = basketU + du
+  const a0 = Math.atan2(cornerV - basketV, du)
+  const a1 = Math.atan2(50 - cornerV - basketV, du)
+  const arc = [courtPt(0, cornerV), courtPt(breakU, cornerV)]
+  for (let i = 0; i <= 28; i++) {
+    const a = a0 + ((a1 - a0) * i) / 28
+    arc.push(courtPt(basketU + Math.cos(a) * arcR, basketV + Math.sin(a) * arcR))
+  }
+  arc.push(courtPt(breakU, 50 - cornerV), courtPt(0, 50 - cornerV))
+  return {
+    boundary: courtPath(boundary),
+    lane: courtPath(lane),
+    foul: courtPath(circle),
+    three: courtPath(arc),
+  }
+}
+
 export interface TipActor {
   id: string
-  /** Gold teammates, or the two defenders drawn in the secondary ink. */
-  side: "team" | "defense"
+  side: "team"
   h: number
   nodes: MiniNode[]
+  /** Knicks jersey number. */
+  number?: string
+}
+
+/**
+ * Closing five, Game 4, Madison Square Garden, June 10 2026.
+ * Brunson 11 shoots the three. Hart 3 and Bridges 25 space the floor.
+ * Towns 32 is sealed on the box. Anunoby 8 inbounds, crashes, and tips it.
+ */
+const KNICKS_NUMBER: Record<string, string> = {
+  "team-brunson": "11",
+  "team-corner": "3",
+  "team-wing": "25",
+  "team-og": "8",
+  "team-towns": "32",
 }
 
 export interface TipFrame {
@@ -570,12 +659,11 @@ function smooth(f: number) {
 }
 
 function lerpPose(a: MiniPose, b: MiniPose, f: number): MiniPose {
-  const j = (
-    p: { shoulder: number; elbow: number },
-    q: { shoulder: number; elbow: number }
-  ) => ({
+  const j = (p: ArmJoint, q: ArmJoint): ArmJoint => ({
     shoulder: lerp(p.shoulder, q.shoulder, f),
     elbow: lerp(p.elbow, q.elbow, f),
+    wrist: lerp(p.wrist ?? 0, q.wrist ?? 0, f),
+    grip: lerp(p.grip ?? 0, q.grip ?? 0, f),
   })
   const leg = (
     p: { hip: number; knee: number },
@@ -592,7 +680,98 @@ function lerpPose(a: MiniPose, b: MiniPose, f: number): MiniPose {
   }
 }
 
-function sampleKey(keys: Key[], t: number) {
+/**
+ * Right-handed jumper, authored at a 200px body and scaled to `h`.
+ * 0 is the dip (elbow loaded, ball at the chest). 1 is the finger release.
+ * The elbow opens before the wrist snaps, which is the order a shot actually fires.
+ */
+const JUMPER_KEYS: Array<{ t: number; pose: MiniPose }> = [
+  {
+    t: 0,
+    pose: {
+      lean: 0.06,
+      jump: 0,
+      crouch: 14,
+      armL: { shoulder: 0.85, elbow: 1.2, wrist: 0.1, grip: 0.7 },
+      armR: { shoulder: 1.15, elbow: 1.55, wrist: 0.38, grip: 0.9 },
+      legL: { hip: 0.28, knee: 0.95 },
+      legR: { hip: -0.05, knee: 0.82 },
+    },
+  },
+  {
+    // Elbow under the ball, forearm vertical, wrist cocked, guide hand on the ball.
+    t: 0.34,
+    pose: {
+      lean: 0.02,
+      jump: 4,
+      crouch: 4,
+      armL: { shoulder: 2.2, elbow: 0.42, wrist: 0.08, grip: 0.55 },
+      armR: { shoulder: 1.72, elbow: 1.42, wrist: 0.52, grip: 1 },
+      legL: { hip: 0.14, knee: 0.42 },
+      legR: { hip: -0.04, knee: 0.32 },
+    },
+  },
+  {
+    // Elbow opens. Wrist stays cocked so the ball is still on the fingers.
+    t: 0.7,
+    pose: {
+      lean: -0.02,
+      jump: 20,
+      crouch: 0,
+      armL: { shoulder: 0.35, elbow: 0.55, wrist: 0, grip: 0 },
+      armR: { shoulder: 2.38, elbow: 0.38, wrist: 0.46, grip: 0.72 },
+      legL: { hip: 0.05, knee: 0.14 },
+      legR: { hip: -0.03, knee: 0.1 },
+    },
+  },
+  {
+    t: 0.88,
+    pose: {
+      lean: -0.04,
+      jump: 28,
+      crouch: 0,
+      armL: { shoulder: -0.08, elbow: 0.36, wrist: 0, grip: 0 },
+      armR: { shoulder: 2.5, elbow: 0.16, wrist: 0.36, grip: 0.28 },
+      legL: { hip: 0.03, knee: 0.08 },
+      legR: { hip: -0.02, knee: 0.06 },
+    },
+  },
+  {
+    // Wrist snaps and the fingers open toward the rim.
+    t: 1,
+    pose: {
+      lean: -0.04,
+      jump: 30,
+      crouch: 0,
+      armL: { shoulder: -0.22, elbow: 0.28, wrist: 0, grip: 0 },
+      armR: { shoulder: 2.55, elbow: 0.08, wrist: -0.36, grip: 0 },
+      legL: { hip: 0.02, knee: 0.05 },
+      legR: { hip: -0.02, knee: 0.04 },
+    },
+  },
+]
+
+function samplePose(keys: Array<{ t: number; pose: MiniPose }>, t: number): MiniPose {
+  const tt = Math.max(0, Math.min(1, t))
+  const first = keys[0]!
+  if (tt <= first.t) return first.pose
+  const last = keys[keys.length - 1]!
+  if (tt >= last.t) return last.pose
+  let i = 0
+  while (keys[i + 1]! && keys[i + 1]!.t < tt) i++
+  const a = keys[i]!
+  const b = keys[i + 1]!
+  return lerpPose(a.pose, b.pose, smooth((tt - a.t) / (b.t - a.t)))
+}
+
+/** `h` scales the hop and the dip. Angles are the same at every size. */
+export function jumperPose(u: number, h: number): MiniPose {
+  const pose = samplePose(JUMPER_KEYS, u)
+  const s = h / 200
+  return { ...pose, jump: pose.jump * s, crouch: pose.crouch * s }
+}
+
+function sampleKey(keys: Key[], t: number, ease = true) {
   const tt = Math.max(0, Math.min(0.999, t))
   if (tt <= keys[0]!.t) return keys[0]!
   const last = keys[keys.length - 1]!
@@ -601,74 +780,120 @@ function sampleKey(keys: Key[], t: number) {
   while (keys[i + 1]! && keys[i + 1]!.t < tt) i++
   const a = keys[i]!
   const b = keys[i + 1]!
-  const f = smooth((tt - a.t) / (b.t - a.t))
+  const u = (tt - a.t) / (b.t - a.t)
+  const f = ease ? smooth(u) : u
   return { t: tt, x: lerp(a.x, b.x, f), y: lerp(a.y, b.y, f), pose: lerpPose(a.pose, b.pose, f) }
 }
 
 const OG_KEYS: Key[] = [
-  { t: 0, x: 520, y: 400, pose: INBOUND },
-  { t: 0.12, x: 600, y: 448, pose: INBOUND },
-  // Planted on the three-point line until Brunson starts the shot.
-  { t: 0.2, x: 690, y: 500, pose: CALL },
-  { t: 0.42, x: 690, y: 500, pose: CALL },
-  { t: 0.48, x: 770, y: 540, pose: SPRINT },
-  { t: 0.54, x: 850, y: 582, pose: SPRINT2 },
-  // Still short of the rim, on the floor, as the ball arrives.
-  { t: 0.58, x: 900, y: 608, pose: { ...SPRINT, armR: { shoulder: 1.05, elbow: -0.3 } } },
-  { t: 0.66, x: 920, y: 620, pose: { ...TAKEOFF, lean: 0.1, jump: 80, armR: { shoulder: 1.8, elbow: -0.08 } } },
-  { t: 0.7, x: 970, y: 700, pose: {
-      ...TIP,
-      lean: 0.2,
-      jump: 110,
-      armR: { shoulder: 2.7, elbow: 0.02 },
-      legL: { hip: -1.05, knee: 0.45 },
-      legR: { hip: -0.75, knee: 0.4 },
+  // Out of bounds, above the arc. The pass leaves, he runs down onto the
+  // three-point line and calls, then one glide carries him to the rim.
+  { t: 0, x: 660, y: 352, pose: INBOUND },
+  { t: 0.1, x: 692, y: 440, pose: INBOUND },
+  { t: 0.18, x: 712, y: 496, pose: CALL },
+  { t: 0.28, x: 724, y: 520, pose: CALL },
+  { t: 0.4, x: 820, y: 548, pose: SPRINT },
+  { t: 0.52, x: 880, y: 582, pose: { ...GATHER, jump: 10 } },
+  { t: 0.6, x: 930, y: 612, pose: {
+      ...TAKEOFF,
+      lean: 0.26,
+      jump: 32,
+      armR: { shoulder: 2.15, elbow: 0.06, wrist: -0.08, grip: 0 },
     } },
-  { t: 0.74, x: 980, y: 728, pose: { ...TIP, jump: 178 } },
-  { t: 0.86, x: 1040, y: 740, pose: { ...TIP, jump: 100 } },
-  { t: 0.96, x: 1048, y: 748, pose: LAND },
+  { t: 0.68, x: 970, y: 640, pose: {
+      ...GLIDE,
+      lean: 0.14,
+      jump: 58,
+      armR: { shoulder: 2.55, elbow: 0.04, wrist: -0.16, grip: 0 },
+    } },
+  { t: 0.74, x: 998, y: 668, pose: { ...TIP, lean: 0.08, jump: 70 } },
+  { t: 0.86, x: 1024, y: 652, pose: {
+      ...TIP,
+      lean: 0.05,
+      jump: 28,
+      armR: { shoulder: 2.35, elbow: 0.1, wrist: -0.08, grip: 0 },
+    } },
+  { t: 0.96, x: 1020, y: 640, pose: LAND },
 ]
+
+/** Right hand low, pushing the dribble. The jumper starts only after it comes back up. */
+const DRIBBLE: MiniPose = {
+  ...STAND,
+  lean: 0.14,
+  crouch: 10,
+  armL: { shoulder: -0.15, elbow: 0.48, wrist: 0, grip: 0 },
+  armR: { shoulder: 0.48, elbow: 0.42, wrist: 0.2, grip: 0.65 },
+  legL: { hip: 0.22, knee: 0.5 },
+  legR: { hip: -0.12, knee: 0.55 },
+}
+
+const BRUNSON_H = 190
+
+/** Right hand closed, raised. Brunson after the make. */
+const FIST: MiniPose = {
+  ...STAND,
+  lean: -0.06,
+  armL: { shoulder: 0.25, elbow: 0.4, grip: 0 },
+  armR: { shoulder: 2.25, elbow: 0.62, wrist: 0.15, grip: 1 },
+}
 
 const BRUNSON_KEYS: Key[] = [
-  { t: 0, x: 700, y: 748, pose: READY },
-  { t: 0.18, x: 712, y: 742, pose: CATCH },
-  { t: 0.3, x: 728, y: 752, pose: GATHER },
-  { t: 0.42, x: 744, y: 734, pose: RELEASE },
-  { t: 0.6, x: 736, y: 746, pose: WATCH },
-  { t: 0.99, x: 730, y: 748, pose: WATCH },
+  // Straight-on, deep, left of the arc. One dribble, then the three.
+  { t: 0, x: 680, y: 738, pose: READY },
+  { t: 0.16, x: 692, y: 730, pose: REACH },
+  { t: 0.22, x: 704, y: 724, pose: REACH },
+  { t: 0.26, x: 714, y: 728, pose: CATCH },
+  { t: 0.28, x: 726, y: 734, pose: DRIBBLE },
+  { t: 0.34, x: 740, y: 726, pose: DRIBBLE },
+  { t: 0.37, x: 752, y: 712, pose: jumperPose(0.34, BRUNSON_H) },
+  { t: 0.4, x: 762, y: 700, pose: jumperPose(0.34, BRUNSON_H) },
+  { t: 0.414, x: 768, y: 692, pose: jumperPose(0.82, BRUNSON_H) },
+  { t: 0.42, x: 772, y: 686, pose: jumperPose(1, BRUNSON_H) },
+  { t: 0.52, x: 766, y: 702, pose: { ...jumperPose(1, BRUNSON_H), jump: 8 } },
+  { t: 0.66, x: 758, y: 716, pose: WATCH },
+  { t: 0.88, x: 750, y: 722, pose: FIST },
+  { t: 0.99, x: 746, y: 724, pose: FIST },
 ]
 
+/** Back to the basket, arms wide. Towns is the one they box out. */
+const BOX_OUT: MiniPose = {
+  ...STAND,
+  lean: -0.2,
+  crouch: 12,
+  armL: { shoulder: -0.55, elbow: 1.05, wrist: 0, grip: 0.2 },
+  armR: { shoulder: 0.7, elbow: 1.0, wrist: 0, grip: 0.2 },
+  legL: { hip: 0.28, knee: 0.55 },
+  legR: { hip: -0.16, knee: 0.6 },
+}
+
+const CHEER: MiniPose = {
+  ...STAND,
+  lean: -0.04,
+  armL: { shoulder: -1.35, elbow: 0.28, grip: 0.2 },
+  armR: { shoulder: 2.05, elbow: 0.4, grip: 0.45 },
+}
+
 const TOWNS_KEYS: Key[] = [
-  { t: 0, x: 980, y: 660, pose: STAND },
-  { t: 0.5, x: 992, y: 652, pose: STAND },
-  { t: 0.66, x: 1000, y: 648, pose: HANDS_UP },
-  { t: 0.99, x: 996, y: 654, pose: HANDS_UP },
+  // Paint, under the rim. They box him out; he never gets the flight path.
+  { t: 0, x: 1024, y: 560, pose: STAND },
+  { t: 0.4, x: 1034, y: 552, pose: STAND },
+  { t: 0.52, x: 1046, y: 568, pose: BOX_OUT },
+  { t: 0.86, x: 1038, y: 560, pose: BOX_OUT },
+  { t: 0.99, x: 1030, y: 554, pose: { ...HANDS_UP, lean: 0.08 } },
 ]
 
 const WING_KEYS: Key[] = [
-  { t: 0, x: 820, y: 560, pose: STAND },
-  { t: 0.99, x: 828, y: 566, pose: STAND },
+  { t: 0, x: 840, y: 600, pose: STAND },
+  { t: 0.84, x: 848, y: 606, pose: STAND },
+  { t: 0.96, x: 856, y: 612, pose: CHEER },
+  { t: 0.99, x: 852, y: 608, pose: CHEER },
 ]
 
 const CORNER_KEYS: Key[] = [
-  { t: 0, x: 960, y: 500, pose: STAND },
-  { t: 0.99, x: 968, y: 496, pose: STAND },
-]
-
-const WEMBY_KEYS: Key[] = [
-  { t: 0, x: 840, y: 700, pose: STAND },
-  { t: 0.28, x: 870, y: 688, pose: CONTEST },
-  { t: 0.5, x: 888, y: 692, pose: CONTEST },
-  { t: 0.72, x: 876, y: 696, pose: STAND },
-  { t: 0.99, x: 860, y: 700, pose: STAND },
-]
-
-const HARPER_KEYS: Key[] = [
-  { t: 0, x: 900, y: 540, pose: STAND },
-  { t: 0.4, x: 940, y: 580, pose: STAND },
-  { t: 0.62, x: 1008, y: 640, pose: STAND },
-  { t: 0.78, x: 1040, y: 668, pose: LATE },
-  { t: 0.99, x: 1036, y: 674, pose: STAND },
+  { t: 0, x: 960, y: 400, pose: STAND },
+  { t: 0.84, x: 966, y: 406, pose: STAND },
+  { t: 0.96, x: 972, y: 412, pose: CHEER },
+  { t: 0.99, x: 968, y: 408, pose: CHEER },
 ]
 
 function quad(
@@ -684,15 +909,67 @@ function quad(
   }
 }
 
+/** One loop of the solo jumper: load, release, hold, reset. Matches the motor chain. */
+export const SOLO_CYCLE = 4.4
+export const SOLO_CHAIN = 2.4
+export const SOLO_FLIGHT = 1.1
+
+export function soloShotClock(t: number, reduced: boolean) {
+  return reduced ? 1.6 : t % SOLO_CYCLE
+}
+
+function soloPose(local: number): MiniPose {
+  const h = COURT_DEFENDER.h
+  if (local <= SOLO_CHAIN) {
+    const chainT = local / SOLO_CHAIN
+    const u = chainT < 0.16 ? 0 : (chainT - 0.16) / 0.84
+    return jumperPose(u, h)
+  }
+  const release = jumperPose(1, h)
+  const flightEnd = SOLO_CHAIN + SOLO_FLIGHT
+  if (local <= flightEnd) return release
+  const f = smooth((local - flightEnd) / (SOLO_CYCLE - flightEnd))
+  return lerpPose(release, jumperPose(0, h), f)
+}
+
+export interface SoloShot {
+  nodes: MiniNode[]
+  ball: { x: number; y: number }
+  trail: { from: { x: number; y: number }; apex: { x: number; y: number }; to: { x: number; y: number } } | null
+}
+
+/** Pose plus the ball, which stays on the fingertips until the wrist snaps. */
+export function soloShotFrame(local: number): SoloShot {
+  const h = COURT_DEFENDER.h
+  const nodes = layoutMiniSoma(soloPose(local), h, COURT_DEFENDER.x, COURT_FLOOR_Y)
+  const release = shotPoint(
+    layoutMiniSoma(jumperPose(1, h), h, COURT_DEFENDER.x, COURT_FLOOR_Y)
+  )
+  const to = COURT_HOOP
+  const apex = {
+    x: (release.x + to.x) / 2,
+    y: Math.min(release.y, to.y) - 96,
+  }
+  const flying = local > SOLO_CHAIN
+  const flightT = flying ? Math.min(1, (local - SOLO_CHAIN) / SOLO_FLIGHT) : 0
+  const ball = flying ? quad(release, apex, to, flightT) : shotPoint(nodes)
+  return {
+    nodes,
+    ball,
+    trail: flying ? { from: release, apex, to } : null,
+  }
+}
+
 function actorAt(
   id: string,
   side: TipActor["side"],
   h: number,
   keys: Key[],
-  t: number
+  t: number,
+  ease = true
 ): TipActor {
-  const s = sampleKey(keys, t)
-  return { id, side, h, nodes: layoutMiniSoma(s.pose, h, s.x, s.y) }
+  const s = sampleKey(keys, t, ease)
+  return { id, side, h, nodes: layoutMiniSoma(s.pose, h, s.x, s.y), number: KNICKS_NUMBER[id] }
 }
 
 function handOf(actor: TipActor, id = "hand-r") {
@@ -729,24 +1006,22 @@ export function possessionClock(elapsed: number): number {
  * that landing into the five-player celebration.
  */
 export function tipPlay(t: number, gather = 0): TipFrame {
-  const og = actorAt("team-og", "team", 210, OG_KEYS, t)
+  const og = actorAt("team-og", "team", 210, OG_KEYS, t, false)
   const brunson = actorAt("team-brunson", "team", 190, BRUNSON_KEYS, t)
   const towns = actorAt("team-towns", "team", 228, TOWNS_KEYS, t)
   const wing = actorAt("team-wing", "team", 200, WING_KEYS, t)
   const corner = actorAt("team-corner", "team", 196, CORNER_KEYS, t)
-  const wemby = actorAt("team-wemby", "defense", 262, WEMBY_KEYS, t)
-  const harper = actorAt("team-harper", "defense", 204, HARPER_KEYS, t)
 
   const ogHand = handOf(og)
   const brHand = handOf(brunson)
-  const passOg = actorAt("team-og", "team", 210, OG_KEYS, 0.08)
+  const passOg = actorAt("team-og", "team", 210, OG_KEYS, 0.08, false)
   const passFrom = {
     x: (handOf(passOg).x + handOf(passOg, "hand-l").x) / 2,
     y: (handOf(passOg).y + handOf(passOg, "hand-l").y) / 2,
   }
-  const catchAt = handOf(actorAt("team-brunson", "team", 190, BRUNSON_KEYS, 0.2))
-  const release = handOf(actorAt("team-brunson", "team", 190, BRUNSON_KEYS, 0.42))
-  const tipHand = handOf(actorAt("team-og", "team", 210, OG_KEYS, 0.74))
+  const catchAt = shotPoint(actorAt("team-brunson", "team", 190, BRUNSON_KEYS, 0.2).nodes)
+  const release = shotPoint(actorAt("team-brunson", "team", 190, BRUNSON_KEYS, 0.42).nodes)
+  const tipHand = shotPoint(actorAt("team-og", "team", 210, OG_KEYS, 0.74, false).nodes)
   // Front lip, then the top of the one carom. The hand meets the ball falling off that bounce.
   const iron = { x: TEAM_HOOP.x - 18, y: TEAM_HOOP.y + 6 }
   const carom = { x: iron.x - 12, y: iron.y - 56 }
@@ -778,15 +1053,16 @@ export function tipPlay(t: number, gather = 0): TipFrame {
       catchAt,
       f
     )
-  } else if (t < 0.28) ball = { x: brHand.x, y: brHand.y }
-  else if (t < 0.36) {
-    const f = (t - 0.28) / 0.08
+  } else if (t < 0.28) ball = shotPoint(brunson.nodes)
+  else if (t < 0.34) {
+    const f = (t - 0.28) / 0.06
     const bounce = f < 0.5 ? f / 0.5 : (1 - f) / 0.5
+    const hand = shotPoint(brunson.nodes)
     ball = {
-      x: lerp(brHand.x, dribbleFloor.x + 8, bounce),
-      y: lerp(brHand.y, dribbleFloor.y - 4, bounce),
+      x: lerp(hand.x, dribbleFloor.x + 8, bounce),
+      y: lerp(hand.y, dribbleFloor.y - 4, bounce),
     }
-  } else if (t < 0.42) ball = { x: brHand.x, y: brHand.y }
+  } else if (t < 0.42) ball = shotPoint(brunson.nodes)
   else if (t < 0.58) {
     ball = quad(release, shotApex, iron, (t - 0.42) / 0.16)
   } else if (t < 0.66) {
@@ -807,11 +1083,11 @@ export function tipPlay(t: number, gather = 0): TipFrame {
     ball = { x: TEAM_HOOP.x, y: lerp(TEAM_HOOP.y, TEAM_HOOP.y + 36, f) }
   }
 
-  const call = t >= 0.2 && t < 0.42 ? { x: ogHand.x + 8, y: ogHand.y - 16 } : null
+  const call = t >= 0.14 && t < 0.26 ? { x: ogHand.x + 8, y: ogHand.y - 16 } : null
   const made = t >= 0.84
 
   const frame: TipFrame = {
-    actors: [wemby, harper, towns, wing, corner, brunson, og],
+    actors: [towns, wing, corner, brunson, og],
     ball,
     trail: t >= 0.42 && t < 0.6 ? { from: release, apex: shotApex, to: iron } : null,
     call,
@@ -830,7 +1106,7 @@ export function tipPlay(t: number, gather = 0): TipFrame {
 }
 
 /** Hands meet here, just above the five crowns, under the closing line. */
-const HAND_STACK = { x: 830, y: 338 }
+const HAND_STACK = { x: 868, y: 338 }
 
 /** Both arms overhead, meeting over his own head. The center of the huddle. */
 const HUDDLE_CENTER: MiniPose = {
@@ -864,6 +1140,12 @@ function gatherHands(nodes: MiniNode[], amount: number) {
     "hand-l": 0.82,
     "hand-r": 0.82,
   }
+  for (const side of ["l", "r"] as const) {
+    for (const digit of DIGITS) {
+      weight[`hand-${side}-${digit.id}`] = 0.9
+      weight[`hand-${side}-${digit.id}-tip`] = 0.96
+    }
+  }
   return nodes.map((n) => {
     const k = (weight[n.id] ?? 0) * amount
     if (k <= 0) return n
@@ -885,18 +1167,16 @@ function huddleActor(
   hands: boolean
 ): TipActor {
   const nodes = layoutMiniSoma(pose, h, x, y)
-  return { id, side, h, nodes: hands ? gatherHands(nodes, 1) : nodes }
+  return { id, side, h, nodes: hands ? gatherHands(nodes, 1) : nodes, number: KNICKS_NUMBER[id] }
 }
 
 /** The make, then this. Feet staggered so the five crowns share a height and the hands stack above them. */
 const HUDDLE_ACTORS: TipActor[] = [
-  huddleActor("team-wemby", "defense", 262, 600, 790, STAND, false),
-  huddleActor("team-harper", "defense", 204, 1160, 600, STAND, false),
-  huddleActor("team-towns", "team", 228, 830, 626, HUDDLE_CENTER, true),
-  huddleActor("team-wing", "team", 200, 778, 596, HUDDLE_LEFT, true),
-  huddleActor("team-corner", "team", 196, 882, 594, HUDDLE_RIGHT, true),
-  huddleActor("team-brunson", "team", 190, 858, 602, HUDDLE_RIGHT, true),
-  huddleActor("team-og", "team", 210, 802, 608, HUDDLE_LEFT, true),
+  huddleActor("team-towns", "team", 228, 868, 626, HUDDLE_CENTER, true),
+  huddleActor("team-wing", "team", 200, 748, 596, HUDDLE_LEFT, true),
+  huddleActor("team-corner", "team", 196, 988, 594, HUDDLE_RIGHT, true),
+  huddleActor("team-brunson", "team", 190, 928, 602, HUDDLE_RIGHT, true),
+  huddleActor("team-og", "team", 210, 808, 608, HUDDLE_LEFT, true),
 ]
 
 function blendActors(from: TipActor[], to: TipActor[], f: number): TipActor[] {
@@ -923,11 +1203,11 @@ export interface TeamPlayer {
 
 /** Opening set. Positions match `t = 0` of {@link tipPlay}. */
 export const TEAM_PLAYERS: TeamPlayer[] = [
-  { id: "team-og", label: "", role: "inbound", x: 520, y: 400, h: 210 },
-  { id: "team-brunson", label: "", role: "handler", x: 700, y: 748, h: 190 },
-  { id: "team-towns", label: "", role: "post", x: 980, y: 660, h: 228 },
-  { id: "team-wing", label: "", role: "wing", x: 820, y: 560, h: 200 },
-  { id: "team-corner", label: "", role: "corner", x: 960, y: 500, h: 196 },
+  { id: "team-og", label: "", role: "inbound", x: 660, y: 352, h: 210 },
+  { id: "team-brunson", label: "", role: "handler", x: 680, y: 738, h: 190 },
+  { id: "team-towns", label: "", role: "post", x: 1024, y: 560, h: 228 },
+  { id: "team-wing", label: "", role: "wing", x: 840, y: 600, h: 200 },
+  { id: "team-corner", label: "", role: "corner", x: 960, y: 400, h: 196 },
 ]
 
 /**
@@ -963,7 +1243,10 @@ export type TeamStage = 0 | 1 | 2 | 3
  */
 export type TeamMind = 0 | 1 | 2 | 3
 
-/** Skull of the inbound pose. Streams and the model meet here. */
+/**
+ * Where the mind diagram was drawn, on the skull of the inbound pose it was
+ * authored against. Rendering recenters the whole figure on the live skull.
+ */
 export const OG_MIND = { x: 520, y: 205 }
 
 /** What is arriving from outside the skull while he still has the ball. */
@@ -988,9 +1271,12 @@ export const OG_SYSTEMS: Array<{ id: string; label: string; x: number; y: number
 ]
 
 /**
- * The model he brought to the inbound. Both branches are loaded. Only the
- * first one is the sequence this possession runs.
+ * The model he brought to the inbound. Both lines start with the pass.
+ * Then they split: if Brunson shoots, OG crashes; if the ball comes back, OG shoots.
+ * Only the crash is the sequence this possession runs.
  */
+export const OG_PASS = { x: 648, y: 162, label: "PASS TO BRUNSON" }
+
 export const OG_BRANCHES: Array<{
   id: string
   ifLabel: string
@@ -1002,17 +1288,17 @@ export const OG_BRANCHES: Array<{
   {
     id: "shoot",
     ifLabel: "IF HE SHOOTS",
-    thenLabel: "CRASH",
-    gate: { x: 648, y: 128 },
-    act: { x: 748, y: 108 },
+    thenLabel: "CRASH THE BOARDS",
+    gate: { x: 720, y: 118 },
+    act: { x: 800, y: 102 },
     chosen: true,
   },
   {
     id: "pass",
-    ifLabel: "IF HE PASSES",
-    thenLabel: "HE SHOOTS",
-    gate: { x: 656, y: 196 },
-    act: { x: 756, y: 220 },
+    ifLabel: "IF HE PASSES BACK",
+    thenLabel: "I SHOOT",
+    gate: { x: 720, y: 208 },
+    act: { x: 800, y: 222 },
     chosen: false,
   },
 ]

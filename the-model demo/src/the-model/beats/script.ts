@@ -1,65 +1,7 @@
 import { graph } from "../design/tokens"
 import type { ActId, Beat, WorldState } from "../stage/types"
 import {
-  A_ACT,
-  A_AI,
-  A_FEDERATE,
-  A_FEDERATE_HOLD,
-  A_HUMANS,
-  A_MODEL,
-  A_NETWORK_CENTRIC,
-  A_OPEN,
-  A_PERCEIVE,
-  A_SEMANTICS,
-  A_STORM_ACT,
-  A_STORM_LIVE,
-  A_STORM_PATH,
-  A_TAGS,
-  A_TRAFFIC,
-  A_VERIFY,
-  B_BRAIN,
-  B_CIRCULATION,
-  B_INTELLIGENCE,
-  B_LOOP,
-  B_LYMPH,
-  B_NERVES,
-  B_NEURAL,
-  B_PRESENCE,
-  B_SENSES,
-  B_STRUCTURE,
-  B_VISCERA,
-  C_LOOP,
-  C_MOTOR,
-  C_PERCEIVE,
-  C_REVEAL,
-  E_AIR,
-  E_COMMITMENT,
-  E_DEPEND,
-  E_DISPATCH,
-  E_DISPATCH_ACT,
-  E_DISRUPT,
-  E_GROUND,
-  E_HUBS,
-  E_IT,
-  E_OPEN,
-  E_OPS,
-  E_ORGANISM,
-  E_PACKAGE,
-  E_REROUTE,
   GAGE_QUOTE,
-  H_ECONOMY,
-  H_GAGE,
-  H_INTERNET,
-  H_LANGUAGE,
-  H_PEOPLE,
-  H_PULLBACK,
-  L_ACT,
-  L_DECIDE,
-  L_OBSERVE,
-  L_REVEAL,
-  L_RUN,
-  L_UNDERSTAND,
-  L_VERIFY,
   M1,
   M2,
   M3,
@@ -68,30 +10,88 @@ import {
   M6,
   M7,
   N_COSMOS,
-  N_FOODWEB,
-  N_INDRA,
+  N_ATMOS,
+  N_WATER,
   N_MYCELIUM,
   N_PHOTOSYNTHESIS,
+  N_FOODWEB,
   N_REPEATS,
-  N_WATER,
-  P_LAYERS,
-  P_OPEN,
-  P_PATH,
-  T_EMERGE,
+  B_PRESENCE,
+  B_ENERGY,
+  B_STRUCTURE,
+  B_CIRCULATION,
+  B_VISCERA,
+  B_LYMPH,
+  B_NERVES,
+  B_BRAIN,
+  B_NEURAL,
+  B_SENSES,
+  H_LANGUAGE,
+  H_PEOPLE,
+  H_ECONOMY,
+  H_SPACE,
+  H_INTERNET,
+  C_REVEAL,
+  C_PERCEIVE,
+  C_MOTOR,
+  C_LOOP,
+  T_REVEAL,
   T_LINKS,
   T_MIND,
-  T_MIND_DECIDE,
   T_MIND_MODEL,
-  T_MODEL,
-  T_REVEAL,
-  T_SCALE,
+  T_MIND_DECIDE,
   T_SIGNALS,
-  Z_CLOSE,
+  T_MODEL,
+  T_EMERGE,
+  H_PULLBACK,
+  P_OPEN,
+  P_PATH,
+  P_LAYERS,
+  E_OPEN,
+  E_AIR,
+  E_GROUND,
+  E_HUBS,
+  E_OPS,
+  E_IT,
+  E_ORGANISM,
+  E_PACKAGE,
+  E_COMMITMENT,
+  E_DISRUPT,
+  E_DEPEND,
+  E_REROUTE,
+  E_FINE,
+  E_DISPATCH,
+  E_DISPATCH_ACT,
+  A_PERCEIVE,
+  A_MODEL,
+  A_SEMANTICS,
+  A_FEDERATE,
+  A_FEDERATE_HOLD,
+  A_AI,
+  A_TRAFFIC,
+  A_TAGS,
+  A_ACT,
+  A_VERIFY,
+  A_NETWORK_CENTRIC,
+  A_HUMANS,
   Z_ENTERPRISE,
-  Z_HUMANS,
-  Z_MODEL,
-  Z_ONUG,
   Z_SCALE,
+  Z_MODEL,
+  Z_HUMANS,
+  AIR_SEAT,
+  AIR_SMOOTH,
+  AIR_WITNESS,
+  AIR_SPLIT,
+  AIR_HERD,
+  AIR_BOUNDARY,
+  AIR_ONCE,
+  AIR_NAMED,
+  AIR_OPERATE,
+  RECAP_ARCHITECTURE,
+  RECAP_OPERATE,
+  RECAP_MODEL,
+  Z_CLOSE,
+  Z_ONUG,
 } from "../content/copy"
 
 /**
@@ -124,6 +124,40 @@ import {
  */
 
 const FULL = { zoom: 1, focusX: 800, focusY: 450 }
+
+/**
+ * After the human reroute: the aircraft story (air-*, RouteSky), then the
+ * traffic diagram (ai-*, AiNetwork) through the commit rule and the
+ * perceive / model / meaning readings. The enterprise map returns at
+ * federation.
+ */
+const AI_FILE =
+  "People got this shipment this far, and an agent now files the route, because a disrupted jet stream is harder than a closed hub, and that one decision becomes many transactions that all have to return inside the decision window."
+const AI_FANOUT =
+  "The forecast is a fan-out, so the route finishes at the slowest model."
+const AI_STREAM =
+  "If the forecast session breaks, the agent is routing on yesterday's jet stream."
+const AI_STALL =
+  "Nothing is down. The route is late, so the shipment misses the cutoff on a track the forecast no longer supports."
+const AI_RETRY =
+  "The agent asks again and files a second plan, moving the shipment onto a second aircraft."
+const AI_CROWD =
+  "Every other flight asks at once. The shared turbulence service is where this shipment loses the window, while the links still look fine."
+const AI_TRACE =
+  "The operation blames the routing model. The trace stops at the weather provider, and the retry takes that same feed."
+const AI_FRESH =
+  "The route is filed only when a fresh turbulence field has returned inside the decision window."
+const AI_COMPLETE =
+  "A partial field does not clear the flight. The tool runs only on a complete answer."
+const AI_ONCE = "Asking again files the same plan once."
+const AI_ISOLATE =
+  "This shipment has its own path to the forecast, so the fleet's questions do not bury it."
+const AI_MEASURE =
+  "The carrier measures up to the weather boundary and keeps a second product: delay, a different altitude, a different route."
+const AI_ENROUTE =
+  "En route, aircraft sensors and ride reports come back, and the next sector can change."
+const AI_FABRIC =
+  "The agent may commit only on evidence that is still live, only once, inside the cutoff, with the critical call isolated from the herd, and with the path measured out to the system it does not own."
 
 function world(partial: Partial<WorldState>): WorldState {
   return {
@@ -176,6 +210,9 @@ function world(partial: Partial<WorldState>): WorldState {
     loopTour: false,
     verified: false,
     scaleTour: false,
+    air: 0,
+    promiseRisk: false,
+    networkWide: false,
 
     ...partial,
   }
@@ -226,9 +263,14 @@ const CAM_COSMOS = frameCircle(800, 450, 1080, 0.14)
  * asterism; focusY stays high so the band does not sink into audience type.
  */
 const CAM_WATER = { ...frameBox(-220, 230, 1800, 912, 0.06), focusY: 728 }
-const CAM_SOIL = frameBox(320, 618, 1164, 936, 0.18)
+/**
+ * The greenhouse band and the ground it conditions. Higher than `CAM_WATER`
+ * so the transport layer is the subject, not the circuit that will run on it.
+ */
+export const CAM_ATMOS = { ...frameBox(-120, 160, 1720, 900, 0.08), focusY: 520 }
+export const CAM_SOIL = frameBox(320, 618, 1164, 936, 0.18)
 /** Pulls back from `CAM_SOIL` to include the canopy the light falls through. */
-const CAM_CANOPY = frameBox(320, 260, 1164, 936, 0.16)
+export const CAM_CANOPY = frameBox(320, 260, 1164, 936, 0.16)
 /** Life asterisms + fuel arriving at the whisper mouth. */
 const CAM_FOOD = { ...frameBox(280, 170, 1340, 920, 0.2), focusY: 568 }
 /**
@@ -238,20 +280,22 @@ const CAM_FOOD = { ...frameBox(280, 170, 1340, 920, 0.2), focusY: 568 }
  * at their original boxes; that is what lets the body read as small in them.
  */
 const CAM_FIGURE = frameBox(646, 376.5, 960.6, 855, 0.14)
-const CAM_TORSO = frameBox(657, 448, 943, 701, 0.18)
-const CAM_VISCERA = frameBox(723, 492, 877, 651.5, 0.22)
-const CAM_ENDO = frameBox(690, 426, 910, 657, 0.18)
+export const CAM_TORSO = frameBox(657, 448, 943, 701, 0.18)
+export const CAM_VISCERA = frameBox(723, 492, 877, 651.5, 0.22)
+export const CAM_ENDO = frameBox(690, 426, 910, 657, 0.18)
 const CAM_NERVES = frameBox(657, 376.5, 943, 827.5, 0.16)
 /** Cortex and brainstem — before the head pulls back for the senses. */
-const CAM_BRAIN = frameBox(745, 409.5, 855, 503, 0.22)
+export const CAM_BRAIN = frameBox(745, 409.5, 855, 503, 0.22)
 /** Tighter still: the cortex web only. The connections, not the organ. */
 const CAM_NEURAL = frameBox(764.25, 419.4, 835.75, 457.9, 0.32)
 const CAM_HEAD = frameBox(668, 371, 932, 596.5, 0.18)
-const CAM_LOOP = frameBox(646, 376.5, 1036.5, 855, 0.14)
-const CAM_PEOPLE = frameBox(140, 70, 1460, 740, 0.16)
-const CAM_TRADE = frameBox(140, 70, 1480, 760, 0.16)
-const CAM_LANGUAGE = frameBox(430, 90, 1170, 340, 0.18)
-const CAM_NET = frameBox(-20, -70, 1620, 780, 0.14)
+export const CAM_LOOP = frameBox(646, 376.5, 1036.5, 855, 0.14)
+export const CAM_PEOPLE = frameBox(140, 70, 1460, 740, 0.16)
+export const CAM_TRADE = frameBox(140, 70, 1480, 760, 0.16)
+export const CAM_LANGUAGE = frameBox(430, 90, 1170, 340, 0.18)
+export const CAM_NET = frameBox(-20, -70, 1620, 780, 0.14)
+/** Satellite ring and the ships leaving it. Wide enough that the orbit is the subject. */
+export const CAM_SPACE = frameCircle(800, 450, 1080, 0.14)
 const CAM_WORLD = frameCircle(800, 450, 1100, 0.2)
 
 /**
@@ -264,7 +308,7 @@ const CAM_COURT = frameBox(380, 160, 1330, 830, 0.08)
 /** Scoreboard above the inbound, the shot in the bottom half, rim upper right. */
 const CAM_TEAM = frameBox(400, 10, 1240, 800, 0.05)
 /** Inside the inbounder's skull while the ball is still in his hands. */
-const CAM_OG_MIND = frameBox(280, 60, 820, 390, 0.08)
+const CAM_OG_MIND = frameBox(360, -13, 1080, 362, 0.05)
 
 /**
  * Once the earth is open it stays open under everything that follows —
@@ -291,21 +335,21 @@ const CAM_ENT_GATEWAY = frameBox(380, 180, 1060, 700, 0.12)
 /** The dispatcher, the storm, and the five facts she is waiting on. */
 const CAM_DISPATCH = frameBox(280, 180, 880, 900, 0.05)
 /** The same storm, now meeting in the planning agent. */
-const CAM_STORM = frameBox(280, 40, 1100, 880, 0.04)
+export const CAM_STORM = frameBox(280, 40, 1100, 880, 0.04)
+
+/** Logistics picture held under the route chapter if Fabric ever flashes. */
+const ROUTE_HELD = world({
+  ent: 7,
+  entPackage: true,
+  entModel: true,
+  entDisrupt: "reroute",
+  entRelations: true,
+  ...FULL,
+})
 
 export const BEATS: Beat[] = [
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 1 · An architecture that repeats
-  //
-  // Four unrelated natural systems, each one a network. No argument is made
-  // yet; the room is just being shown the same shape four times so that the
-  // word "network" has weight before it is used about a company.
-  // ════════════════════════════════════════════════════════════════════
+  // MOVEMENT 1 · An architecture that repeats,
 
-  /**
-   * Cold open. The cosmic web is already turning before anyone says
-   * anything — no caption, no title, no label. The first click names it.
-   */
   beat(
     "open",
     1,
@@ -327,7 +371,7 @@ export const BEATS: Beat[] = [
     1,
     M1,
     N_COSMOS,
-    N_INDRA,
+    N_ATMOS,
     18000,
     world({
       shot: "soma",
@@ -339,21 +383,26 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  /** The lattice flare stays lit through this beat — relationships, not objects. */
+  /**
+   * Companion stays at 1 so the water circuit does not open yet. The sky
+   * band is at full brightness; the next beat leaves it up, dimmed, under
+   * the circuit.
+   */
   beat(
-    "cosmos-relations",
+    "atmosphere",
     1,
     M1,
-    N_INDRA,
+    N_ATMOS,
     N_WATER,
-    20000,
+    14000,
     world({
       shot: "soma",
       graphOpacity: 0,
       somaCompanion: 1,
-      somaIndra: true,
+      somaAtmosphere: true,
+      somaAtmosphereFocus: true,
       somaRhyme: true,
-      ...CAM_COSMOS,
+      ...CAM_ATMOS,
     })
   ),
 
@@ -363,7 +412,7 @@ export const BEATS: Beat[] = [
     M1,
     N_WATER,
     N_MYCELIUM,
-    20000,
+    23000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -416,7 +465,7 @@ export const BEATS: Beat[] = [
     M1,
     N_FOODWEB,
     N_REPEATS,
-    17000,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -427,44 +476,53 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  /** The movement's only claim, and it is deliberately modest. */
   beat(
     "architecture-repeats",
     1,
     M1,
     N_REPEATS,
     B_PRESENCE,
-    18000,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
       somaCompanion: 4,
       somaEarth: "food",
-      somaRhyme: true,
       somaPullback: true,
+      somaRhyme: true,
       ...CAM_WORLD,
     })
   ),
 
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 2 · Networks make intelligence
-  //
-  // One body, disclosed layer by layer, ending at the cortex. Then the
-  // networks people already form — language, families, communities — and only
-  // then the same body doing something, so intelligence is behaviour.
-  // ════════════════════════════════════════════════════════════════════
+  // MOVEMENT 2 · Networks make intelligence,
 
   beat(
     "body",
     2,
     M2,
     B_PRESENCE,
-    B_STRUCTURE,
-    16000,
+    B_ENERGY,
+    12000,
     world({
       shot: "soma",
       graphOpacity: 0,
       somaEra: 1,
+      ...EARTH,
+      ...CAM_FIGURE,
+    })
+  ),
+
+  beat(
+    "body-energy",
+    2,
+    M2,
+    B_ENERGY,
+    B_STRUCTURE,
+    18000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      somaEra: 2,
       ...EARTH,
       ...CAM_FIGURE,
     })
@@ -492,7 +550,7 @@ export const BEATS: Beat[] = [
     M2,
     B_CIRCULATION,
     B_VISCERA,
-    17000,
+    22000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -508,7 +566,7 @@ export const BEATS: Beat[] = [
     M2,
     B_VISCERA,
     B_LYMPH,
-    15000,
+    18000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -524,7 +582,7 @@ export const BEATS: Beat[] = [
     M2,
     B_LYMPH,
     B_NERVES,
-    16000,
+    18000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -540,7 +598,7 @@ export const BEATS: Beat[] = [
     M2,
     B_NERVES,
     B_BRAIN,
-    18000,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -557,7 +615,7 @@ export const BEATS: Beat[] = [
     M2,
     B_BRAIN,
     B_NEURAL,
-    16000,
+    18000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -568,26 +626,20 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  /**
-   * §42 pause. The camera is inside the cortex, edges carrying unequal
-   * weight, and the sentence is centred instead of in the corner panel.
-   * This is the hinge of the first half: everything after it depends on the
-   * room accepting that intelligence lives in relationships.
-   */
   beat(
     "neural",
     2,
     M2,
     B_NEURAL,
     B_SENSES,
-    22000,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
+      showTitle: true,
       somaEra: 7,
       somaSpikes: true,
       somaWeighted: true,
-      showTitle: true,
       ...EARTH,
       ...CAM_NEURAL,
     })
@@ -598,8 +650,8 @@ export const BEATS: Beat[] = [
     2,
     M2,
     B_SENSES,
-    B_LOOP,
-    18000,
+    H_LANGUAGE,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -612,40 +664,22 @@ export const BEATS: Beat[] = [
   ),
 
   beat(
-    "body-loop",
+    "language",
     2,
     M2,
-    B_LOOP,
-    B_INTELLIGENCE,
-    20000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      somaEra: 9,
-      somaSpikes: true,
-      somaSense: true,
-      somaLoop: true,
-      ...EARTH,
-      ...CAM_LOOP,
-    })
-  ),
-
-  beat(
-    "body-intelligence",
-    2,
-    M2,
-    B_INTELLIGENCE,
+    H_LANGUAGE,
     H_PEOPLE,
-    18000,
+    16000,
     world({
       shot: "soma",
       graphOpacity: 0,
       somaEra: 9,
       somaSpikes: true,
       somaSense: true,
-      somaLoop: true,
-      ...EARTH,
-      ...CAM_LOOP,
+      somaCompanion: 5,
+      somaEarth: "mycelium",
+      somaMind: true,
+      ...CAM_LANGUAGE,
     })
   ),
 
@@ -654,7 +688,7 @@ export const BEATS: Beat[] = [
     2,
     M2,
     H_PEOPLE,
-    H_LANGUAGE,
+    H_ECONOMY,
     18000,
     world({
       shot: "soma",
@@ -670,36 +704,72 @@ export const BEATS: Beat[] = [
   ),
 
   beat(
-    "language",
+    "markets",
     2,
     M2,
-    H_LANGUAGE,
-    C_REVEAL,
-    22000,
+    H_ECONOMY,
+    H_SPACE,
+    18000,
     world({
       shot: "soma",
       graphOpacity: 0,
       somaEra: 9,
       somaSpikes: true,
       somaSense: true,
-      somaCompanion: 6,
+      somaCompanion: 7,
       somaEarth: "mycelium",
-      somaMind: true,
-      ...CAM_LANGUAGE,
+      somaRhyme: true,
+      ...CAM_TRADE,
     })
   ),
 
-  /**
-   * The same figure, now with a floor and a hoop. §34: the camera pulls back
-   * and the world admits a court — no cut, no new scene, no new body.
-   */
+  beat(
+    "satellites",
+    2,
+    M2,
+    H_SPACE,
+    H_INTERNET,
+    20000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      somaEra: 9,
+      somaSpikes: true,
+      somaSense: true,
+      somaCompanion: 8,
+      somaEarth: "mycelium",
+      somaRhyme: true,
+      ...CAM_SPACE,
+    })
+  ),
+
+  beat(
+    "internet",
+    2,
+    M2,
+    H_INTERNET,
+    C_REVEAL,
+    18000,
+    world({
+      shot: "soma",
+      graphOpacity: 0,
+      somaEra: 9,
+      somaSpikes: true,
+      somaSense: true,
+      somaCompanion: 9,
+      somaEarth: "mycelium",
+      somaMind: true,
+      ...CAM_NET,
+    })
+  ),
+
   beat(
     "shot-reveal",
     2,
     M2,
     C_REVEAL,
     C_PERCEIVE,
-    14000,
+    15000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -717,7 +787,7 @@ export const BEATS: Beat[] = [
     M2,
     C_PERCEIVE,
     C_MOTOR,
-    26000,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -736,7 +806,7 @@ export const BEATS: Beat[] = [
     M2,
     C_MOTOR,
     C_LOOP,
-    26000,
+    19000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -761,30 +831,12 @@ export const BEATS: Beat[] = [
       somaEra: 9,
       somaSpikes: true,
       somaSense: true,
-      somaLoop: true,
       court: 3,
       ...CAM_COURT,
     })
   ),
 
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 3 · Intelligence networks with intelligence
-  //
-  // Five reduced copies of the same body. The point is not teamwork; it is
-  // that connecting intelligences produces a new intelligence that none of
-  // them contains, which is the exact claim the enterprise half will rest on.
-  // The possession they play is the Game 4 tip, once. Before the pass leaves
-  // his hands, the camera goes into his skull: the senses, the model he
-  // already holds, and the branch that will become the crash. Then the play
-  // runs, holds on the make, and the five come together, hands stacked.
-  // The scoreboard stays up through all of that. Knicks go 105 → 107 as the
-  // tip goes through, and the clock runs from 5.7 down to 0.0 as the hands
-  // stack. At 0.0 the board reads "Knicks in Five!". The emergence sentence
-  // lands on that celebration, and the board comes down so the line can.
-  //
-  // `somaEra` drops to 0 here: the anatomical body hands off to the five
-  // smaller copies. Keeping both would draw a second body on top of the first.
-  // ════════════════════════════════════════════════════════════════════
+  // MOVEMENT 3 · Intelligence networks with intelligence,
 
   beat(
     "team",
@@ -792,7 +844,7 @@ export const BEATS: Beat[] = [
     M3,
     T_REVEAL,
     T_LINKS,
-    16000,
+    13000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -807,7 +859,7 @@ export const BEATS: Beat[] = [
     M3,
     T_LINKS,
     T_MIND,
-    22000,
+    20000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -822,7 +874,7 @@ export const BEATS: Beat[] = [
     M3,
     T_MIND,
     T_MIND_MODEL,
-    18000,
+    19000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -838,7 +890,7 @@ export const BEATS: Beat[] = [
     M3,
     T_MIND_MODEL,
     T_MIND_DECIDE,
-    22000,
+    23000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -854,7 +906,7 @@ export const BEATS: Beat[] = [
     M3,
     T_MIND_DECIDE,
     T_SIGNALS,
-    20000,
+    19000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -870,7 +922,7 @@ export const BEATS: Beat[] = [
     M3,
     T_SIGNALS,
     T_MODEL,
-    15000,
+    21000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -885,7 +937,7 @@ export const BEATS: Beat[] = [
     M3,
     T_MODEL,
     T_EMERGE,
-    8000,
+    17000,
     world({
       shot: "soma",
       graphOpacity: 0,
@@ -894,97 +946,30 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  /**
-   * The five are already together, hands stacked. The sentence sits on that
-   * celebration, and the edges between them come up with it.
-   */
   beat(
     "team-emergence",
     3,
     M3,
     T_EMERGE,
-    T_SCALE,
-    24000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      team: 3,
-      showTitle: true,
-      ...CAM_TEAM,
-    })
-  ),
-
-  beat(
-    "team-scale",
-    3,
-    M3,
-    T_SCALE,
-    H_ECONOMY,
-    20000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      team: 3,
-      ...CAM_TEAM,
-    })
-  ),
-
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 4 · 1984
-  //
-  // The uplevel. Families, communities, and the team were networks people
-  // form with each other. A market is that shape with no one in charge, the
-  // internet is the one we built, and Gage is the sentence that named it.
-  // Life of the Packet survives here as a wordless callback — proof we really
-  // did build it this way — and not as a lesson in packet switching.
-  // ════════════════════════════════════════════════════════════════════
-
-  beat(
-    "markets",
-    4,
-    M4,
-    H_ECONOMY,
-    H_INTERNET,
-    18000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      somaEra: 9,
-      somaSpikes: true,
-      somaSense: true,
-      somaCompanion: 7,
-      somaEarth: "mycelium",
-      somaRhyme: true,
-      ...CAM_TRADE,
-    })
-  ),
-
-  beat(
-    "internet",
-    4,
-    M4,
-    H_INTERNET,
     H_PULLBACK,
-    16000,
+    19000,
     world({
       shot: "soma",
       graphOpacity: 0,
-      somaEra: 9,
-      somaSpikes: true,
-      somaSense: true,
-      somaCompanion: 9,
-      somaEarth: "mycelium",
-      somaMind: true,
-      ...CAM_NET,
+      showTitle: true,
+      team: 3,
+      ...CAM_TEAM,
     })
   ),
+
+  // MOVEMENT 4 · 1984,
 
   beat(
     "all-of-it",
     4,
     M4,
     H_PULLBACK,
-    H_GAGE,
+    GAGE_QUOTE,
     18000,
     world({
       shot: "soma",
@@ -994,38 +979,12 @@ export const BEATS: Beat[] = [
       somaSense: true,
       somaCompanion: 9,
       somaEarth: "mycelium",
+      somaPullback: true,
       somaRhyme: true,
-      somaPullback: true,
       ...CAM_WORLD,
     })
   ),
 
-  beat(
-    "gage-setup",
-    4,
-    M4,
-    H_GAGE,
-    GAGE_QUOTE,
-    18000,
-    world({
-      shot: "soma",
-      graphOpacity: 0,
-      somaEra: 10,
-      somaSpikes: true,
-      somaSense: true,
-      somaCompanion: 9,
-      somaEarth: "mycelium",
-      somaMind: true,
-      somaPullback: true,
-      ...CAM_WORLD,
-    })
-  ),
-
-  /**
-   * §42 pause. The quote lands bare — centred, unattributed, over the world
-   * that has just been built. The room gets a beat to decide whether they
-   * already know whose line it is.
-   */
   beat(
     "gage-quote",
     4,
@@ -1036,32 +995,46 @@ export const BEATS: Beat[] = [
     world({
       shot: "soma",
       graphOpacity: 0,
+      showQuote: true,
       somaEra: 10,
       somaSpikes: true,
       somaSense: true,
       somaCompanion: 9,
       somaEarth: "mycelium",
       somaPullback: true,
-      showQuote: true,
       ...CAM_WORLD,
     })
   ),
 
-  /** §42 pause, continued: the photograph, the name, the year. */
   beat(
     "gage",
     4,
     M4,
     GAGE_QUOTE,
-    P_OPEN,
-    22000,
+    P_LAYERS,
+    20000,
     world({
       shot: "gage",
       graphOpacity: 0,
-      somaGage: true,
-      somaDissolve: true,
       showQuote: true,
+      somaDissolve: true,
+      somaGage: true,
       ...CAM_WORLD,
+    })
+  ),
+
+  beat(
+    "packet-layers",
+    4,
+    M4,
+    P_LAYERS,
+    P_OPEN,
+    22000,
+    world({
+      shot: "packet",
+      graphOpacity: 0,
+      packetLife: 4,
+      ...FULL,
     })
   ),
 
@@ -1071,8 +1044,13 @@ export const BEATS: Beat[] = [
     M4,
     P_OPEN,
     P_PATH,
-    18000,
-    world({ shot: "packet", graphOpacity: 0, packetLife: 1, ...FULL })
+    19000,
+    world({
+      shot: "packet",
+      graphOpacity: 0,
+      packetLife: 1,
+      ...FULL,
+    })
   ),
 
   beat(
@@ -1080,29 +1058,17 @@ export const BEATS: Beat[] = [
     4,
     M4,
     P_PATH,
-    P_LAYERS,
-    16000,
-    world({ shot: "packet", graphOpacity: 0, packetLife: 3, ...FULL })
-  ),
-
-  beat(
-    "packet-layers",
-    4,
-    M4,
-    P_LAYERS,
     E_OPEN,
-    18000,
-    world({ shot: "packet", graphOpacity: 0, packetLife: 4, ...FULL })
+    20000,
+    world({
+      shot: "packet",
+      graphOpacity: 0,
+      packetLife: 3,
+      ...FULL,
+    })
   ),
 
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 5 · The enterprise
-  //
-  // Movement 3's team, scaled to a planet. Everything the audience has been
-  // taught to see — specialised parts, dense relationships, a shared model,
-  // a loop — now in a company that moves physical objects, so the stakes are
-  // legible without a single technical term.
-  // ════════════════════════════════════════════════════════════════════
+  // MOVEMENT 5 · The enterprise,
 
   beat(
     "ent-open",
@@ -1110,8 +1076,11 @@ export const BEATS: Beat[] = [
     M5,
     E_OPEN,
     E_AIR,
-    22000,
-    world({ ent: 1, ...FULL })
+    21000,
+    world({
+      ent: 1,
+      ...FULL,
+    })
   ),
 
   beat(
@@ -1120,8 +1089,11 @@ export const BEATS: Beat[] = [
     M5,
     E_AIR,
     E_GROUND,
-    18000,
-    world({ ent: 2, ...CAM_ENT_AIR })
+    14000,
+    world({
+      ent: 2,
+      ...CAM_ENT_AIR,
+    })
   ),
 
   beat(
@@ -1130,8 +1102,11 @@ export const BEATS: Beat[] = [
     M5,
     E_GROUND,
     E_HUBS,
-    17000,
-    world({ ent: 2, ...CAM_ENT_AMERICAS })
+    13000,
+    world({
+      ent: 2,
+      ...CAM_ENT_AMERICAS,
+    })
   ),
 
   beat(
@@ -1140,8 +1115,11 @@ export const BEATS: Beat[] = [
     M5,
     E_HUBS,
     E_OPS,
-    22000,
-    world({ ent: 2, ...CAM_ENT_HUB })
+    16000,
+    world({
+      ent: 2,
+      ...CAM_ENT_HUB,
+    })
   ),
 
   beat(
@@ -1150,8 +1128,11 @@ export const BEATS: Beat[] = [
     M5,
     E_OPS,
     E_IT,
-    22000,
-    world({ ent: 2, ...CAM_ENT_OPS })
+    18000,
+    world({
+      ent: 2,
+      ...CAM_ENT_OPS,
+    })
   ),
 
   beat(
@@ -1160,39 +1141,39 @@ export const BEATS: Beat[] = [
     M5,
     E_IT,
     E_ORGANISM,
-    20000,
-    world({ ent: 7, ...CAM_ENT_IT })
+    18000,
+    world({
+      ent: 7,
+      ...CAM_ENT_IT,
+    })
   ),
 
-  /**
-   * §42 pause. Full pullback, everything revealed at once, one sentence
-   * centred. The visual does the work: at this zoom the thing on screen
-   * looks like the body from movement 2, which is the entire point.
-   */
   beat(
     "ent-organism",
     5,
     M5,
     E_ORGANISM,
     E_PACKAGE,
-    22000,
-    world({ ent: 7, showTitle: true, ...FULL })
+    21000,
+    world({
+      showTitle: true,
+      ent: 7,
+      ...FULL,
+    })
   ),
 
-  /**
-   * The enterprise's basketball shot: one package, followed end to end, so
-   * the network has a protagonist. Identity, origin, destination, priority,
-   * commitment — stated once, on a shipping label, and never turned into an
-   * analogy about packet headers (§19).
-   */
   beat(
     "ent-package",
     5,
     M5,
     E_PACKAGE,
     E_COMMITMENT,
-    30000,
-    world({ ent: 7, entPackage: true, ...FULL })
+    22000,
+    world({
+      ent: 7,
+      entPackage: true,
+      ...FULL,
+    })
   ),
 
   beat(
@@ -1201,25 +1182,26 @@ export const BEATS: Beat[] = [
     M5,
     E_COMMITMENT,
     E_DISRUPT,
-    24000,
-    world({ ent: 7, entPackage: true, entModel: true, ...FULL })
+    21000,
+    world({
+      ent: 7,
+      entModel: true,
+      entPackage: true,
+      ...FULL,
+    })
   ),
 
-  /**
-   * Weather closes the Pacific gateway. Amber, not red: nothing failed, and
-   * the beat is about the response, not the event (§20).
-   */
   beat(
     "ent-weather",
     5,
     M5,
     E_DISRUPT,
     E_DEPEND,
-    26000,
+    16000,
     world({
       ent: 7,
-      entPackage: true,
       entModel: true,
+      entPackage: true,
       entDisrupt: "onset",
       ...CAM_ENT_GATEWAY,
     })
@@ -1230,15 +1212,31 @@ export const BEATS: Beat[] = [
     5,
     M5,
     E_DEPEND,
-    E_DISPATCH,
-    28000,
+    E_FINE,
+    21000,
     world({
       ent: 7,
-      entPackage: true,
       entModel: true,
+      entPackage: true,
       entDisrupt: "onset",
       entRelations: true,
       ...FULL,
+    })
+  ),
+
+  beat(
+    "ent-fine",
+    5,
+    M5,
+    E_FINE,
+    E_DISPATCH,
+    20000,
+    world({
+      ent: 7,
+      entPackage: true,
+      entDisrupt: "onset",
+      promiseRisk: true,
+      ...CAM_DISPATCH,
     })
   ),
 
@@ -1248,7 +1246,7 @@ export const BEATS: Beat[] = [
     M5,
     E_DISPATCH,
     E_DISPATCH_ACT,
-    16000,
+    17000,
     world({
       ent: 7,
       entPackage: true,
@@ -1264,7 +1262,7 @@ export const BEATS: Beat[] = [
     M5,
     E_DISPATCH_ACT,
     E_REROUTE,
-    16000,
+    12000,
     world({
       ent: 7,
       entPackage: true,
@@ -1279,55 +1277,257 @@ export const BEATS: Beat[] = [
     5,
     M5,
     E_REROUTE,
-    A_OPEN,
-    26000,
+    AIR_SEAT,
+    20000,
     world({
       ent: 7,
-      entPackage: true,
       entModel: true,
+      entPackage: true,
       entDisrupt: "reroute",
       entRelations: true,
       ...FULL,
     })
   ),
 
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 6 · What autonomy requires
-  //
-  // The only argumentative movement. Each beat adds one requirement and the
-  // fabric visibly acquires the capability. Protocols appear here as edge
-  // labels and are never explained (§5, §6): the claim is about what has to
-  // be true, not about which standard carries it.
-  // ════════════════════════════════════════════════════════════════════
+  // Use case: one autonomous aircraft, sensitive cargo, turbulence.
+  // RouteSky draws these beats. The network view follows.
 
   beat(
-    "auto-open",
-    6,
-    M6,
-    A_OPEN,
-    A_PERCEIVE,
+    "air-seat",
+    5,
+    M5,
+    AIR_SEAT,
+    AIR_SMOOTH,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-smooth",
+    5,
+    M5,
+    AIR_SMOOTH,
+    AIR_WITNESS,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-witness",
+    5,
+    M5,
+    AIR_WITNESS,
+    AIR_SPLIT,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-split",
+    5,
+    M5,
+    AIR_SPLIT,
+    AIR_HERD,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-herd",
+    5,
+    M5,
+    AIR_HERD,
+    AIR_BOUNDARY,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-boundary",
+    5,
+    M5,
+    AIR_BOUNDARY,
+    AIR_ONCE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-once",
+    5,
+    M5,
+    AIR_ONCE,
+    AIR_NAMED,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-named",
+    5,
+    M5,
+    AIR_NAMED,
+    AIR_OPERATE,
+    20000,
+    ROUTE_HELD
+  ),
+  beat(
+    "air-operate",
+    5,
+    M5,
+    AIR_OPERATE,
+    AI_FILE,
     22000,
-    world({ ent: 7, entModel: true, ...FULL })
+    ROUTE_HELD
   ),
 
-  /** Perception, framed as a faculty the body already has — not a product. */
+  // Same filing, network and transaction. AiNetwork draws these beats.
+
+  beat(
+    "ai-file",
+    5,
+    M5,
+    AI_FILE,
+    AI_FANOUT,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-fanout",
+    5,
+    M5,
+    AI_FANOUT,
+    AI_STREAM,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-stream",
+    5,
+    M5,
+    AI_STREAM,
+    AI_STALL,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-stall",
+    5,
+    M5,
+    AI_STALL,
+    AI_RETRY,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-retry",
+    5,
+    M5,
+    AI_RETRY,
+    AI_CROWD,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-crowd",
+    5,
+    M5,
+    AI_CROWD,
+    AI_TRACE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-trace",
+    5,
+    M5,
+    AI_TRACE,
+    AI_FRESH,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-fresh",
+    5,
+    M5,
+    AI_FRESH,
+    AI_COMPLETE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-complete",
+    5,
+    M5,
+    AI_COMPLETE,
+    AI_ONCE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-once",
+    5,
+    M5,
+    AI_ONCE,
+    AI_ISOLATE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-isolate",
+    5,
+    M5,
+    AI_ISOLATE,
+    AI_MEASURE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-measure",
+    5,
+    M5,
+    AI_MEASURE,
+    AI_ENROUTE,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-enroute",
+    5,
+    M5,
+    AI_ENROUTE,
+    AI_FABRIC,
+    18000,
+    ROUTE_HELD
+  ),
+  beat(
+    "ai-fabric",
+    5,
+    M5,
+    AI_FABRIC,
+    A_PERCEIVE,
+    24000,
+    ROUTE_HELD
+  ),
+
+  // Same traffic diagram as ai-fabric. The page holds that frame (labels
+  // on) and advances the bottom caption. Movement 6 starts at federation.
+
   beat(
     "auto-perceive",
-    6,
-    M6,
+    5,
+    M5,
     A_PERCEIVE,
     A_MODEL,
-    30000,
-    world({ ent: 7, entModel: true, entSignals: true, ...FULL })
+    17000,
+    world({
+      ent: 7,
+      entModel: true,
+      entSignals: true,
+      ...FULL,
+    })
   ),
 
   beat(
     "auto-model",
-    6,
-    M6,
+    5,
+    M5,
     A_MODEL,
     A_SEMANTICS,
-    32000,
+    18000,
     world({
       ent: 7,
       entModel: true,
@@ -1339,11 +1539,11 @@ export const BEATS: Beat[] = [
 
   beat(
     "auto-semantics",
-    6,
-    M6,
+    5,
+    M5,
     A_SEMANTICS,
     A_FEDERATE,
-    26000,
+    19000,
     world({
       ent: 7,
       entModel: true,
@@ -1353,14 +1553,21 @@ export const BEATS: Beat[] = [
     })
   ),
 
+  // MOVEMENT 6 · What autonomy requires,
+
   beat(
     "auto-federate",
     6,
     M6,
     A_FEDERATE,
     A_FEDERATE_HOLD,
-    30000,
-    world({ ent: 7, entModel: true, federation: true, ...FULL })
+    21000,
+    world({
+      ent: 7,
+      entModel: true,
+      federation: true,
+      ...FULL,
+    })
   ),
 
   beat(
@@ -1369,7 +1576,7 @@ export const BEATS: Beat[] = [
     M6,
     A_FEDERATE_HOLD,
     A_AI,
-    24000,
+    20000,
     world({
       ent: 7,
       entModel: true,
@@ -1385,23 +1592,25 @@ export const BEATS: Beat[] = [
     M6,
     A_AI,
     A_TRAFFIC,
-    18000,
-    world({ ent: 8, entModel: true, ...CAM_ENT_AGENTS })
+    16000,
+    world({
+      ent: 8,
+      entModel: true,
+      ...CAM_ENT_AGENTS,
+    })
   ),
 
-  /**
-   * §7: the whole packet/token analogy, reduced to one sentence. Not "tokens
-   * are packets" — the claim is only that reasoning has to cross a network
-   * to touch anything real, which makes the network part of the reasoning.
-   */
   beat(
     "auto-traffic",
     6,
     M6,
     A_TRAFFIC,
     A_TAGS,
-    24000,
-    world({ ent: 8, entModel: true, entTags: true, ...FULL })
+    21000,
+    world({
+      networkWide: true,
+      ...FULL,
+    })
   ),
 
   beat(
@@ -1410,12 +1619,9 @@ export const BEATS: Beat[] = [
     M6,
     A_TAGS,
     A_ACT,
-    26000,
+    20000,
     world({
-      ent: 8,
-      entModel: true,
-      entTags: true,
-      entRelations: true,
+      networkWide: true,
       ...FULL,
     })
   ),
@@ -1425,65 +1631,14 @@ export const BEATS: Beat[] = [
     6,
     M6,
     A_ACT,
-    A_STORM_PATH,
-    24000,
+    A_VERIFY,
+    16000,
     world({
       ent: 9,
       entModel: true,
+      entAutonomy: true,
       entTags: true,
-      entAutonomy: true,
       ...FULL,
-    })
-  ),
-
-  beat(
-    "auto-storm-path",
-    6,
-    M6,
-    A_STORM_PATH,
-    A_STORM_ACT,
-    16000,
-    world({
-      ent: 9,
-      entPackage: true,
-      entAutonomy: true,
-      entDisrupt: "onset",
-      dispatch: 3,
-      ...CAM_STORM,
-    })
-  ),
-
-  beat(
-    "auto-storm-act",
-    6,
-    M6,
-    A_STORM_ACT,
-    A_STORM_LIVE,
-    16000,
-    world({
-      ent: 9,
-      entPackage: true,
-      entAutonomy: true,
-      entDisrupt: "onset",
-      dispatch: 4,
-      ...CAM_STORM,
-    })
-  ),
-
-  beat(
-    "auto-storm-live",
-    6,
-    M6,
-    A_STORM_LIVE,
-    A_VERIFY,
-    18000,
-    world({
-      ent: 9,
-      entPackage: true,
-      entAutonomy: true,
-      entDisrupt: "reroute",
-      dispatch: 5,
-      ...CAM_STORM,
     })
   ),
 
@@ -1493,46 +1648,38 @@ export const BEATS: Beat[] = [
     M6,
     A_VERIFY,
     A_NETWORK_CENTRIC,
-    28000,
+    24000,
     world({
       ent: 9,
       entModel: true,
-      entTags: true,
       entAutonomy: true,
       entSignals: true,
+      entTags: true,
       ...FULL,
     })
   ),
 
-  /** §22. Said once, plainly, and not repeated anywhere else in the show. */
   beat(
     "network-centric",
     6,
     M6,
     A_NETWORK_CENTRIC,
     A_HUMANS,
-    24000,
+    22000,
     world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      entRelations: true,
+      showTitle: true,
+      networkWide: true,
       ...FULL,
     })
   ),
 
-  /**
-   * §29. The humans have been on screen since `ent-people`; this beat moves
-   * them rather than introducing them, and they stay lit for the rest of the
-   * show. They are not the fallback for when the machine fails.
-   */
   beat(
     "humans",
     6,
     M6,
     A_HUMANS,
-    L_REVEAL,
-    28000,
+    Z_ENTERPRISE,
+    20000,
     world({
       ent: 9,
       entModel: true,
@@ -1542,127 +1689,7 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  // ════════════════════════════════════════════════════════════════════
-  // MOVEMENT 7 · The autonomous enterprise
-  //
-  // The five requirements resolve into one loop, the loop runs on the whole
-  // enterprise, and the pullback shows it is the same loop at every scale
-  // the show has visited. Then Gage's sentence returns, meaning something
-  // operational rather than poetic.
-  // ════════════════════════════════════════════════════════════════════
-
-  beat(
-    "loop",
-    7,
-    M7,
-    L_REVEAL,
-    L_OBSERVE,
-    18000,
-    world({ ent: 9, entModel: true, entAutonomy: true, ...FULL })
-  ),
-
-  beat(
-    "loop-observe",
-    7,
-    M7,
-    L_OBSERVE,
-    L_UNDERSTAND,
-    16000,
-    world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      entSignals: true,
-      station: "observe",
-      ...FULL,
-    })
-  ),
-
-  beat(
-    "loop-understand",
-    7,
-    M7,
-    L_UNDERSTAND,
-    L_DECIDE,
-    18000,
-    world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      entRelations: true,
-      station: "understand",
-      ...FULL,
-    })
-  ),
-
-  beat(
-    "loop-decide",
-    7,
-    M7,
-    L_DECIDE,
-    L_ACT,
-    18000,
-    world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      station: "decide",
-      ...FULL,
-    })
-  ),
-
-  beat(
-    "loop-act",
-    7,
-    M7,
-    L_ACT,
-    L_VERIFY,
-    18000,
-    world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      entDisrupt: "reroute",
-      station: "act",
-      ...FULL,
-    })
-  ),
-
-  beat(
-    "loop-verify",
-    7,
-    M7,
-    L_VERIFY,
-    L_RUN,
-    18000,
-    world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      entSignals: true,
-      station: "verify",
-      verified: true,
-      ...FULL,
-    })
-  ),
-
-  /** The callback: this is the body's loop from movement 2, unchanged. */
-  beat(
-    "loop-runs",
-    7,
-    M7,
-    L_RUN,
-    Z_ENTERPRISE,
-    24000,
-    world({
-      ent: 9,
-      entModel: true,
-      entAutonomy: true,
-      loopTour: true,
-      verified: true,
-      ...FULL,
-    })
-  ),
+  // MOVEMENT 7 · The autonomous enterprise,
 
   beat(
     "autonomous-enterprise",
@@ -1670,7 +1697,7 @@ export const BEATS: Beat[] = [
     M7,
     Z_ENTERPRISE,
     Z_SCALE,
-    28000,
+    18000,
     world({
       ent: 9,
       entModel: true,
@@ -1690,7 +1717,7 @@ export const BEATS: Beat[] = [
     M7,
     Z_SCALE,
     Z_MODEL,
-    26000,
+    18000,
     world({
       ent: 9,
       entModel: true,
@@ -1702,26 +1729,21 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  /**
-   * §42 pause. The show's title has been on the title bar the whole time;
-   * this is where it turns out to have meant the second thing. `titleFlash`
-   * puts THE MODEL over the frame briefly, then leaves the sentence.
-   */
   beat(
     "the-model",
     7,
     M7,
     Z_MODEL,
     Z_HUMANS,
-    26000,
+    21000,
     world({
+      showTitle: true,
+      titleFlash: true,
       ent: 9,
       entModel: true,
       entAutonomy: true,
       entHumans: true,
       verified: true,
-      showTitle: true,
-      titleFlash: true,
       ...FULL,
     })
   ),
@@ -1743,37 +1765,79 @@ export const BEATS: Beat[] = [
     })
   ),
 
-  /**
-   * §42 pause. Same photograph, same sentence, different meaning — `verified`
-   * is what swaps the kicker and attribution to "Forty years later / Now an
-   * operating requirement."
-   */
   beat(
     "gage-returns",
     7,
     M7,
     GAGE_QUOTE,
-    Z_CLOSE,
-    24000,
+    RECAP_ARCHITECTURE,
+    21000,
     world({
       shot: "gage",
       graphOpacity: 0,
-      somaGage: true,
       showQuote: true,
+      somaGage: true,
       verified: true,
       ...CAM_WORLD,
     })
   ),
 
-  /** §30. One line, held. Nothing else on screen, nothing else said. */
+  beat(
+    "recap-architecture",
+    7,
+    M7,
+    RECAP_ARCHITECTURE,
+    RECAP_OPERATE,
+    20000,
+    world({
+      showTitle: true,
+      ent: 7,
+      entPackage: true,
+      ...FULL,
+    })
+  ),
+
+  beat(
+    "recap-operate",
+    7,
+    M7,
+    RECAP_OPERATE,
+    RECAP_MODEL,
+    18000,
+    world({
+      showTitle: true,
+      networkWide: true,
+      ...FULL,
+    })
+  ),
+
+  beat(
+    "recap-model",
+    7,
+    M7,
+    RECAP_MODEL,
+    Z_CLOSE,
+    23000,
+    world({
+      showTitle: true,
+      networkWide: true,
+      ...FULL,
+    })
+  ),
+
   beat(
     "close",
     7,
     M7,
     Z_CLOSE,
     Z_ONUG,
-    24000,
-    world({ shot: "title", graphOpacity: 0, showTitle: true, ...FULL })
+    16000,
+    world({
+      shot: "title",
+      graphOpacity: 0,
+      showTitle: true,
+      ...FULL,
+    })
   ),
 
   beat(
@@ -1793,14 +1857,35 @@ export const BEATS: Beat[] = [
   ),
 ]
 
+/** 1-based stage in the use-case airplane chapter (RouteSky), or 0. */
+export function airChapterStage(id: string): number {
+  if (!id.startsWith("air-")) return 0
+  let n = 0
+  for (const beat of BEATS) {
+    if (!beat.id.startsWith("air-")) continue
+    n += 1
+    if (beat.id === id) return n
+  }
+  return 0
+}
+
+/** 1-based altitude in the network/transaction chapter (AiNetwork), or 0. */
+export function aiChapterAltitude(id: string): number {
+  if (!id.startsWith("ai-")) return 0
+  let n = 0
+  for (const beat of BEATS) {
+    if (!beat.id.startsWith("ai-")) continue
+    n += 1
+    if (beat.id === id) return n
+  }
+  return 0
+}
+
 /** Index of the first beat of each movement, for the `1`–`7` jump keys. */
 export const ACT_START = Object.fromEntries(
   ([1, 2, 3, 4, 5, 6, 7] as ActId[]).map((act) => [
     act,
-    Math.max(
-      0,
-      BEATS.findIndex((b) => b.act === act)
-    ),
+    Math.max(0, BEATS.findIndex((b) => b.act === act)),
   ])
 ) as Record<ActId, number>
 
