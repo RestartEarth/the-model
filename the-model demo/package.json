@@ -9,7 +9,11 @@
     "build": "tsc --noEmit && vite build --config vite.the-model.config.ts",
     "preview": "vite preview --config vite.the-model.config.ts",
     "type-check": "tsc --noEmit",
-    "runtime": "node scripts/runtime.mjs"
+    "runtime": "node scripts/runtime.mjs",
+    "dev:v2": "vite --config vite.v2.config.ts",
+    "build:v2": "npm run sync:v2 && tsc --noEmit && vite build --config vite.v2.config.ts",
+    "preview:v2": "vite preview --config vite.v2.config.ts",
+    "sync:v2": "node scripts/sync-v2.mjs"
   },
   "dependencies": {
     "next-themes": "^0.4.6",

@@ -1,0 +1,1463 @@
+THE MODEL
+Proposed script v2 — editorial review draft
+21 October 2026
+
+PLAYBACK UPDATE — 21 October 2026
+The current manually advanced performance order is in presentation-script-v2-manual.txt.
+It restores mycelium and photosynthesis and splits grouped reveals into separate
+clicks. The 47-scene text below remains the earlier editorial source; its timing,
+merging, and nature-cut proposals are superseded by the manual version.
+
+READ THIS FIRST — EDITORIAL NOTES, NOT SPOKEN
+
+This is a complete alternative performance script. It proposes a new run
+order and new audience copy. It is not synchronized with the current app.
+The existing presentation-script.txt and application are unchanged.
+
+Only the text under NARRATION is spoken. ON SCREEN is audience copy.
+PICTURE / DELIVERY describes staging and pauses. VISUAL CHANGE identifies
+work needed to make the proposed words true on screen. SOURCE lists existing
+beat IDs for comparison; V2 numbers are new editorial references, not app IDs.
+
+There are 47 proposed beats. Many contain a continuous animation assembled
+from several existing beats. Fewer clicks should not mean faster animation.
+All old durations need to be replaced after a spoken rehearsal; this draft
+does not assign artificial cinema clocks to prose that has not been timed.
+
+Timing guide: approximately 2,826 spoken words, excluding parenthetical
+delivery directions. That is about 19.5–21.7 minutes of speech at 145–130
+words per minute, before silence, animation holds, and audience response.
+Budget roughly 23–26 minutes for an initial rehearsal, then measure it.
+This is an estimate, not a verified runtime.
+
+The argument:
+Specialized parts gain capabilities through coordination. An enterprise
+already depends on that coordination. An agent operating within it needs
+a usable representation of relationships, current evidence, commitments,
+and authority. Obtaining evidence and carrying out decisions depends on
+communication across systems. Those dependencies belong inside the design
+and evaluation of the intelligent system.
+
+The opening uses natural systems as an invitation to notice relationships.
+It does not claim that every network is intelligent or that similar-looking
+graphs prove identical mechanisms. The enterprise example earns the
+operational conclusion.
+
+Two deliberate story changes to review:
+1. The enterprise model is explained before the agent uses it.
+2. The aircraft example concerns an operations agent preparing and submitting
+   a route amendment within delegated authority. It does not claim that an
+   LLM pilots an aircraft. Flight execution and clearance remain with the
+   appropriate flight systems and authorities. This narrows the original
+   “no one in the seat” premise so the network argument stays in focus.
+
+The logistics company, shipment, cargo constraint, and agent workflow are
+illustrative. No measured business result or deployed autonomous-flight
+capability is being claimed. Any dates, names, attribution, or recognizable
+sports sequence retained from the original should receive the normal final
+fact and rights check before public use.
+
+=======================================================================
+I. WHAT CONNECTION MAKES POSSIBLE
+=======================================================================
+
+V2 BEAT 01 — Before the first word
+SOURCE: open
+
+ON SCREEN
+(No type.)
+
+PICTURE / DELIVERY
+The cosmic web is already moving. Allow approximately six seconds of silence
+after the room settles. No narration, navigation, or title competes with it.
+
+NARRATION
+(Silence.)
+
+VISUAL CHANGE
+Hide the app title and navigation for the performed version. Retain access
+to rehearsal controls outside the audience view.
+
+
+V2 BEAT 02 — The space between
+SOURCE: cosmos
+
+ON SCREEN
+What becomes possible is between the parts
+
+PICTURE / DELIVERY
+The web remains wide. A small number of relationships brighten; avoid a
+new label for every point. Let the question appear after the opening silence.
+
+NARRATION
+We spend a lot of time looking at the most powerful thing in the picture.
+The biggest machine. The fastest chip. The most capable model.
+
+Tonight I'd like to spend some time looking between them.
+
+Because the next question for enterprise AI is what happens when it has to
+work with everything else. When it needs an answer from another system,
+permission from another organization, or evidence that something actually
+happened.
+
+VISUAL CHANGE
+Replace the cosmic-size and Indra's Net caption with the question. This is
+an opening image, not a scientific exhibit requiring an astronomical claim.
+
+
+V2 BEAT 03 — A circuit
+SOURCE: atmosphere, water
+
+ON SCREEN
+A change here becomes a condition somewhere else.
+
+PICTURE / DELIVERY
+Move from the web into the atmosphere and water cycle as one continuous
+sequence. Follow water through ocean, air, mountain, and river.
+
+NARRATION
+Water gives us a familiar way to see it. An ocean, a cloud, a mountain,
+a river. Each is recognizable on its own. Follow the movement between them
+and you begin to understand the system.
+
+What happens upstream changes what is possible downstream. The relationship
+matters even when the two places are far apart, and even when nobody is
+watching both of them.
+
+VISUAL CHANGE
+Merge the atmosphere reveal and water circuit under one caption. Keep the
+flow readable through a complete cycle before moving on.
+
+
+V2 BEAT 04 — Dependence
+SOURCE: foodweb, architecture-repeats
+
+ON SCREEN
+The relationships explain the consequences.
+
+PICTURE / DELIVERY
+The food web replaces the water cycle. Highlight one dependency and let the
+highlight reach a second and third participant. Then hold the whole web.
+
+NARRATION
+In a food web, those connections describe dependence. A change in one
+population can reach another through a chain of relationships.
+
+A list of the species gives you the cast. The connections help explain
+what happens next.
+
+That distinction will matter when we get to a company. We are very good
+at listing what we own. Understanding what depends on it is harder.
+
+VISUAL CHANGE
+Propose cutting mycelium and photosynthesis as separate stops. Their imagery
+can remain in the background if it helps the transition, but neither needs
+another caption or another explanation of the same principle.
+
+
+V2 BEAT 05 — You arrived connected
+SOURCE: body, body-structure, body-circulation, body-viscera, body-lymph
+
+ON SCREEN
+You arrived connected.
+
+PICTURE / DELIVERY
+Reveal the body. Build the anatomical layers in a single uninterrupted
+pass: structure, circulation, organs, and slower regulation. Hold the
+composite rather than stopping to lecture on each layer.
+
+NARRATION
+You have a more personal example.
+
+Your body brings together systems with different jobs and different rhythms.
+Structure supports movement. Circulation supplies the tissues. Organs do
+specialized work. Chemical signals help regulate what happens across them.
+
+You experience their coordination as something wonderfully ordinary:
+getting out of a chair, crossing a room, catching something before it falls.
+
+Most of the time, the coordination is so good that you never think about it.
+
+VISUAL CHANGE
+Combine five existing beats into one build. Remove the separate cosmic-energy
+claim in body-energy. Preserve the anatomical visual richness without five
+consecutive explanatory cards.
+
+
+V2 BEAT 06 — Intelligence in operation
+SOURCE: body-nerves, body-brain, neural
+
+ON SCREEN
+Sensing. Coordinating. Responding.
+
+PICTURE / DELIVERY
+Reveal the nervous system, then the brain and cortex. Keep some visible
+connection back to the body so the zoom does not imply an isolated brain.
+
+NARRATION
+The nervous system connects sensing and movement. The brain is part of
+that ongoing exchange with the body and the world.
+
+Seeing the wiring alone doesn't explain intelligence. But it does remind
+us of something important: intelligence in action depends on information
+arriving, being used, and producing a response in time to matter.
+
+A basketball shot makes that exchange visible.
+
+VISUAL CHANGE
+Replace the absolute claim that intelligence is “the relationship” with
+this narrower, observable setup. No new neuroscience diagram is needed.
+
+
+V2 BEAT 07 — Before the shot
+SOURCE: senses, shot-reveal, shot-perceive
+
+ON SCREEN
+The action begins before the ball moves.
+
+PICTURE / DELIVERY
+Pull back to reveal the court around the same body. Hold before release.
+Briefly highlight the rim, floor, defender, and player's own position.
+
+NARRATION
+Before the ball leaves his hand, the player already has a great deal to
+work with. Where the rim is. Where the defender is. His balance. The feel
+of the ball.
+
+Practice gives him expectations about what a movement will produce. What
+he senses now lets him adjust those expectations to this particular shot.
+
+The useful knowledge is meeting the present situation.
+
+VISUAL CHANGE
+Merge the three setup beats. The player should not repeat the preparation
+animation on each internal transition.
+
+
+V2 BEAT 08 — The result comes back
+SOURCE: shot-motor, shot-loop
+
+ON SCREEN
+Act. Observe the result. Adjust.
+
+PICTURE / DELIVERY
+Play one complete shot. Let the release and flight have a brief quiet
+interval. After the result, return a visible signal to the player.
+
+NARRATION
+Then he shoots.
+
+Once the ball is in the air, he can't steer it. He can watch what happened,
+land, recover, and prepare for what comes next.
+
+His intention doesn't tell him whether the shot went in. The result does.
+
+That distinction becomes very important when a machine is allowed to take
+an action on our behalf.
+
+VISUAL CHANGE
+Make feedback clearly affect recovery or the next action, not the trajectory
+of an already released ball. Simplify the loop labels to match the caption.
+
+
+V2 BEAT 09 — Five capable people
+SOURCE: team, team-links
+
+ON SCREEN
+Five players. A shared game.
+
+PICTURE / DELIVERY
+Reveal five players on the same court. Show selected relationships rather
+than making every pair equally bright.
+
+NARRATION
+Now give him four teammates.
+
+All five can be exceptional. They still need to coordinate. A great shooter
+who never receives the ball is a person standing in a good spot.
+
+Each player is reading the same game from a different position. Their
+advantage comes from combining those views quickly enough to do something
+together.
+
+VISUAL CHANGE
+Retain the court build. Give the ball and active relationships priority
+over decorative connections.
+
+
+V2 BEAT 10 — A shared expectation
+SOURCE: team-mind, team-mind-model, team-mind-decide
+
+ON SCREEN
+A shared understanding makes coordinated action possible.
+
+PICTURE / DELIVERY
+Freeze the inbound. Show two simple possibilities: a shot and a pass.
+Highlight the rebounder's preparation as the shot branch becomes likely.
+
+NARRATION
+Before the pass, the players have expectations about one another.
+If the shot goes up, someone has to be ready for the rebound. If the defense
+closes that option, the play needs another one.
+
+They don't need identical thoughts. They need enough shared understanding
+to make their different actions fit together.
+
+And they have to keep updating it as the defense moves.
+
+VISUAL CHANGE
+Use the branch diagram as an illustration of coordinated preparation.
+Remove claims that we know a named player's exact thoughts or that a full
+decision was predetermined. A graphic can show a plausible option without
+claiming access to the player's mind.
+
+
+V2 BEAT 11 — Let the play happen
+SOURCE: team-signals, team-model
+
+ON SCREEN
+(No type.)
+
+PICTURE / DELIVERY
+Run the existing inbound, shot, rebound, and tip sequence once at its intended
+pace. Hold the make. Give the audience time to see what happened.
+
+NARRATION
+The pass. The shot. And someone is already moving toward the rebound.
+
+(Silence through the finish.)
+
+VISUAL CHANGE
+Remove the text card during the possession. Ensure the sequence can finish
+before the next click changes the scene. Retain any score or player details
+only if they match the actual play being represented.
+
+
+V2 BEAT 12 — The team
+SOURCE: team-emergence
+
+ON SCREEN
+The team is what they can do together.
+
+PICTURE / DELIVERY
+Let the celebration finish. Hold the five together with the caption above
+or beside them, not across their hands and faces.
+
+NARRATION
+That is the pleasure of watching a team work. Individual ability becomes
+something collective.
+
+The connections haven't replaced the players. They've made more of their
+abilities available to one another.
+
+We have spent much of the history of computing pursuing a version of that
+same possibility.
+
+VISUAL CHANGE
+Keep the celebration visible under the line. Cut the intervening tour of
+language, markets, and satellites from this proposed run.
+
+
+V2 BEAT 13 — Gage
+SOURCE: all-of-it, gage-quote, gage
+
+ON SCREEN
+The network is the computer.
+
+John Gage · 1984
+
+PICTURE / DELIVERY
+The quote arrives alone. After a short pause, reveal the portrait and
+attribution. No narration about withholding the attribution.
+
+NARRATION
+John Gage gave us a sentence many people in this room know well.
+
+It asks us to think about the capability of the connected system.
+What becomes available when computation, information, and people can reach
+one another?
+
+AI gives that question a new urgency. We are beginning to ask software
+to decide what to do across the systems we connected.
+
+VISUAL CHANGE
+Use the existing portrait and quote reveal as a single beat. Cut the
+all-of-it montage as a separate stop. Keep attribution subordinate to
+the quote and leave a genuine pause before the portrait.
+
+
+V2 BEAT 14 — A decision becomes an exchange
+SOURCE: packet-layers, packet-open, packet-path
+
+ON SCREEN
+A decision can depend on a round trip.
+
+PICTURE / DELIVERY
+Condense the packet sequence to one request traveling to another system
+and one answer returning. Retain the visual descent through layers if it
+can complete without requiring its own explanation.
+
+NARRATION
+An agent needs to know whether a resource is available. It asks another
+system. That request travels, the other system does its work, and an
+answer comes back.
+
+The decision now depends on the whole exchange: what was asked, which
+system answered, how current the answer is, and whether it arrived in time.
+
+Let's put something on the end of that exchange that a business cares about.
+
+VISUAL CHANGE
+Replace the packet-routing lesson with a request-and-response story. Do not
+depict a thought literally becoming a packet. The business request should
+remain identifiable as it passes through the technical layers.
+
+
+=======================================================================
+II. ONE PROMISE
+=======================================================================
+
+V2 BEAT 15 — Across a planet
+SOURCE: ent-open, ent-air, ent-ground, ent-hub
+
+ON SCREEN
+One delivery depends on all of this.
+
+PICTURE / DELIVERY
+Build the logistics operator: aircraft, ground vehicles, hubs, warehouses,
+and last-mile delivery. Reveal them along one end-to-end route.
+
+NARRATION
+Imagine a logistics company moving a shipment from Tokyo to Boston.
+
+An aircraft handles one part of the journey. A sorting hub handles another.
+A truck has to meet a connection. A final delivery has to reach a door.
+
+Each part has its own schedule and constraints. The customer experiences
+the result of all of them working together.
+
+VISUAL CHANGE
+Merge the asset inventory into one continuous build. Introduce the route
+immediately so the audience has something to follow through the complexity.
+
+
+V2 BEAT 16 — The people who join it up
+SOURCE: ent-people, ent-systems
+
+ON SCREEN
+Different systems. Different knowledge. One operation.
+
+PICTURE / DELIVERY
+Add dispatchers, planners, and the systems they consult. Preserve the same
+route while revealing the supporting information exchanges.
+
+NARRATION
+People make this work every day. Dispatchers, planners, crews, and the
+person who answers when a customer asks where the shipment is.
+
+They work across systems that each know something useful. The aircraft
+system knows capacity. The hub knows its processing window. The delivery
+system knows the destination commitment.
+
+Someone has to bring those answers together into a decision.
+
+VISUAL CHANGE
+Keep people visible from this point onward. Use a few legible system labels
+instead of adding another dense layer of tiny labels.
+
+
+V2 BEAT 17 — Give the network a purpose
+SOURCE: ent-organism, ent-package, ent-commitment
+
+ON SCREEN
+Tokyo → Boston
+A promise to someone waiting.
+
+PICTURE / DELIVERY
+Follow one package. Attach a small promise marker that will persist through
+the rest of the scenario. Show the recipient endpoint without inventing
+a customer story or presenting a fabricated result as real.
+
+NARRATION
+For this example, the shipment has a promised arrival time and a handling
+limit. Its contents are sensitive to shock.
+
+Those two conditions give the operation a purpose. Arriving on time with
+damaged cargo would still fail the customer.
+
+The enterprise is full of commitments like this. Its equipment, software,
+and people have to work together to keep them.
+
+VISUAL CHANGE
+NEW PERSISTENT ELEMENT: a compact “Arrival / Handling” promise marker.
+Establish the cargo constraint here so it does not suddenly appear in the
+aircraft chapter. Avoid adding an arbitrary financial value or medical claim.
+
+
+V2 BEAT 18 — The plan stops working
+SOURCE: ent-weather
+
+ON SCREEN
+The gateway closes.
+
+PICTURE / DELIVERY
+Weather closes the Pacific gateway. Mark its operational status explicitly
+as closed. Keep technical health separate from that status.
+
+NARRATION
+Weather closes a gateway on the planned route.
+
+The servers can still be running. The network can still be carrying traffic.
+The aircraft can still be serviceable.
+
+But the plan we made for this shipment no longer works. We have to find
+another way to keep the promise.
+
+VISUAL CHANGE
+Label the closure directly. Do not leave the audience to infer why a green
+hub is also described as closed. Green should have a specific scope.
+
+
+V2 BEAT 19 — Healthy systems, endangered outcome
+SOURCE: ent-fine
+
+ON SCREEN
+The systems are healthy.
+The promise is at risk.
+
+PICTURE / DELIVERY
+Show technical health as green while the arrival condition on the package
+turns amber. Keep the closed gateway visibly closed.
+
+NARRATION
+This is a familiar gap for an IT organization.
+
+We can have an accurate picture of component health and still need another
+view to understand the business consequence. Which shipments depend on
+that connection? Which commitments are now in danger? How much time is left
+to change the plan?
+
+The answers sit in the relationships between the systems.
+
+VISUAL CHANGE
+ESSENTIAL: distinguish “Technical health” from “Operational availability.”
+The current green-hub/closed-hub wording risks looking like a contradiction
+rather than revealing two different kinds of state.
+
+
+V2 BEAT 20 — Follow the consequence
+SOURCE: ent-depends
+
+ON SCREEN
+What depends on this connection?
+
+PICTURE / DELIVERY
+Trace the dependency from the closed gateway to feeder, sort window,
+delivery route, and promised arrival. Brighten one relationship at a time.
+
+NARRATION
+The gateway closure matters because it changes the next connection.
+That changes the sorting window. That can change the final delivery.
+
+A dispatcher follows those dependencies and looks for an alternative
+that still fits. Available space on another aircraft is useful only if
+the next hub can receive it and the shipment can still reach the customer.
+
+This is the difference between finding capacity and finding a workable plan.
+
+VISUAL CHANGE
+Reorder ent-fine before ent-depends. Let the dependency trace answer the
+question raised by the amber promise marker.
+
+
+V2 BEAT 21 — An answer worth acting on
+SOURCE: ent-dispatch, ent-dispatch-act
+
+ON SCREEN
+Can this alternative still keep the promise?
+
+PICTURE / DELIVERY
+Show a candidate route as a dotted line. Capacity and hub-window requests
+leave the dispatcher. One answer is delayed, then returns. Until then the
+candidate remains uncommitted.
+
+NARRATION
+She finds a possible alternative and asks for confirmation.
+
+One answer is late. She can keep investigating, but she holds the commitment
+until she knows the alternative is available. If it doesn't come back in
+time, she needs another option or an escalation.
+
+Then the answer arrives. Capacity is confirmed. The receiving window still
+fits. She has evidence she can use.
+
+VISUAL CHANGE
+Clarify what the delayed call asks and what the returning answer establishes.
+Show “Candidate” and “Confirmed” rather than letting a pulse mean everything.
+The dispatcher should appear active while awaiting the missing answer.
+
+
+V2 BEAT 22 — The promise survives
+SOURCE: ent-reroute
+
+ON SCREEN
+A different route. The same commitment.
+
+PICTURE / DELIVERY
+Commit the alternative route. The arrival condition returns to green after
+the dependent confirmations, not simply when the new line is drawn.
+
+NARRATION
+She changes the route, and the revised plan still meets the commitment.
+
+Her judgment matters. So does her ability to reach the people and systems
+that know whether the plan can work.
+
+If we want an agent to help with more of that work, we have to give it a
+usable understanding of these relationships and a reliable way to check
+what is true now.
+
+VISUAL CHANGE
+Keep the successful human decision as its own finished moment. The next
+chapter explains the model before introducing a new agent decision.
+
+
+=======================================================================
+III. THE MODEL OF THE ENTERPRISE
+=======================================================================
+
+V2 BEAT 23 — What the agent needs to understand
+SOURCE: auto-model
+
+ON SCREEN
+A model of what depends on what.
+
+PICTURE / DELIVERY
+Hold the enterprise map. Keep the package path bright and make its important
+relationships readable: carried by, transferred through, due by.
+
+NARRATION
+This is the model I mean: a representation of the operation that connects
+its resources, dependencies, current state, commitments, and permissions.
+
+For this shipment, it links the package to the aircraft, the aircraft to
+the receiving hub, and those movements to an arrival promise.
+
+That gives a reasoner something concrete to work with. It can ask how a
+change in one place affects an outcome somewhere else.
+
+VISUAL CHANGE
+Move this beat before the agent and technical-network chapters. Use the
+enterprise view, not the wide technical fabric. Add only the relationship
+labels needed to follow this package.
+
+
+V2 BEAT 24 — Facts, promises, permission
+SOURCE: auto-semantics
+
+ON SCREEN
+What is true?
+What is promised?
+What is allowed?
+
+PICTURE / DELIVERY
+Reveal these three short questions sequentially beside the relevant parts
+of the route. Show available capacity, the delivery/handling commitment,
+and a boundary on permitted action.
+
+NARRATION
+Those are different kinds of information.
+
+An aircraft has available capacity. That's a fact to verify. The shipment
+has an arrival commitment. That's an outcome to protect. The agent may
+be allowed to reserve space, but not to change the customer's terms.
+That's an authority boundary.
+
+A useful enterprise model preserves those distinctions. Otherwise a
+plausible plan can quietly assume a permission it was never given.
+
+VISUAL CHANGE
+NEW: show the authority boundary explicitly. Keep the three questions short;
+the narrator supplies the examples while the picture locates them.
+
+
+V2 BEAT 25 — Ask the source
+SOURCE: auto-federate, auto-federate-hold
+
+ON SCREEN
+Connected knowledge. Accountable sources.
+
+PICTURE / DELIVERY
+Requests travel from the package's dependency map to the aircraft, hub,
+and commitment systems. Each answer visibly returns from its source.
+
+NARRATION
+The knowledge is distributed. The aircraft system owns one answer.
+The hub owns another. A customer agreement supplies a different constraint.
+
+We can bring those together without pretending that one copy is always
+current. Some information can be stored. Some needs refreshing. Some has
+to be checked at the moment of commitment.
+
+The model needs to preserve where an answer came from, how current it is,
+and who has authority over it.
+
+VISUAL CHANGE
+Merge the federation beats. Add source and freshness cues to the few
+answers that matter. Avoid presenting federation as a prohibition on caches,
+shared data stores, or central views.
+
+
+V2 BEAT 26 — The title's second meaning
+SOURCE: the-model
+
+ON SCREEN
+THE MODEL
+
+Then:
+A model of the enterprise gives reasoning something to work with.
+
+PICTURE / DELIVERY
+Briefly show the title, then replace it with the sentence. Keep the enterprise
+map visible. Do not overlay both large text treatments simultaneously.
+
+NARRATION
+When we say “the model” in an AI conversation, we usually mean the trained
+model doing the reasoning.
+
+There is another model we need to care about: its representation of the
+enterprise it is being asked to operate.
+
+The quality of the reasoner matters. So does the quality of what it knows
+about this business, and its ability to check that knowledge as the business
+changes. Better reasoning cannot manufacture missing authority or current
+capacity.
+
+VISUAL CHANGE
+Move the title reveal here, where it answers a question rather than serving
+as a late recap. This wording explicitly distinguishes the two meanings of
+“model.” It does not redefine the term for the entire AI field.
+
+
+=======================================================================
+IV. ONE AGENT DECISION, FROM PROPOSAL TO RESULT
+=======================================================================
+
+V2 BEAT 27 — Delegate a defined job
+SOURCE: air-seat, auto-reasoning, humans
+
+ON SCREEN
+One agent. A defined job.
+
+PICTURE / DELIVERY
+Move to the aircraft carrying the same package. Retain the Arrival / Handling
+marker. Introduce an “Operations agent” connected to flight operations.
+The current route is solid; proposed alternatives will be dotted.
+
+NARRATION
+We give the operations agent a job: evaluate a route change for this shipment and submit it when the required checks and approvals are satisfied.
+
+The job has an outcome, a deadline, and limits on what the agent can authorize. Flight operations and the relevant authorities retain their responsibilities.
+
+Delivering the shipment involves many jobs. This agent is responsible for one bounded part of that work: putting a workable, authorized route decision through the systems that have to carry it out.
+
+VISUAL CHANGE
+ESSENTIAL PREMISE CHANGE: remove the empty-seat emphasis. This draft is about
+an operations agent's delegated workflow. Keep the aircraft imagery, but
+identify the decision-maker and execution boundary.
+
+
+V2 BEAT 28 — New evidence
+SOURCE: air-smooth, air-witness, air-split, auto-perceive
+
+ON SCREEN
+The plan meets new evidence.
+
+PICTURE / DELIVERY
+Show the forecast and a newer ride report from an aircraft ahead. Put age,
+location, and source beside both. The new report flags a possible conflict
+with the cargo's handling limit.
+
+NARRATION
+The planned route was acceptable on the information available when it was
+chosen. Now an aircraft ahead reports a rougher ride.
+
+The agent needs to establish whether that report is relevant to our path,
+recent enough to use, and significant for this cargo's handling limit.
+
+A newer report deserves attention. It still needs context. The question
+is whether the evidence changes what this shipment can safely tolerate.
+
+VISUAL CHANGE
+Merge the three weather beats. Remove “radar agrees,” automatic trust based
+solely on recency, and the unproven claim that the cargo will not survive.
+Show a constraint requiring evaluation, not a certainty inferred from a glow.
+
+
+V2 BEAT 29 — A proposal is not a commitment
+SOURCE: air-boundary, air-herd
+
+ON SCREEN
+An alternative must satisfy the whole journey.
+
+PICTURE / DELIVERY
+Show one candidate route alongside the active route. Keep the aircraft on
+the active route. Indicate the checks needed for the candidate: weather,
+arrival, operational approval. Do not animate the route change yet.
+
+NARRATION
+An alternative might reduce the exposure. It can also change arrival time,
+fuel requirements, or the approvals needed to use the route.
+
+Those checks belong to the systems and authorities responsible for them.
+The agent has to obtain their answers and establish that the candidate
+still fits the shipment's commitments.
+
+Finding an appealing alternative is the beginning of the decision.
+
+VISUAL CHANGE
+Do not equate aircraft sharing an altitude with requests sharing a service
+queue. Cut the physical “herd” claim here; service contention will be shown
+in the technical chapter where its mechanism is clear.
+
+
+V2 BEAT 30 — Open the workload
+SOURCE: air-operate, ai-file, ai-fanout, auto-traffic
+
+ON SCREEN
+One job creates a distributed workload.
+
+PICTURE / DELIVERY
+Keep the same candidate route and promise marker as the camera opens into
+the technical network. Follow its requests to weather, flight operations,
+and the arrival/connection systems. Leave the commitment pending.
+
+NARRATION
+Now open up that job. The agent consults models, requests weather evidence, checks capacity and arrival windows, and seeks approval. It also needs acceptance from the system that records the amendment.
+
+All the processing and traffic associated with carrying out the job is its workload. That includes reasoning, checks, retries, and feedback.
+
+Map that workload, and you see the nodes and connections that have to work together. Processing happens at the nodes. Exchanges carry the work between them.
+
+VISUAL CHANGE
+ESSENTIAL TRANSITION: carry the same transaction and candidate identifiers
+across the camera change. This is a closer view of one pending decision,
+not a second flight or a replay of a decision already completed.
+
+
+V2 BEAT 31 — An answer can arrive and still be unusable
+SOURCE: ai-stream, ai-fresh, ai-complete
+
+ON SCREEN
+Received does not mean usable.
+
+PICTURE / DELIVERY
+One weather response arrives with an expired freshness indicator. Mark the
+required check “Not satisfied” and keep the candidate pending. A current,
+sufficient response is then requested and returned.
+
+NARRATION
+Suppose the weather service returns an answer, but it is too old for this
+decision. The request succeeded. The evidence requirement did not.
+
+Or the answer is missing coverage for the part of the route we need.
+The agent has to recognize that gap before it commits.
+
+This is where the meaning of the response matters. Transport success
+alone can't tell us whether we have enough evidence to proceed.
+
+VISUAL CHANGE
+Show one concrete rejected answer and its replacement. Avoid asserting
+that every interrupted session produces yesterday's forecast, or that
+every workflow requires all possible information to be complete.
+
+
+V2 BEAT 32 — The job has a deadline
+SOURCE: ai-stall
+
+ON SCREEN
+Can the workload complete in time?
+
+PICTURE / DELIVERY
+Expose a simple decision window attached to this candidate. A request
+approaches the boundary. Label the timeout outcome “Hold / escalate.”
+
+NARRATION
+An answer can be correct and too late. The workload has to complete the required checks and exchanges within the job’s decision window.
+
+If the opportunity to use the route has passed, a successful response does not recover it. We need to measure against the time the job actually has available.
+
+When that time runs out, hold the commitment, continue on an approved plan where appropriate, or bring a person in. The response cannot be to silently assume success.
+
+VISUAL CHANGE
+Show the timeout as a labeled contingency, not a completed failure of the
+main story. Use a relative window unless real scenario timings are supplied.
+Return the focus to the pending candidate before advancing.
+
+
+V2 BEAT 33 — The uncertain acknowledgment
+SOURCE: ai-retry
+
+ON SCREEN
+Did it fail—or did the acknowledgment fail?
+
+PICTURE / DELIVERY
+Use a clearly labeled “If the acknowledgment is lost” inset. A submission
+reaches the receiver; its return acknowledgment disappears. The main route
+remains pending outside the inset.
+
+NARRATION
+There's another problem worth preparing for before we submit anything.
+The receiving system may accept a change and the acknowledgment may never
+get back to us.
+
+From the sender's side, that can look like failure. Sending the same
+instruction again as a new transaction can create a duplicate commitment.
+
+We need to resolve what happened without accidentally doing it twice.
+
+VISUAL CHANGE
+ESSENTIAL: label this as a possible failure at the submission boundary.
+Do not show a second aircraft as the inevitable result of every retry.
+Keep the main scenario's timeline unambiguous.
+
+
+V2 BEAT 34 — Retry the request, preserve the intention
+SOURCE: ai-once
+
+ON SCREEN
+One intended change. One recorded commitment.
+
+PICTURE / DELIVERY
+In the same inset, show a repeated request carrying the same operation ID.
+The receiver returns the existing result. Close the inset and return to
+the main candidate.
+
+NARRATION
+A retry adds activity to the workload. It must preserve the identity of the intended change.
+
+The sender and receiver need an agreed way to recognize the same operation, look up its status, and handle a repeated request safely. That lets the agent recover an answer without creating another commitment.
+
+A job can involve several transactions. A genuinely new route decision needs its own evidence, authority, and record. The identity of the job does not make every operation inside it the same operation.
+
+VISUAL CHANGE
+Replace the universal “path changes once” rule with explicit duplicate
+handling for one operation. This requires receiver behavior; a network path
+or agent prompt alone cannot provide the guarantee.
+
+
+V2 BEAT 35 — Many jobs share capacity
+SOURCE: ai-crowd, ai-isolate
+
+ON SCREEN
+Many agents. Many jobs. Shared capacity.
+
+PICTURE / DELIVERY
+Show concurrent weather requests from other flights entering a shared
+service queue. Distinguish the critical request and a controlled allocation
+of service capacity for it.
+
+NARRATION
+Now add the other flights responding to the same weather event. Each agent has a job, and each job creates a workload.
+
+Their agents can all be acting reasonably and still overwhelm a shared service together. The critical processing and exchanges for our job need a way to meet their deadline under that load.
+
+That may require admission control, reserved capacity, or workload isolation across the service path. A dedicated-looking line on a diagram does not help if every request still waits in the same overloaded queue.
+
+VISUAL CHANGE
+Show the queue or constrained service, not just thicker network links.
+Make any reserved capacity an explicit illustrative design choice.
+
+
+V2 BEAT 36 — The workload crosses boundaries
+SOURCE: ai-trace, ai-measure
+
+ON SCREEN
+The workload crosses organizational boundaries.
+
+PICTURE / DELIVERY
+Outline the external weather service and approval authority. Show what can
+be measured at each boundary, without implying visibility into their
+internal systems. Keep approval separate from weather data.
+
+NARRATION
+Some of the nodes participating in this workload belong to another organization. Responsibility for the job still has to be clear.
+
+We may know when we sent a request and when the answer returned without seeing the processing inside their service. The design has to account for what evidence we can obtain, what service expectations we have, and what we do when an answer or approval is unavailable.
+
+Another provider may supply weather. It cannot substitute for the authority that has to approve the route.
+
+VISUAL CHANGE
+Replace the ambiguous phrase “a second product” with explicit alternatives
+and escalation. Distinguish a substitutable data source from a required
+authority. Do not draw an alternate path around a denied approval.
+
+
+V2 BEAT 37 — Commit within authority
+SOURCE: ai-fabric, auto-act, air-once
+
+ON SCREEN
+Evidence current. Constraints satisfied. Action authorized.
+
+PICTURE / DELIVERY
+Return fully to the main scenario. The weather and operational checks are
+satisfied within the decision window. Approval arrives. Submit the amendment
+and show the receiver's recorded acknowledgment. Then make the route solid.
+
+NARRATION
+For our shipment, the required evidence has arrived in time. The candidate
+fits the handling and arrival constraints. The appropriate approval is
+present.
+
+The agent can now submit the change within its delegated authority and
+confirm that the receiving system recorded it.
+
+The commitment has a traceable basis: the evidence used, the checks made,
+the permission obtained, and the action accepted.
+
+VISUAL CHANGE
+This is the first actual route commitment in the agent scenario. Replace
+the long commit-rule paragraph with the three short conditions. Make the
+approval and receiver acknowledgment visually distinct.
+
+
+V2 BEAT 38 — Did the world follow?
+SOURCE: air-named, auto-verify
+
+ON SCREEN
+Accepted. Executed. Outcome checked.
+
+PICTURE / DELIVERY
+Return to the aircraft. Show three distinct milestones: amendment accepted,
+flight execution reported, and handling/arrival evidence received. Change
+the relevant promise indicators only when supporting evidence arrives.
+
+NARRATION
+An accepted instruction is one milestone. We still need to know what
+happened in the operation.
+
+Did the route change take effect? What did the aircraft and cargo
+measurements report? Does the revised arrival still protect the connection?
+
+Those answers come from the systems observing and carrying out the work.
+The agent's explanation of what it expected to happen is useful context.
+It isn't evidence that the outcome occurred.
+
+VISUAL CHANGE
+NEW OR EXPANDED: separate acknowledgment from execution and outcome evidence.
+The current “verified force on the cargo” claim needs an actual measurement
+cue. Label readings as illustrative; do not invent production performance.
+
+
+V2 BEAT 39 — Keep learning from the operation
+SOURCE: ai-enroute
+
+ON SCREEN
+The next decision starts with the latest result.
+
+PICTURE / DELIVERY
+Let the aircraft continue. Return fresh operational observations to the
+enterprise model. A later sector remains ahead of the aircraft.
+
+NARRATION
+The operation continues. Conditions can change again. New observations
+update the picture available for the next decision.
+
+The same commitment should survive a retry. A new situation can require
+a new decision.
+
+That is why sensing and verification have to remain connected to action
+throughout the work. We are operating in a changing environment.
+
+VISUAL CHANGE
+Keep the successful route visible while showing that further authorized
+decisions remain possible. Remove any animation or caption implying that
+one route amendment permanently ends adaptation.
+
+
+=======================================================================
+V. WHAT THIS CHANGES FOR US
+=======================================================================
+
+V2 BEAT 40 — The network behind the job
+SOURCE: auto-relationships, recap-operate
+
+ON SCREEN
+This is the network behind the job.
+
+PICTURE / DELIVERY
+Pull back across the actual exchanges just shown. Associate each word with
+one concrete thing: incoming evidence, dependency traversal, returned outcome.
+Keep the authorized action visibly between the checks and the outcome.
+
+NARRATION
+What looked like one job for one agent required coordinated work across all these nodes. This is the workload mapped onto the network.
+
+The aircraft and shipment are the same ones we started with. Weather evidence, operational constraints, models, approval, and the system recording the amendment all participated. Flight operations and measurements then told us what actually happened.
+
+The applications participated in the job. Their individual operations contributed to its workload. The connected system made the coordination possible.
+
+VISUAL CHANGE
+Use these as three network-facing capabilities, not a replacement for the
+full decision process. Leave the action visible so the recap does not
+accidentally omit the step on which the argument depends.
+
+
+V2 BEAT 41 — Design and observe the workload
+SOURCE: network-centric
+
+ON SCREEN
+The workload spans compute and connections.
+Design connectivity around the job.
+Observe the workload. Verify the outcome.
+
+PICTURE / DELIVERY
+Show the agent, enterprise model, applications, people, and communications
+as parts of the same picture. Quiet secondary traffic and branding.
+
+NARRATION
+Pull back again. The same job draws on an ecosystem of companies and systems: weather providers, model providers, the logistics company, its airline partner, and the ground operation.
+
+Under the models are serving clusters, compute fabrics, and chips. Between the companies are wide area networks and interconnects. Processing at the nodes and traffic between them together make up the workload.
+
+One job can span many applications. Many jobs can share the same nodes and connections. This is the full system we are asking to behave intelligently.
+
+Designing the job means deciding which nodes can participate, what context they exchange, how long they can wait, and how they recover when an answer does not arrive. Who is allowed to act? Which systems must agree before the work can proceed?
+
+We have to express those choices in the software coordinating the workload. Reachability, deadlines, retries, and authorization shape whether the agent can complete its job.
+
+The network of exchanges is a core part of the intelligent system. Information has to reach the right place, in time for effective reasoning and coordinated action.
+
+Build observability across the workload. Connect the processing and exchanges to the job they serve: which evidence was used, what conditions held, what action was authorized, and what the operation reports happened.
+
+The aircraft’s measurements, the cargo monitor, the arrival report, and the health of the communication path all feed that picture. Completing a call does not establish that the job succeeded. Completing the agent’s route-change job does not by itself establish that the delivery promise was kept.
+
+This is situational awareness: understanding the conditions in which a decision is made, then sensing and understanding its outcome. That feedback informs the next decision, within delegated limits. Which brings us to who sets those limits.
+
+VISUAL CHANGE
+Do not imply that packet visibility alone reveals commitments or validates
+business outcomes. Show the application and organizational context supplying
+meaning to the observed exchanges.
+
+
+V2 BEAT 42 — Who sets the terms?
+SOURCE: humans, humans-remain
+
+ON SCREEN
+People set the commitments and the limits.
+
+PICTURE / DELIVERY
+Bring people and policy into focus without removing operators from the
+working system. Show an escalation path and the ability to suspend authority.
+
+NARRATION
+People decide what can be delegated, which risks are acceptable, and when
+the system must ask for help. They also need a practical way to intervene
+and change those decisions.
+
+That responsibility doesn't disappear as routine work becomes more
+autonomous. It becomes part of how we design and run the operation.
+
+People keep the right to say what the round trip is for.
+
+VISUAL CHANGE
+Combine the two human-role endings into one. Avoid implying that everyone
+simply moves “up the stack” or that an unattended system has no continuing
+operational responsibility around it.
+
+
+V2 BEAT 43 — More of the operation can move
+SOURCE: autonomous-enterprise, scales, recap-architecture
+
+ON SCREEN
+More decisions completed. More promises kept.
+
+PICTURE / DELIVERY
+Pull back to several shipments following the same designed process. Keep
+one exception visibly routed to a person. A brief body/team echo may appear
+within the transition, but do not restart the six-scale tour.
+
+NARRATION
+The opportunity is to make more of this coordination available whenever
+the operation needs it.
+
+Routine decisions can move within agreed limits. People can spend more
+attention on the exceptions, the commitments, and the improvements that
+need their judgment.
+
+Like the team on the court, the gain comes from making specialized
+capabilities available to one another. In the enterprise, we have to
+engineer that coordination deliberately.
+
+VISUAL CHANGE
+Treat the caption as the proposed opportunity, not a measured claim.
+Show both completed routine work and a handled exception. Avoid a uniformly
+green montage that suggests universal autonomy has been achieved.
+
+
+V2 BEAT 44 — Choose one job
+SOURCE: NEW; consolidates recap-model and the executive implication
+
+ON SCREEN
+Choose one job. Map its workload.
+
+PICTURE / DELIVERY
+Return to the single shipment, its dependencies, and its recorded outcome.
+Hold this uncluttered picture while the narrator addresses the room.
+
+NARRATION
+When you go back to your teams, choose one job you are considering delegating to an agent. Define its outcome, deadline, and limits of authority.
+
+Map its workload: follow the processing, exchanges, permissions, and feedback from the assignment to the outcome. Identify every node the job depends on, who owns each answer, and how you will know the job is complete.
+
+Try it with an answer that is late, a permission that is denied, and an acknowledgment that is lost.
+
+You will learn how much authority that system is ready to carry, and where your next investment belongs.
+
+VISUAL CHANGE
+NEW HOLD FRAME, built from the existing shipment view. Keep the tests in
+the spoken narration; do not turn the closing into a crowded checklist.
+
+
+V2 BEAT 45 — The sentence returns
+SOURCE: gage-returns
+
+ON SCREEN
+The network is the computer.
+
+John Gage · 1984
+
+PICTURE / DELIVERY
+Return to the same photograph and quote, with the same treatment. Hold
+briefly after the narration before the final line.
+
+NARRATION
+Gage's sentence invited us to see the capability of the connected system.
+
+Now we are asking that system to take on more decisions. Its intelligence
+depends on the quality of its reasoning, the model it holds of the
+enterprise, and the exchanges that connect both to what is happening.
+
+That gives the work of this room a direct part in what AI can actually do.
+
+VISUAL CHANGE
+Use the original attribution without the “forty years later” kicker.
+No additional recap follows this return.
+
+
+V2 BEAT 46 — Close
+SOURCE: close
+
+ON SCREEN
+THE NETWORK IS THE FOUNDATION OF INTELLIGENCE
+
+PICTURE / DELIVERY
+The final line replaces the quote. Remove title, navigation, legends, and
+other captions. Let the background settle. Hold after speaking.
+
+NARRATION
+When an intelligent system has to act across an enterprise, the connections
+that let it know, coordinate, and verify become part of its ability to act.
+
+The network becomes part of the intelligence.
+
+VISUAL CHANGE
+The final sentence is intentionally both spoken and shown. Preserve the
+single closing moment; do not add another summary slide afterward.
+
+
+V2 BEAT 47 — Thank you
+SOURCE: end
+
+ON SCREEN
+(Keep the final line.)
+
+PICTURE / DELIVERY
+Allow a real pause, then say thank you. Hold the closing frame through
+applause. Any fade is a separate operator action after the ending.
+
+NARRATION
+Thank you.
+
+VISUAL CHANGE
+Remove the automatic audience-facing “Thank you” replacement and timed
+fade from this proposed performed ending. The final thesis remains visible.
+
+
+=======================================================================
+REVIEW AND INTEGRATION NOTES — NOT SPOKEN
+=======================================================================
+
+A. WHAT TO JUDGE FIRST
+
+Read the NARRATION blocks continuously before judging individual captions.
+The questions for review are whether the voice sounds like the speaker,
+whether each example adds something, and whether the operational conclusion
+feels earned. The source references are a comparison aid, not a constraint
+requiring every old beat to survive.
+
+This version deliberately changes the argument's pacing:
+  • Nature establishes consequence across relationships.
+  • The body establishes sensing, response, and feedback.
+  • The team establishes coordination among capable participants.
+  • Gage connects that possibility to the systems the audience builds.
+  • The shipment gives those systems a purpose and a consequence.
+  • The enterprise model supplies context and authority before the agent acts.
+  • One agent decision exposes the technical requirements.
+  • One executive question gives the audience something concrete to do.
+
+B. VISUAL WORK REQUIRED BEFORE THIS CAN BE PERFORMED AGAINST THE APP
+
+Essential to meaning:
+  V2 17–22: Persist the arrival/handling promise and distinguish technical
+             health from operational closure.
+  V2 23–26: Move the enterprise-model explanation earlier; show relationship
+             meaning, evidence sources, and authority on the enterprise map.
+  V2 27:    Establish an operations agent's bounded role. The empty-cockpit
+             framing would contradict this draft.
+  V2 29–30: Keep one candidate route pending through the transition to the
+             technical view. Preserve its identity and chronology.
+  V2 31–36: Make actual checks and hypothetical failure insets distinguishable.
+             Show stale evidence, a decision window, lost acknowledgment,
+             duplicate handling, shared service capacity, and external authority.
+  V2 37–39: Distinguish approval, accepted commitment, execution, and outcome.
+             Allow later decisions; do not suggest an aircraft changes route
+             only once for the rest of its flight.
+  V2 41:    Include application meaning alongside network visibility.
+  V2 44:    Add the executive takeaway hold.
+
+Presentation and pacing:
+  V2 01:    Hide audience-facing navigation and title chrome.
+  V2 03–08: Combine existing builds; allow full animation cycles and breathing
+             room without a new paragraph on every layer.
+  V2 11:    Let the basketball possession play with no caption covering it.
+  V2 13:    Combine quote and portrait into one reveal.
+  V2 14:    Condense packet animation around a recognizable round trip.
+  V2 26:    Separate the title flash and explanatory sentence in time.
+  V2 43:    Show an exception alongside successful routine work.
+  V2 45–47: One return, one conclusion, a held ending.
+
+These are proposed changes, not completed implementation. In particular,
+new evidence markers and transaction states must represent real distinctions
+in the animation; changing the captions alone would not be enough.
+
+C. SOURCE COVERAGE
+
+All 101 current beat IDs are accounted for below. A mapping means material
+is reused or replaced in that location; it does not preserve old narration,
+timing, or every visual element. Repeated references indicate a split or
+callback. The new executive hold is V2 44.
+
+open                  → 01
+cosmos                → 02
+atmosphere            → 03
+water                 → 03
+mycelium              → retire as a separate stop; optional background in 04
+photosynthesis        → retire as a separate stop; optional background in 04
+foodweb               → 04
+architecture-repeats  → 04
+body                  → 05
+body-energy           → retire
+body-structure        → 05
+body-circulation      → 05
+body-viscera          → 05
+body-lymph            → 05
+body-nerves           → 06
+body-brain            → 06
+neural                → 06
+language              → retire
+people                → retire; the team demonstrates coordination directly
+markets               → retire
+satellites            → retire
+internet              → retire; Gage supplies the built-network transition
+senses                → 07
+shot-reveal           → 07
+shot-perceive         → 07
+shot-motor            → 08
+shot-loop             → 08
+team                  → 09
+team-links            → 09
+team-mind             → 10
+team-mind-model       → 10
+team-mind-decide      → 10
+team-signals          → 11
+team-model            → 11
+team-emergence        → 12
+all-of-it             → transition into 13; retire standalone montage
+gage-quote            → 13
+gage                  → 13
+packet-layers         → 14
+packet-open           → 14
+packet-path           → 14
+ent-open              → 15
+ent-air               → 15
+ent-ground            → 15
+ent-hub               → 15
+ent-people            → 16
+ent-systems           → 16
+ent-organism          → 17
+ent-package           → 17
+ent-commitment        → 17
+ent-weather           → 18
+ent-depends           → 20
+ent-fine              → 19
+ent-dispatch          → 21
+ent-dispatch-act      → 21
+ent-reroute           → 22
+air-seat              → 27; replace empty-seat premise
+air-smooth            → 28
+air-witness           → 28
+air-split             → 28
+air-herd              → 29; replace physical-crowding claim with route constraints
+air-boundary          → 29
+air-once              → 37; replace permanent route rule with one commitment
+air-named             → 38
+air-operate           → 30
+ai-file               → 30
+ai-fanout             → 30
+ai-stream             → 31
+ai-stall              → 32
+ai-retry              → 33
+ai-crowd              → 35
+ai-trace              → 36
+ai-fresh              → 31
+ai-complete           → 31
+ai-once               → 34
+ai-isolate            → 35
+ai-measure            → 36
+ai-enroute            → 39
+ai-fabric             → 37
+auto-perceive         → 28
+auto-model            → 23
+auto-semantics        → 24
+auto-federate         → 25
+auto-federate-hold    → 25
+auto-reasoning        → 27
+auto-traffic          → 30
+auto-relationships    → 40
+auto-act              → 37
+auto-verify           → 38
+network-centric       → 41
+humans                → 27, 42
+autonomous-enterprise → 43
+scales                → 43; optional brief echo, no separate tour
+the-model             → 26
+humans-remain         → 42
+gage-returns          → 45
+recap-architecture    → 43
+recap-operate         → 40
+recap-model           → 44; replace repeated thesis with an executive test
+close                 → 46
+end                   → 47
+
+D. REHEARSAL METHOD
+
+Read only NARRATION aloud, at a pace that lets the thoughts land. Time the
+silent opening, full shot, full possession, quote reveal, and final holds
+separately. Add those measured intervals to speech time. Rehearse the new
+enterprise and aircraft transitions against a storyboard before assigning
+cinema durations or changing chapter exports.
+
+The most important quiet moments are the opening, the shot in flight, the
+team's finish, the human reroute succeeding, the accepted route change,
+and the final line. Protect them before using spare time for more explanation.

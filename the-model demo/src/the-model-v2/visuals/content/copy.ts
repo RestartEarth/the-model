@@ -1,0 +1,251 @@
+/**
+ * Every word the audience reads.
+ *
+ * Kept in one file so the whole script can be read as prose — the beat list
+ * in beats/script.ts is the staging, this is the writing. Lines are short on
+ * purpose: one sentence on screen, the rest spoken. A line rendered with
+ * `showTitle` gets the full-bleed centred treatment and should be shorter and
+ * flatter than a panel line, because the room will read it in silence.
+ */
+
+// ── The quote, and its return ─────────────────────────────────────────
+
+export const GAGE_QUOTE = "The network is the computer."
+export const GAGE_ATTR = "John Gage, 1984"
+export const GAGE_RETURN_KICKER = "Forty years later"
+export const GAGE_RETURN_ATTR = "Now an operating requirement"
+export const GAGE_PHOTO_CREDIT =
+  "John Gage, photographed by Joi Ito, 5 October 2008. CC BY 2.0."
+
+export const TITLE = "THE MODEL"
+
+// ── Movement labels ───────────────────────────────────────────────────
+
+export const M1 = "One · An architecture that repeats"
+export const M2 = "Two · Networks make intelligence"
+export const M3 = "Three · Intelligence networks with intelligence"
+export const M4 = "Four · 1984"
+export const M5 = "Five · The enterprise"
+export const M6 = "Six · What autonomy requires"
+export const M7 = "Seven · The autonomous enterprise"
+
+
+// ── Movement 1 · An architecture that repeats ─────────────────────────
+
+export const N_COSMOS =
+  "The largest structure anyone has ever mapped is a network. This was once called Indra’s Net."
+export const N_INDRA =
+  "Matter did not settle into a pile. It settled into relationships."
+export const N_ATMOS =
+  "The atmosphere is a planetary transport network of thermal energy, creating conditions for life on earth"
+export const N_WATER =
+  "Water runs a circuit — ocean, air, mountain, river, ocean — and the planet stays habitable because it does."
+export const N_MYCELIUM =
+  "Under a forest floor, fungal threads link trees that cannot move. Sugar goes one way, minerals the other."
+export const N_PHOTOSYNTHESIS =
+  "Light, air and soil are three unrelated systems. Connected, they make food."
+export const N_FOODWEB =
+  "A food web is nothing but a map of who depends on whom."
+export const N_REPEATS =
+  "Different parts. Different scales. The same architecture, over and over."
+
+// ── Movement 2 · Networks make intelligence ───────────────────────────
+
+export const B_PRESENCE = "You are one of them."
+export const B_ENERGY =
+  "We are a network of energy, integrated with the energy of the universe that binds reality together and animates life."
+export const B_STRUCTURE =
+  "Bone and muscle: a mechanical network. Nothing moves alone."
+export const B_CIRCULATION =
+  "Blood: a distribution network running to every cell you have."
+export const B_VISCERA =
+  "Organs are specialists. None of them is useful on its own."
+export const B_LYMPH =
+  "Lymph and hormones: a slower network, carrying state rather than supplies."
+export const B_NERVES =
+  "Nerves: a signalling network, fast enough to change what happens next."
+export const B_BRAIN =
+  "The brain is the hub of all of these networks, which when combined create human intelligence."
+
+/** §42 pause — the neural reveal. Centred, read in silence. */
+export const B_NEURAL =
+  "The parts are not the Intelligence. Intelligence is the relationship between them."
+
+export const B_SENSES = "A network that cannot perceive cannot act."
+export const B_LOOP =
+  "Perceive. Model. Predict. Act. Sense the result — and go again."
+export const B_INTELLIGENCE =
+  "That loop, running without pause, is most of what we mean by being alive to the world."
+
+export const C_REVEAL = "Watch one person do one ordinary thing."
+export const C_PERCEIVE = "All of it is already in."
+export const C_MOTOR =
+  "Then a few hundred muscles agree on a sequence, in order, in about half a second."
+export const C_LOOP =
+  "And it is still correcting after the ball has left the hand. One body. One loop."
+
+// ── Movement 3 · Intelligence networks with intelligence ──────────────
+
+export const T_REVEAL = "Now put five of them on a court."
+export const T_LINKS =
+  "Each one specialises. Each one depends on the other four."
+export const T_SIGNALS =
+  "They pass more than the ball. A call, a glance, a screen — the state of the play, continuously."
+export const T_MODEL =
+  "No one calls every move. Each player carries a model of the same game, and acts on it."
+
+/** Pause on the inbound — inside one skull before the pass. */
+export const T_MIND =
+  "Hold the inbound. The clock, the score, Brunson, the help, the rim, his own balance. All of it is already in."
+export const T_MIND_MODEL =
+  "And the model was written before this inbound. If Brunson shoots, he crashes. If Brunson passes, he shoots."
+export const T_MIND_DECIDE =
+  "Senses, model, and the body that has to move — one moment. This time Brunson shoots, and the crash is already the act."
+
+/** §42 pause — team emergence. */
+export const T_EMERGE =
+  "The team is not five players. It is what happens between them."
+
+export const T_SCALE =
+  "Five is a team. A family, a community, a crew — the same architecture, at the scale of people."
+
+// ── Movement 4 · 1984 ─────────────────────────────────────────────────
+
+export const H_PEOPLE =
+  "People have always done this. Families, crews, institutions — minds combining to make what none can alone."
+export const H_LANGUAGE =
+  "Language is the protocol. It is how one mind puts a model into another."
+export const H_ECONOMY =
+  "Families, communities, teams — networks people form with each other. A market is that network, one level up, deciding what gets made with no one in charge of it."
+export const H_SPACE =
+  "Then we left the ground. Satellites, then ships between worlds."
+export const H_INTERNET =
+  "Seeking other minds forced the channel. Then we built one on purpose."
+export const H_PULLBACK =
+  "The same shape, at every scale we can see — and this led to one man's realization."
+
+export const H_GAGE =
+  "In 1984 someone said out loud what the architecture had been saying all along."
+
+export const P_OPEN =
+  "We built it the way everything else here is built: small pieces, each finding their own way."
+export const P_PATH = "Nobody plans the route. The route is chosen in flight."
+export const P_LAYERS =
+  "A thought goes down through the layers and leaves as a pulse on a wire. Software is how we put our minds into systems."
+export const P_CREDIT = "After Robert M. Kettles — Life of the Packet, 2022."
+
+// ── Movement 5 · The enterprise ───────────────────────────────────────
+
+export const E_OPEN =
+  "Take the team and stretch it across a planet. This company moves physical things."
+export const E_AIR = "Aircraft, moving between continents on a schedule."
+export const E_GROUND = "Vehicles, moving between the schedule and the door."
+export const E_HUBS =
+  "Sorting hubs, warehouses, robots, scanners. The places where things change hands."
+export const E_OPS =
+  "And people: dispatchers, planners, the ones who answer the phone."
+export const E_IT =
+  "Underneath all of it, the systems that are supposed to know where everything is."
+
+/** §42 pause — the enterprise as organism. */
+export const E_ORGANISM = "This is not an org chart. It is an organism."
+
+export const E_PACKAGE =
+  "One package. Tokyo to Boston. It has an identity, an origin, a destination, a priority — and a promise attached to it."
+export const E_COMMITMENT =
+  "Every part of this network exists to keep that promise, a few million times a day."
+export const E_DISRUPT =
+  "Then weather closes a major hub. Nothing is broken. Everything is affected."
+export const E_DEPEND =
+  "The useful question is not what changed. It is what depends on what changed."
+export const E_REROUTE =
+  "A different route, a different aircraft, a different sort window — and the promise still holds."
+export const E_FINE =
+  "The hub still looks fine. The promise is already at risk."
+export const E_DISPATCH = "The aircraft call doesn't return. She waits."
+export const E_DISPATCH_ACT = "Then the path answers."
+
+// ── Fabric readings · perceive, model, meaning ───────────────────────
+// These three play on the traffic diagram, after the commit rule.
+
+export const A_PERCEIVE =
+  "It has to perceive. Not a dashboard somebody opens — perception, the way the body has perception."
+export const A_MODEL =
+  "It has to hold a model of the relationships. Not a list of assets. What affects what."
+export const A_SEMANTICS =
+  "The model has to carry meaning: what is committed, what is allowed, what has room left."
+
+// ── Movement 6 · What autonomy requires ───────────────────────────────
+
+export const A_FEDERATE =
+  "No single system holds all of it. Air knows aircraft. The hub knows the belt. The model is federated by necessity."
+export const A_FEDERATE_HOLD =
+  "It answers by asking the parts that actually know, at the moment it needs them."
+export const A_AI = "Now put something in it that can reason."
+export const A_TRAFFIC =
+  "Machine reasoning becomes network traffic the moment it needs to leave the model."
+export const A_TAGS =
+  "Every call it makes is a relationship: a tool, a task, a retrieval, a measurement."
+export const A_ACT = "It has to be able to act. Reading is not operating."
+export const A_STORM_PATH = "It knows how storms work. Not this network, now."
+export const A_STORM_ACT = "So it acts on the gateway."
+export const A_STORM_LIVE = "The path answers. Then every package moves."
+export const A_VERIFY =
+  "And it has to find out whether the action worked, from the system itself rather than from its own expectation."
+export const A_NETWORK_CENTRIC =
+  "Network-centric is not network-only. The network is where the relationships are visible."
+
+/** The humans line. §29 — never a failure fallback. */
+export const A_HUMANS =
+  "Autonomy does not remove humans. It moves humans up the stack."
+
+// ── Movement 7 · The autonomous enterprise ────────────────────────────
+
+export const L_REVEAL = "Five things, in order, forever."
+export const L_OBSERVE = "Observe — take in what is actually happening."
+export const L_UNDERSTAND = "Understand — place it in the model of relationships."
+export const L_DECIDE = "Decide — choose inside policy, against the commitment."
+export const L_ACT = "Act — change the system, not a ticket about the system."
+export const L_VERIFY = "Verify — confirm the effect, and feed it back in."
+export const L_RUN =
+  "That is the same loop the body runs to make one shot. It is the only loop there is."
+
+export const Z_ENTERPRISE =
+  "Running continuously, across the whole network, while people sleep."
+export const Z_SCALE =
+  "Neuron, brain, body, player, team, enterprise. One architecture, six scales."
+
+/** §42 pause — THE MODEL's second meaning. */
+export const Z_MODEL =
+  "The model is not the thing that thinks. The model is what it thinks about."
+
+export const Z_HUMANS =
+  "People are still here. Setting the commitments, setting the limits, handling the things that have never happened before."
+
+/** §30 — the one line the show ends on. */
+export const AIR_SEAT =
+  "The same promises, on one aircraft. No one in the seat. The cargo cannot take the shock."
+export const AIR_SMOOTH =
+  "Clear air. The forecast says smooth. The radar sees nothing."
+export const AIR_WITNESS = "The aircraft ahead reports the acceleration."
+export const AIR_SPLIT =
+  "The forecast still says smooth. The report says severe."
+export const AIR_HERD = "Every other flight is offered that same altitude."
+export const AIR_BOUNDARY =
+  "The divert has to clear airspace this aircraft does not own."
+export const AIR_ONCE =
+  "The path changes once. When the disturbance fades, it does not change again."
+export const AIR_NAMED =
+  "It perceived the air ahead. It traversed to the report. It verified the force on the cargo."
+export const AIR_OPERATE =
+  "An agent that cannot do those three things across the live network can talk about the enterprise. It cannot operate it."
+export const AIR_DARK =
+  "The link is gone. It can still fly. It can no longer avoid what it cannot see."
+
+export const RECAP_ARCHITECTURE = "The enterprise is already the architecture."
+export const RECAP_OPERATE = "Perceive. Traverse. Verify. Or it cannot operate."
+export const RECAP_MODEL = "The model is what it thinks about."
+
+export const Z_CLOSE = "THE NETWORK IS THE FOUNDATION OF INTELLIGENCE"
+
+export const Z_ONUG = "Thank you."

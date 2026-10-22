@@ -1,0 +1,1256 @@
+THE MODEL — V2 MANUAL PRESENTATION
+
+Every beat advances only on click, Space, or Right Arrow.
+
+Decorative motion and a single play may animate within a beat. There are no timed scene changes.
+
+Generated from the editorial draft and scripts/v2-manual-cues.mjs. Edit those sources, then run npm run sync:v2.
+
+
+
+BEAT 01  v2-01-open — Before the first word
+SOURCE: open
+
+ON SCREEN
+(No type.)
+
+NARRATION
+(Silence.)
+
+VISUAL / DELIVERY
+Hide the app title and navigation for the performed version. Retain access
+to rehearsal controls outside the audience view.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 02  v2-02-cosmos — The space between
+SOURCE: cosmos
+
+ON SCREEN
+What becomes possible is between the parts
+
+NARRATION
+We spend a lot of time looking at the most powerful thing in the picture.
+The biggest machine. The fastest chip. The most capable model.
+
+Tonight I'd like to spend some time looking between them.
+
+Because the next question for enterprise AI is what happens when it has to
+work with everything else. When it needs an answer from another system,
+permission from another organization, or evidence that something actually
+happened.
+
+VISUAL / DELIVERY
+Replace the cosmic-size and Indra's Net caption with the question. This is
+an opening image, not a scientific exhibit requiring an astronomical claim.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 03  v2-03-atmosphere — The atmosphere
+SOURCE: atmosphere
+
+ON SCREEN
+Heat moves. Conditions change.
+
+NARRATION
+The atmosphere carries heat and moisture between places. What happens in one region helps shape the conditions in another. The connections are part of how the system works.
+
+VISUAL / DELIVERY
+Separate manual stop: The atmosphere. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 04  v2-03-water — The water cycle
+SOURCE: water
+
+ON SCREEN
+A change here becomes a condition somewhere else.
+
+NARRATION
+An ocean, a cloud, a mountain, a river. Each is recognizable on its own. Follow the movement between them and you begin to understand the system. What happens upstream changes what is possible downstream.
+
+VISUAL / DELIVERY
+Separate manual stop: The water cycle. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 05  v2-mycelium — Beneath the forest
+SOURCE: mycelium
+
+ON SCREEN
+An exchange beneath the surface.
+
+NARRATION
+Fungal threads connect with plant roots. Sugars and mineral nutrients move through these partnerships. Much of the exchange supporting the forest happens beneath the surface, beyond what we can see by looking at the trees alone.
+
+VISUAL / DELIVERY
+Restored as a separate presenter-controlled nature beat. Holds until clicked.
+
+
+BEAT 06  v2-photosynthesis — Light becomes food
+SOURCE: photosynthesis
+
+ON SCREEN
+Light, water, and carbon dioxide become a living resource.
+
+NARRATION
+A leaf uses light to turn water and carbon dioxide into sugars. Those sugars support the plant and become a resource for other living things. The next picture follows those dependencies through the food web.
+
+VISUAL / DELIVERY
+Restored as a separate presenter-controlled nature beat. Holds until clicked.
+
+
+BEAT 07  v2-04-foodweb — Dependence
+SOURCE: foodweb
+
+ON SCREEN
+The relationships explain the consequences.
+
+NARRATION
+In a food web, those connections describe dependence. A change in one
+population can reach another through a chain of relationships.
+
+A list of the species gives you the cast. The connections help explain
+what happens next.
+
+That distinction will matter when we get to a company. We are very good
+at listing what we own. Understanding what depends on it is harder.
+
+VISUAL / DELIVERY
+Food web follows the restored mycelium and photosynthesis beats. Hold until clicked.
+
+
+BEAT 08  v2-05-body — You arrived connected
+SOURCE: body
+
+ON SCREEN
+You arrived connected.
+
+NARRATION
+You have a more personal example. Your body brings together systems with different jobs and different rhythms.
+
+VISUAL / DELIVERY
+Separate manual stop: You arrived connected. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 09  v2-05-body-structure — Structure and movement
+SOURCE: body-structure
+
+ON SCREEN
+Structure supports movement.
+
+NARRATION
+Bone and muscle work together to support you and move you. A movement depends on their coordination.
+
+VISUAL / DELIVERY
+Separate manual stop: Structure and movement. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 10  v2-05-body-circulation — Circulation
+SOURCE: body-circulation
+
+ON SCREEN
+A working body needs a continuous supply.
+
+NARRATION
+Circulation supplies the tissues doing that work. Movement depends on resources reaching the places that need them.
+
+VISUAL / DELIVERY
+Separate manual stop: Circulation. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 11  v2-05-body-viscera — Specialized organs
+SOURCE: body-viscera
+
+ON SCREEN
+Different jobs. A shared life.
+
+NARRATION
+Organs do specialized work. You experience their coordination as something ordinary: getting out of a chair, crossing a room, catching something before it falls.
+
+VISUAL / DELIVERY
+Separate manual stop: Specialized organs. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 12  v2-05-body-lymph — Regulation
+SOURCE: body-lymph
+
+ON SCREEN
+Coordination runs at different rhythms.
+
+NARRATION
+Chemical signals help regulate what happens across these systems. Much of that coordination happens without your attention.
+
+VISUAL / DELIVERY
+Separate manual stop: Regulation. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 13  v2-06-body-nerves — Sensing and response
+SOURCE: body-nerves
+
+ON SCREEN
+Sensing connects to movement.
+
+NARRATION
+The nervous system connects sensing and movement. Information has to arrive and produce a response in time to matter.
+
+VISUAL / DELIVERY
+Separate manual stop: Sensing and response. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 14  v2-06-body-brain — Brain and body
+SOURCE: body-brain
+
+ON SCREEN
+An ongoing exchange with the world.
+
+NARRATION
+The brain participates in that ongoing exchange with the body and its surroundings.
+
+VISUAL / DELIVERY
+Separate manual stop: Brain and body. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 15  v2-06-neural — Intelligence in operation
+SOURCE: neural
+
+ON SCREEN
+Sensing. Coordinating. Responding.
+
+NARRATION
+Seeing the wiring alone does not explain intelligence. But it reminds us that intelligence in action depends on information arriving, being used, and producing a response. A basketball shot makes that exchange visible.
+
+VISUAL / DELIVERY
+Separate manual stop: Intelligence in operation. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 16  v2-07-senses — Contact with the situation
+SOURCE: senses
+
+ON SCREEN
+Useful knowledge meets the present situation.
+
+NARRATION
+The player senses the rim, the defender, his balance, and the feel of the ball. Practice gives him expectations. What he senses now lets him adjust them.
+
+VISUAL / DELIVERY
+Separate manual stop: Contact with the situation. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 17  v2-07-shot-reveal — One ordinary shot
+SOURCE: shot-reveal
+
+ON SCREEN
+One person. One action.
+
+NARRATION
+Here is the same body on a basketball court, preparing to shoot.
+
+VISUAL / DELIVERY
+Separate manual stop: One ordinary shot. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 18  v2-07-shot-perceive — Before the ball moves
+SOURCE: shot-perceive
+
+ON SCREEN
+The action begins before the ball moves.
+
+NARRATION
+Before release, the player is already using information about the court and his own position. Preparation is part of the action.
+
+VISUAL / DELIVERY
+Separate manual stop: Before the ball moves. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 19  v2-08-shot-motor — The release
+SOURCE: shot-motor
+
+ON SCREEN
+(No type.)
+
+NARRATION
+Then he shoots. Once the ball is in the air, he cannot steer it. He can watch what happened, land, recover, and prepare for what comes next.
+
+VISUAL / DELIVERY
+Separate manual stop: The release. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 20  v2-08-shot-loop — The result comes back
+SOURCE: shot-loop
+
+ON SCREEN
+Act. Observe the result. Adjust.
+
+NARRATION
+His intention does not tell him whether the shot went in. The result does. That distinction matters when a machine takes an action on our behalf.
+
+VISUAL / DELIVERY
+Separate manual stop: The result comes back. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 21  v2-09-team — Five capable people
+SOURCE: team
+
+ON SCREEN
+Five players. A shared game.
+
+NARRATION
+Now give him four teammates. All five can be exceptional. They still need to coordinate.
+
+VISUAL / DELIVERY
+Separate manual stop: Five capable people. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 22  v2-09-team-links — Available to one another
+SOURCE: team-links
+
+ON SCREEN
+Capability depends on coordination.
+
+NARRATION
+A great shooter who never receives the ball is a person standing in a good spot. Their advantage comes from combining different views quickly enough to act together.
+
+VISUAL / DELIVERY
+Separate manual stop: Available to one another. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 23  v2-10-team-mind — Before the pass
+SOURCE: team-mind
+
+ON SCREEN
+A shared understanding of this game.
+
+NARRATION
+Before the pass, the players have expectations about one another. They are also reading what is happening now.
+
+VISUAL / DELIVERY
+Separate manual stop: Before the pass. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 24  v2-10-team-mind-model — Two possibilities
+SOURCE: team-mind-model
+
+ON SCREEN
+Prepare for what could happen next.
+
+NARRATION
+If the shot goes up, someone needs to be ready for the rebound. If the defense closes that option, the play needs another one.
+
+VISUAL / DELIVERY
+Separate manual stop: Two possibilities. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 25  v2-10-team-mind-decide — This possession
+SOURCE: team-mind-decide
+
+ON SCREEN
+Different actions fit together.
+
+NARRATION
+They need enough shared understanding to make their different actions fit together. And they have to update it as the defense moves.
+
+VISUAL / DELIVERY
+Separate manual stop: This possession. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 26  v2-11-team-signals — Let the play happen
+SOURCE: team-signals
+
+ON SCREEN
+(No type.)
+
+NARRATION
+The pass. The shot. And someone is already moving toward the rebound.
+
+VISUAL / DELIVERY
+Separate manual stop: Let the play happen. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 27  v2-11-team-model — The make
+SOURCE: team-model
+
+ON SCREEN
+(No type.)
+
+NARRATION
+(Let the result land.)
+
+VISUAL / DELIVERY
+Separate manual stop: The make. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 28  v2-12-team-emergence — The team
+SOURCE: team-emergence
+
+ON SCREEN
+The team is what they can do together.
+
+NARRATION
+That is the pleasure of watching a team work. Individual ability becomes
+something collective.
+
+The connections haven't replaced the players. They've made more of their
+abilities available to one another.
+
+We have spent much of the history of computing pursuing a version of that
+same possibility.
+
+VISUAL / DELIVERY
+Keep the celebration visible under the line. Cut the intervening tour of
+language, markets, and satellites from this proposed run.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 29  v2-13-gage-quote — The sentence
+SOURCE: gage-quote
+
+ON SCREEN
+The network is the computer.
+
+NARRATION
+(Let the room read the line.)
+
+VISUAL / DELIVERY
+Separate manual stop: The sentence. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 30  v2-13-gage — Gage
+SOURCE: gage
+
+ON SCREEN
+The network is the computer.
+
+NARRATION
+John Gage gave us a sentence many people in this room know well.
+
+It asks us to think about the capability of the connected system.
+What becomes available when computation, information, and people can reach
+one another?
+
+AI gives that question a new urgency. We are beginning to ask software
+to decide what to do across the systems we connected.
+
+VISUAL / DELIVERY
+Separate manual stop: Gage. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 31  v2-14-packet-layers — From thought to wire
+SOURCE: packet-layers
+
+ON SCREEN
+A thought goes down through the layers and leaves as a pulse on a wire. Software is how we put our minds into systems.
+
+NARRATION
+A thought does not cross a room as a thought. It comes apart, goes down through the layers, and leaves as a pulse on a wire. That is also how we put a mind into a system: software. Give this a minute. You already know networking. This is the hinge between a mind and a wire.
+
+VISUAL / DELIVERY
+Separate manual stop: From thought to wire. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 32  v2-14-packet-open — Small pieces
+SOURCE: packet-open
+
+ON SCREEN
+We built it the way everything else here is built: small pieces, each finding their own way.
+
+NARRATION
+We did not invent a new shape when we built this. Small pieces, each able to move without holding the whole message. You have been looking at that since the first click.
+
+VISUAL / DELIVERY
+Separate manual stop: Small pieces. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 33  v2-14-packet-path — The route is chosen in flight
+SOURCE: packet-path
+
+ON SCREEN
+Nobody plans the route. The route is chosen in flight.
+
+NARRATION
+The route is not booked before the first hop. Each piece chooses the next from what is live. Remember that. An aircraft is about to have to do the same thing, with a promise attached.
+
+VISUAL / DELIVERY
+Separate manual stop: The route is chosen in flight. This state holds until clicked; the next state never appears on a timer.
+
+
+BEAT 34  v2-15-1 — The shipment origin
+SOURCE: ent-open, ent-air, ent-ground, ent-hub
+
+ON SCREEN
+Tokyo → Boston
+
+NARRATION
+Imagine a logistics company moving a shipment from Tokyo to Boston.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 35  v2-15-2 — The aircraft
+SOURCE: ent-open, ent-air, ent-ground, ent-hub
+
+ON SCREEN
+One delivery depends on all of this.
+
+NARRATION
+An aircraft handles one part of the journey.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 36  v2-15-3 — The gateway
+SOURCE: ent-open, ent-air, ent-ground, ent-hub
+
+ON SCREEN
+One delivery depends on all of this.
+
+NARRATION
+A gateway connects that flight to the next part of the journey.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 37  v2-15-4 — The receiving hub
+SOURCE: ent-open, ent-air, ent-ground, ent-hub
+
+ON SCREEN
+One delivery depends on all of this.
+
+NARRATION
+A sorting hub has its own receiving window and schedule.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 38  v2-15-5 — The destination
+SOURCE: ent-open, ent-air, ent-ground, ent-hub
+
+ON SCREEN
+One delivery depends on all of this.
+
+NARRATION
+A final delivery has to reach a door. The customer experiences the result of all of them working together.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 39  v2-16-1 — The people who join it up
+SOURCE: ent-people, ent-systems
+
+ON SCREEN
+Different systems. Different knowledge. One operation.
+
+NARRATION
+People make this work every day. Dispatchers, planners, crews, and the
+person who answers when a customer asks where the shipment is.
+
+They work across systems that each know something useful. The aircraft
+system knows capacity. The hub knows its processing window. The delivery
+system knows the destination commitment.
+
+Someone has to bring those answers together into a decision.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 40  v2-17-1 — Give the network a purpose
+SOURCE: ent-organism, ent-package, ent-commitment
+
+ON SCREEN
+Tokyo → Boston
+A promise to someone waiting.
+
+NARRATION
+For this example, the shipment has a promised arrival time and a handling
+limit. Its contents are sensitive to shock.
+
+Those two conditions give the operation a purpose. Arriving on time with
+damaged cargo would still fail the customer.
+
+The enterprise is full of commitments like this. Its equipment, software,
+and people have to work together to keep them.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 41  v2-18-1 — The plan stops working
+SOURCE: ent-weather
+
+ON SCREEN
+The gateway closes.
+
+NARRATION
+Weather closes a gateway on the planned route.
+
+The servers can still be running. The network can still be carrying traffic.
+The aircraft can still be serviceable.
+
+But the plan we made for this shipment no longer works. We have to find
+another way to keep the promise.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 42  v2-19-1 — Healthy systems, endangered outcome
+SOURCE: ent-fine
+
+ON SCREEN
+The systems are healthy.
+The promise is at risk.
+
+NARRATION
+This is a familiar gap for an IT organization.
+
+We can have an accurate picture of component health and still need another
+view to understand the business consequence. Which shipments depend on
+that connection? Which commitments are now in danger? How much time is left
+to change the plan?
+
+The answers sit in the relationships between the systems.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 43  v2-20-1 — Follow the consequence
+SOURCE: ent-depends
+
+ON SCREEN
+What depends on this connection?
+
+NARRATION
+The gateway closure matters because it changes the next connection.
+That changes the sorting window. That can change the final delivery.
+
+A dispatcher follows those dependencies and looks for an alternative
+that still fits. Available space on another aircraft is useful only if
+the next hub can receive it and the shipment can still reach the customer.
+
+This is the difference between finding capacity and finding a workable plan.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 44  v2-21-1 — Awaiting confirmation
+SOURCE: ent-dispatch, ent-dispatch-act
+
+ON SCREEN
+Can this alternative still keep the promise?
+
+NARRATION
+She finds a possible alternative and asks for confirmation. One answer is late. She can keep investigating, but holds the commitment until she knows the alternative is available.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 45  v2-21-2 — The answer returns
+SOURCE: ent-dispatch, ent-dispatch-act
+
+ON SCREEN
+Capacity confirmed. The receiving window still fits.
+
+NARRATION
+Then the answer arrives. Capacity is confirmed. The receiving window still fits. She has evidence she can use.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 46  v2-22-1 — The promise survives
+SOURCE: ent-reroute
+
+ON SCREEN
+A different route. The same commitment.
+
+NARRATION
+She changes the route, and the revised plan still meets the commitment.
+
+Her judgment matters. So does her ability to reach the people and systems
+that know whether the plan can work.
+
+If we want an agent to help with more of that work, we have to give it a
+usable understanding of these relationships and a reliable way to check
+what is true now.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 47  v2-23-1 — What the agent needs to understand
+SOURCE: auto-model
+
+ON SCREEN
+A model of what depends on what.
+
+NARRATION
+This is the model I mean: a representation of the operation that connects
+its resources, dependencies, current state, commitments, and permissions.
+
+For this shipment, it links the package to the aircraft, the aircraft to
+the receiving hub, and those movements to an arrival promise.
+
+That gives a reasoner something concrete to work with. It can ask how a
+change in one place affects an outcome somewhere else.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 48  v2-24-1 — Facts, promises, permission
+SOURCE: auto-semantics
+
+ON SCREEN
+What is true?
+What is promised?
+What is allowed?
+
+NARRATION
+Those are different kinds of information.
+
+An aircraft has available capacity. That's a fact to verify. The shipment
+has an arrival commitment. That's an outcome to protect. The agent may
+be allowed to reserve space, but not to change the customer's terms.
+That's an authority boundary.
+
+A useful enterprise model preserves those distinctions. Otherwise a
+plausible plan can quietly assume a permission it was never given.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 49  v2-25-1 — Ask the source
+SOURCE: auto-federate, auto-federate-hold
+
+ON SCREEN
+Connected knowledge. Accountable sources.
+
+NARRATION
+The knowledge is distributed. The aircraft system owns one answer.
+The hub owns another. A customer agreement supplies a different constraint.
+
+We can bring those together without pretending that one copy is always
+current. Some information can be stored. Some needs refreshing. Some has
+to be checked at the moment of commitment.
+
+The model needs to preserve where an answer came from, how current it is,
+and who has authority over it.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 50  v2-26-1 — The title's second meaning
+SOURCE: the-model
+
+ON SCREEN
+A model of the enterprise gives reasoning something to work with.
+
+NARRATION
+When we say “the model” in an AI conversation, we usually mean the trained
+model doing the reasoning.
+
+There is another model we need to care about: its representation of the
+enterprise it is being asked to operate.
+
+The quality of the reasoner matters. So does the quality of what it knows
+about this business, and its ability to check that knowledge as the business
+changes. Better reasoning cannot manufacture missing authority or current
+capacity.
+
+VISUAL / DELIVERY
+Keep V2’s enterprise dependencies and arrival/handling promise. Use V1’s recognizable aircraft silhouette for the aircraft carrying Shipment TK–BOS / 01. Each reveal is a manual stop.
+
+
+BEAT 51  v2-27-1 — Delegate a defined job
+SOURCE: air-seat, auto-reasoning, humans
+
+ON SCREEN
+One agent. A defined job.
+
+NARRATION
+We give the operations agent a job: evaluate a route change for this shipment and submit it when the required checks and approvals are satisfied.
+
+The job has an outcome, a deadline, and limits on what the agent can authorize. Flight operations and the relevant authorities retain their responsibilities.
+
+Delivering the shipment involves many jobs. This agent is responsible for one bounded part of that work: putting a workable, authorized route decision through the systems that have to carry it out.
+
+VISUAL / DELIVERY
+Follow the same shipment in V1’s aircraft visual language: aircraft, air lanes, satellites, and ground links. Dispatch and flight operations remain visible. New ride evidence is highlighted at scene 28; the proposed alternative is dashed at scene 29. The aircraft remains on its current approved route. Hold until clicked.
+
+
+BEAT 52  v2-28-1 — New evidence
+SOURCE: air-smooth, air-witness, air-split, auto-perceive
+
+ON SCREEN
+The plan meets new evidence.
+
+NARRATION
+The planned route was acceptable on the information available when it was
+chosen. Now an aircraft ahead reports a rougher ride.
+
+The agent needs to establish whether that report is relevant to our path,
+recent enough to use, and significant for this cargo's handling limit.
+
+A newer report deserves attention. It still needs context. The question
+is whether the evidence changes what this shipment can safely tolerate.
+
+VISUAL / DELIVERY
+Follow the same shipment in V1’s aircraft visual language: aircraft, air lanes, satellites, and ground links. Dispatch and flight operations remain visible. New ride evidence is highlighted at scene 28; the proposed alternative is dashed at scene 29. The aircraft remains on its current approved route. Hold until clicked.
+
+
+BEAT 53  v2-29-1 — A proposal is not a commitment
+SOURCE: air-boundary, air-herd
+
+ON SCREEN
+An alternative must satisfy the whole journey.
+
+NARRATION
+An alternative might reduce the exposure. It can also change arrival time,
+fuel requirements, or the approvals needed to use the route.
+
+Those checks belong to the systems and authorities responsible for them.
+The agent has to obtain their answers and establish that the candidate
+still fits the shipment's commitments.
+
+Finding an appealing alternative is the beginning of the decision.
+
+VISUAL / DELIVERY
+Follow the same shipment in V1’s aircraft visual language: aircraft, air lanes, satellites, and ground links. Dispatch and flight operations remain visible. New ride evidence is highlighted at scene 28; the proposed alternative is dashed at scene 29. The aircraft remains on its current approved route. Hold until clicked.
+
+
+BEAT 54  v2-30-1 — Open the workload
+SOURCE: air-operate, ai-file, ai-fanout, auto-traffic
+
+ON SCREEN
+One job creates a distributed workload.
+
+NARRATION
+Now open up that job. The agent consults models, requests weather evidence, checks capacity and arrival windows, and seeks approval. It also needs acceptance from the system that records the amendment.
+
+All the processing and traffic associated with carrying out the job is its workload. That includes reasoning, checks, retries, and feedback.
+
+Map that workload, and you see the nodes and connections that have to work together. Processing happens at the nodes. Exchanges carry the work between them.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 55  v2-31-1 — Evidence rejected
+SOURCE: ai-stream, ai-fresh, ai-complete
+
+ON SCREEN
+Received does not mean usable.
+
+NARRATION
+Suppose the weather service returns an answer that is too old, or lacks coverage for the route. The request succeeded. The evidence requirement did not.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 56  v2-31-2 — Usable evidence received
+SOURCE: ai-stream, ai-fresh, ai-complete
+
+ON SCREEN
+Current evidence. Relevant coverage.
+
+NARRATION
+A replacement answer satisfies the requirement. Transport success alone cannot tell us whether we have enough evidence to proceed; the meaning of the response matters.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 57  v2-32-1 — The job has a deadline
+SOURCE: ai-stall
+
+ON SCREEN
+Can the workload complete in time?
+
+NARRATION
+An answer can be correct and too late. The workload has to complete the required checks and exchanges within the job’s decision window.
+
+If the opportunity to use the route has passed, a successful response does not recover it. We need to measure against the time the job actually has available.
+
+When that time runs out, hold the commitment, continue on an approved plan where appropriate, or bring a person in. The response cannot be to silently assume success.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 58  v2-33-1 — The uncertain acknowledgment
+SOURCE: ai-retry
+
+ON SCREEN
+Did it fail—or did the acknowledgment fail?
+
+NARRATION
+There's another problem worth preparing for before we submit anything.
+The receiving system may accept a change and the acknowledgment may never
+get back to us.
+
+From the sender's side, that can look like failure. Sending the same
+instruction again as a new transaction can create a duplicate commitment.
+
+We need to resolve what happened without accidentally doing it twice.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 59  v2-34-1 — Retry the request, preserve the intention
+SOURCE: ai-once
+
+ON SCREEN
+One intended change. One recorded commitment.
+
+NARRATION
+A retry adds activity to the workload. It must preserve the identity of the intended change.
+
+The sender and receiver need an agreed way to recognize the same operation, look up its status, and handle a repeated request safely. That lets the agent recover an answer without creating another commitment.
+
+A job can involve several transactions. A genuinely new route decision needs its own evidence, authority, and record. The identity of the job does not make every operation inside it the same operation.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 60  v2-35-1 — Many jobs share capacity
+SOURCE: ai-crowd, ai-isolate
+
+ON SCREEN
+Many agents. Many jobs. Shared capacity.
+
+NARRATION
+Now add the other flights responding to the same weather event. Each agent has a job, and each job creates a workload.
+
+Their agents can all be acting reasonably and still overwhelm a shared service together. The critical processing and exchanges for our job need a way to meet their deadline under that load.
+
+That may require admission control, reserved capacity, or workload isolation across the service path. A dedicated-looking line on a diagram does not help if every request still waits in the same overloaded queue.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 61  v2-36-1 — The workload crosses boundaries
+SOURCE: ai-trace, ai-measure
+
+ON SCREEN
+The workload crosses organizational boundaries.
+
+NARRATION
+Some of the nodes participating in this workload belong to another organization. Responsibility for the job still has to be clear.
+
+We may know when we sent a request and when the answer returned without seeing the processing inside their service. The design has to account for what evidence we can obtain, what service expectations we have, and what we do when an answer or approval is unavailable.
+
+Another provider may supply weather. It cannot substitute for the authority that has to approve the route.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Pending exchanges use dashed paths. Recovery scenarios are labeled as contingencies, not a second commitment. Hold until clicked.
+
+
+BEAT 62  v2-37-1 — Required checks satisfied
+SOURCE: ai-fabric, auto-act, air-once
+
+ON SCREEN
+Evidence current. Constraints satisfied.
+
+NARRATION
+The required evidence has arrived in time. The candidate fits the handling and arrival constraints. Approval is still required.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Checks satisfied; approval still required. Hold until clicked.
+
+
+BEAT 63  v2-37-2 — Approval recorded
+SOURCE: ai-fabric, auto-act, air-once
+
+ON SCREEN
+Action authorized.
+
+NARRATION
+The appropriate approval is present. The agent can submit the change within its delegated authority.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Approval recorded; amendment not yet accepted. Hold until clicked.
+
+
+BEAT 64  v2-37-3 — Amendment accepted
+SOURCE: ai-fabric, auto-act, air-once
+
+ON SCREEN
+One recorded commitment.
+
+NARRATION
+The receiving system records the change. The commitment has a traceable basis: the evidence, checks, permission, and accepted action.
+
+VISUAL / DELIVERY
+Open the V1-derived topology around the same aircraft: weather, dispatch, load, slot, handling, models, and shipment retain fixed positions. Highlight only the dependencies relevant to this beat; keep the others dim. In the workload overview, mark processing at participating compute and service nodes as well as traffic along the edges. Route authority and the receiving flight system are explicit separate nodes. Receiving system has accepted Amendment 01; execution is still to be confirmed. Hold until clicked.
+
+
+BEAT 65  v2-38-1 — Acceptance is one milestone
+SOURCE: air-named, auto-verify
+
+ON SCREEN
+Accepted. Execution still to confirm.
+
+NARRATION
+An accepted instruction is one milestone. We still need to know what happened in the operation.
+
+VISUAL / DELIVERY
+Return to the same aircraft and shipment. Amendment accepted, but execution is unconfirmed: keep the aircraft on its current route and the proposed alternative dashed. Keep approval, acceptance, execution, and outcome separate. Hold until clicked.
+
+
+BEAT 66  v2-38-2 — Execution reported
+SOURCE: air-named, auto-verify
+
+ON SCREEN
+The route change took effect.
+
+NARRATION
+The flight systems report that the route change took effect. We still need the evidence about its outcome.
+
+VISUAL / DELIVERY
+Return to the same aircraft and shipment. Flight operations report execution; make the changed route solid. Outcome measurements are still pending. Keep approval, acceptance, execution, and outcome separate. Hold until clicked.
+
+
+BEAT 67  v2-38-3 — Outcome evidence received
+SOURCE: air-named, auto-verify
+
+ON SCREEN
+The result comes from the operation.
+
+NARRATION
+What do the aircraft and cargo measurements report? Does the revised arrival protect the connection? Those answers come from the systems observing the work, not the agent’s expectation.
+
+VISUAL / DELIVERY
+Return to the same aircraft and shipment. Execution and outcome evidence are reported; show the return to dispatch. Keep approval, acceptance, execution, and outcome separate. Hold until clicked.
+
+
+BEAT 68  v2-39-1 — Keep learning from the operation
+SOURCE: ai-enroute
+
+ON SCREEN
+The next decision starts with the latest result.
+
+NARRATION
+The operation continues. Conditions can change again. New observations
+update the picture available for the next decision.
+
+The same commitment should survive a retry. A new situation can require
+a new decision.
+
+That is why sensing and verification have to remain connected to action
+throughout the work. We are operating in a changing environment.
+
+VISUAL / DELIVERY
+Return to the same aircraft and shipment. Execution and outcome evidence are reported; show the return to dispatch. Keep approval, acceptance, execution, and outcome separate. Hold until clicked.
+
+
+BEAT 69  v2-40-1 — The network behind the job
+SOURCE: auto-relationships, recap-operate
+
+ON SCREEN
+This is the network behind the job.
+
+NARRATION
+What looked like one job for one agent required coordinated work across all these nodes. This is the workload mapped onto the network.
+
+The aircraft and shipment are the same ones we started with. Weather evidence, operational constraints, models, approval, and the system recording the amendment all participated. Flight operations and measurements then told us what actually happened.
+
+The applications participated in the job. Their individual operations contributed to its workload. The connected system made the coordination possible.
+
+VISUAL / DELIVERY
+Return to the same fixed topology with the full set of dependencies illuminated. The aircraft and Shipment 01 remain the anchors. This is the visual payoff: evidence, models, authority, execution, and feedback supported one job. Show processing at participating nodes as well as exchanges between them. Hold until clicked.
+
+
+BEAT 70  v2-41-1 — The workload spans compute and connections
+SOURCE: network-centric
+
+ON SCREEN
+The workload spans compute and connections.
+
+NARRATION
+Pull back again. The same job draws on an ecosystem of companies and systems: weather providers, model providers, the logistics company, its airline partner, and the ground operation.
+
+Under the models are serving clusters, compute fabrics, and chips. Between the companies are wide area networks and interconnects. Processing at the nodes and traffic between them together make up the workload.
+
+One job can span many applications. Many jobs can share the same nodes and connections. This is the full system we are asking to behave intelligently.
+
+VISUAL / DELIVERY
+Pull back to the full flight ecosystem using the original topology glyphs and edges. Show processing at compute and service nodes alongside traffic between them. Include chips, compute fabric, serving clusters, model providers, weather, dispatch, aircraft, shipment, logistics company, airline partner, ground, and WAN/interconnect. Architectural roles are illustrative, not claimed vendor contracts. Hold until clicked.
+
+
+BEAT 71  v2-41-2 — Design connectivity around the job
+SOURCE: network-centric
+
+ON SCREEN
+Design connectivity around the job.
+
+NARRATION
+Designing the job means deciding which nodes can participate, what context they exchange, how long they can wait, and how they recover when an answer does not arrive. Who is allowed to act? Which systems must agree before the work can proceed?
+
+We have to express those choices in the software coordinating the workload. Reachability, deadlines, retries, and authorization shape whether the agent can complete its job.
+
+The network of exchanges is a core part of the intelligent system. Information has to reach the right place, in time for effective reasoning and coordinated action.
+
+VISUAL / DELIVERY
+Keep the full topology fixed; dim secondary traffic and highlight the application-code paths through tools, policy, connectivity, and partner systems. Routing, reachability, deadlines, retries, and authorization are part of designing the job and coordinating its workload. Hold until clicked.
+
+
+BEAT 72  v2-41-3 — Observe the workload, verify the outcome
+SOURCE: network-centric
+
+ON SCREEN
+Observe the workload. Verify the outcome.
+
+NARRATION
+Build observability across the workload. Connect the processing and exchanges to the job they serve: which evidence was used, what conditions held, what action was authorized, and what the operation reports happened.
+
+The aircraft’s measurements, the cargo monitor, the arrival report, and the health of the communication path all feed that picture. Completing a call does not establish that the job succeeded. Completing the agent’s route-change job does not by itself establish that the delivery promise was kept.
+
+This is situational awareness: understanding the conditions in which a decision is made, then sensing and understanding its outcome. That feedback informs the next decision, within delegated limits. Which brings us to who sets those limits.
+
+VISUAL / DELIVERY
+Keep the same topology; highlight directed returns from aircraft and cargo sensors, arrival, inference, weather, and network telemetry into observability, then into application code and dispatch. Application context supplies business meaning; packet visibility alone does not establish the outcome. Hold until clicked.
+
+
+BEAT 73  v2-42-1 — Who sets the terms?
+SOURCE: humans, humans-remain
+
+ON SCREEN
+People set the commitments and the limits.
+
+NARRATION
+People decide what can be delegated, which risks are acceptable, and when
+the system must ask for help. They also need a practical way to intervene
+and change those decisions.
+
+That responsibility doesn't disappear as routine work becomes more
+autonomous. It becomes part of how we design and run the operation.
+
+People keep the right to say what the round trip is for.
+
+VISUAL / DELIVERY
+Combine the two human-role endings into one. Avoid implying that everyone
+simply moves “up the stack” or that an unattended system has no continuing
+operational responsibility around it.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 74  v2-43-1 — More of the operation can move
+SOURCE: autonomous-enterprise, scales, recap-architecture
+
+ON SCREEN
+More decisions completed. More promises kept.
+
+NARRATION
+The opportunity is to make more of this coordination available whenever
+the operation needs it.
+
+Routine decisions can move within agreed limits. People can spend more
+attention on the exceptions, the commitments, and the improvements that
+need their judgment.
+
+Like the team on the court, the gain comes from making specialized
+capabilities available to one another. In the enterprise, we have to
+engineer that coordination deliberately.
+
+VISUAL / DELIVERY
+Treat the caption as the proposed opportunity, not a measured claim.
+Show both completed routine work and a handled exception. Avoid a uniformly
+green montage that suggests universal autonomy has been achieved.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 75  v2-44-1 — Choose one job
+SOURCE: NEW; consolidates recap-model and the executive implication
+
+ON SCREEN
+Choose one job. Map its workload.
+
+NARRATION
+When you go back to your teams, choose one job you are considering delegating to an agent. Define its outcome, deadline, and limits of authority.
+
+Map its workload: follow the processing, exchanges, permissions, and feedback from the assignment to the outcome. Identify every node the job depends on, who owns each answer, and how you will know the job is complete.
+
+Try it with an answer that is late, a permission that is denied, and an acknowledgment that is lost.
+
+You will learn how much authority that system is ready to carry, and where your next investment belongs.
+
+VISUAL / DELIVERY
+NEW HOLD FRAME, built from the existing shipment view. Keep the tests in
+the spoken narration; do not turn the closing into a crowded checklist.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 76  v2-45-gage — The sentence returns
+SOURCE: gage
+
+ON SCREEN
+The network is the computer.
+
+NARRATION
+Gage's sentence invited us to see the capability of the connected system.
+
+Now we are asking that system to take on more decisions. Its intelligence
+depends on the quality of its reasoning, the model it holds of the
+enterprise, and the exchanges that connect both to what is happening.
+
+That gives the work of this room a direct part in what AI can actually do.
+
+VISUAL / DELIVERY
+Use the original attribution without the “forty years later” kicker.
+No additional recap follows this return.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 77  v2-46-1 — Close
+SOURCE: close
+
+ON SCREEN
+THE NETWORK IS THE FOUNDATION OF INTELLIGENCE
+
+NARRATION
+When an intelligent system has to act across an enterprise, the connections
+that let it know, coordinate, and verify become part of its ability to act.
+
+The network becomes part of the intelligence.
+
+VISUAL / DELIVERY
+The final sentence is intentionally both spoken and shown. Preserve the
+single closing moment; do not add another summary slide afterward.
+
+Manual playback: this state holds until the next click.
+
+
+BEAT 78  v2-47-1 — Thank you
+SOURCE: end
+
+ON SCREEN
+THE NETWORK IS THE FOUNDATION OF INTELLIGENCE
+
+NARRATION
+Thank you.
+
+VISUAL / DELIVERY
+Remove the automatic audience-facing “Thank you” replacement and timed
+fade from this proposed performed ending. The final thesis remains visible.
+
+Manual playback: this state holds until the next click.

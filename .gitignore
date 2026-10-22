@@ -2,6 +2,7 @@ node_modules
 dist
 dist-pack
 dist-the-model
+dist-the-model-v2
 .DS_Store
 *.local
 .env
